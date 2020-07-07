@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
+import ClientSignUp from "./features/client/clientSignUp"
 import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm"
-// import "./App.css";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       </Route>
       <Route exact path="/signup">
         <ArtistSignUpForm />
-        Sign Up component here
+        <ClientSignUp />
       </Route>
       <Route exact path="/login">
         Log in component here

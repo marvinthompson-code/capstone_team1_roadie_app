@@ -1,12 +1,14 @@
 import React from "react";
 
-const NavBar = () => {
-
+const NavBar = () =>{
     return(
-        <nav>
-            This is the nav
-        </nav>
+        <div>
+            <h1>
+                This is the NavBar component
+            </h1>
+        </div>
     )
 }
+
 
 export default NavBar;
