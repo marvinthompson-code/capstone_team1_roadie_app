@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
+import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm"
 // import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         Get all users List
       </Route>
       <Route exact path="/signup">
+        <ArtistSignUpForm />
         Sign Up component here
       </Route>
       <Route exact path="/login">
