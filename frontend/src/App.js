@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 import ClientSignUp from "./features/client/clientSignUp"
-
+import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm"
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         Get all users List
       </Route>
       <Route exact path="/signup">
-        Sign Up component here
+        <ArtistSignUpForm />
         <ClientSignUp />
       </Route>
       <Route exact path="/login">
