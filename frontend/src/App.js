@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
-import ClientSignUp from "./features/client/clientSignUp"
-import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm"
+import ClientSignUp from "./features/client/clientSignUp";
+import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         HOME
       </Route>
       <Route exact path="/users">
-        Get all users List
+        Users
       </Route>
       <Route exact path="/signup">
         <ArtistSignUpForm />
