@@ -8,7 +8,9 @@ const {
   searchForSingleArtist,
 } = require("../queries/artistsQueries");
 
-artists.get("/", getAllArtists);
+const { checkFirebaseToken } = require("../middleware/auth");
+
+artists.get("/", checkFirebaseToken, getAllArtists);
 artists.get("/:id", getSingleArtistByID);
 artists.post("/", addSingleArtist);
 artists.delete("/:id", deleteSingleArtist);
