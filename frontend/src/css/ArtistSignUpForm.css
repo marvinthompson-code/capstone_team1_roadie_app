@@ -1,0 +1,29 @@
+:root {
+    --pumkinOrange: #ec9b59;
+    --pink: #f4d8cd;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+  }
+
+  .FormContainer{
+      border: 3px solid white;
+  }
+  .artistSignUpTitle{
+      border: 2px solid white;
+  }
+  .artistSignUpForm{
+      border: 2px solid white;
+  }
+  .artistInput{
+      border: 2px solid white;
+  }
+  .arististUploadImg{
+      border: 2px solid white;
+  }
+.artistImgUploadBttn{
+    border: 2px solid white;
+}
+.artistSignUpBttn{
+    border: 2px solid white;
+}
