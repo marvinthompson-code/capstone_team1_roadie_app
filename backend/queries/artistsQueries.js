@@ -56,7 +56,7 @@ const addSingleArtist = async (req, res, next) => {
       message: "Added a single artist",
       body: {
         added_single_artist: db.one(
-          "INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+          "INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
           [id, name, profile_pic_url, bio, pricing, genre, city, contact_info]
         ),
       },
@@ -77,7 +77,7 @@ const deleteSingleArtist = async (req, res, next) => {
       status: "Success",
       message: "Deleted a single artist",
       body: {
-        deleted_single_artist: db.one("DELETE FROM artists WHERE id = $1", [
+        deleted_single_artist: db.one("DELETE FROM artists WHERE id = $1 RETURNING *", [
           id,
         ]),
       },
