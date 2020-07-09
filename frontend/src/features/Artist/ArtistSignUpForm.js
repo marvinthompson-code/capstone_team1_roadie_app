@@ -48,7 +48,10 @@ const ArtistSignUpForm = () => {
 
     return (
         <div className={"FormContainer"}>
-            <h3>Artist Sign Up</h3>
+            <div>
+                <h3>Artist Sign Up</h3>
+            </div>
+
             <form onSubmit={handleSubmit}>
                 <input type={"text"} placeholder={"email"} value={email} onChange={(e) => setEmail(e.currentTarget.value)} required></input>
                 <input type={"password"} placeholder={"password"} value={password} onChange={(e) => setPassword(e.currentTarget.value)} required></input>
