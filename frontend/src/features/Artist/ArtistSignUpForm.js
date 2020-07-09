@@ -48,8 +48,11 @@ const ArtistSignUpForm = () => {
 
     return (
         <div className={"FormContainer"}>
+            <div className="artistSignUpTitle">
             <h3>Artist Sign Up</h3>
+            </div>
             <form onSubmit={handleSubmit}>
+                <div className="artistInput">
                 <input type={"text"} placeholder={"email"} value={email} onChange={(e) => setEmail(e.currentTarget.value)} required></input>
                 <input type={"password"} placeholder={"password"} value={password} onChange={(e) => setPassword(e.currentTarget.value)} required></input>
                 <input type={"text"} placeholder={"Band Name"} value={name} onChange={(e) => setName(e.currentTarget.value)} required></input>
@@ -57,6 +60,7 @@ const ArtistSignUpForm = () => {
                 <input type={"text"} placeholder={"contact"} value={contact} onChange={(e) => setContact(e.currentTarget.value)} required></input>
                 <input type={"text"} placeholder={"bio"} value={bio} onChange={(e) => setBio(e.currentTarget.value)}></input>
                 <input type={"text"} placeholder={"city"} value={city} onChange={(e) => setCity(e.currentTarget.value)}></input>
+                </div>
                 {/* Set Range: */}
                 {/* <select>
                     <option value={"$"}>$</option>
@@ -64,9 +68,15 @@ const ArtistSignUpForm = () => {
                     <option value={"$$$"}>$$$</option>
                     <option value={"Ask"}>Ask</option>
                 </select> */}
+                <div className="artistUploadImg">
                 <h4>Upload Image</h4>
+                </div>
+                <div className="artistImgUploadBttn">
                 <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)}>Upload</button>
+                </div>
+                <div className="artistSignUpBttn">
                 <button type={"submit"}>Sign Up</button>
+                </div>
             </form>
         </div>
     )
