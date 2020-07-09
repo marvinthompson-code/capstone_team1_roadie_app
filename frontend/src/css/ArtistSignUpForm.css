@@ -5,25 +5,55 @@
     --darkGreen: #164444;
     --darkBlue: #00202b;
   }
+  @font-face {
+      src: url('../fonts/Raleway-Black.ttf');
+      font-family: railwayBlk;
+  }
+
+  @font-face {
+    src: url('../fonts/Raleway-BoldItalic.ttf');
+    font-family: railwayBldIt;
+}
+
+@font-face {
+    src: url('../fonts/Raleway-Light.ttf');
+    font-family: railwayLight;
+}
+
+
 
   .FormContainer{
-      border: 3px solid white;
+      border: 3px solid black;
+      height: 100%;
   }
   .artistSignUpTitle{
-      border: 2px solid white;
+      border: 2px solid black;
+      text-align: center;
+      color: black;
+  }
+
+  #artisth3 {
+      opacity: 0.5;
+      font-family: railwayLight;
+      text-shadow: 1px 1px 2px #000000
   }
   .artistSignUpForm{
-      border: 2px solid white;
+      border: 2px solid black;
   }
   .artistInput{
-      border: 2px solid white;
+      border: 2px solid black;
+      display: grid;
+      grid-template-rows: repeat(7, 14.28%);
+  }
+  .artistInputSpace {
+      font-family: railwayLight;
   }
   .arististUploadImg{
-      border: 2px solid white;
+      border: 2px solid black;
   }
 .artistImgUploadBttn{
-    border: 2px solid white;
+    border: 2px solid black;
 }
 .artistSignUpBttn{
-    border: 2px solid white;
+    border: 2px solid black;
 }

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Modal from 'react-modal';
 import axios from "axios";
 import { updateArtist } from "../Artist/artistSlice";
+import { toggleModalState } from '../Artist/modalSlice'
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
+import '../../css/ArtistSignUpForm.css'
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -16,6 +19,8 @@ const ArtistSignUpForm = () => {
   const [bio, setBio] = useState("");
   const [pricing, setPricing] = useState("");
   const [contact, setContact] = useState("");
+  let isOpen = useSelector(state => state.modal)
+  // const [ isOpen, setIsOpen ] = useState(false)
 
   const API = apiURL();
   const history = useHistory();
@@ -46,37 +51,55 @@ const ArtistSignUpForm = () => {
     debugger;
   };
 
+  const closeModal = () => {
+      dispatch(toggleModalState())
+  }
   return (
-    <div className={"FormContainer"}>
+      <Modal isOpen={true} onRequestClose={closeModal} isOpen={isOpen} style={{
+          content: {
+              backgroundColor: '#F4D8CD',
+              borderRadius: '13px',
+              left: '25%',
+              right: '25%',
+            },
+            overlay: {
+                backgroundColor: '#164444'
+            }
+        }}>
+                <div className={"FormContainer"}>
       <div className="artistSignUpTitle">
-        <h3>Artist Sign Up</h3>
+        <h3 id={"artisth3"}>Artist Sign Up</h3>
       </div>
       <div className="artistSignUpForm">
         <form onSubmit={handleSubmit}>
           <div className="artistInput">
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"email"}
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
               required
-            ></input>
+              ></input>
             <input
               type={"password"}
+              className={"artistInputSpace"}
               placeholder={"password"}
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
               required
-            ></input>
+              ></input>
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"Band Name"}
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
               required
-            ></input>
+              ></input>
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"genre"}
               value={genre}
               onChange={(e) => setGenre(e.currentTarget.value)}
@@ -84,23 +107,26 @@ const ArtistSignUpForm = () => {
             ></input>
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"contact"}
               value={contact}
               onChange={(e) => setContact(e.currentTarget.value)}
               required
-            ></input>
+              ></input>
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"bio"}
               value={bio}
               onChange={(e) => setBio(e.currentTarget.value)}
-            ></input>
+              ></input>
             <input
               type={"text"}
+              className={"artistInputSpace"}
               placeholder={"city"}
               value={city}
               onChange={(e) => setCity(e.currentTarget.value)}
-            ></input>
+              ></input>
           </div>
           {/* Set Range: */}
           {/* <select>
@@ -123,6 +149,7 @@ const ArtistSignUpForm = () => {
         </form>
       </div>
     </div>
+                </Modal>
   );
 };
 
