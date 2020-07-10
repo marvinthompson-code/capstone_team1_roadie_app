@@ -1,24 +1,34 @@
 import React from "react";
+import Modal from 'react-modal'
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
-// import "./App.css";
+import ClientSignUp from "./features/client/clientSignUp";
+import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
+import Login from "./features/login/Login";
+import AuthProvider from "./providers/AuthContext";
+import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
+
+Modal.setAppElement('#root');
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Route exact path="/">
-        HOME
-      </Route>
-      <Route exact path="/users">
-        Get all users List
-      </Route>
-      <Route exact path="/signup">
-        Sign Up component here
-      </Route>
-      <Route exact path="/login">
-        Log in component here
-      </Route>
+      <AuthProvider>
+        <NavBar />
+        <Route exact path="/">
+          HOME
+        </Route>
+        <ProtectedRoute exact path="/users">
+          Users
+        </ProtectedRoute>
+        <AuthRoute exact path="/signup">
+          <ArtistSignUpForm />
+          {/* <ClientSignUp /> */}
+        </AuthRoute>
+        <AuthRoute exact path="/login">
+          <Login />
+        </AuthRoute>
+      </AuthProvider>
     </div>
   );
 }
