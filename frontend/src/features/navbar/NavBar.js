@@ -15,7 +15,7 @@ const NavBar = () => {
     } else {
       return (
         <>
-          <NavLink to={"/login"}>Login</NavLink>
+          <NavLink exact to={"/login"} onClick={() => dispatch(toggleModalState())}>Login</NavLink>
           <NavLink to={"/signup"} onClick={() => dispatch(toggleModalState())}>Sign Up</NavLink>
         </>
       );
