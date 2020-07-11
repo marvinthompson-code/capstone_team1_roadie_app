@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from 'react-modal'
+import Modal from "react-modal";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 import ClientSignUp from "./features/client/clientSignUp";
@@ -27,6 +27,7 @@ function App() {
         </AuthRoute>
         <AuthRoute exact path="/login">
           <Login />
+
         </AuthRoute>
       </AuthProvider>
     </div>
