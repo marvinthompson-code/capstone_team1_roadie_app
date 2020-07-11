@@ -5,6 +5,8 @@ import NavBar from "./features/navbar/NavBar";
 import ClientSignUp from "./features/client/clientSignUp";
 import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
 import Login from "./features/login/Login";
+import SearchResults from "./features/SearchResults/SearchResults"
+import Home from "./features/Home/Home"
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 
@@ -16,7 +18,8 @@ function App() {
       <AuthProvider>
         <NavBar />
         <Route exact path="/">
-          HOME
+          <Home />
+
         </Route>
         <ProtectedRoute exact path="/users">
           Users
@@ -30,6 +33,9 @@ function App() {
 
         </AuthRoute>
       </AuthProvider>
+      <Route exact path={"/results"}>
+        <SearchResults />
+      </Route>
     </div>
   );
 }
