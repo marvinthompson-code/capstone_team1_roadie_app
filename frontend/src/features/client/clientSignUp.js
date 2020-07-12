@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
+import {updateClient} from '../client/clientSlice';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
@@ -23,6 +24,7 @@ const ClientSignUp = () => {
 
   const API = apiURL();
   const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -36,7 +38,7 @@ const ClientSignUp = () => {
         city,
         contact,
       });
-      // dispatch(updateArtist(res.user));
+      dispatch(updateClient(res.user));
       // sign up with firebase and send results to our backend
     } catch (error) {
       console.log(error.message);
@@ -44,22 +46,23 @@ const ClientSignUp = () => {
   };
 
   return (
-    <Modal
-      isOpen={true}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-        overlay: {
-          backgroundColor: "#164444",
-        },
-      }}
-    >
+    // <Modal
+    //   isOpen={true}
+    //   onRequestClose={closeModal}
+    //   isOpen={isOpen}
+    //   style={{
+    //     content: {
+    //       // backgroundColor: "#F4D8CD",
+    //       borderRadius: "13px",
+    //       left: "25%",
+    //       right: "25%",
+    //     },
+    //     // overlay: {
+    //     //   backgroundColor: "#164444",
+    //     // },
+    //   }}
+    // >
+    <>
       <h3>Client Sign Up</h3>
       <form onSubmit={handleSubmit}>
         <input
@@ -100,8 +103,8 @@ const ClientSignUp = () => {
         />
         <input
           type={"password"}
-          placeholder={"email"}
-          value={email}
+          placeholder={"password"}
+          value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
         <div className="clientSignUpImgUpload">
@@ -115,7 +118,8 @@ const ClientSignUp = () => {
 
         <input type="submit" value="Sign Up" />
       </form>
-    </Modal>
+      </>
+    // </Modal>
   );
 };
 export default ClientSignUp;
