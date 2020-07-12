@@ -37,7 +37,7 @@
 } */
 
 :root {
-    --pumkinOrange: #ec9b59;
+    --pumpkinOrange: #ec9b59;
     --pink: #f4d8cd;
     --lightGreen: #9eb19e;
     --darkGreen: #164444;
@@ -59,14 +59,16 @@
 }
 
 
-  .loginForm{
+  .loginForm {
       border: 3px solid black;
       height: 100%;
   }
-  .loginTitle{
+  .loginTitle {
       border: 2px solid black;
       text-align: center;
       color: black;
+      background-color: var(--lightGreen);
+
   }
 
   #loginH3 {
@@ -74,10 +76,10 @@
       font-family: railwayLight;
       text-shadow: 1px 1px 2px #000000
   }
-  .loginForm{
+  .loginForm {
       border: 2px solid black;
   }
-  .loginInput{
+  .loginInput {
       border: 2px solid black;
       display: grid;
       grid-template-rows: repeat(2, 50%);
@@ -86,6 +88,13 @@
       font-family: railwayLight;
   }
 
-.loginSubmitBtn{
+.loginSubmitBtn {
     border: 2px solid black;
+    text-align: center;
+
+}
+
+button {
+    background-color: var(--darkBlue);
+    color: var(--pink);
 }
