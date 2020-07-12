@@ -30,25 +30,30 @@ const Login = () => {
 
   return (
     <Modal isOpen={true} onRequestClose={closeModal} isOpen={isOpen} style={{
+      overlay:{
+        backgroundColor: '#164444',
+      },
       content: {
         backgroundColor: '#ec9b59',
         borderRadius: '13px',
-        left: '25%',
-        right: '25%',
-        },
-      overlay: {
-        backgroundColor: '#00202b'
-      }
+        left: '35%',
+        right: '35%',
+        top: '15%',
+        bottom: '15%',
+        boxShadow: '5px 10px 8px black'
+        }
     }}>
-      <div className="loginTitle">
-        <h3 id="loginH3">Roadie Login</h3>
+      <div className="loginContainer">
+      <div className="loginHeader">
+        <div id="roadieHeader">
+        <h3 id="loginH3">Roadie</h3>
+        </div>
       </div>
       <div className="loginForm">
       {error ? <div>{error}</div> : null}
-      <form onSubmit={handleSubmit}>
-        <div className="loginInput">
+      <form onSubmit={handleSubmit} className="loginFormInput">
           <input
-            className="loginInputSpace"
+            id="loginEmailInput"
             placeholder="Email"
             value={email}
             onChange={(e) => {
@@ -57,19 +62,16 @@ const Login = () => {
           />
           <input
             type="password"
-            className="loginInputSpace"
+            id="loginPasswordInput"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.currentTarget.value)}
           />
-        </div>
-        <div className="loginSubmitBtn">
-          <button type="submit">Login</button>
-        </div>
-        {/* <div className="signupBtn">
-          <button onClick={history.push("/signup")}>SignUp</button>
-        </div> */}
+          <div id="logginButton">
+          <input type="submit" value="login" id="loginThree"/>
+          </div>
       </form>
+      </div>
       </div>
     </Modal>
   );
