@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <Modal isOpen={true} onRequestClose={closeModal} isOpen={isOpen} style={{
       overlay:{
-        backgroundColor: '#164444',
+        backgroundColor: '#16444495',
       },
       content: {
         backgroundColor: '#ec9b59',

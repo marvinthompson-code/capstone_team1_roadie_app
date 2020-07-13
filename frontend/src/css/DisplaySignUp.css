@@ -9,6 +9,3 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 };
-/* .displayButtonSign{
-  grid-column: 2/ span 1;
-} */

@@ -5,6 +5,7 @@ import ArtistSignUpForm from "../Artist/ArtistSignUpForm";
 import ClientSignUp from "../client/clientSignUp";
 import Modal from "react-modal";
 import "../../css/DisplaySignUp.css";
+import styled, { css } from "styled-components";
 
 const DisplaySignUp = () => {
   const dispatch = useDispatch();
@@ -17,13 +18,24 @@ const DisplaySignUp = () => {
       setToggle(false);
     }
   };
+
+
+
+  const Button = styled.button`
+    background: #ec9b59;
+    border-radius: 13px;
+    border: 2px solid #ec9b59;
+    color: #00202b;
+    ${props => props.primary && css`
+    background: #9eb19e;
+    border: 2px solid #9eb19e;
+  `}
+  `;
   const displayModal = () => {
     return (
       <div className="displaySignUpContainer">
         <div className="buttonContainer">
-          <button className="displayButtonSign" onClick={onClick}>
-            {toggle ? "Artist" : "Client"}
-          </button>
+          {toggle ? <Button onClick={onClick}>Artist</Button> : <Button onClick={onClick} primary>Client</Button>}
         </div>
         {toggle ? <ArtistSignUpForm /> : <ClientSignUp />}
       </div>
@@ -41,7 +53,7 @@ const DisplaySignUp = () => {
       isOpen={isOpen}
       style={{
         overlay: {
-          backgroundColor: "#164444",
+          backgroundColor: "#16444495",
         },
         content: {
           backgroundColor: "#f4d8cd",
