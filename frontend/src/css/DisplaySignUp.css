@@ -1,0 +1,11 @@
+.displaySignUpContainer{
+  display: grid;
+  border-radius: 13px;
+  border: 2px solid black;
+  grid-template-rows: 5% 95%;
+  height: 100%;
+}
+.buttonContainer{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+};
