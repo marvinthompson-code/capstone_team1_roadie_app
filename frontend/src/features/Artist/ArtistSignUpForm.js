@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import axios from "axios";
 import { updateArtist } from "../Artist/artistSlice";
-import { toggleModalState } from '../Artist/modalSlice'
+import { toggleModalState } from '../Artist/modalSlice';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
@@ -48,31 +48,15 @@ const ArtistSignUpForm = () => {
     } catch (error) {
       console.log(error.message);
     }
-    debugger;
   };
 
-  const closeModal = () => {
-      dispatch(toggleModalState())
-  }
   return (
-      <Modal isOpen={true} onRequestClose={closeModal} isOpen={isOpen} style={{
-          content: {
-              backgroundColor: '#F4D8CD',
-              borderRadius: '13px',
-              left: '25%',
-              right: '25%',
-            },
-            overlay: {
-                backgroundColor: '#164444'
-            }
-        }}>
-                <div className={"FormContainer"}>
-      <div className="artistSignUpTitle">
+      <div className={"FormContainer"}>
+        <div className="artistContainer">
         <h3 id={"artisth3"}>Artist Sign Up</h3>
-      </div>
+        </div>
       <div className="artistSignUpForm">
-        <form onSubmit={handleSubmit}>
-          <div className="artistInput">
+        <form onSubmit={handleSubmit} className="artistForm">
             <input
               type={"text"}
               className={"artistInputSpace"}
@@ -92,7 +76,7 @@ const ArtistSignUpForm = () => {
             <input
               type={"text"}
               className={"artistInputSpace"}
-              placeholder={"Band Name"}
+              placeholder={"band name"}
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
               required
@@ -127,29 +111,16 @@ const ArtistSignUpForm = () => {
               value={city}
               onChange={(e) => setCity(e.currentTarget.value)}
               ></input>
-          </div>
-          {/* Set Range: */}
-          {/* <select>
-                    <option value={"$"}>$</option>
-                    <option value={"$$"}>$$</option>
-                    <option value={"$$$"}>$$$</option>
-                    <option value={"Ask"}>Ask</option>
-                </select> */}
           <div className="artistUploadImg">
-            <h4>Upload Image</h4>
-          </div>
-          <div className="artistImgUploadBttn">
-            <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)}>
-              Upload
+            <p id="uploadHeader">img upload:</p>
+            <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)} id="artistImg">
+              upload
             </button>
           </div>
-          <div className="artistSignUpBttn">
-            <button type={"submit"}>Sign Up</button>
-          </div>
+          <input type="submit" className="artistSignUpBttn" value="Submit"/>
         </form>
+          </div>
       </div>
-    </div>
-                </Modal>
   );
 };
 
