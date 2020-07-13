@@ -36,60 +36,69 @@
     cursor: pointer;
 } */
 :root {
-    --pumkinOrange: #ec9b59;
-    --pink: #f4d8cd;
-    --lightGreen: #9eb19e;
-    --darkGreen: #164444;
-    --darkBlue: #00202b;
-  }
-  @font-face {
-      src: url('../fonts/Raleway-Black.ttf');
-      font-family: railwayBlk;
-  }
-
-  @font-face {
-    src: url('../fonts/Raleway-BoldItalic.ttf');
-    font-family: railwayBldIt;
+  --pumkinOrange: #ec9b59;
+  --pink: #f4d8cd;
+  --lightGreen: #9eb19e;
+  --darkGreen: #164444;
+  --darkBlue: #00202b;
+}
+@font-face {
+  src: url("../fonts/Raleway-Black.ttf");
+  font-family: railwayBlk;
 }
 
 @font-face {
-    src: url('../fonts/Raleway-Light.ttf');
-    font-family: railwayLight;
+  src: url("../fonts/Raleway-BoldItalic.ttf");
+  font-family: railwayBldIt;
 }
 
-.FormContainer{
-    height: 100%;
-    display: grid;
-    grid-template-rows: 10% 90%;
- ;
+@font-face {
+  src: url("../fonts/Raleway-Light.ttf");
+  font-family: railwayLight;
 }
-.artistContainer{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    text-align: center;
 
+.FormContainer {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 10% 90%;
 }
-#artisth3{
-    grid-column: 2/ span 1;
-    font-size: medium;
-    font-family: railwayLight;
+.artistContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  text-align: center;
 }
-.artistSignUpForm{
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+#artisth3 {
+  grid-column: 2 / span 1;
+  font-size: medium;
+  font-family: railwayLight;
 }
-.artistForm{
-    grid-column: 2/ span 1;
-    display: grid;
+.artistSignUpForm {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
 }
-.artistInputSpace{
-    border: 1px solid lightgray;
-    border-radius: 13px;
-    grid-row-gap: 1%;
-    font-family: railwayLight;
+.artistForm {
+  grid-column: 2 / span 1;
+  display: grid;
 }
-.artistUploadImg{
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(2, 50%);
-};
+.artistInputSpace {
+  border: 1px solid lightgray;
+  border-radius: 13px;
+  grid-row-gap: 13px;
+  font-family: railwayLight;
+  box-shadow: 1px 1px 4px;
+}
+.artistUploadImg {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+}
+#uploadHeader {
+  font-family: railwayLight;
+}
+#artistImg {
+  grid-area: 1/ 2/ span 1/ span 1;
+  background-color: var(--lightGreen);
+  font-family: railwayLight;
+  border-radius: 13px;
+  border: 1px solid var(--lightGreen);
+}

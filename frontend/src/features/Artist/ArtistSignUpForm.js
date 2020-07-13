@@ -76,7 +76,7 @@ const ArtistSignUpForm = () => {
             <input
               type={"text"}
               className={"artistInputSpace"}
-              placeholder={"Band Name"}
+              placeholder={"band name"}
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
               required
@@ -112,9 +112,9 @@ const ArtistSignUpForm = () => {
               onChange={(e) => setCity(e.currentTarget.value)}
               ></input>
           <div className="artistUploadImg">
-            <p id="uploadHeader">Upload Image</p>
-            <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)}>
-              Upload
+            <p id="uploadHeader">img upload:</p>
+            <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)} id="artistImg">
+              upload
             </button>
           </div>
           <input type="submit" className="artistSignUpBttn" value="Submit"/>

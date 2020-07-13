@@ -48,8 +48,8 @@ const DisplaySignUp = () => {
           borderRadius: "13px",
           left: "35%",
           right: "35%",
-          top: "9%",
-          bottom: "9%",
+          // top: "7%",
+          // bottom: "7%",
           boxShadow: "5px 10px 8px black",
         },
       }}
