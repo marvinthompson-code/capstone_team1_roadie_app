@@ -1,4 +1,14 @@
-/* .displayButtonSign {
-  z-index: -1;
-  position: relative;
+.displaySignUpContainer{
+  display: grid;
+  border-radius: 13px;
+  border: 2px solid black;
+  grid-template-rows: 10% 90%;
+  height: 100%;
+}
+.buttonContainer{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+};
+/* .displayButtonSign{
+  grid-column: 2/ span 1;
 } */
