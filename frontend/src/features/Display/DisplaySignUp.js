@@ -41,7 +41,7 @@ const DisplaySignUp = () => {
       isOpen={isOpen}
       style={{
         overlay: {
-          backgroundColor: "#164444",
+          backgroundColor: "#16444495",
         },
         content: {
           backgroundColor: "#f4d8cd",
