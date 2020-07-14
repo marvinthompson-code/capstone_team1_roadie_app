@@ -15,7 +15,6 @@ const Search = () => {
     // const token = useSelector(state => state.token)
     
     const handleChange = (value) => {
-        debugger
         if (value === "Artist") {
             setToggle(true)
             console.log()
@@ -27,7 +26,7 @@ const Search = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
             if (toggle) {
-                debugger
+                
                 try {
                     let res = await axios.get(`${API}/artists/search/${name}`)
                 debugger
@@ -42,7 +41,7 @@ const Search = () => {
                     console.log(error)
                 }
             }
-        debugger
+        
         
         history.push("/results")
         
