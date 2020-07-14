@@ -92,18 +92,19 @@ const deleteSingleArtist = async (req, res, next) => {
 };
 
 const searchForSingleArtist = async (req, res, next) => {
+  let { name } = req.params;
   try {
-    let { name } = req.params;
     res.status(200).json({
       status: "Success",
       message: "Searched or artist by name " + name,
       body: {
-        searched_artist: await db.one("SELECT * FROM artists WHERE name = $1", [
-          name,
-        ]),
+        searched_artist: await db.any("SELECT * FROM artists WHERE name LIKE $1", 
+          ['%' + name + '%'],
+        ),
       },
     });
   } catch (error) {
+    console.log(error)
     res.json({
       status: "Error",
       message: "Could not search for artist by name: " + name,

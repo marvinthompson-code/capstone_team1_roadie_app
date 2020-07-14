@@ -8,28 +8,40 @@ import axios from 'axios'
 const Search = () => {
     const [ genre, setGenre ] =  useState("")
     const [ name, setName ] = useState("")
-    //
-    //
-
-    const [ current, setCurrent ] = useState(true)
+    const [ toggle, setToggle] = useState(false)
     // initialized as true, true represents artist, false represents clients
     const history = useHistory()
     const API = apiURL()
     // const token = useSelector(state => state.token)
     
+    const handleChange = (value) => {
+        if (value === "Artist") {
+            setToggle(true)
+            console.log()
+        } else {
+            setToggle(false)
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if (current) {
-            let res = await axios.get(`${API}/artist/search/${name}`)
-            debugger
-            // get request artist
-        } else {
-            let res = await axios.get(`${API}/client/search/${name}`)
-            debugger
-            // get request client
-        }
+            if (toggle) {
+                
+                try {
+                    let res = await axios.get(`${API}/artists/search/${name}`)
+                debugger
+                } catch (error) {
+                    console.log(error)
+                }
+            } else {
+                try {
+                    let res = await axios.get(`${API}/clients/search/${name}`)
+                    debugger
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        
         
         history.push("/results")
         
@@ -38,11 +50,12 @@ const Search = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)}/>
-                <select>
+                <select onChange={(e)=> handleChange(e.target.value)}>
                     <option disabled defaultValue selected>Search By...</option>
-                    <option onChange={() => setCurrent(true)} required>Artist</option>
-                    <option onChange={() => setCurrent(false)} required>Client</option>
+                    <option value={"Artist"} >Artist</option>
+                    <option value={"Client"}>Client</option>
                 </select>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
