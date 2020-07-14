@@ -8,7 +8,7 @@ const checkFirebaseToken = async (req, res, next) => {
     req.user_id = uid;
     next();
   } catch (error) {
-    console.log("Code Broke!", err);
+    console.log("Code Broke!", error);
     res.status(401).json({ message: "No Authenticated User!" });
   }
 };

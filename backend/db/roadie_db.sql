@@ -38,8 +38,6 @@ CREATE TABLE users
 );
 
 INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
-VALUES (
-    '1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448',
-    '2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448'
-    
-);
+VALUES 
+    ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
+    ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');

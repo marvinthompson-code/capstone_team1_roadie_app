@@ -89,9 +89,9 @@ const searchForSingleClient = async (req, res, next) => {
       status: "Success",
       message: "Searched or client by name " + name,
       body: {
-        searched_client: await db.one("SELECT * FROM clients WHERE name = $1", [
-          name,
-        ]),
+        searched_client: await db.any("SELECT * FROM clients WHERE name LIKE $1", 
+        ['%' + name + '%']
+        ),
       },
     });
   } catch (error) {
