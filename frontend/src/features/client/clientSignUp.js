@@ -4,7 +4,8 @@ import { signUp } from "../../util/firebaseFunctions";
 import {updateClient} from '../client/clientSlice';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModalState } from "../Artist/modalSlice";
+import "../../css/clientSignUp.css";
+// import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -113,10 +114,10 @@ const ClientSignUp = () => {
           onChange={(e) => setPassword(e.currentTarget.value)}
           />
         <div className="artistUploadImg">
-          <p id="uploaderHeader">Upload Image</p>
+          <p id="uploadHeader">img upload</p>
           <button
               onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
-              id="artistImg"
+              id="clientImg"
             >
               upload
             </button>
