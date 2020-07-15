@@ -18,6 +18,10 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
+      // check which table info belongs to
+      // conditional (if artist, dispatch updateArtist)
+      // if client (dispatch updateClient)
+      // dispatch
       history.push("/");
     } catch (error) {
       setError(error.message);
