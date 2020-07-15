@@ -119,7 +119,7 @@ const ArtistSignUpForm = () => {
               upload
             </button>
           </div>
-          <input type="submit" className="artistSignUpBttn" value="Submit" />
+          <input type="submit" className="artistSignUpBttn" value="Sign Up" />
         </form>
       </div>
     </div>
