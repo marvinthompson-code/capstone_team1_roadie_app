@@ -4,7 +4,6 @@ import { signUp } from "../../util/firebaseFunctions";
 import {updateClient} from '../client/clientSlice';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-// import Modal from "react-modal";
 import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
@@ -17,10 +16,6 @@ const ClientSignUp = () => {
   const [bio, setBio] = useState("");
   const [contact, setContact] = useState("");
   let isOpen = useSelector((state) => state.modal);
-
-  const closeModal = () => {
-    dispatch(toggleModalState());
-  };
 
   const API = apiURL();
   const dispatch = useDispatch();
@@ -62,64 +57,75 @@ const ClientSignUp = () => {
     //     // },
     //   }}
     // >
-    <>
-      <h3>Client Sign Up</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="FormContainer">
+      <div className="artistContainer">
+      <h3 id={"artisth3"}>Client Sign Up</h3>
+      </div>
+      <div class="artistSignUpForm">
+      <form onSubmit={handleSubmit} className="artistForm">
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"name"}
           value={name}
           onChange={(e) => setName(e.currentTarget.value)}
-        />
+          />
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"email"}
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
-        />
+          />
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"city"}
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
-        />
+          />
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"company name"}
           value={company}
           onChange={(e) => setCompany(e.currentTarget.value)}
-        />
+          />
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"bio"}
           value={bio}
           onChange={(e) => setBio(e.currentTarget.value)}
-        />
+          />
         <input
           type={"text"}
+          className={"artistInputSpace"}
           placeholder={"Contact Information"}
           value={contact}
           onChange={(e) => setContact(e.currentTarget.value)}
-        />
+          />
         <input
           type={"password"}
+          className={"artistInputSpace"}
           placeholder={"password"}
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
-        />
-        <div className="clientSignUpImgUpload">
-          <p>Upload Image</p>
-          <input
-            type="submit"
-            value="upload"
-            onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
           />
+        <div className="artistUploadImg">
+          <p id="uploaderHeader">Upload Image</p>
+          <button
+              onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
+              id="artistImg"
+            >
+              upload
+            </button>
         </div>
 
-        <input type="submit" value="Sign Up" />
+        <input type="submit" className="artistSignUpBttn" value="Sign Up" />
       </form>
-      </>
-    // </Modal>
-  );
-};
+      </div>
+      </div>
+    );
+  };
 export default ClientSignUp;

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-// import Modal from 'react-modal';
+import React, { useState } from "react";
 import axios from "axios";
 import { updateArtist } from "../Artist/artistSlice";
-import { toggleModalState } from '../Artist/modalSlice';
+import { toggleModalState } from "../Artist/modalSlice";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import '../../css/ArtistSignUpForm.css'
+import "../../css/ArtistSignUpForm.css";
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -19,7 +18,7 @@ const ArtistSignUpForm = () => {
   const [bio, setBio] = useState("");
   const [pricing, setPricing] = useState("");
   const [contact, setContact] = useState("");
-  let isOpen = useSelector(state => state.modal)
+  let isOpen = useSelector((state) => state.modal);
   // const [ isOpen, setIsOpen ] = useState(false)
 
   const API = apiURL();
@@ -51,76 +50,79 @@ const ArtistSignUpForm = () => {
   };
 
   return (
-      <div className={"FormContainer"}>
-        <div className="artistContainer">
+    <div className={"FormContainer"}>
+      <div className="artistContainer">
         <h3 id={"artisth3"}>Artist Sign Up</h3>
-        </div>
+      </div>
       <div className="artistSignUpForm">
         <form onSubmit={handleSubmit} className="artistForm">
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"email"}
-              value={email}
-              onChange={(e) => setEmail(e.currentTarget.value)}
-              required
-              ></input>
-            <input
-              type={"password"}
-              className={"artistInputSpace"}
-              placeholder={"password"}
-              value={password}
-              onChange={(e) => setPassword(e.currentTarget.value)}
-              required
-              ></input>
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"band name"}
-              value={name}
-              onChange={(e) => setName(e.currentTarget.value)}
-              required
-              ></input>
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"genre"}
-              value={genre}
-              onChange={(e) => setGenre(e.currentTarget.value)}
-              required
-            ></input>
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"contact"}
-              value={contact}
-              onChange={(e) => setContact(e.currentTarget.value)}
-              required
-              ></input>
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"bio"}
-              value={bio}
-              onChange={(e) => setBio(e.currentTarget.value)}
-              ></input>
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"city"}
-              value={city}
-              onChange={(e) => setCity(e.currentTarget.value)}
-              ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"email"}
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+            required
+          ></input>
+          <input
+            type={"password"}
+            className={"artistInputSpace"}
+            placeholder={"password"}
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+            required
+          ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"band name"}
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
+            required
+          ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"genre"}
+            value={genre}
+            onChange={(e) => setGenre(e.currentTarget.value)}
+            required
+          ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"contact"}
+            value={contact}
+            onChange={(e) => setContact(e.currentTarget.value)}
+            required
+          ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"bio"}
+            value={bio}
+            onChange={(e) => setBio(e.currentTarget.value)}
+          ></input>
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"city"}
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+          ></input>
           <div className="artistUploadImg">
             <p id="uploadHeader">img upload:</p>
-            <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)} id="artistImg">
+            <button
+              onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
+              id="artistImg"
+            >
               upload
             </button>
           </div>
-          <input type="submit" className="artistSignUpBttn" value="Submit"/>
+          <input type="submit" className="artistSignUpBttn" value="Submit" />
         </form>
-          </div>
       </div>
+    </div>
   );
 };
 
