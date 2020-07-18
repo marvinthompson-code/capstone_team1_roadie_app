@@ -4,9 +4,12 @@
 
 -- \c roadie_db;
 
-DROP TABLE IF EXISTS portfolio;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS pictures;
+DROP TABLE IF EXISTS videos;
+DROP TABLE IF EXISTS lineup;
+DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS artists;
 
 
@@ -25,23 +28,49 @@ CREATE TABLE artists
 CREATE TABLE clients
 (
     id VARCHAR PRIMARY KEY,
+    name VARCHAR,
     profile_pic_url VARCHAR,
     bio VARCHAR,
     city VARCHAR,
     contact_info VARCHAR
 );
 
-CREATE TABLE portfolio(
+CREATE TABLE pictures
+(
     id SERIAL PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
-    picture VARCHAR,
-    video VARCHAR,
-    caption VARCHAR
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
+    caption VARCHAR,
+    url VARCHAR
 );
+
+CREATE TABLE videos
+(
+    id SERIAL PRIMARY KEY,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
+    caption VARCHAR,
+    url VARCHAR
+);
+
 
 CREATE TABLE users
 (
     id VARCHAR PRIMARY KEY,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+);
+
+CREATE TABLE lineup (
+    id VARCHAR PRIMARY KEY,
+    name VARCHAR,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+);
+
+CREATE TABLE skills (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
@@ -53,5 +82,12 @@ VALUES
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
 
-INSERT INTO portfolio ( artist_id, picture, video, caption) 
-VALUES('1', 'this is a picture', 'this is a video', 'this is a caption');
+INSERT INTO skills (name, artist_id)
+VALUES
+    ('Skill', '1');
+
+
+INSERT INTO clients (id, name, profile_pic_url, bio, city, contact_info )
+VALUES 
+    ('1', 'Henry', NULL, 'this is a bio', 'New York', '8773934448'),
+    ('2', 'Ashya', NULL, 'I make F', 'New York', '8773934448');
