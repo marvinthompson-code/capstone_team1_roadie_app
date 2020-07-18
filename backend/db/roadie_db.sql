@@ -1,13 +1,13 @@
-DROP DATABASE IF EXISTS roadie_db;
+-- DROP DATABASE IF EXISTS roadie_db;
 
-CREATE DATABASE roadie_db;
+-- CREATE DATABASE roadie_db;
 
-\c roadie_db;
+-- \c roadie_db;
 
 DROP TABLE IF EXISTS portfolio;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS artists;
-DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE artists
