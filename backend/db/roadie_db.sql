@@ -7,6 +7,7 @@ CREATE DATABASE roadie_db;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS bookings;
 
 
 CREATE TABLE artists
@@ -35,6 +36,13 @@ CREATE TABLE users
     id VARCHAR PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+);
+
+CREATE TABLE bookings (
+    id SERIAL INTEGER PRIMARY KEY,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
+    events_id INTEGER REFERENCES events(id) ON DELETE CASCADE
 );
 
 INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
