@@ -6,6 +6,7 @@ CREATE DATABASE roadie_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
@@ -68,6 +69,18 @@ CREATE TABLE lineup
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
+CREATE TABLE bookings (
+    id SERIAL INTEGER PRIMARY KEY,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
+    events_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+    client_name VARCHAR REFERENCES clients(name),
+    venue VARCHAR,
+    date DATE,
+    cause_for_event VARCHAR,
+    contact_info VARCHAR
+);
+ 
 CREATE TABLE skills
 (
     id SERIAL PRIMARY KEY,

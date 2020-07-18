@@ -114,10 +114,35 @@ const searchForSingleArtist = async (req, res, next) => {
   }
 };
 
+const updateArtistInfo = async (req, res, next,) => {
+  try {
+    let { id } = req.params;
+    let { name, profile_pic_url, bio, contact_info } = req.body;
+    res.status(200).json({
+      status: "Success",
+      message: "Updated artist's info!",
+      body: {
+        update_artist_info: await db.one(
+          "UPDATE artists SET name = $1, profile_pic_url = $2, bio = $3, contact_info = $4 WHERE id = $5",
+          [name, profile_pic_url, bio, contact_info, id]
+        )
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "Error",
+      message: "Failed to update artist info!"
+    });
+    next(error)
+  }
+};
+
 module.exports = {
   getAllArtists,
   getSingleArtistByID,
   addSingleArtist,
   deleteSingleArtist,
   searchForSingleArtist,
+  updateArtistInfo
 };
