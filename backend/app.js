@@ -29,9 +29,12 @@ app.use(bodyParser.json());
 
 const artistsRouter = require("./routes/artists");
 const clientsRouter = require("./routes/clients");
+const portfolioRouter = require("./routes/portfolio")
+
 
 app.use("/artists", artistsRouter);
 app.use("/clients", clientsRouter);
+app.use("/portfolio", portfolioRouter)
 
 // app.post("/uploadphoto", (req, res) => {
 //   upload(req, res, function (err) {

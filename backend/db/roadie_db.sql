@@ -1,12 +1,13 @@
-DROP DATABASE IF EXISTS roadie_db;
+-- DROP DATABASE IF EXISTS roadie_db;
 
-CREATE DATABASE roadie_db;
+-- CREATE DATABASE roadie_db;
 
-\c roadie_db;
+-- \c roadie_db;
 
+DROP TABLE IF EXISTS portfolio;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS artists;
 
 
 CREATE TABLE artists
@@ -30,12 +31,22 @@ CREATE TABLE clients
     contact_info VARCHAR
 );
 
+CREATE TABLE portfolio(
+    id VARCHAR,
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    picture VARCHAR,
+    video VARCHAR,
+    caption VARCHAR
+);
+
 CREATE TABLE users
 (
     id VARCHAR PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
+
+
 
 INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
 VALUES 
