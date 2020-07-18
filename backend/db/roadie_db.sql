@@ -1,8 +1,8 @@
--- DROP DATABASE IF EXISTS roadie_db;
+DROP DATABASE IF EXISTS roadie_db;
 
--- CREATE DATABASE roadie_db;
+CREATE DATABASE roadie_db;
 
--- \c roadie_db;
+\c roadie_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS clients;
@@ -57,37 +57,39 @@ CREATE TABLE videos
 CREATE TABLE users
 (
     id VARCHAR PRIMARY KEY,
-    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
-    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+    type VARCHAR
 );
 
-CREATE TABLE lineup (
+CREATE TABLE lineup
+(
     id VARCHAR PRIMARY KEY,
     name VARCHAR,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
-CREATE TABLE skills (
+CREATE TABLE skills
+(
     id SERIAL PRIMARY KEY,
     name VARCHAR,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
-
-
-INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
-VALUES 
+INSERT INTO artists
+    (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
+VALUES
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
 
-INSERT INTO skills (name, artist_id)
+INSERT INTO skills
+    (name, artist_id)
 VALUES
     ('Skill', '1');
 
 
-INSERT INTO clients (id, name, profile_pic_url, bio, city, contact_info )
-VALUES 
+INSERT INTO clients
+    (id, name, profile_pic_url, bio, city, contact_info )
+VALUES
     ('1', 'Henry', NULL, 'this is a bio', 'New York', '8773934448'),
     ('2', 'Ashya', NULL, 'I make F', 'New York', '8773934448');

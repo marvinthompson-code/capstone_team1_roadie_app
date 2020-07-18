@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import {updateClient} from '../client/clientSlice';
+import { updateClient } from "../client/clientSlice";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/clientSignUp.css";
@@ -25,15 +25,23 @@ const ClientSignUp = () => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      await axios.post(`${API}/clients`, {
-        id: res.user.uid,
-        name,
-        profilePicUrl,
-        bio,
-        company,
-        city,
-        contact,
-      });
+      await axios
+        .post(`${API}/clients`, {
+          id: res.user.uid,
+          name,
+          profilePicUrl,
+          bio,
+          company,
+          city,
+          contact,
+        })
+        .then(() => {
+          axios.post(`${API}/users`, {
+            id: res.user.uid,
+            type: "client",
+          });
+        });
+      // add new axios call to add to user table
       dispatch(updateClient(res.user));
       // sign up with firebase and send results to our backend
     } catch (error) {
@@ -60,73 +68,73 @@ const ClientSignUp = () => {
     // >
     <div className="FormContainer">
       <div className="artistContainer">
-      <h3 id={"artisth3"}>Client Sign Up</h3>
+        <h3 id={"artisth3"}>Client Sign Up</h3>
       </div>
       <div class="artistSignUpForm">
-      <form onSubmit={handleSubmit} className="artistForm">
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"name"}
-          value={name}
-          onChange={(e) => setName(e.currentTarget.value)}
+        <form onSubmit={handleSubmit} className="artistForm">
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"name"}
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
           />
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"email"}
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"email"}
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"city"}
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"city"}
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
           />
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"company name"}
-          value={company}
-          onChange={(e) => setCompany(e.currentTarget.value)}
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"company name"}
+            value={company}
+            onChange={(e) => setCompany(e.currentTarget.value)}
           />
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"bio"}
-          value={bio}
-          onChange={(e) => setBio(e.currentTarget.value)}
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"bio"}
+            value={bio}
+            onChange={(e) => setBio(e.currentTarget.value)}
           />
-        <input
-          type={"text"}
-          className={"artistInputSpace"}
-          placeholder={"Contact Information"}
-          value={contact}
-          onChange={(e) => setContact(e.currentTarget.value)}
+          <input
+            type={"text"}
+            className={"artistInputSpace"}
+            placeholder={"Contact Information"}
+            value={contact}
+            onChange={(e) => setContact(e.currentTarget.value)}
           />
-        <input
-          type={"password"}
-          className={"artistInputSpace"}
-          placeholder={"password"}
-          value={password}
-          onChange={(e) => setPassword(e.currentTarget.value)}
+          <input
+            type={"password"}
+            className={"artistInputSpace"}
+            placeholder={"password"}
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
           />
-        <div className="artistUploadImg">
-          <p id="uploadHeader">img upload</p>
-          <button
+          <div className="artistUploadImg">
+            <p id="uploadHeader">img upload</p>
+            <button
               onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
               id="clientImg"
             >
               upload
             </button>
-        </div>
+          </div>
 
-        <input type="submit" className="artistSignUpBttn" value="Sign Up" />
-      </form>
+          <input type="submit" className="artistSignUpBttn" value="Sign Up" />
+        </form>
       </div>
-      </div>
-    );
-  };
+    </div>
+  );
+};
 export default ClientSignUp;
