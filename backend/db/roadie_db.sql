@@ -32,7 +32,7 @@ CREATE TABLE clients
 );
 
 CREATE TABLE portfolio(
-    id VARCHAR,
+    id SERIAL PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     picture VARCHAR,
     video VARCHAR,
@@ -52,3 +52,6 @@ INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, conta
 VALUES 
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
+
+INSERT INTO portfolio ( artist_id, picture, video, caption) 
+VALUES('1', 'this is a picture', 'this is a video', 'this is a caption');
