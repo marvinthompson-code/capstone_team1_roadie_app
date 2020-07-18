@@ -33,11 +33,13 @@ CREATE TABLE clients
 CREATE TABLE users
 (
     id VARCHAR PRIMARY KEY,
-    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
-    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+    type VARCHAR
+    -- artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
+    -- client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
-INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
-VALUES 
+INSERT INTO artists
+    (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
+VALUES
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
