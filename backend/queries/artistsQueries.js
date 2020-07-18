@@ -40,26 +40,25 @@ const getSingleArtistByID = async (req, res, next) => {
 };
 
 const addSingleArtist = async (req, res, next) => {
+  let {
+    id,
+    name,
+    profile_pic_url,
+    bio,
+    pricing,
+    genre,
+    city,
+    contact_info,
+  } = req.body;
   try {
-    let {
-      id,
-      name,
-      profile_pic_url,
-      bio,
-      pricing,
-      genre,
-      city,
-      contact_info,
-    } = req.body;
+    let added_single_artist = await db.one(
+      "INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      [id, name, profile_pic_url, bio, pricing, genre, city, contact_info]
+    );
     res.status(200).json({
       status: "Success",
       message: "Added a single artist",
-      body: {
-        added_single_artist: db.one(
-          "INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-          [id, name, profile_pic_url, bio, pricing, genre, city, contact_info]
-        ),
-      },
+      body: added_single_artist,
     });
   } catch (error) {
     res.json({
@@ -77,9 +76,10 @@ const deleteSingleArtist = async (req, res, next) => {
       status: "Success",
       message: "Deleted a single artist",
       body: {
-        deleted_single_artist: db.one("DELETE FROM artists WHERE id = $1 RETURNING *", [
-          id,
-        ]),
+        deleted_single_artist: db.one(
+          "DELETE FROM artists WHERE id = $1 RETURNING *",
+          [id]
+        ),
       },
     });
   } catch (error) {
@@ -98,13 +98,14 @@ const searchForSingleArtist = async (req, res, next) => {
       status: "Success",
       message: "Searched or artist by name " + name,
       body: {
-        searched_artist: await db.any("SELECT * FROM artists WHERE name LIKE $1", 
-          ['%' + name + '%'],
+        searched_artist: await db.any(
+          "SELECT * FROM artists WHERE name LIKE $1",
+          ["%" + name + "%"]
         ),
       },
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.json({
       status: "Error",
       message: "Could not search for artist by name: " + name,

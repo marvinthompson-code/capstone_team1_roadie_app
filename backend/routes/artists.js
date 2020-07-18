@@ -9,9 +9,9 @@ const {
   updateArtistInfo
 } = require("../queries/artistsQueries");
 
-const { checkFirebaseToken } = require("../middleware/auth");
+// const { checkFirebaseToken } = require("../middleware/auth");
 
-artists.get("/", checkFirebaseToken, getAllArtists);
+artists.get("/", getAllArtists);
 artists.get("/:id", getSingleArtistByID);
 artists.post("/", addSingleArtist);
 artists.delete("/:id", deleteSingleArtist);

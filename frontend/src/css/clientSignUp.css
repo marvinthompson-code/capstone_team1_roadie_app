@@ -1,0 +1,15 @@
+:root {
+    --pumkinOrange: #ec9b59;
+    --pink: #f4d8cd;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+  }
+#clientImg {
+    grid-area: 1/ 2/ span 1/ span 1;
+    background-color: var(--pumkinOrange);
+    font-family: railwayLight;
+    border-radius: 13px;
+    border: 1px solid var(--pumkinOrange);
+  }
+  
