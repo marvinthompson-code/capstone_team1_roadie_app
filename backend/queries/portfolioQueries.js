@@ -38,7 +38,7 @@ const singleMedia = async (req, res, next) =>{
 
 const addNewMedia = async (req, res, next) =>{
     try{
-        let newMedia = await db.one(`INSERT INTO portfolio(artist_id, picture, video) VALUES('${req.body.artist_id}','${req.body.picture}','${req.body.video}') RETURNING *`);
+        let newMedia = await db.one(`INSERT INTO portfolio(artist_id, picture, video, caption) VALUES('${req.body.artist_id}','${req.body.picture}','${req.body.video}', '${req.body.caption}') RETURNING *`);
         res.status(200).json({
             status: 'success',
             message: "added new content",

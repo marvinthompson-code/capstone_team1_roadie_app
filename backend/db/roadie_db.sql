@@ -35,7 +35,8 @@ CREATE TABLE portfolio(
     id VARCHAR,
     artist_id VARCHAR REFERENCES artists(id),
     picture VARCHAR,
-    video VARCHAR
+    video VARCHAR,
+    caption VARCHAR
 );
 
 CREATE TABLE users
