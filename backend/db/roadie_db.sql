@@ -25,6 +25,7 @@ CREATE TABLE artists
 CREATE TABLE clients
 (
     id VARCHAR PRIMARY KEY,
+    name VARCHAR,
     profile_pic_url VARCHAR,
     bio VARCHAR,
     city VARCHAR,
@@ -46,7 +47,6 @@ CREATE TABLE bookings (
     client_name VARCHAR REFERENCES clients(name),
     venue VARCHAR,
     date DATE,
-    amount INTEGER,
     cause_for_event VARCHAR,
     contact_info VARCHAR
 );
