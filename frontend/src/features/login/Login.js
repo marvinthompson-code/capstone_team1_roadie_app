@@ -18,8 +18,10 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
-      // let res = axios.get(`${API}/users`)
-      // check type of user in res, then dispatch updateArtist, else updateClient
+      // check which table info belongs to
+      // conditional (if artist, dispatch updateArtist)
+      // if client (dispatch updateClient)
+      // dispatch
       history.push("/");
     } catch (error) {
       setError(error.message);
