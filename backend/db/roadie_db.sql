@@ -1,16 +1,16 @@
-DROP DATABASE IF EXISTS roadie_db;
+-- DROP DATABASE IF EXISTS roadie_db;
 
-CREATE DATABASE roadie_db;
+-- CREATE DATABASE roadie_db;
 
-\c roadie_db;
+-- \c roadie_db;
 
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
 DROP TABLE IF EXISTS skills;
+DROP TABLE IF EXISTS artists;
 
 
 CREATE TABLE artists
@@ -52,6 +52,7 @@ CREATE TABLE videos
     caption VARCHAR,
     url VARCHAR
 );
+
 
 CREATE TABLE users
 (
