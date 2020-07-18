@@ -42,7 +42,13 @@ CREATE TABLE bookings (
     id SERIAL INTEGER PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
-    events_id INTEGER REFERENCES events(id) ON DELETE CASCADE
+    events_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+    client_name VARCHAR REFERENCES clients(name),
+    venue VARCHAR,
+    date DATE,
+    amount INTEGER,
+    cause_for_event VARCHAR,
+    contact_info VARCHAR
 );
 
 INSERT INTO artists (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
