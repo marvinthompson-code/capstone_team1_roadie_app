@@ -33,7 +33,7 @@ CREATE TABLE clients
 
 CREATE TABLE portfolio(
     id VARCHAR,
-    artist_id VARCHAR REFERENCES artists(id),
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     picture VARCHAR,
     video VARCHAR,
     caption VARCHAR

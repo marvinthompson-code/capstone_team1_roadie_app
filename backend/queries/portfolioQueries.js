@@ -47,7 +47,7 @@ const addNewMedia = async (req, res, next) =>{
     }catch(err){
         console.log(err);
         res.status(400).json({
-            status: 'fail',
+            status: 'error',
             message: 'could not add content',
         })
 
