@@ -30,17 +30,17 @@ app.use(bodyParser.json());
 const artistsRouter = require("./routes/artists");
 const clientsRouter = require("./routes/clients");
 const bookingsRouter = require("./routes/bookings");
-
-
+const eventsRouter = require("./routes/events");
 // const lineupRouter = require("./routes/lineup");
+
 const skillsRouter = require("./routes/skills");
 
 app.use("/artists", artistsRouter);
 app.use("/clients", clientsRouter);
 app.use("/bookings", bookingsRouter);
 app.use("/skills", skillsRouter);
+app.use("/events", eventsRouter);
 // app.use("/lineup", lineupRouter);
-
 
 // app.post("/uploadphoto", (req, res) => {
 //   upload(req, res, function (err) {
