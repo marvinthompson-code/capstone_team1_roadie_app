@@ -37,12 +37,12 @@ const addNewVideo = async (req, res, next) => {
   try {
     let video;
     if (!client_id) {
-      picture = await db.one(
+      video = await db.one(
         `INSERT INTO videos (artist_id, caption ) VALUES($1, $2) RETURNING *`,
         [artist_id, caption]
       );
     } else {
-      picture = await db.one(
+      video = await db.one(
         `INSERT INTO videos (client_id, caption ) VALUES($1, $2) RETURNING *`,
         [client_id, caption]
       );
