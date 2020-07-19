@@ -5,7 +5,7 @@ const {
   addSingleEvent,
   getAllEventsByName,
   deleteSingleEvent,
-} = require("../queries/eventsQueries");
+} = require("../queries/eventQueries");
 
 events.get("/:id", getAllEventsBySingleClient);
 events.post("/", addSingleEvent);
