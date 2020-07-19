@@ -58,7 +58,7 @@ const addBooking = async (req, res, next) => {
             message: "New booking created!",
             body: {
                 new_booking: await db.one(
-                    "INSERT INTO bookings (id, artist_id, client_id, event_id, venue, date, cause_for_event, contact_info) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+                    "INSERT INTO bookings (id, artist_id, client_id, event_id, venue, date, cause_for_event, contact_info) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
                     [id, artist_id, client_id, event_id, venue, date, cause_for_event, contact_info]
                 )
             }
@@ -126,10 +126,30 @@ const deleteBooking = async (req, res, next) => {
     }
 };
 
+const getAllArtistBookings = async (req, res, next) => {
+    try {
+        res.status(200).json({
+            status: "Success",
+            message: "Retrieved all bookings of artist!",
+            body: {
+                artist_bookings: await db.any("SELECT * FROM bookings INNER JOIN artists WHERE bookings.artist_id = $1",
+                [req.params.artists.id]
+            )}
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "Error",
+            message: "Failed to retrieve all artist bookings!"
+        });
+        next(error);
+    }
+};
+
 module.exports = {
     getAllBookings,
     getSingleBooking,
     addBooking,
     updateBookingInfo,
-    deleteBooking
+    deleteBooking,
+    getAllArtistBookings
 };
