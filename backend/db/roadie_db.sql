@@ -101,20 +101,21 @@ CREATE TABLE skills
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
-INSERT INTO artists
-    (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
-VALUES
-    ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
-    ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
+-- INSERT INTO artists
+--     (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
+-- VALUES
+--     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
+--     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
 
-INSERT INTO skills
-    (name, artist_id)
-VALUES
-    ('Skill', '1');
+-- INSERT INTO skills
+--     (name, artist_id)
+-- VALUES
+--     ('Skill', '1');
 
 
-INSERT INTO clients
-    (id, name, profile_pic_url, bio, city, contact_info )
-VALUES
-    ('1', 'Henry', NULL, 'this is a bio', 'New York', '8773934448'),
-    ('2', 'Ashya', NULL, 'I make F', 'New York', '8773934448');
+-- INSERT INTO clients
+--     (id, name, profile_pic_url, bio, city, contact_info )
+-- VALUES
+--     ('1', 'Henry', NULL, 'this is a little', 'New York', '8773934448'),
+--     ('2', 'Ashya', NULL, 'hola', 'New York', '8773934448');
+
