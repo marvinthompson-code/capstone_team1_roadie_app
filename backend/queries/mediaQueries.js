@@ -96,53 +96,6 @@ const addNewPicture = async (req, res, next) => {
   }
 };
 
-// const deleteSingleSkill = async (res, req, next) => {
-//   try {
-//     let { id } = req.params;
-//     res.status(200).json({
-//       status: "Success",
-//       message: "Deleted a single skill",
-//       body: {
-//         deleted_skill: await db.one(
-//           "DELETE FROM skills WHERE id = $1 RETURNING *",
-//           [id]
-//         ),
-//       },
-//     });
-//   } catch (error) {
-//     res.json({
-//       status: "Error",
-//       message: `Could not delete a skill, id: ${id}`,
-//     });
-//   }
-// };
-
-// getAllSkillsByName = async (res, req, next) => {
-//     try {
-
-//     } catch (error) {
-
-//     }
-// }
-
-// getSkillById = async (res, req, next) => {
-//     try {
-//         let { id } = req.params;
-//         let skill = await db.one("SELECT * FROM skills WHERE id = $1", [id])
-//         res.status(200).json({
-//             status: "Success",
-//             message: "Retrieved a single skill",
-//             body: {
-//                 skill
-//             }
-//         })
-//     } catch (error) {
-//         res.json({
-//             status: "Error",
-//             message: `Could not retrieve a skill by id: ${id}`
-//         })
-//     }
-// }
 
 module.exports = {
   getPictures,
