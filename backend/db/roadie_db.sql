@@ -74,7 +74,6 @@ CREATE TABLE bookings (
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
     event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
-    client_name VARCHAR REFERENCES clients(name),
     venue VARCHAR,
     date DATE,
     cause_for_event VARCHAR,
