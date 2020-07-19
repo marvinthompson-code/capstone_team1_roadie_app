@@ -95,6 +95,40 @@ const addNewPicture = async (req, res, next) => {
     next(error);
   }
 };
+const deleteSingleVideo = async (req, res, next) =>{
+  try{
+    let {id} = req.params;
+    let deletedVideo = await db.one('DELETE FROM videos WHERE id = $1 RETURNING *', [id]);
+    res.status(200).json({
+      status: 'succes',
+      message: 'Deleted the single video',
+      body: deletedVideo
+    })
+  }catch(err){
+    console.log(err);
+    res.status(400).json({
+      status: 'error',
+      message: 'Could not delete the video'
+    })
+  }
+};
+const deleteSinglePicture = async (req, res, next) =>{
+  try{
+    let {id} = req.params;
+    let deletedPicture = await db.one('DELETE FROM pictures WHERE id = $1 RETURNING *', [id]);
+    res.status(200).json({
+      status: 'succes',
+      message: 'Deleted the single video',
+      body: deletedPicture
+    })
+  }catch(err){
+    console.log(err);
+    res.status(400).json({
+      status: 'error',
+      message: 'Could not delete the video'
+    })
+  }
+}
 
 
 module.exports = {
@@ -102,4 +136,6 @@ module.exports = {
   getVideos,
   addNewPicture,
   addNewVideo,
+  deleteSingleVideo,
+  deleteSinglePicture
 };
