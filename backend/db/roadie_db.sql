@@ -70,7 +70,7 @@ CREATE TABLE lineup
 );
 
 CREATE TABLE bookings (
-    id SERIAL INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
     events_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
