@@ -8,9 +8,9 @@ const {
   searchForSingleClient,
 } = require("../queries/clientsQueries");
 
-const { checkFirebaseToken } = require("../middleware/auth");
+// const { checkFirebaseToken } = require("../middleware/auth");
 
-clients.get("/", checkFirebaseToken, getAllClients);
+clients.get("/", getAllClients);
 clients.get("/:id", getSingleClientByID);
 clients.post("/", addSingleClient);
 clients.delete("/:id", deleteSingleClient);
