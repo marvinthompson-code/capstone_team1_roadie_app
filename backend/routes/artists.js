@@ -1,4 +1,5 @@
 const artists = require("express").Router();
+const artistBookingsRouter = require("../routes/artistsBookings");
 
 const {
   getAllArtists,
@@ -10,6 +11,8 @@ const {
 } = require("../queries/artistsQueries");
 
 // const { checkFirebaseToken } = require("../middleware/auth");
+
+artists.use("/:id", artistBookingsRouter);
 
 artists.get("/", getAllArtists);
 artists.get("/:id", getSingleArtistByID);
