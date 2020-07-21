@@ -211,7 +211,51 @@ const getVideosByClientId = async (req, res, next) => {
   }
 };
 
+const editCaptionForVideo = async (req, res, next) => {
+  let { id } = req.params;
+  let { caption } = req.body;
+  try {
+    let newCaption = await db.one(
+      "UPDATE videos SET caption = $1 WHERE id = $2 RETURNING *",
+      [caption, id]
+    );
+    res.status(200).json({
+      status: "success",
+      message: "updated caption",
+      body: newCaption,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      status: "error",
+      message: "could not update the caption",
+    });
+  }
+};
 
+const editCaptionForPictures = async (req, res, next) => {
+  let { id } = req.params;
+  let { caption } = req.body;
+  try {
+    let newCaption = await db.one(
+      "UPDATE pictures SET caption = $1 WHERE id = $2 RETURNING *",
+      [caption, id]
+    );
+    res.status(200).json({
+      status: "success",
+      message: "updated caption",
+      body: newCaption,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      status: "error",
+      message: "could not update the caption",
+    });
+  }
+};
+
+//edit query
 
 module.exports = {
   getPictures,
@@ -223,5 +267,7 @@ module.exports = {
   getPicturesByArtistId,
   getPicturesByClientId,
   getVideosByArtistId,
-  getVideosByClientId
+  getVideosByClientId,
+  editCaptionForVideo,
+  editCaptionForPictures
 };
