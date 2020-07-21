@@ -31,8 +31,8 @@ const artistsRouter = require("./routes/artists");
 const clientsRouter = require("./routes/clients");
 // const bookingsRouter = require("./routes/bookings");
 const eventsRouter = require("./routes/events");
-const mediaRouter = require("./routes/media")
-// const lineupRouter = require("./routes/lineup");
+const mediaRouter = require("./routes/media");
+const lineupRouter = require("./routes/lineup");
 
 const skillsRouter = require("./routes/skills");
 
@@ -42,7 +42,7 @@ app.use("/clients", clientsRouter);
 app.use("/skills", skillsRouter);
 app.use("/events", eventsRouter);
 app.use("/media", mediaRouter);
-// app.use("/lineup", lineupRouter);
+app.use("/lineup", lineupRouter);
 
 // app.post("/uploadphoto", (req, res) => {
 //   upload(req, res, function (err) {
