@@ -6,10 +6,11 @@ CREATE DATABASE roadie_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS clients;
-DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS artists;
 
@@ -61,25 +62,38 @@ CREATE TABLE users
     type VARCHAR
 );
 
+CREATE TABLE events
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR,
+    venue VARCHAR,
+    date DATE,
+    address VARCHAR,
+    city VARCHAR,
+    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+);
+
 CREATE TABLE lineup
 (
     id VARCHAR PRIMARY KEY,
-    name VARCHAR,
+    event_id INT REFERENCES events(id) ON DELETE CASCADE,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
-CREATE TABLE bookings (
-    id SERIAL INTEGER PRIMARY KEY,
+
+CREATE TABLE bookings
+(
+    id SERIAL PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
-    event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+    event_id INT REFERENCES events(id) ON DELETE CASCADE,
     venue VARCHAR,
     date DATE,
     cause_for_event VARCHAR,
     contact_info VARCHAR
 );
- 
+
 CREATE TABLE skills
 (
     id SERIAL PRIMARY KEY,
@@ -103,5 +117,6 @@ VALUES
 INSERT INTO clients
     (id, name, profile_pic_url, bio, city, contact_info )
 VALUES
-    ('1', 'Henry', NULL, 'this is a bio', 'New York', '8773934448'),
-    ('2', 'Ashya', NULL, 'I make F', 'New York', '8773934448');
+    ('1', 'Henry', NULL, 'this is a little', 'New York', '8773934448'),
+    ('2', 'Ashya', NULL, 'hola', 'New York', '8773934448');
+
