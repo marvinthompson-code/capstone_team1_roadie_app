@@ -20,9 +20,8 @@ const ArtistSignUpForm = () => {
   const [pricing, setPricing] = useState("");
   const [contact, setContact] = useState("");
   let isOpen = useSelector((state) => state.modal);
-  // const [ isOpen, setIsOpen ] = useState(false)
-
   const [profilePicUrl, setProfilePicUrl] = useState("");
+  // const [ isOpen, setIsOpen ] = useState(false)
 
   //imageUpload
   const allInputs = { imgUrl: "" };
@@ -36,6 +35,7 @@ const ArtistSignUpForm = () => {
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
     setImageAsFile((imageFile) => image);
+    debugger;
   };
 
   const handleFirebaseUpload = () => {
@@ -72,6 +72,8 @@ const ArtistSignUpForm = () => {
         }
       );
     }
+    setProfilePicUrl(imageAsUrl.imgUrl);
+    debugger;
   };
 
   const handleSubmit = async (e) => {
@@ -79,11 +81,12 @@ const ArtistSignUpForm = () => {
     try {
       let res = await signUp(email, password);
       console.log("Show Artist", res);
+      debugger;
       let res2 = await axios
         .post(`${API}/artist`, {
           id: res.user.uid,
           name,
-          profilePicUrl: imageAsUrl.imgUrl,
+          profilePicUrl,
           bio,
           pricing,
           genre,
@@ -96,6 +99,7 @@ const ArtistSignUpForm = () => {
             type: "artist",
           });
         });
+      debugger;
       dispatch(updateArtist(res.user));
       // history.push("/") to feed or artist profile, depends on what we want to do
     } catch (error) {
