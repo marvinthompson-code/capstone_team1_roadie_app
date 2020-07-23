@@ -40,7 +40,7 @@ const BookMeForm = () => {
     });
 
     useEffect(() => {
-        handleClientEventSelect(client.id);
+        // handleClientEventSelect(client.id);
     }, [])
 
     return (
