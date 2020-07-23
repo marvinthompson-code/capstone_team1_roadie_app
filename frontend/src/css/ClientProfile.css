@@ -1,0 +1,105 @@
+:root {
+    --pumkinOrange: #ec9b59;
+    --pink: #f4d8cd;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+}
+
+@font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+}
+  
+
+.name {
+    font-family: railwayLight;
+    font-size: xx-large;
+    color: var(--pink); 
+    text-shadow: 0.5px 0.3px 1px black;
+    text-align: center;
+}
+
+.BioDiv {
+    background-color: var(--pink);
+    width: 60%;
+    border-radius: 20px;
+    text-align: center;
+    height: 300px;
+    transition: 2s;
+}
+
+.portfolioDiv {
+    width: 30%;
+}
+
+.BioDiv:hover {
+    box-shadow: 0.5px 0.5px 2px darkgray
+}
+
+.aboutMe {
+    font-family: railwayLight;
+    font-size: x-large;
+}
+
+.bio {
+    font-family: railwayLight;
+    font-size: large; 
+    text-align: left;
+}
+
+.contact {
+    font-family: railwayLight;
+    font-size: large;
+    color: var(--pink);  
+    text-shadow: 0.5px 0.3px 1px black;
+}
+
+.city {
+    font-family: railwayLight;
+    font-size: x-large;
+    color: var(--pink); 
+    text-shadow: 0.5px 0.3px 1px black;
+}
+
+.CityDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.InfoDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ContactInfoDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+#ContactMeButton {
+    background-color: var(--pumkinOrange);
+    color: var(--pink);
+    font-size: x-large;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px;
+    height: 50px;
+    border: none;
+    opacity: 0.8;
+    transition: 2s;
+}
+
+#ContactMeButton:hover {
+    opacity: 1;
+}
