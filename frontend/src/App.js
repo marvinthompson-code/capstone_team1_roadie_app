@@ -11,6 +11,7 @@ import Home from "./features/Home/Home"
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 
+
 Modal.setAppElement('#root');
 
 function App() {
