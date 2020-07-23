@@ -22,7 +22,7 @@ const Login = () => {
       // conditional (if artist, dispatch updateArtist)
       // if client (dispatch updateClient)
       // dispatch
-      history.push("/");
+      // history.push("/");
     } catch (error) {
       setError(error.message);
     }

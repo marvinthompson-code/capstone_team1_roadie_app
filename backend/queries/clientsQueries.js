@@ -45,7 +45,7 @@ const addSingleClient = async (req, res, next) => {
   let { id, name, profile_pic_url, bio, city, contact_info } = req.body;
   try {
     let added_single_client = db.one(
-      "INSERT INTO clients (id, name, profile_pic_url, bio, city, contact_info) VALUES ($1, $2, $3, $4, $5, $6)",
+      "INSERT INTO clients (id, name, profile_pic_url, bio, city, contact_info) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
       [id, name, profile_pic_url, bio, city, contact_info]
     );
     res.status(200).json({
@@ -67,9 +67,10 @@ const addSingleClient = async (req, res, next) => {
 const deleteSingleClient = async (req, res, next) => {
   let { id } = req.params;
   try {
-    let deleted_single_client = db.one("DELETE FROM clients WHERE id = $1", [
-      id,
-    ]);
+    let deleted_single_client = db.one(
+      "DELETE FROM clients WHERE id = $1 RETURNING *",
+      [id]
+    );
     res.status(200).json({
       status: "Success",
       message: "Deleted a single client",
