@@ -4,6 +4,8 @@ import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 // import ClientSignUp from "./features/client/clientSignUp";
 // import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
+import ClientProfile from "./features/ClientProfile/ClientProfile"
+// import DisplaySignUp from './features/Display/DisplaySignUp'
 import DisplaySignUp from "./features/Display/DisplaySignUp";
 import Login from "./features/login/Login";
 import SearchResults from "./features/SearchResults/SearchResults";
@@ -34,6 +36,10 @@ function App() {
       </AuthProvider>
       <Route exact path={"/results"}>
         <SearchResults />
+      </Route>
+
+      <Route exact path={"/client/:id"}>
+        <ClientProfile />
       </Route>
     </div>
   );
