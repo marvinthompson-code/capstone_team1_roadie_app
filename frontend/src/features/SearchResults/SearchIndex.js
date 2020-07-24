@@ -11,7 +11,7 @@ const SearchIndex = () => {
         return <SearchResultItem key={result.id} result={result}/>
     })
     useEffect(() => {
-        !searchResults.length ? <h3>No results!</h3> : ""
+        // !searchResults.length ? <h3>No results!</h3> : ""
     }, [])
 
     return (
