@@ -8,7 +8,7 @@ const Home = () => {
     return(
         <>
             <div>
-                THIS IS THE HOME PAGE
+                WELCOME TO ROADIE
                 <Search />
             </div>
             <div>

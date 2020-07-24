@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../client/clientSlice";
@@ -12,14 +13,61 @@ const ClientSignUp = () => {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
-  const [profilePicUrl, setProfilePicUrl] = useState("");
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
   const [contact, setContact] = useState("");
   let isOpen = useSelector((state) => state.modal);
 
+  //imageUpload
+  const allInputs = { imgUrl: "" };
+  const [imageAsFile, setImageAsFile] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+
   const API = apiURL();
   const dispatch = useDispatch();
+
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0];
+    setImageAsFile((imageFile) => image);
+    debugger;
+  };
+
+  const handleFirebaseUpload = () => {
+    // handleFireBaseUpload goes here
+    if (imageAsFile === "") {
+      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+      const uploadTask = storage
+        .ref(`/images/${imageAsFile.name}`)
+        .put(imageAsFile);
+      //initiates firebase side uploading
+      uploadTask.on(
+        "state_changed",
+        (snapShot) => {
+          //takes a snap shot of the process as it is happening
+          console.log(snapShot);
+        },
+        (err) => {
+          //catches the errors
+          console.log(err);
+        },
+        () => {
+          // gets the functions from storage refences the image storage in firebase by the children
+          // gets the download url then sets the image from firebase as the value for the imgUrl key:
+          storage
+            .ref("images")
+            .child(imageAsFile.name)
+            .getDownloadURL()
+            .then((fireBaseUrl) => {
+              setImageAsUrl((prevObject) => ({
+                ...prevObject,
+                imgUrl: fireBaseUrl,
+              }));
+            });
+        }
+      );
+    }
+    debugger;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +76,8 @@ const ClientSignUp = () => {
       await axios
         .post(`${API}/clients`, {
           id: res.user.uid,
-          name,
-          profilePicUrl,
+          name: name,
+          profile_pic_url: imageAsUrl.imgUrl,
           bio,
           company,
           city,
@@ -122,11 +170,10 @@ const ClientSignUp = () => {
             onChange={(e) => setPassword(e.currentTarget.value)}
           />
           <div className="artistUploadImg">
-            <p id="uploadHeader">img upload</p>
-            <button
-              onClick={(e) => setProfilePicUrl(e.currentTarget.value)}
-              id="clientImg"
-            >
+            <p id="uploadHeader">
+              <input type="file" required onChange={handleImageAsFile} />
+            </p>
+            <button onClick={handleFirebaseUpload} id="clientImg">
               upload
             </button>
           </div>
