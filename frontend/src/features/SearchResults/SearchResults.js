@@ -1,12 +1,13 @@
 import React from 'react'
+import SearchIndex from "./SearchIndex";
 
 const SearchResults = () => {
 
     return(
         <div>
-            This is the search Res Page
+            <SearchIndex />
         </div>
     )
 }
 
-export default SearchResults
+export default SearchResults;
