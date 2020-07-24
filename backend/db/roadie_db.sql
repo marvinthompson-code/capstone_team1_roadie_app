@@ -82,9 +82,7 @@ CREATE TABLE bookings
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
     event_id INT REFERENCES events(id) ON DELETE CASCADE,
-    venue VARCHAR,
-    date DATE,
-    cause_for_event VARCHAR,
+    bio VARCHAR,
     contact_info VARCHAR
 );
 
@@ -112,3 +110,11 @@ INSERT INTO clients
 VALUES
     ('1', 'Henry', NULL, 'this is a bio', 'New York', '8773934448'),
     ('2', 'Ashya', NULL, 'I make F', 'New York', '8773934448');
+INSERT INTO events
+    (id, name, venue, date, address, city, client_id)
+VALUES
+    ('1', 'MVP RUN', 'Zoom', '2020-07-29', '47-10 Austell Pl', 'Long Island City', '2');
+INSERT INTO bookings
+    (id, artist_id, client_id, event_id, bio, contact_info)
+VALUES
+    ('1', '1', '2', '1', 'This is my first booking!', '6318820223');
