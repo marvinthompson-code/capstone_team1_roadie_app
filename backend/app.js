@@ -27,6 +27,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const usersRouter = require("./routes/users");
 const artistsRouter = require("./routes/artists");
 const clientsRouter = require("./routes/clients");
 const bookingsRouter = require("./routes/bookings");
@@ -36,6 +37,7 @@ const lineupRouter = require("./routes/lineup");
 
 const skillsRouter = require("./routes/skills");
 
+app.use("/users", usersRouter);
 app.use("/artists", artistsRouter);
 app.use("/clients", clientsRouter);
 app.use("/bookings", bookingsRouter);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { storage } from "../../firebase";
 import Modal from "react-modal";
 import axios from "axios";
 import { updateArtist } from "../Artist/artistSlice";
@@ -14,24 +15,73 @@ const ArtistSignUpForm = () => {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
-  const [profilePicUrl, setProfilePicUrl] = useState("");
   const [genre, setGenre] = useState("");
   const [bio, setBio] = useState("");
   const [pricing, setPricing] = useState("");
   const [contact, setContact] = useState("");
   let isOpen = useSelector((state) => state.modal);
+  const [profilePicUrl, setProfilePicUrl] = useState("");
   // const [ isOpen, setIsOpen ] = useState(false)
+
+  //imageUpload
+  const allInputs = { imgUrl: "" };
+  const [imageAsFile, setImageAsFile] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
 
   const API = apiURL();
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0];
+    setImageAsFile((imageFile) => image);
+    debugger;
+  };
+
+  const handleFirebaseUpload = () => {
+    // handleFireBaseUpload goes here
+    if (imageAsFile === "") {
+      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+      const uploadTask = storage
+        .ref(`/images/${imageAsFile.name}`)
+        .put(imageAsFile);
+      //initiates firebase side uploading
+      uploadTask.on(
+        "state_changed",
+        (snapShot) => {
+          //takes a snap shot of the process as it is happening
+          console.log(snapShot);
+        },
+        (err) => {
+          //catches the errors
+          console.log(err);
+        },
+        () => {
+          // gets the functions from storage refences the image storage in firebase by the children
+          // gets the download url then sets the image from firebase as the value for the imgUrl key:
+          storage
+            .ref("images")
+            .child(imageAsFile.name)
+            .getDownloadURL()
+            .then((fireBaseUrl) => {
+              setImageAsUrl((prevObject) => ({
+                ...prevObject,
+                imgUrl: fireBaseUrl,
+              }));
+            });
+        }
+      );
+    }
+    setProfilePicUrl(imageAsUrl.imgUrl);
+    debugger;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      debugger;
       console.log("Show Artist", res);
+      debugger;
       let res2 = await axios
         .post(`${API}/artist`, {
           id: res.user.uid,
@@ -55,7 +105,6 @@ const ArtistSignUpForm = () => {
     } catch (error) {
       console.log(error.message);
     }
-    debugger;
   };
 
   const closeModal = () => {
@@ -149,12 +198,10 @@ const ArtistSignUpForm = () => {
                     <option value={"Ask"}>Ask</option>
                 </select> */}
             <div className="artistUploadImg">
-              <h4>Upload Image</h4>
+              <input type="file" onChange={handleImageAsFile} required />
             </div>
             <div className="artistImgUploadBttn">
-              <button onClick={(e) => setProfilePicUrl(e.currentTarget.value)}>
-                Upload
-              </button>
+              <button onClick={handleFirebaseUpload}>Upload</button>
             </div>
             <div className="artistSignUpBttn">
               <button type={"submit"}>Sign Up</button>

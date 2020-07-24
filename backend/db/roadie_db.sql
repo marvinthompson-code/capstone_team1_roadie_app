@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS artists;
+
 CREATE TABLE artists
 (
     id VARCHAR PRIMARY KEY,
@@ -21,6 +22,7 @@ CREATE TABLE artists
     city VARCHAR,
     contact_info VARCHAR
 );
+
 CREATE TABLE clients
 (
     id VARCHAR PRIMARY KEY,
@@ -30,6 +32,7 @@ CREATE TABLE clients
     city VARCHAR,
     contact_info VARCHAR
 );
+
 CREATE TABLE pictures
 (
     id SERIAL PRIMARY KEY,
@@ -38,6 +41,7 @@ CREATE TABLE pictures
     caption VARCHAR,
     url VARCHAR
 );
+
 CREATE TABLE videos
 (
     id SERIAL PRIMARY KEY,
@@ -46,11 +50,13 @@ CREATE TABLE videos
     caption VARCHAR,
     url VARCHAR
 );
+
 CREATE TABLE users
 (
     id VARCHAR PRIMARY KEY,
     type VARCHAR
 );
+
 CREATE TABLE events
 (
     id SERIAL PRIMARY KEY,
@@ -61,6 +67,7 @@ CREATE TABLE events
     city VARCHAR,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
+
 CREATE TABLE lineup
 (
     id VARCHAR PRIMARY KEY,
@@ -68,6 +75,7 @@ CREATE TABLE lineup
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
+
 CREATE TABLE bookings
 (
     id SERIAL PRIMARY KEY,
@@ -77,6 +85,7 @@ CREATE TABLE bookings
     bio VARCHAR,
     contact_info VARCHAR
 );
+
 CREATE TABLE skills
 (
     id SERIAL PRIMARY KEY,
@@ -84,15 +93,18 @@ CREATE TABLE skills
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
+
 INSERT INTO artists
     (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
 VALUES
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
+
 INSERT INTO skills
     (name, artist_id)
 VALUES
     ('Skill', '1');
+
 INSERT INTO clients
     (id, name, profile_pic_url, bio, city, contact_info )
 VALUES
