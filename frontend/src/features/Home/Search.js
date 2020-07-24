@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { apiURL } from '../../util/apiURL'
 import { useHistory } from 'react-router-dom'
+import { receiveSearch } from "../SearchResults/searchSlice";
 import axios from 'axios'
 // import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 
@@ -12,6 +13,7 @@ const Search = () => {
     // initialized as true, true represents artist, false represents clients
     const history = useHistory()
     const API = apiURL()
+    const dispatch = useDispatch();
     // const token = useSelector(state => state.token)
     
     const handleChange = (value) => {
@@ -29,6 +31,7 @@ const Search = () => {
                 
                 try {
                     let res = await axios.get(`${API}/artists/search/${name}`)
+                    dispatch(receiveSearch(res.data.body.artists));
                 debugger
                 } catch (error) {
                     console.log(error)
@@ -36,13 +39,27 @@ const Search = () => {
             } else {
                 try {
                     let res = await axios.get(`${API}/clients/search/${name}`)
+                    dispatch(receiveSearch(res.data.body.clients));
                     debugger
                 } catch (error) {
                     console.log(error)
                 }
             }
-        
-        
+        if (name === "" && toggle) {
+            try {
+                let res = await axios.get(`${API}/artists/`);
+                dispatch(receiveSearch(res.data.body.artists));
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            try {
+                let res = await axios.get(`${API}/clients/`);
+                dispatch(receiveSearch(res.data.body.clients));
+            } catch (error) {
+                console.log(error)
+            }
+        }
         history.push("/results")
         
     }

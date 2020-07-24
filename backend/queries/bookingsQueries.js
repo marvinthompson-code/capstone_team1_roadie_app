@@ -48,15 +48,13 @@ const addBooking = async (req, res, next) => {
         artist_id,
         client_id,
         event_id,
-        venue,
-        date,
-        cause_for_event,
+        bio,
         contact_info
     } = req.body;
 
     let newBooking = await db.one(
-        "INSERT INTO bookings (id, artist_id, client_id, event_id, venue, date, cause_for_event, contact_info) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-        [id, artist_id, client_id, event_id, venue, date, cause_for_event, contact_info]
+        "INSERT INTO bookings (id, artist_id, client_id, event_id, bio, contact_info) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+        [id, artist_id, client_id, event_id, bio, contact_info]
     );
 
     try {
@@ -83,15 +81,13 @@ const updateBookingInfo = async (req, res, next) => {
         artist_id,
         client_id,
         event_id,
-        venue,
-        date,
-        cause_for_event,
+        bio,
         contact_info
     } = req.body;
     
     let updatedBooking = await db.one(
-        "UPDATE bookings SET artist_id = $1, client_id = $2, event_id = $3, venue = $4, date = $5, cause_for_event = $6, contact_info = $7 WHERE id = $8",
-        [artist_id, client_id, event_id, venue, date, cause_for_event, contact_info, id]
+        "UPDATE bookings SET artist_id = $1, client_id = $2, event_id = $3, bio = $4, contact_info = $5 WHERE id = $6",
+        [artist_id, client_id, event_id, bio, contact_info, id]
     );
 
     try {
