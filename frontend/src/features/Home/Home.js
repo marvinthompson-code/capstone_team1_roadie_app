@@ -1,16 +1,13 @@
-import React from 'react'
-import Search from './Search'
-
+import React from "react";
+import Search from "./Search";
 
 const Home = () => {
+  return (
+    <div>
+      WELCOME TO ROADIE
+      <Search />
+    </div>
+  );
+};
 
-    return(
-        <div>
-            THIS IS THE HOME PAGE
-            <Search />
-        </div>
-    )
-}
-
-export default Home
-
+export default Home;
