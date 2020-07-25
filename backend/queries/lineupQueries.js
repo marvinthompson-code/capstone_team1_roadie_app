@@ -21,6 +21,8 @@ const getLineupForEvent = async (req, res, next) => {
   }
 };
 
+
+
 // id
 // event_id
 // artist_id
