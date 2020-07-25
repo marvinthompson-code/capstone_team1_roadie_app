@@ -4,7 +4,6 @@ import Modal from "react-modal";
 import axios from "axios";
 import { updateArtist } from "../Artist/artistSlice";
 import { toggleModalState } from "../Artist/modalSlice";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
@@ -18,90 +17,79 @@ const ArtistSignUpForm = () => {
   const [genre, setGenre] = useState("");
   const [bio, setBio] = useState("");
   const [pricing, setPricing] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact_info, setContactInfo] = useState("");
   let isOpen = useSelector((state) => state.modal);
-  const [profilePicUrl, setProfilePicUrl] = useState("");
   // const [ isOpen, setIsOpen ] = useState(false)
 
   //imageUpload
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
-  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const [imageUrl, setImageUrl] = useState(allInputs);
+  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const API = apiURL();
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
-    setImageAsFile((imageFile) => image);
-    debugger;
+    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
+    if (types.every((type) => image.type !== type)) {
+      alert(`${image.type} is not a supported format`);
+    } else {
+      setImageAsFile((imageFile) => image);
+    }
   };
 
   const handleFirebaseUpload = () => {
-    // handleFireBaseUpload goes here
     if (imageAsFile === "") {
-      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+      alert("Please choose a valid file before uploading");
+    } else if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
         .put(imageAsFile);
-      //initiates firebase side uploading
       uploadTask.on(
         "state_changed",
         (snapShot) => {
-          //takes a snap shot of the process as it is happening
           console.log(snapShot);
         },
         (err) => {
-          //catches the errors
           console.log(err);
         },
         () => {
-          // gets the functions from storage refences the image storage in firebase by the children
-          // gets the download url then sets the image from firebase as the value for the imgUrl key:
           storage
             .ref("images")
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              setImageAsUrl((prevObject) => ({
-                ...prevObject,
-                imgUrl: fireBaseUrl,
-              }));
+              setImageUrl(fireBaseUrl);
             });
         }
       );
+      setToggleUploadMsg(true);
+    } else {
+      setToggleUploadMsg(false);
     }
-    setProfilePicUrl(imageAsUrl.imgUrl);
-    debugger;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      console.log("Show Artist", res);
-      debugger;
-      let res2 = await axios
-        .post(`${API}/artist`, {
-          id: res.user.uid,
-          name,
-          profilePicUrl,
-          bio,
-          pricing,
-          genre,
-          city,
-          contact,
-        })
-        .then(() => {
-          axios.post(`${API}/users`, {
-            id: res.user.uid,
-            type: "artist",
-          });
-        });
-      debugger;
+      await axios.post(`${API}/artists`, {
+        id: res.user.uid,
+        name,
+        profile_pic_url: imageUrl,
+        bio,
+        pricing,
+        genre,
+        city,
+        contact_info,
+      });
+      await axios.post(`${API}/users`, {
+        id: res.user.uid,
+        type: "artist",
+      });
       dispatch(updateArtist(res.user));
-      // history.push("/") to feed or artist profile, depends on what we want to do
     } catch (error) {
       console.log(error.message);
     }
@@ -171,8 +159,8 @@ const ArtistSignUpForm = () => {
                 type={"text"}
                 className={"artistInputSpace"}
                 placeholder={"contact"}
-                value={contact}
-                onChange={(e) => setContact(e.currentTarget.value)}
+                value={contact_info}
+                onChange={(e) => setContactInfo(e.currentTarget.value)}
                 required
               ></input>
               <input
@@ -201,7 +189,15 @@ const ArtistSignUpForm = () => {
               <input type="file" onChange={handleImageAsFile} required />
             </div>
             <div className="artistImgUploadBttn">
-              <button onClick={handleFirebaseUpload}>Upload</button>
+              <button
+                type="button"
+                onClick={() => {
+                  handleFirebaseUpload();
+                }}
+              >
+                Upload
+              </button>
+              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
             </div>
             <div className="artistSignUpBttn">
               <button type={"submit"}>Sign Up</button>
