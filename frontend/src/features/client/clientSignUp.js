@@ -17,8 +17,8 @@ const ClientSignUp = () => {
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
   let isOpen = useSelector((state) => state.modal);
-  //imageUpload
 
+  //imageUpload
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
