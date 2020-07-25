@@ -66,7 +66,7 @@ const ArtistSignUpForm = () => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      await axios.post(`${API}/artist`, {
+      await axios.post(`${API}/artists`, {
         id: res.user.uid,
         name,
         profile_pic_url: imageUrl,
@@ -80,6 +80,7 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
+      debugger;
       dispatch(updateArtist(res.user));
     } catch (error) {
       console.log(error.message);
