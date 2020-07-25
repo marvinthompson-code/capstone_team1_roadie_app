@@ -102,4 +102,4 @@ const ClientProfile = () => {
     )
 }
 
-export default ClientProfile
+export default ClientProfile;
