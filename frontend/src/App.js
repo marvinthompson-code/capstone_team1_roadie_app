@@ -12,6 +12,7 @@ import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
+import Portfolio from './features/Portfolio/Portfolio'
 import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
 
 Modal.setAppElement('#root');
@@ -43,6 +44,9 @@ function App() {
         <ClientProfile />
         <ClientContactForm />
         <EditClientProfileForm />
+      </Route>
+      <Route exact path={"/artists/:id"}>
+        <Portfolio />
       </Route>
     </div>
   );
