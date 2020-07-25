@@ -15,13 +15,12 @@ const ClientSignUp = () => {
   const [password, setPassword] = useState("");
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact_info, setContactInfo] = useState("");
   let isOpen = useSelector((state) => state.modal);
-
   //imageUpload
-  const allInputs = { imgUrl: "" };
+
   const [imageAsFile, setImageAsFile] = useState("");
-  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const [imageUrl, setImageUrl] = useState("");
 
   const API = apiURL();
   const dispatch = useDispatch();
@@ -29,74 +28,62 @@ const ClientSignUp = () => {
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
     setImageAsFile((imageFile) => image);
-    debugger;
   };
 
   const handleFirebaseUpload = () => {
-    // handleFireBaseUpload goes here
-    if (imageAsFile === "") {
-      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+    if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
         .put(imageAsFile);
-      //initiates firebase side uploading
       uploadTask.on(
         "state_changed",
         (snapShot) => {
-          //takes a snap shot of the process as it is happening
+          var progress =
+            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
           console.log(snapShot);
         },
         (err) => {
-          //catches the errors
           console.log(err);
         },
         () => {
-          // gets the functions from storage refences the image storage in firebase by the children
-          // gets the download url then sets the image from firebase as the value for the imgUrl key:
           storage
             .ref("images")
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              setImageAsUrl((prevObject) => ({
-                ...prevObject,
-                imgUrl: fireBaseUrl,
-              }));
+              setImageUrl(fireBaseUrl);
+              debugger;
             });
         }
       );
+    } else {
+      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
     }
-    debugger;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      await axios
-        .post(`${API}/clients`, {
-          id: res.user.uid,
-          name: name,
-          profile_pic_url: imageAsUrl.imgUrl,
-          bio,
-          company,
-          city,
-          contact,
-        })
-        .then(() => {
-          axios.post(`${API}/users`, {
-            id: res.user.uid,
-            type: "client",
-          });
-        });
-      // add new axios call to add to user table
+      await axios.post(`${API}/clients`, {
+        id: res.user.uid,
+        name: name,
+        profile_pic_url: imageUrl,
+        bio,
+        company,
+        city,
+        contact_info,
+      });
+      await axios.post(`${API}/users`, {
+        id: res.user.uid,
+        type: "client",
+      });
       dispatch(updateClient(res.user));
-      // sign up with firebase and send results to our backend
     } catch (error) {
       console.log(error.message);
     }
   };
-
   return (
     // <Modal
     //   isOpen={true}
@@ -118,7 +105,7 @@ const ClientSignUp = () => {
       <div className="artistContainer">
         <h3 id={"artisth3"}>Client Sign Up</h3>
       </div>
-      <div class="artistSignUpForm">
+      <div className="artistSignUpForm">
         <form onSubmit={handleSubmit} className="artistForm">
           <input
             type={"text"}
@@ -159,8 +146,8 @@ const ClientSignUp = () => {
             type={"text"}
             className={"artistInputSpace"}
             placeholder={"Contact Information"}
-            value={contact}
-            onChange={(e) => setContact(e.currentTarget.value)}
+            value={contact_info}
+            onChange={(e) => setContactInfo(e.currentTarget.value)}
           />
           <input
             type={"password"}
@@ -173,11 +160,10 @@ const ClientSignUp = () => {
             <p id="uploadHeader">
               <input type="file" required onChange={handleImageAsFile} />
             </p>
-            <button onClick={handleFirebaseUpload} id="clientImg">
+            <button type="button" onClick={handleFirebaseUpload} id="clientImg">
               upload
             </button>
           </div>
-
           <input type="submit" className="artistSignUpBttn" value="Sign Up" />
         </form>
       </div>
