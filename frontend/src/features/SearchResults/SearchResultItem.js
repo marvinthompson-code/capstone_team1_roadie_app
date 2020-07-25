@@ -9,11 +9,11 @@ const SearchResultItem = ({ result }) => {
 
     return (
         <>
-            <div>
+            <div className="nameDisplay">
                 <h1>{name}</h1>
             </div>
-            <div>
-                {profile_pic_url}
+            <div className="picDisplay">
+                <img src={profile_pic_url}/>
             </div>
         </>
     )

@@ -10,12 +10,6 @@ const SearchIndex = () => {
     return <SearchResultItem key={result.id} result={result} />;
   });
 
-    const results = searchResults.map(result => {
-        return <SearchResultItem key={result.id} result={result}/>
-    })
-    // useEffect(() => {
-    //     !searchResults.length ? <h3>No results!</h3> : ""
-    // }, [])
 
     return (
         <div>
