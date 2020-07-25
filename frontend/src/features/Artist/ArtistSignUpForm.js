@@ -25,17 +25,25 @@ const ArtistSignUpForm = () => {
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState(allInputs);
+  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const API = apiURL();
   const dispatch = useDispatch();
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
-    setImageAsFile((imageFile) => image);
+    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
+    if (types.every((type) => image.type !== type)) {
+      alert(`${image.type} is not a supported format`);
+    } else {
+      setImageAsFile((imageFile) => image);
+    }
   };
 
   const handleFirebaseUpload = () => {
-    if (imageAsFile !== null) {
+    if (imageAsFile === "") {
+      alert("Please choose a valid file before uploading");
+    } else if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
         .put(imageAsFile);
@@ -57,8 +65,9 @@ const ArtistSignUpForm = () => {
             });
         }
       );
+      setToggleUploadMsg(true);
     } else {
-      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+      setToggleUploadMsg(false);
     }
   };
 
@@ -80,7 +89,6 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
-      debugger;
       dispatch(updateArtist(res.user));
     } catch (error) {
       console.log(error.message);
@@ -189,6 +197,7 @@ const ArtistSignUpForm = () => {
               >
                 Upload
               </button>
+              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
             </div>
             <div className="artistSignUpBttn">
               <button type={"submit"}>Sign Up</button>

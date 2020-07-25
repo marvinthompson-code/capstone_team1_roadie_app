@@ -21,17 +21,25 @@ const ClientSignUp = () => {
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const API = apiURL();
   const dispatch = useDispatch();
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
-    setImageAsFile((imageFile) => image);
+    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
+    if (types.every((type) => image.type !== type)) {
+      alert(`${image.type} is not a supported format`);
+    } else {
+      setImageAsFile((imageFile) => image);
+    }
   };
 
   const handleFirebaseUpload = () => {
-    if (imageAsFile !== null) {
+    if (imageAsFile === "") {
+      alert(`Please choose a file before uploading`);
+    } else if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
         .put(imageAsFile);
@@ -53,12 +61,12 @@ const ClientSignUp = () => {
             .getDownloadURL()
             .then((fireBaseUrl) => {
               setImageUrl(fireBaseUrl);
-              debugger;
             });
         }
       );
+      setToggleUploadMsg(true);
     } else {
-      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
+      setToggleUploadMsg(false);
     }
   };
 
@@ -163,6 +171,7 @@ const ClientSignUp = () => {
             <button type="button" onClick={handleFirebaseUpload} id="clientImg">
               upload
             </button>
+            {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
           </div>
           <input type="submit" className="artistSignUpBttn" value="Sign Up" />
         </form>
