@@ -1,0 +1,13 @@
+import { createSlice } from '@reduxjs/toolkit'
+
+export const eventModalSlice = createSlice({
+    name: "eventModal",
+    initialState: true, 
+    reducers: {
+        toggleEventModalState: (state) => !state
+        
+    }
+})
+
+export const { toggleEventModalState } = eventModalSlice.actions;
+export default eventModalSlice.reducer;

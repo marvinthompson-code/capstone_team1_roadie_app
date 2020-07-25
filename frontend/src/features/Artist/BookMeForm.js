@@ -45,7 +45,7 @@ const BookMeForm = () => {
 
     return (
         <Modal
-            isOpen={true}
+            isOpen={false}
             onRequestClose={closeModal}
             isOpen={isOpen}
         >

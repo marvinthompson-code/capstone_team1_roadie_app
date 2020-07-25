@@ -38,7 +38,7 @@ const ClientSignUp = () => {
 
   const handleFirebaseUpload = () => {
     if (imageAsFile === "") {
-      alert(`Please choose a file before uploading`);
+      alert(`Please choose a valid file before uploading`);
     } else if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
