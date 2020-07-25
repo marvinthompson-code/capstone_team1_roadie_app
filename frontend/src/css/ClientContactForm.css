@@ -1,0 +1,46 @@
+:root {
+    --pumkinOrange: #ec9b59;
+    --pink: #f4d8cd;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+}
+
+#contactNameInput {
+    background: var(--pumkinOrange);
+    border-radius: 5px;
+    height: 50px;
+    color: black;
+    box-shadow: 0.5px 0.5px 2px darkgray;
+    font-size: x-large;
+    width: 100%;
+}
+
+#contactBodyInput {
+    background: var(--pumkinOrange);
+    color: black;
+    box-shadow: 0.5px 0.5px 2px darkgray;
+    width: 100%;
+    font-size: x-large;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.inputDiv {
+    width: 80%;
+    margin: auto;
+    height: 300px;
+    margin-top: 20%;
+}
+
+#contactSubmitButton {
+    /* background-color: red; */
+    height: 40px;
+    width: 40%;
+    margin-left: 35%;
+}
+
+.contactButtonDiv {
+    justify-content: center;
+    /* background-color: red; */
+}

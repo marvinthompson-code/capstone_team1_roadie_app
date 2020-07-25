@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState } from 'react'
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
+import '../../css/ClientContactForm.css'
 import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientContactForm = () => {
@@ -21,7 +22,7 @@ const ClientContactForm = () => {
 
     return (
          <Modal
-         isOpen={true}
+         isOpen={false}
          onRequestClose={closeModal}
          isOpen={isOpen}
          style={{
@@ -35,6 +36,8 @@ const ClientContactForm = () => {
          >
             <div>
                 <form onSubmit={handleSubmit} className={"ContactMeForm"}>
+                    <div className={"inputDiv"}>
+
                     <div className={"contactNameDiv"}>
                         <input id={"contactNameInput"} type={"text"} value={name} onChange={(e) => setName(e.target.value)} placeholder={"Enter your name..."}/>
                     </div>
@@ -43,6 +46,7 @@ const ClientContactForm = () => {
                     </div>
                     <div className={"contactButtonDiv"}>
                     <button id={"contactSubmitButton"} type={"submit"}>Submit</button>
+                    </div>
                     </div>
                 </form>
             </div>

@@ -20,7 +20,10 @@
     src: url("../fonts/Raleway-Light.ttf");
     font-family: railwayLight;
 }
-  
+
+/* body {
+    background-color: var(--darkGreen);
+} */
 
 .name {
     font-family: railwayLight;
@@ -32,15 +35,45 @@
 
 .BioDiv {
     background-color: var(--pink);
-    width: 60%;
+    width: 40%;
     border-radius: 20px;
     text-align: center;
     height: 300px;
     transition: 2s;
 }
 
-.portfolioDiv {
-    width: 30%;
+.eventDiv {
+    width: 350px;
+    height: 285px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    background-color: var(--pink);
+    border-radius: 20px;
+    transition: 2s;
+    overflow: scroll;
+}
+
+.eventDiv:hover {
+    box-shadow: 0.5px 0.5px 2px darkgray
+}
+.eventUl {
+    list-style: none;
+}
+
+.eventTitleDiv {
+    justify-content: center;
+}
+
+.eventsTitle {
+    /* margin: auto; */
+    font-family: railwayLight;
+    margin-left: 35px;
+}
+
+.BioPortfolioContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .BioDiv:hover {
@@ -96,10 +129,49 @@
     box-shadow: 1px 1px 4px;
     height: 50px;
     border: none;
-    opacity: 0.8;
+    opacity: 0.6;
     transition: 2s;
+    width: 160px;
 }
 
 #ContactMeButton:hover {
     opacity: 1;
+}
+
+#EditClientProfileButton {
+    background-color: var(--pumkinOrange);
+    color: var(--pink);
+    font-size: x-large;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px;
+    height: 50px;
+    border: none;
+    opacity: 0.6;
+    transition: 2s;
+    width: 160px;
+}
+
+#EditClientProfileButton:hover {
+    opacity: 1;
+}
+#CreateEventButton {
+    background-color: var(--pumkinOrange);
+    color: var(--pink);
+    font-size: x-large;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px;
+    height: 50px;
+    border: none;
+    opacity: 0.6;
+    transition: 2s;
+    width: 160px;
+}
+
+#CreateEventButton:hover {
+    opacity: 1;
+}
+
+.buttonsDiv {
+    display: flex;
+    flex-direction: column;
 }
