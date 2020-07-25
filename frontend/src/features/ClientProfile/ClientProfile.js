@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { toggleModalState } from "../Artist/modalSlice";
+import { toggleEventModalState } from "../event/eventModalSlice"
+import { toggleEditClientProfileModalState } from './editClientProfileModalSlice'
 import axios from 'axios'
-import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 import { apiURL } from '../../util/apiURL'
 import '../../css/ClientProfile.css'
 
@@ -21,9 +23,9 @@ const ClientProfile = () => {
 
     // created events? 
 
-    const handleClick = () => {
-        dispatch(toggleModalState())
-    }
+    // const handleClick = () => {
+    //     dispatch(toggleModalState())
+    // }
 
     useEffect(() => {
         const fetchUserInfo = async (id) => {
@@ -43,7 +45,13 @@ const ClientProfile = () => {
             <div className={"ProfilePictureDiv"}>
                 <img src={profilePicUrl} alt={"Client Profile"} />
             </div>
-            <button id={"ContactMeButton"}onClick={handleClick}>Contact Me!</button>
+
+            <div className={"buttonsDiv"}>
+                <button id={"ContactMeButton"}onClick={() => dispatch(toggleModalState())}>Contact Me!</button>
+                <button id={"EditClientProfileButton"} onClick={() => dispatch(toggleEditClientProfileModalState())} >Edit Profile</button>
+            </div>
+
+            
 
             <div className={"ClientNameDiv"}>
                 <h2 className={"name"}>{name}</h2>
@@ -60,23 +68,38 @@ const ClientProfile = () => {
                     <h3 className={"contact"}>{contactInfo}</h3>
             </div>
 
+
             </div>
+            <div className={"BioPortfolioContainer"}>
                 <div className={"BioDiv"}>
                     <h4 className={"aboutMe"}>About me:</h4>
                     <h3 className={"bio"}>{bio}</h3>
                 </div>
-            <div className={"portfolioSection"}>
-                <div className={"portfolioDiv"}>
-                    <ul>
-                        <li>Example Event 1</li>
-                        <li>Example Event 2</li>
-                        <li>Example Event 3</li>
-                        <li>Exapmple Event 4</li>
-                    </ul>
+
+            <div className={"eventDiv"}>
+                    
+                <div className={"eventTitleDiv"}>
+                <h3 className={"eventsTitle"}>Created Events</h3>
                 </div>
+                <ul className={"eventUl"}>
+                    <li>Example Event 1</li>
+                    <li>Example Event 2</li>
+                    <li>Example Event 3</li>
+                    <li>Example Event 4</li>
+                </ul>
+                
+            <div className={"createEventButtonDiv"}>
+                <button id={"CreateEventButton"}onClick={() => dispatch(toggleEventModalState())}>Create Event</button>
+            </div>
+
+            </div>
+            <div className={"portfolioSection"}>
+
+            </div>
+
             </div>
         </div>
     )
 }
 
-export default ClientProfile
+export default ClientProfile;

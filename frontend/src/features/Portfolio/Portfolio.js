@@ -1,6 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from 'axios';
+import {apiURL} from '../../util/apiURL';
+
+
 
 const ArtistPortfolio = () =>{
+    const [name, setName] = useState("");
+    const [videos, setVideos] = useState([]);
+    const [pictures, setPictures] = useState([]);
+
+    const API = apiUrl();
+
+    useEffect(() =>{
+        const fetchArtist = async (id) =>{
+            let res = await axios.get(`${API}/artists/${id}`);
+            let {name} 
+        }
+    },[])
 
     return(
         <div className="artistPortfolioContainer">
@@ -10,19 +26,6 @@ const ArtistPortfolio = () =>{
             </div>
             <div className="artistName">
             <h1>Artist Name</h1>
-            </div>
-            <div className="artistBio">
-                <h4>Bio</h4>
-            </div>
-            <div className="artistShowDates">
-                <h4>Upcoming Shows</h4>
-                <ul>
-                    <li>mm/dd/yyyy</li>
-                    <li>mm/dd/yyyy</li>
-                    <li>mm/dd/yyyy</li>
-                    <li>mm/dd/yyyy</li>
-                    <li>mm/dd/yyyy</li>
-                </ul>
             </div>
             <div className="artistMediaContainer">
             <div className="artistAlbumDiv">
