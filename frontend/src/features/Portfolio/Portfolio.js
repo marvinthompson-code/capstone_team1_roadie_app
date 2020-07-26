@@ -8,7 +8,7 @@ import { useRouteMatch } from "react-router-dom";
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
   const [name, setName] = useState("");
-  const [videos, setVideos] = useState([]);
+  const [video, setVideos] = useState([]);
   const [caption, setCaption] = useState("");
   const [pictures, setPictures] = useState([]);
   const [profilePic, setProfilePic] = useState("");
@@ -110,17 +110,17 @@ const ArtistPortfolio = () => {
     }
   };
 
-    const insertPictureIntoAlbum = async () => {
-      try {
-        await axios.post(`${API}/media/pictures`, {
-          artist_id: artist.id,
-          caption: caption,
-          url: imageUrl,
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    // const insertPictureIntoAlbum = async () => {
+    //   try {
+    //     await axios.post(`${API}/media/pictures`, {
+    //       artist_id: artist.id,
+    //       caption: caption,
+    //       url: imageUrl,
+    //     });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
 
   useEffect(() => {
     const fetchArtist = async (id) => {
