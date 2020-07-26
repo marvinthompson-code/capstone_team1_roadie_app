@@ -59,6 +59,11 @@ const ClientProfile = () => {
           )
     }
   }
+
+  const handleClick = () => {
+    return client === null ? history.push("/login") : dispatch(toggleEventModalState()) 
+  }
+
   return (
     <div>
       <div className={"ProfilePictureDiv"}>
@@ -115,7 +120,7 @@ const ClientProfile = () => {
           <div className={"createEventButtonDiv"}>
             <button
               id={"CreateEventButton"}
-              onClick={() => dispatch(toggleEventModalState())}
+              onClick={handleClick}
             >
               Create Event
             </button>

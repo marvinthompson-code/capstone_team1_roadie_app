@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
+import { toggleEventModalState } from './eventModalSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import axios from "axios";
+import Modal from 'react-modal'
 
 const EventForm = () => {
   const [name, setName] = useState("");
@@ -8,25 +12,49 @@ const EventForm = () => {
   const [date, setDate] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const dispatch = useDispatch()
+  const client = useSelector(state => state.client)
+  const history = useHistory()
+  const isOpen = useSelector(state => state.eventModal)
+  const API = apiURL();
 
-  const API = apiUrl();
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      await axios.post(`${API}/events/`, {
+      let res = await axios.post(`${API}/events/`, {
         name,
         venue,
         date,
         address,
         city,
-        // client_id: currentUser.id,
+        client_id: client.id,
       });
+      debugger
     } catch (err) {
       console.log(err);
     }
   };
 
+  const closeModal = () => {
+    dispatch(toggleEventModalState())
+}
+
+
   return (
+    <Modal
+    isOpen={false}
+         onRequestClose={closeModal}
+         isOpen={isOpen}
+         style={{
+            content: {
+                backgroundColor: "#F4D8CD",
+                borderRadius: "13px",
+                left: "25%",
+                right: "25%",
+              }
+         }}
+    >
+
     <div className="eventFormDiv">
       <form className="eventForm" onSubmit={handleSubmit}>
         <input
@@ -36,7 +64,7 @@ const EventForm = () => {
           placeholder="Name of Event"
           onChange={(e) => setName(e.currentTarget.value)}
           required
-        />
+          />
         <input
           type="text"
           className="eventFormInput"
@@ -44,7 +72,7 @@ const EventForm = () => {
           placeholder="Venue"
           onChange={(e) => setVenue(e.currentTarget.value)}
           required
-        />
+          />
         <input
           type="text"
           className="eventFormInput"
@@ -52,7 +80,7 @@ const EventForm = () => {
           placeholder="Date"
           onChange={(e) => setDate(e.currentTarget.value)}
           required
-        />
+          />
         <input
           type="text"
           className="eventFormInput"
@@ -60,7 +88,7 @@ const EventForm = () => {
           placeholder="Address"
           onChange={(e) => setAddress(e.currentTarget.value)}
           required
-        />
+          />
         <input
           type="text"
           className="eventFormInput"
@@ -68,10 +96,11 @@ const EventForm = () => {
           placeholder="City"
           onChange={(e) => setCity(e.currentTarget.value)}
           required
-        />
+          />
         <button type="submit">Add Event</button>
       </form>
     </div>
+          </Modal>
   );
 };
 

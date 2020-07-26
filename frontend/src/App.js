@@ -8,6 +8,7 @@ import DisplaySignUp from "./features/Display/DisplaySignUp";
 import EditClientProfileForm from "./features/ClientProfile/EditClientProfileForm";
 import ClientProfile from './features/ClientProfile/ClientProfile';
 import Login from "./features/login/Login";
+import EventForm from "./features/Events/EventForm"
 import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
@@ -44,6 +45,7 @@ function App() {
         <ClientProfile />
         <ClientContactForm />
         <EditClientProfileForm />
+        <EventForm />
       </Route>
       <Route exact path={"/artists/:id"}>
         <Portfolio />
