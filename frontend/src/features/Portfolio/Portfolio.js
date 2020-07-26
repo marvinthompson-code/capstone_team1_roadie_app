@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 
 const ArtistPortfolio = () => {
+  const artist = useSelector((state) => state.artist);
   const [name, setName] = useState("");
   const [videos, setVideos] = useState([]);
+  const [caption, setCaption] = useState("");
   const [pictures, setPictures] = useState([]);
   const [profilePic, setProfilePic] = useState("");
 
@@ -57,12 +60,22 @@ const ArtistPortfolio = () => {
         }
       );
       setToggleUploadMsg(true);
-    }else{
-        setToggleUploadMsg(false);
+    } else {
+      setToggleUploadMsg(false);
     }
   };
 
-  
+  const insertPictureIntoAlbum = async () => {
+    try {
+      await axios.post(`${API}/media/pictures`, {
+        artist_id: artist.id,
+        caption: caption,
+        url: imageUrl,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const fetchArtist = async (id) => {
@@ -99,7 +112,9 @@ const ArtistPortfolio = () => {
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
           <input type="file" required onChange={handleImageAsFile} />
-          <button type="button" onClick={handleFirevaseUpload}>Upload Picture</button>
+          <button type="button" onClick={handleFirevaseUpload}>
+            Upload Picture
+          </button>
           {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
         </div>
         <div className="artistVideoDiv">
