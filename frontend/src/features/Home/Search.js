@@ -1,74 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { apiURL } from '../../util/apiURL'
 import { useHistory } from 'react-router-dom'
 import { receiveSearch } from "../SearchResults/searchSlice";
+import { receiveUserType } from "../user/userSlice";
 import axios from 'axios'
-// import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 
 const Search = () => {
-    const [ genre, setGenre ] =  useState("")
+    const [userType, setUserType] = useState("")
     const [ name, setName ] = useState("")
-    const [ toggle, setToggle] = useState(false)
-    // initialized as true, true represents artist, false represents clients
     const history = useHistory()
     const API = apiURL()
     const dispatch = useDispatch();
-    // const token = useSelector(state => state.token)
     
-    const handleChange = (value) => {
-        if (value === "Artist") {
-            setToggle(true)
-            console.log()
-        } else {
-            setToggle(false)
-        }
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-            if (toggle) {
-                
-                try {
-                    let res = await axios.get(`${API}/artists/search/${name}`)
-                    dispatch(receiveSearch(res.data.body.artists));
-                debugger
-                } catch (error) {
-                    console.log(error)
-                }
-            } else {
-                try {
-                    let res = await axios.get(`${API}/clients/search/${name}`)
-                    dispatch(receiveSearch(res.data.body.clients));
-                    debugger
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-        if (name === "" && toggle) {
-            try {
-                let res = await axios.get(`${API}/artists/`);
+        try {
+            let routeExtension = name === "" ? "" : `/search/${name}`
+            if (userType === "Artist") {
+                let res = await axios.get(`${API}/artists` + routeExtension);
                 dispatch(receiveSearch(res.data.body.artists));
-            } catch (error) {
-                console.log(error)
-            }
-        } else {
-            try {
-                let res = await axios.get(`${API}/clients/`);
+            } else if (userType === "Client") {
+                let res = await axios.get(`${API}/clients` + routeExtension);
                 dispatch(receiveSearch(res.data.body.clients));
-            } catch (error) {
-                console.log(error)
             }
+            dispatch(receiveUserType(userType));
+            history.push("/results");
+            
+        } catch (error) {
+            console.log(error);
         }
-        history.push("/results")
         
     }
     return(
         <div>
             <form onSubmit={handleSubmit}>
                 <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)}/>
-                <select onChange={(e)=> handleChange(e.target.value)}>
-                    <option disabled defaultValue selected>Search By...</option>
+                <select value={userType} onChange={(e)=> setUserType(e.target.value)}>
+                    <option disabled value="" selected>Search By...</option>
                     <option value={"Artist"} >Artist</option>
                     <option value={"Client"}>Client</option>
                 </select>
