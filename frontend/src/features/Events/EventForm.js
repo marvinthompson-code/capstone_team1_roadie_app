@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import { toggleEventModalState } from './eventModalSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import axios from "axios";
 import Modal from 'react-modal'
 
@@ -13,13 +14,14 @@ const EventForm = () => {
   const [city, setCity] = useState("");
   const dispatch = useDispatch()
   const client = useSelector(state => state.client)
-
+  const history = useHistory()
   const isOpen = useSelector(state => state.eventModal)
   const API = apiURL();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      await axios.post(`${API}/events/`, {
+      let res = await axios.post(`${API}/events/`, {
         name,
         venue,
         date,
@@ -27,6 +29,7 @@ const EventForm = () => {
         city,
         client_id: client.id,
       });
+      debugger
     } catch (err) {
       console.log(err);
     }

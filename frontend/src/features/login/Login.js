@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "../../css/Login.css";
 import { useHistory } from "react-router-dom";
+import { updateUser } from "../token/userSlice";
 import { login } from "../../util/firebaseFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../Artist/modalSlice";
@@ -23,6 +24,11 @@ const Login = () => {
       // if client (dispatch updateClient)
       // dispatch
       history.push("/");
+
+      // check what type the user is 
+      // dispatch recieve artist if artist
+      // dispatch recieve client if client
+
     } catch (error) {
       setError(error.message);
     }
