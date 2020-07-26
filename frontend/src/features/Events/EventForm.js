@@ -13,7 +13,14 @@ const EventForm = () => {
 
   const handleSubmit = async () => {
     try {
-      await
+      await axios.post(`${API}/events/`, {
+        name,
+        venue,
+        date,
+        address,
+        city,
+        // client_id: currentUser.id,
+      });
     } catch (err) {
       console.log(err);
     }
