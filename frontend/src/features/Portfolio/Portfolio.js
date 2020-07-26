@@ -42,7 +42,7 @@ const ArtistPortfolio = () => {
     }
   };
 
-  const handleFirevaseUpload = () => {
+  const handleFirebasePictureUpload = () => {
     if (imageAsFile === "") {
       alert(`Please choose a valid file before uploading`);
     } else if (imageAsFile !== null) {
@@ -76,17 +76,51 @@ const ArtistPortfolio = () => {
     }
   };
 
-  //   const insertPictureIntoAlbum = async () => {
-  //     try {
-  //       await axios.post(`${API}/media/pictures`, {
-  //         artist_id: artist.id,
-  //         caption: caption,
-  //         url: imageUrl,
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+  const handleFirebaseVideoUpload = () => {
+    if (videoAsFile === "") {
+      alert(`Please choose a valid file before uploading`);
+    } else if (videoAsFile !== null) {
+      const uploadTask = storage
+        .ref(`/videos/${videoAsFile.name}`)
+        .put(videoAsFile);
+      uploadTask.on(
+        "state_changed",
+        (snapShot) => {
+          var progress =
+            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          console.log(snapShot);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          storage
+            .ref("videos")
+            .child(videoAsFile.name)
+            .getDownloadURL()
+            .then((fireBaseUrl) => {
+              setImageUrl(fireBaseUrl);
+            });
+        }
+      );
+      setToggleUploadMsg(true);
+    } else {
+      setToggleUploadMsg(false);
+    }
+  };
+
+    const insertPictureIntoAlbum = async () => {
+      try {
+        await axios.post(`${API}/media/pictures`, {
+          artist_id: artist.id,
+          caption: caption,
+          url: imageUrl,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
   useEffect(() => {
     const fetchArtist = async (id) => {
@@ -123,7 +157,7 @@ const ArtistPortfolio = () => {
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
           <input type="file" required onChange={handleImageAsFile} />
-          <button type="button" onClick={handleFirevaseUpload}>
+          <button type="button" onClick={handleFirebasePictureUpload}>
             Upload Picture
           </button>
           {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
@@ -131,7 +165,8 @@ const ArtistPortfolio = () => {
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
           <input type="file" required onChange={handleVideoAsFile} />
-          <button>Upload Video</button>
+          <button type="button" onClick={handleFirebaseVideoUpload}>Upload Video</button>
+          {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
         </div>
       </div>
     </div>
