@@ -32,7 +32,6 @@ const EditClientProfileForm = () => {
             let res = await axios.get(`${API}/clients/${id}`)
             let { name, profile_pic_url, bio, city, contact_info } = res.data.body.single_client
             setName(name)
-            // setProfilePicUrl(profile_pic_url)
             setBio(bio)
             setContactInfo(contact_info)
         }

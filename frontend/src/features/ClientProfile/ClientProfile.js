@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../Artist/modalSlice";
 import { toggleEventModalState } from "../Events/eventModalSlice";
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
@@ -14,7 +14,8 @@ const ClientProfile = () => {
   const [contactInfo, setContactInfo] = useState("");
   const [city, setCity] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState("");
-
+  const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
   const API = apiURL();
   const match = useRouteMatch();
   const dispatch = useDispatch();
@@ -46,6 +47,18 @@ const ClientProfile = () => {
     fetchUserInfo(match.params.id);
   }, []);
 
+  let editButton = () => {
+      if (!client === null && client.id === match.params.id) {
+          return (
+            <button
+            id={"EditClientProfileButton"}
+            onClick={() => dispatch(toggleEditClientProfileModalState())}
+          >
+            Edit Profile
+          </button>
+          )
+    }
+  }
   return (
     <div>
       <div className={"ProfilePictureDiv"}>
@@ -59,12 +72,13 @@ const ClientProfile = () => {
         >
           Contact Me!
         </button>
-        <button
+        {/* <button
           id={"EditClientProfileButton"}
           onClick={() => dispatch(toggleEditClientProfileModalState())}
         >
           Edit Profile
-        </button>
+        </button> */}
+        {editButton()}
       </div>
 
       <div className={"ClientNameDiv"}>
