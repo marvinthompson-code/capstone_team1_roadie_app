@@ -19,10 +19,7 @@ export default configureStore({
     eventModal: eventModalReducer,
     search: searchReducer,
     editClientProfileModal: editClientProfileModalReducer,
-<<<<<<< HEAD
     userType: userTypeReducer
-=======
->>>>>>> 1bbdd9c4138dba3ce01611da5c04dc487f00b665
   },
   middleware: [...getDefaultMiddleware(), logger],
 });

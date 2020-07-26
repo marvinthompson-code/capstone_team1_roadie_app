@@ -10,7 +10,6 @@ const SearchIndex = () => {
     return <SearchResultItem key={result.id} result={result} />;
   });
 
-<<<<<<< HEAD
     return (
         <div>
             { !searchResults.length ?
@@ -19,11 +18,6 @@ const SearchIndex = () => {
             }
         </div>
     )
-=======
-  return (
-    <div>{!searchResults.length ? <h3>No results!</h3> : { results }}</div>
-  );
->>>>>>> 1bbdd9c4138dba3ce01611da5c04dc487f00b665
 };
 
 export default SearchIndex;
