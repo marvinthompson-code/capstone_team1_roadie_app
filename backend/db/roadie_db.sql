@@ -114,7 +114,9 @@ INSERT INTO events
     (id, name, venue, date, address, city, client_id)
 VALUES
     ('1', 'MVP RUN', 'Zoom', '2020-07-29', '47-10 Austell Pl', 'Long Island City', '2');
+
 INSERT INTO bookings
     (id, artist_id, client_id, event_id, bio, contact_info)
 VALUES
     ('1', '1', '2', '1', 'This is my first booking!', '6318820223');
+
