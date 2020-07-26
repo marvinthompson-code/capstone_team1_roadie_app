@@ -18,6 +18,7 @@ const ArtistPortfolio = () => {
 
   //imageUpload
   const [imageAsFile, setImageAsFile] = useState("");
+  const [videoAsFile, setVideoAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
@@ -28,6 +29,16 @@ const ArtistPortfolio = () => {
       alert(`${image.type} is not a supported format`);
     } else {
       setImageAsFile((imageFile) => image);
+    }
+  };
+
+  const handleVideoAsFile = (e) => {
+    const video = e.target.files[0];
+    const types = ["video/mp4", "video/ogg", "video/quicktime", "video/mov"];
+    if (types.every((type) => video.type !== type)) {
+      alert(`${video.type} is not supported format`);
+    } else {
+      setVideoAsFile((videoFile) => video);
     }
   };
 
@@ -65,17 +76,17 @@ const ArtistPortfolio = () => {
     }
   };
 
-  const insertPictureIntoAlbum = async () => {
-    try {
-      await axios.post(`${API}/media/pictures`, {
-        artist_id: artist.id,
-        caption: caption,
-        url: imageUrl,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   const insertPictureIntoAlbum = async () => {
+  //     try {
+  //       await axios.post(`${API}/media/pictures`, {
+  //         artist_id: artist.id,
+  //         caption: caption,
+  //         url: imageUrl,
+  //       });
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
   useEffect(() => {
     const fetchArtist = async (id) => {
@@ -119,6 +130,7 @@ const ArtistPortfolio = () => {
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
+          <input type="file" required onChange={handleVideoAsFile} />
           <button>Upload Video</button>
         </div>
       </div>
