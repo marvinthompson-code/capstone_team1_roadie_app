@@ -7,6 +7,7 @@ import artistReducer from "../features/Artist/artistSlice";
 import tokenReducer from "../features/token/tokenSlice";
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
+import userTypeReducer from "../features/user/userSlice";
 import logger from "redux-logger";
 
 export default configureStore({
@@ -17,7 +18,8 @@ export default configureStore({
     client: clientReducer,
     eventModal: eventModalReducer,
     search: searchReducer,
-    editClientProfileModal: editClientProfileModalReducer
+    editClientProfileModal: editClientProfileModalReducer,
+    userType: userTypeReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });
