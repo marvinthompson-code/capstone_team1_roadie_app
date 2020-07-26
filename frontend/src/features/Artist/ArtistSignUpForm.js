@@ -22,9 +22,8 @@ const ArtistSignUpForm = () => {
   // const [ isOpen, setIsOpen ] = useState(false)
 
   //imageUpload
-  const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
-  const [imageUrl, setImageUrl] = useState(allInputs);
+  const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const API = apiURL();
