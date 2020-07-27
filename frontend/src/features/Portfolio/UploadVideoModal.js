@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {toggleModalState} from './uploadModalSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModalState } from "./uploadModalSlice";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
 
@@ -8,12 +8,13 @@ const UploadVideoModal = () => {
   const [videoAsFile, setVideoAsFile] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
+  const [caption, setCaption] = useState("");
 
-  let isOpen = useSelector(state => state.uploadModal);
+  let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
-  const closeModal = () =>{
-      dispatch(toggleModalState())
-  }
+  const closeModal = () => {
+    dispatch(toggleModalState());
+  };
 
   const handleVideoAsFile = (e) => {
     const video = e.target.files[0];
@@ -59,12 +60,24 @@ const UploadVideoModal = () => {
     }
   };
 
+  const handleSubmit = async (e) =>{
+      e.preventDefault();
+      try{
+
+      }catch(err){
+        console.log(err.message)
+      }
+  }
+
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
-      <input type="file" required onChange={handleVideoAsFile} />
-      <button type="button" onClick={handleFirebaseVideoUpload}>
-        Upload Video
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input type="file" required onChange={handleVideoAsFile} />
+        <input type="text" placeholder="Caption" value={caption} onChange={(e) => setCaption(e.currentTarget.value)} required/>
+        <button type="button" onClick={handleFirebaseVideoUpload}>
+          Upload Video
+        </button>
+      </form>
       {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
     </Modal>
   );
