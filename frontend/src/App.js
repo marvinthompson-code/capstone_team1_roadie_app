@@ -15,6 +15,8 @@ import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 import Portfolio from './features/Portfolio/Portfolio'
 import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
+import UploadVideoModal from "./features/Portfolio/UploadVideoModal";
+import UploadPictureModal from "./features/Portfolio/UploadPictureModal";
 
 Modal.setAppElement('#root');
 
@@ -49,6 +51,8 @@ function App() {
       </Route>
       <Route exact path={"/artists/:id"}>
         <Portfolio />
+        <UploadPictureModal />
+        <UploadVideoModal />
       </Route>
     </div>
   );

@@ -48,21 +48,23 @@ const ClientProfile = () => {
   }, []);
 
   let editButton = () => {
-      if (!client === null && client.id === match.params.id) {
-          return (
-            <button
-            id={"EditClientProfileButton"}
-            onClick={() => dispatch(toggleEditClientProfileModalState())}
-          >
-            Edit Profile
-          </button>
-          )
+    if (!client === null && client.id === match.params.id) {
+      return (
+        <button
+          id={"EditClientProfileButton"}
+          onClick={() => dispatch(toggleEditClientProfileModalState())}
+        >
+          Edit Profile
+        </button>
+      );
     }
-  }
+  };
 
   const handleClick = () => {
-    return client === null ? history.push("/login") : dispatch(toggleEventModalState()) 
-  }
+    return client === null
+      ? history.push("/login")
+      : dispatch(toggleEventModalState());
+  };
 
   return (
     <div>
@@ -118,10 +120,7 @@ const ClientProfile = () => {
           </ul>
 
           <div className={"createEventButtonDiv"}>
-            <button
-              id={"CreateEventButton"}
-              onClick={handleClick}
-            >
+            <button id={"CreateEventButton"} onClick={handleClick}>
               Create Event
             </button>
           </div>

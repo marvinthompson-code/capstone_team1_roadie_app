@@ -1,81 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {toggleModalState} from './uploadModalSlice';
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
   const [name, setName] = useState("");
-  const [videos, setVideos] = useState([]);
+  const [video, setVideos] = useState([]);
   const [caption, setCaption] = useState("");
   const [pictures, setPictures] = useState([]);
   const [profilePic, setProfilePic] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const API = apiURL();
   const match = useRouteMatch();
 
-  //imageUpload
-  const [imageAsFile, setImageAsFile] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
-
-  const handleImageAsFile = (e) => {
-    const image = e.target.files[0];
-    const types = ["image/png", "image/jpeg", "image/jpg"];
-    if (types.every((type) => image.type !== type)) {
-      alert(`${image.type} is not a supported format`);
-    } else {
-      setImageAsFile((imageFile) => image);
+    const handleClick = () =>{
+    dispatch(toggleModalState())
     }
-  };
 
-  const handleFirevaseUpload = () => {
-    if (imageAsFile === "") {
-      alert(`Please choose a valid file before uploading`);
-    } else if (imageAsFile !== null) {
-      const uploadTask = storage
-        .ref(`/images/${imageAsFile.name}`)
-        .put(imageAsFile);
-      uploadTask.on(
-        "state_changed",
-        (snapShot) => {
-          var progress =
-            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          console.log(snapShot);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          storage
-            .ref("images")
-            .child(imageAsFile.name)
-            .getDownloadURL()
-            .then((fireBaseUrl) => {
-              setImageUrl(fireBaseUrl);
-            });
-        }
-      );
-      setToggleUploadMsg(true);
-    } else {
-      setToggleUploadMsg(false);
-    }
-  };
 
-  const insertPictureIntoAlbum = async () => {
-    try {
-      await axios.post(`${API}/media/pictures`, {
-        artist_id: artist.id,
-        caption: caption,
-        url: imageUrl,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const insertPictureIntoAlbum = async () => {
+  //   try {
+  //     await axios.post(`${API}/media/pictures`, {
+  //       artist_id: artist.id,
+  //       caption: caption,
+  //       url: imageUrl,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchArtist = async (id) => {
@@ -111,15 +70,15 @@ const ArtistPortfolio = () => {
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
-          <input type="file" required onChange={handleImageAsFile} />
-          <button type="button" onClick={handleFirevaseUpload}>
-            Upload Picture
+          <button type="button" onClick={handleClick}>
+            +picture
           </button>
-          {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
-          <button>Upload Video</button>
+          <button type="button" onClick={handleClick}>
+              +video
+          </button>
         </div>
       </div>
     </div>

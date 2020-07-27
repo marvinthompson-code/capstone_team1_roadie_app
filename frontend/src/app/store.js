@@ -8,6 +8,7 @@ import tokenReducer from "../features/token/tokenSlice";
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
 import userTypeReducer from "../features/user/userSlice";
+import uploadModalReducer from "../features/Portfolio/uploadModalSlice"
 import logger from "redux-logger";
 
 export default configureStore({
@@ -19,7 +20,8 @@ export default configureStore({
     eventModal: eventModalReducer,
     search: searchReducer,
     editClientProfileModal: editClientProfileModalReducer,
-    userType: userTypeReducer
+    userType: userTypeReducer,
+    uploadModal: uploadModalReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });
