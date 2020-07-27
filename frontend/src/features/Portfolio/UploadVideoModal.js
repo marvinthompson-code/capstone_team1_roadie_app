@@ -3,12 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleModalState } from "./uploadModalSlice";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
+import {apiURL} from '../../util/apiURL';
+import axios from "axios";
 
 const UploadVideoModal = () => {
   const [videoAsFile, setVideoAsFile] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const [caption, setCaption] = useState("");
+
+const API = apiURL()
 
   let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
@@ -60,14 +64,18 @@ const UploadVideoModal = () => {
     }
   };
 
-  const handleSubmit = async (e) =>{
-      e.preventDefault();
-      try{
+//   const handleSubmit = async (e) =>{
+//       e.preventDefault();
+//       try{
+//           let res = await axios.post(`${API}/videos`, {
+//               artist_id: res.user.uid,
+//               content: content
+//           });
 
-      }catch(err){
-        console.log(err.message)
-      }
-  }
+//       }catch(err){
+//         console.log(err.message)
+//       }
+//   }
 
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
