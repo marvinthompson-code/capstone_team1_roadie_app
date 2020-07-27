@@ -70,16 +70,16 @@ const ArtistPortfolio = () => {
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
-          <button type="button" onClick={handleFirebasePictureUpload}>
-            Upload Picture
-          </button>
+          {/* <button type="button" onClick={}> */}
+            {/* Upload Picture
+          </button> */}
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
 
-          <button type="button" onClick={handleFirebaseVideoUpload}>
-            Upload Video
-          </button>
+          {/* <button type="button" onClick={}> */}
+            {/* Upload Video
+          </button> */}
         </div>
       </div>
     </div>
