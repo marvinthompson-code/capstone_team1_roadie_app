@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-// import counterReducer from '../features/counter/counterSlice';
 import userTokenReducer from '../features/token/userTokenSlice'
 import clientReducer from "../features/client/clientSlice";
 import eventModalReducer from "../features/Events/eventModalSlice";
@@ -9,6 +8,7 @@ import tokenReducer from "../features/token/tokenSlice";
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
 import userTypeReducer from "../features/user/userSlice";
+import uploadModalReducer from "../features/Portfolio/uploadModalSlice"
 import logger from "redux-logger";
 
 export default configureStore({
@@ -21,7 +21,8 @@ export default configureStore({
     search: searchReducer,
     editClientProfileModal: editClientProfileModalReducer,
     userType: userTypeReducer,
-    userToken: userTokenReducer
+    userToken: userTokenReducer,
+    uploadModal: uploadModalReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });
