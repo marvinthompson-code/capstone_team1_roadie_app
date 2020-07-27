@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {toggleModalState} from './uploadModalSlice';
 import Modal from "react-modal";
 import { storage } from "../../firebase";
 
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
+
+  let isOpen = useSelector(state => state.uploadModal);
+  const dispatch = useDispatch();
+  const closeModal = () =>{
+    dispatch(toggleModalState());
+  }
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -51,7 +60,7 @@ const UploadPictureModal = () => {
   };
 
   return (
-    <Modal>
+    <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
       <input type="file" required onChange={handleImageAsFile} />
       <button type="button" onClick={handleFirebasePictureUpload}>
         Upload Picture

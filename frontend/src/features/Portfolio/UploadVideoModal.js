@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
 
 const UploadVideoModal = () => {
   const [videoAsFile, setVideoAsFile] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const handleVideoAsFile = (e) => {
@@ -40,7 +41,7 @@ const UploadVideoModal = () => {
             .child(videoAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              setImageUrl(fireBaseUrl);
+              setVideoUrl(fireBaseUrl);
             });
         }
       );

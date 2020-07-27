@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {toggleModalState} from './uploadModalSlice';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
@@ -12,17 +13,17 @@ const ArtistPortfolio = () => {
   const [caption, setCaption] = useState("");
   const [pictures, setPictures] = useState([]);
   const [profilePic, setProfilePic] = useState("");
-
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const API = apiURL();
   const match = useRouteMatch();
 
-  //   const handleClick = () =>{
-  //       return artist !== null ?
+    const handleClick = () =>{
+    dispatch(toggleModalState())
 
-  //   }
-  //what is toggleEventModalState(())
+    }
+
 
   // const insertPictureIntoAlbum = async () => {
   //   try {
@@ -70,9 +71,9 @@ const ArtistPortfolio = () => {
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
-          {/* <button type="button" onClick={}> */}
-            {/* Upload Picture
-          </button> */}
+          <button type="button" onClick={handleClick}>
+            +picture
+          </button>
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
