@@ -21,7 +21,6 @@ const ArtistPortfolio = () => {
 
     const handleClick = () =>{
     dispatch(toggleModalState())
-
     }
 
 
@@ -77,10 +76,9 @@ const ArtistPortfolio = () => {
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
-
-          {/* <button type="button" onClick={}> */}
-            {/* Upload Video
-          </button> */}
+          <button type="button" onClick={handleClick}>
+              +video
+          </button>
         </div>
       </div>
     </div>
