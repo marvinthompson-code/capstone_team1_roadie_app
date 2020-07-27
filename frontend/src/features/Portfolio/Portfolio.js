@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 
@@ -13,8 +13,16 @@ const ArtistPortfolio = () => {
   const [pictures, setPictures] = useState([]);
   const [profilePic, setProfilePic] = useState("");
 
+  const history = useHistory();
+
   const API = apiURL();
   const match = useRouteMatch();
+
+  //   const handleClick = () =>{
+  //       return artist !== null ?
+
+  //   }
+  //what is toggleEventModalState(())
 
   // const insertPictureIntoAlbum = async () => {
   //   try {
