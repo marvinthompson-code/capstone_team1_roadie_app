@@ -1,6 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import userTokenReducer from '../features/token/userTokenSlice'
 import clientReducer from "../features/token/clientTokenSlice";
+import bookMeModalReducer from "../features/Artist/bookMeModalSlice"
 import eventModalReducer from "../features/Events/eventModalSlice";
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
 import artistReducer from "../features/token/artistTokenSlice";
@@ -22,7 +23,8 @@ export default configureStore({
     editClientProfileModal: editClientProfileModalReducer,
     userType: userTypeReducer,
     userToken: userTokenReducer,
-    uploadModal: uploadModalReducer
+    uploadModal: uploadModalReducer,
+    bookMeModal: bookMeModalReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });

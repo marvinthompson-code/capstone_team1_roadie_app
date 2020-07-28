@@ -41,7 +41,7 @@ const ClientProfile = () => {
   }, []);
 
   let editButton = () => {
-    if (!client === null && client.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
         <button
           id={"EditClientProfileButton"}
@@ -54,7 +54,7 @@ const ClientProfile = () => {
   };
 
   let createEventButton = () => {
-    if (!client === null && client.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
         <button
           id={"CreateEventButton"}
@@ -69,7 +69,7 @@ const ClientProfile = () => {
   return (
     <div>
       <div className={"ProfilePictureDiv"}>
-        <img src={profilePicUrl} alt={"Client Profile"} />
+        <img src={profilePicUrl} alt={"Client Profile"}  className={"profilePicture"}/>
       </div>
 
       <div className={"buttonsDiv"}>

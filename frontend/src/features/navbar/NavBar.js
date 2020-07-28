@@ -3,14 +3,26 @@ import { NavLink } from "react-router-dom";
 import { toggleModalState } from '../Artist/modalSlice'
 import { clientLogout } from '../token/clientTokenSlice'
 import { artistLogout } from '../token/artistTokenSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
+  const user = useSelector(state => state.userToken)
+  const artist = useSelector(state => state.artist)
+  const client = useSelector(state => state.client)
   const dispatch = useDispatch()
+
+  let routeExt = () => {
+    if (client === null && artist !== null) {
+      return <NavLink exact to={`/artist/${currentUser.id}`} activeClassName={"navItem"}>Profile</NavLink> 
+    } else if (client !== null && artist === null) {
+      return <NavLink exact to={`/client/${currentUser.id}`} activeClassName={"navItem"}>Profile</NavLink> 
+    }
+  }
+
   const userLogout = () => {
     dispatch(clientLogout())
     dispatch(artistLogout())
@@ -18,7 +30,13 @@ const NavBar = () => {
   }
   const displayButtons = () => {
     if (currentUser) {
-      return <button onClick={userLogout}>Logout</button>;
+      return (
+        <>
+      <button onClick={userLogout}>Logout</button>
+      {/* <NavLink exact to={routeExt} activeClassName={"navItem"}>Profile</NavLink> */}
+      {routeExt()}
+      </>
+      )
     } else {
       return (
         <>

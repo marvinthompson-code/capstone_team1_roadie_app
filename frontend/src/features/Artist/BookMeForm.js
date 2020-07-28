@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleModalState } from "./modalSlice";
+import { toggleBookMeModalState } from "../Artist/bookMeModalSlice";
 import Modal from "react-modal";
 
 import axios from "axios";
@@ -14,7 +14,7 @@ const BookMeForm = () => {
 
     const API = apiURL();
     const client = useSelector(state => state.client);
-    const isOpen = useSelector(state => state.modal);
+    const isOpen = useSelector(state => state.bookMeModal);
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
@@ -22,7 +22,7 @@ const BookMeForm = () => {
     };
 
     const closeModal = () => {
-        dispatch(toggleModalState());
+        dispatch(toggleBookMeModalState());
     };
 
     const handleClientEventSelect = async (id) => {
