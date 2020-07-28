@@ -1,6 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import userTokenReducer from '../features/token/userTokenSlice'
 import clientReducer from "../features/token/clientTokenSlice";
+import clientContactModalReducer from "../features/ClientContactForm/clientContactModalSlice"
 import bookMeModalReducer from "../features/Artist/bookMeModalSlice"
 import eventModalReducer from "../features/Events/eventModalSlice";
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
@@ -19,6 +20,7 @@ export default configureStore({
     modal: modalReducer,
     client: clientReducer,
     eventModal: eventModalReducer,
+    clientContactModal: clientContactModalReducer,
     search: searchReducer,
     editClientProfileModal: editClientProfileModalReducer,
     userType: userTypeReducer,

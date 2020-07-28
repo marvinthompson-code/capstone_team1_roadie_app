@@ -5,14 +5,14 @@ import { apiURL } from '../../util/apiURL'
 import axios from 'axios'
 import { useHistory, useRouteMatch } from "react-router-dom"
 import '../../css/ClientContactForm.css'
-import { toggleModalState } from "../Artist/modalSlice";
+import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 
 const ClientContactForm = () => {
     const [name, setName] = useState("")
     const [body, setBody] = useState("")
     const [contact_info, setContact_info] = useState("")
     const [city, setCity] = useState("")
-    let isOpen = useSelector((state) => state.modal);
+    let isOpen = useSelector((state) => state.clientContactModal);
     const artist = useSelector((state) => state.artist);
     const client = useSelector((state) => state.client);
     const history  = useHistory()
@@ -28,7 +28,7 @@ const ClientContactForm = () => {
     }
 
     const closeModal = () => {
-        dispatch(toggleModalState())
+        dispatch(toggleClientContactModalState())
     }
 
 
