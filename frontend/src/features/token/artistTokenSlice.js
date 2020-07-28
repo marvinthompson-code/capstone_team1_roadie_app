@@ -20,7 +20,6 @@ export const asyncLogout = () => (dispatch) => {
 
 
 export const updateArtist = (user) => async (dispatch) => {
-    // dispatch(setLoading(true))
     try {
         if (user) {
             debugger
@@ -33,7 +32,6 @@ export const updateArtist = (user) => async (dispatch) => {
         } else {
             dispatch(recieveArtist(null))
         }
-        // dispatch(setLoading(false))
     } catch (error) {
         console.log("error", error)
     }

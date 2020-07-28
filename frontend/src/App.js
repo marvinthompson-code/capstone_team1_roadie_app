@@ -38,11 +38,9 @@ function App() {
         <AuthRoute exact path="/login">
           <Login />
         </AuthRoute>
-      </AuthProvider>
       <Route exact path={"/results"}>
         <SearchResults />
       </Route>
-
       <Route exact path={"/client/:id"}>
         <ClientProfile />
         <ClientContactForm />
@@ -54,6 +52,7 @@ function App() {
         <UploadPictureModal />
         <UploadVideoModal />
       </Route>
+      </AuthProvider>
     </div>
   );
 }

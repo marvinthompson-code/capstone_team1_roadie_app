@@ -19,14 +19,7 @@ const ClientProfile = () => {
   const API = apiURL();
   const match = useRouteMatch();
   const dispatch = useDispatch();
-  // const params = useParams()
   const history = useHistory();
-
-  // created events?
-
-  // const handleClick = () => {
-  //     dispatch(toggleModalState())
-  // }
 
   useEffect(() => {
     const fetchUserInfo = async (id) => {
@@ -60,10 +53,17 @@ const ClientProfile = () => {
     }
   };
 
-  const handleClick = () => {
-    return client === null
-      ? history.push("/login")
-      : dispatch(toggleEventModalState());
+  let createEventButton = () => {
+    if (!client === null && client.id === match.params.id) {
+      return (
+        <button
+          id={"CreateEventButton"}
+          onClick={() => dispatch(toggleEventModalState())}
+        >
+          Create Event
+        </button>
+      );
+    }
   };
 
   return (
@@ -120,9 +120,7 @@ const ClientProfile = () => {
           </ul>
 
           <div className={"createEventButtonDiv"}>
-            <button id={"CreateEventButton"} onClick={handleClick}>
-              Create Event
-            </button>
+            {createEventButton()}
           </div>
         </div>
         <div className={"portfolioSection"}></div>

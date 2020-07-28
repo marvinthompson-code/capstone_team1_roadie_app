@@ -20,7 +20,6 @@ export const asyncLogout = () => (dispatch) => {
 
 
 export const updateClient = (user) => async (dispatch) => {
-    // dispatch(setLoading(true))
     try {
         if (user) {
             const { email, uid } = user;
@@ -31,7 +30,6 @@ export const updateClient = (user) => async (dispatch) => {
         } else {
             dispatch(recieveClient(null))
         }
-        // dispatch(setLoading(false))
     } catch (error) {
         console.log("error", error)
     }
