@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
+import { useSelector } from "react-redux"
 
 export const AuthRoute = ({ children, ...rest }) => {
   const { currentUser } = useContext(AuthContext);
+  // const user = useSelector((state) => state.userToken)
   return (
     <Route
       {...rest}
@@ -16,6 +18,7 @@ export const AuthRoute = ({ children, ...rest }) => {
 
 export const ProtectedRoute = ({ children, ...rest }) => {
   const { currentUser } = useContext(AuthContext);
+  // const user = useSelector((state) => state.userToken)
   return (
     <Route
       {...rest}
