@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
 import Modal from "react-modal";
 import axios from "axios";
-import { updateArtist } from "../Artist/artistSlice";
+import { updateArtist } from "../token/artistTokenSlice";
 import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
@@ -88,7 +88,9 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
+      debugger
       dispatch(updateArtist(res.user));
+      debugger
     } catch (error) {
       console.log(error.message);
     }

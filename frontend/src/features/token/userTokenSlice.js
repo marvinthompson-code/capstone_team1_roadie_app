@@ -22,9 +22,12 @@ export const updateUser = (user) => async (dispatch) => {
     try {
         if (user) {
             const { email, lastLogin, uid } = user;
+            debugger
             const token = await getFirebaseIdToken()
             let res = await axios.get(`${API}/users/${uid}`)
+            debugger
             let { type } = res.data.body.single_user
+            debugger
             if (type === "artist") {
                 dispatch(recieveArtist({email, lastLogin, id: uid}));
             } else if (type === "client") {
