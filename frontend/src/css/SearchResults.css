@@ -1,0 +1,44 @@
+:root {
+    --pumkinOrange: #ec9b59;
+    --pink: #f4d8cd;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+}
+
+@font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+}
+
+
+
+.resultItem {
+    background-color: var(--darkBlue);
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    width: 40%;
+};
+
+.nameDisplay {
+    
+};
+
+.name {
+    color: #ec9b59;
+};
+
+.picDisplay {
+
+};

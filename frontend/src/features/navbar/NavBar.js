@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { toggleModalState } from '../Artist/modalSlice'
+import { clientLogout } from '../token/clientTokenSlice'
+import { artistLogout } from '../token/artistTokenSlice'
 import { useDispatch } from 'react-redux'
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
@@ -9,9 +11,14 @@ import { AuthContext } from "../../providers/AuthContext";
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
   const dispatch = useDispatch()
+  const userLogout = () => {
+    dispatch(clientLogout())
+    dispatch(artistLogout())
+    logout()
+  }
   const displayButtons = () => {
     if (currentUser) {
-      return <button onClick={logout}>Logout</button>;
+      return <button onClick={userLogout}>Logout</button>;
     } else {
       return (
         <>

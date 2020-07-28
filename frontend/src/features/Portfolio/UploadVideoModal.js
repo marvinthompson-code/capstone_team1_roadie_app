@@ -75,6 +75,7 @@ const UploadVideoModal = () => {
     }
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     debugger;
@@ -87,6 +88,7 @@ const UploadVideoModal = () => {
       console.log(err.message);
     }
   };
+
 
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
