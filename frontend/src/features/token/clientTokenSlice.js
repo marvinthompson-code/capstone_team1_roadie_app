@@ -8,14 +8,14 @@ export const clientSlice = createSlice({
     reducers: {
         recieveClient: { 
             reducer: (state, action) => action.payload },
-        logout: {
+        clientLogout: {
             reducer: (state) => null
         }
     }
 })
 
 export const asyncLogout = () => (dispatch) => {
-    dispatch(logout())
+    dispatch(clientLogout())
 }
 
 
@@ -38,5 +38,5 @@ export const updateClient = (user) => async (dispatch) => {
 }
 
 
-export const { recieveClient, logout } = clientSlice.actions;
+export const { recieveClient, clientLogout } = clientSlice.actions;
 export default clientSlice.reducer;

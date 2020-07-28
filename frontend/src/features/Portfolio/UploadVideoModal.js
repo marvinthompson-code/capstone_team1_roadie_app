@@ -64,18 +64,18 @@ const API = apiURL()
     }
   };
 
-//   const handleSubmit = async (e) =>{
-//       e.preventDefault();
-//       try{
-//           let res = await axios.post(`${API}/videos`, {
-//               artist_id: res.user.uid,
-//               content: content
-//           });
+  const handleSubmit = async (e) =>{
+      e.preventDefault();
+      try{
+          let res = await axios.post(`${API}/videos`, {
+              artist_id: res.user.uid,
+              content: caption
+          });
 
-//       }catch(err){
-//         console.log(err.message)
-//       }
-//   }
+      }catch(err){
+        console.log(err.message)
+      }
+  }
 
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
