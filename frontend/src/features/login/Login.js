@@ -18,9 +18,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+  
       let res = await login(email, password);
       dispatch(updateUser(res.user))
       history.push("/");
+
     } catch (error) {
       setError(error.message);
     }
