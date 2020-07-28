@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { toggleModalState } from '../Artist/modalSlice'
 import { clientLogout } from '../token/clientTokenSlice'
 import { artistLogout } from '../token/artistTokenSlice'
+import { recieveToken } from '../token/tokenSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
@@ -26,6 +27,7 @@ const NavBar = () => {
   const userLogout = () => {
     dispatch(clientLogout())
     dispatch(artistLogout())
+    dispatch(recieveToken(null))
     logout()
   }
   const displayButtons = () => {
