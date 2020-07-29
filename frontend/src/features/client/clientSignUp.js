@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { storage } from "../../firebase";
+import Modal from "react-modal";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/clientSignUp.css";
+import "../../css/ArtistSignUpForm.css";
+import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -21,7 +24,7 @@ const ClientSignUp = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
-
+  const history = useHistory();
   const API = apiURL();
   const dispatch = useDispatch();
 
@@ -91,92 +94,99 @@ const ClientSignUp = () => {
       console.log(error.message);
     }
   };
+  const closeModal = () => {
+    dispatch(toggleModalState());
+    history.push("/");
+  };
   return (
-    // <Modal
-    //   isOpen={true}
-    //   onRequestClose={closeModal}
-    //   isOpen={isOpen}
-    //   style={{
-    //     content: {
-    //       backgroundColor: "#F4D8CD",
-    //       borderRadius: "13px",
-    //       left: "25%",
-    //       right: "25%",
-    //     },
-    //     overlay: {
-    //       backgroundColor: "#164444",
-    //     },
-    //   }}
-    // >
-    <div className="FormContainer">
-      <div className="artistContainer">
-        <h3 id={"artisth3"}>Client Sign Up</h3>
-      </div>
-      <div className="artistSignUpForm">
-        <form onSubmit={handleSubmit} className="artistForm">
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"name"}
-            value={name}
-            onChange={(e) => setName(e.currentTarget.value)}
-          />
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"email"}
-            value={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
-          />
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"city"}
-            value={city}
-            onChange={(e) => setCity(e.currentTarget.value)}
-          />
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"company name"}
-            value={company}
-            onChange={(e) => setCompany(e.currentTarget.value)}
-          />
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"bio"}
-            value={bio}
-            onChange={(e) => setBio(e.currentTarget.value)}
-          />
-          <input
-            type={"text"}
-            className={"artistInputSpace"}
-            placeholder={"Contact Information"}
-            value={contact_info}
-            onChange={(e) => setContactInfo(e.currentTarget.value)}
-          />
-          <input
-            type={"password"}
-            className={"artistInputSpace"}
-            placeholder={"password"}
-            value={password}
-            onChange={(e) => setPassword(e.currentTarget.value)}
-          />
-          <div className="artistUploadImg">
-            <p id="uploadHeader">
-              <input type="file" required onChange={handleImageAsFile} />
-            </p>
-            <button type="button" onClick={handleFirebaseUpload} id="clientImg">
-              upload
-            </button>
-            {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+
+    <Modal
+      isOpen={true}
+      onRequestClose={closeModal}
+      isOpen={isOpen}
+      style={{
+        content: {
+          backgroundColor: "#F4D8CD",
+          borderRadius: "13px",
+          left: "25%",
+          right: "25%",
+        },
+        overlay: {
+          backgroundColor: "#164444",
+        },
+      }}
+    >
+      <div className="FormContainer">
+        <div className="artistSignUpTitle">
+          <h3 id={"artisth3"}>Client Sign Up</h3>
+        </div>
+        <div className="artistSignUpForm">
+          <form onSubmit={handleSubmit} className="artistForm">
+            <div className="artistInput">
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"name"}
+              value={name}
+              onChange={(e) => setName(e.currentTarget.value)}
+            />
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"email"}
+              value={email}
+              onChange={(e) => setEmail(e.currentTarget.value)}
+            />
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"city"}
+              value={city}
+              onChange={(e) => setCity(e.currentTarget.value)}
+            />
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"company name"}
+              value={company}
+              onChange={(e) => setCompany(e.currentTarget.value)}
+            />
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"bio"}
+              value={bio}
+              onChange={(e) => setBio(e.currentTarget.value)}
+            />
+            <input
+              type={"text"}
+              className={"artistInputSpace"}
+              placeholder={"Contact Information"}
+              value={contact_info}
+              onChange={(e) => setContactInfo(e.currentTarget.value)}
+            />
+            <input
+              type={"password"}
+              className={"artistInputSpace"}
+              placeholder={"password"}
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+            />
+            </div>
+        <div className="artistSubmitButton">
+            <input type="file" required onChange={handleImageAsFile} id="fileUpload" />
+        
+          <button type="button" onClick={handleFirebaseUpload} id="firebaseUpload">
+            upload
+          </button>
+          {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
+      
+        <input type="submit" id="submitArtist" value="Sign Up" />
+        </div>
+          </form>
           </div>
-          <input type="submit" className="artistSignUpBttn" value="Sign Up" />
-        </form>
-      </div>
-    </div>
-    // </Modal>
+          </div>
+    </Modal>
   );
 };
 export default ClientSignUp;
