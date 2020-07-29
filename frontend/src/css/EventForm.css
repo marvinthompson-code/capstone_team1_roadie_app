@@ -1,0 +1,19 @@
+@font-face {
+  src: url("../fonts/Raleway-Black.ttf");
+  font-family: railwayBlk;
+}
+
+@font-face {
+  src: url("../fonts/Raleway-BoldItalic.ttf");
+  font-family: railwayBldIt;
+}
+
+@font-face {
+  src: url("../fonts/Raleway-Light.ttf");
+  font-family: railwayLight;
+}
+
+.eventFormDiv {
+  display: flex;
+  flex-direction: column;
+}

@@ -5,6 +5,7 @@
   --darkGreen: #164444;
   --darkBlue: #00202b;
 }
+
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
   font-family: railwayBlk;
@@ -21,11 +22,9 @@
 }
 
 nav {
-  /* display: flex; */
   display: grid;
   padding: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  /* justify-content: space-around; */
+  grid-template-columns: repeat(4, 1fr);
   font-family: railwayLight;
   color: var(--darkGreen);
   text-align: center;
@@ -33,6 +32,10 @@ nav {
   border-style: none none solid none;
   border-color: var(--lightGreen);
   z-index: 2;
+}
+
+a {
+  text-decoration: none;
 }
 
 .inactive {
