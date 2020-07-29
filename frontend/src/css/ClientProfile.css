@@ -24,6 +24,44 @@
 /* body {
     background-color: var(--darkGreen);
 } */
+.eventsTitle {
+    font-family: railwayLight;
+}
+.eventThumb {
+    background-color: var(--pumkinOrange);
+    border-radius: 10px;
+    width: 90%;
+    opacity: 0.6;
+    transition: 2s;
+}
+
+.eventThumb:hover {
+    opacity: 1;
+}
+.venueDateContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.eventName {
+    font-family: railwayLight;
+    margin: auto;
+    text-shadow: 0.5px 0.3px 1px black;
+    color:  var(--pink);
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#venue {
+    font-family: railwayBldIt;
+    color: var(--pink);
+}
+
+#date {
+    font-family: railwayBldIt;
+    color: var(--pink);
+}
 
 .name {
     font-family: railwayLight;
