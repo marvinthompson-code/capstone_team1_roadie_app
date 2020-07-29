@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 import firebase from "./firebase";
+import ArtistProfile from "./features/Artist/ArtistProfile"
 import { updateUser } from "./features/token/userTokenSlice";
 // import ClientSignUp from "./features/client/clientSignUp";
 // import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
@@ -60,6 +61,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>
+          <ArtistProfile />
           <Portfolio />
           <UploadPictureModal />
           <UploadVideoModal />

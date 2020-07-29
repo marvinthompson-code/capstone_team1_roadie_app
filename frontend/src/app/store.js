@@ -6,6 +6,7 @@ import bookMeModalReducer from "../features/Artist/bookMeModalSlice"
 import eventModalReducer from "../features/Events/eventModalSlice";
 import loginModalReducer from "../features/login/loginModalSlice"
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
+import editArtistProfileModalReducer from "../features/Artist/editArtistProfileModalSlice"
 import artistReducer from "../features/token/artistTokenSlice";
 import tokenReducer from "../features/token/tokenSlice";
 import eventDisplayReducer from "../features/Events/eventDisplaySlice"
@@ -26,6 +27,7 @@ export default configureStore({
     clientContactModal: clientContactModalReducer,
     search: searchReducer,
     editClientProfileModal: editClientProfileModalReducer,
+    editArtistProfileModal: editArtistProfileModalReducer,
     userType: userTypeReducer,
     userToken: userTokenReducer,
     uploadModal: uploadModalReducer,
