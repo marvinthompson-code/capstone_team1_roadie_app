@@ -12,6 +12,7 @@ import EditClientProfileForm from "./features/ClientProfile/EditClientProfileFor
 import ClientProfile from './features/ClientProfile/ClientProfile';
 import Login from "./features/login/Login";
 import EventForm from "./features/Events/EventForm"
+import EventDisplay from "./features/Events/EventDisplay"
 import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
@@ -41,9 +42,6 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <ProtectedRoute exact path="/users">
-          Users
-        </ProtectedRoute>
         <AuthRoute exact path="/signup">
           <DisplaySignUp />
         </AuthRoute>

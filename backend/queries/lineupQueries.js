@@ -10,7 +10,9 @@ const getLineupForEvent = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "was able to get lineup",
-      body: lineup,
+      body: {
+        lineup
+      }
     });
   } catch (err) {
     console.log(err);

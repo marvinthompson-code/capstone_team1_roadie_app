@@ -22,6 +22,29 @@ const getAllEventsBySingleClient = async (req, res, next) => {
   }
 };
 
+const getSingleEventById = async (req, res, next) => {
+  let { id, client_id } = req.params;
+  try {
+    let event = await db.one(`SELECT * FROM events WHERE id = $1 AND client_id = $2`, [
+      id,
+      client_id
+    ]);
+    res.status(200).json({
+      status: "successful",
+      message: "Got single events by id",
+      body: {
+        event,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "Error",
+      message: "Could not get events",
+    });
+    next(error);
+  }
+};
+
 const addSingleEvent = async (req, res, next) => {
   let { name, venue, date, address, city, client_id } = req.body;
   try {
@@ -46,7 +69,7 @@ const addSingleEvent = async (req, res, next) => {
   }
 };
 
-const getAllEventsByName = async (res, req, next) => {
+const getAllEventsByName = async (req, res, next) => {
   let { name } = req.params;
   try {
     let event = await db.one(
@@ -70,7 +93,7 @@ const getAllEventsByName = async (res, req, next) => {
   }
 };
 
-const deleteSingleEvent = async (res, req, next) => {
+const deleteSingleEvent = async (req, res, next) => {
   let { id } = req.params;
   try {
     let deleted_event = await db.one(
@@ -97,4 +120,5 @@ module.exports = {
   addSingleEvent,
   getAllEventsByName,
   deleteSingleEvent,
+  getSingleEventById
 };
