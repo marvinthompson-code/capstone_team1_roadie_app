@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../Artist/modalSlice";
 import { toggleEventModalState } from "../Events/eventModalSlice";
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
+import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice"
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
@@ -75,7 +76,7 @@ const ClientProfile = () => {
       <div className={"buttonsDiv"}>
         <button
           id={"ContactMeButton"}
-          onClick={() => dispatch(toggleModalState())}
+          onClick={() => dispatch(toggleClientContactModalState())}
         >
           Contact Me!
         </button>
