@@ -43,7 +43,7 @@ const Search = () => {
                     <option value={"Artist"} >Artist</option>
                     <option value={"Client"}>Client</option>
                 </select>
-                <button type="submit">Submit</button>
+                <button id="searchButton" type="submit">Submit</button>
             </form>
         </div>
     )

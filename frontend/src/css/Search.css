@@ -69,12 +69,32 @@ input[type="text"]:focus {
   width: 30%;
 }
 
-#searchInput{
-    background-color: white;
-    border: 1px solid var(--lightGreen);
-    border-radius: 13px 0px 0px 13px;
-};
+#searchInput {
+  background-color: white;
+  border: 1px solid var(--lightGreen);
+  border-radius: 13px 0px 0px 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: railwayLight;
+  color: black;
+}
 
-#searchSelect{
+#searchSelect {
+  background-color: white;
+  font-family: railwayLight;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 0 4px 8px -4px black;
+  border: 1px solid var(--lightGreen);
+  color: black;
+}
+#searchButton{
     background-color: var(--lightGreen);
+    border-radius: 0px 13px 13px 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid var(--darkBlue);
+    z-index: 2;
+}
+#searchButton:hover{
+    background-color: var(--pink);
+    border: 1px solid var(--lightGreen);
+    color: var(--darkBlue)
 }
