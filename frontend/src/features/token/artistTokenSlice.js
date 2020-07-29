@@ -8,14 +8,14 @@ export const artistSlice = createSlice({
     reducers: {
         recieveArtist: { 
             reducer: (state, action) => action.payload },
-        logout: {
+        artistLogout: {
             reducer: (state) => null
         }
     }
 })
 
 export const asyncLogout = () => (dispatch) => {
-    dispatch(logout())
+    dispatch(artistLogout())
 }
 
 
@@ -23,8 +23,10 @@ export const updateArtist = (user) => async (dispatch) => {
     // dispatch(setLoading(true))
     try {
         if (user) {
+            debugger
             const { email, uid } = user;
             const lastLogin = user.metadata.lastSignInTime;
+            debugger
             dispatch(recieveArtist({email, lastLogin, id: uid}));
             const token = await getFirebaseIdToken()
             dispatch(recieveToken(token))
@@ -37,6 +39,6 @@ export const updateArtist = (user) => async (dispatch) => {
     }
 }
 
-export const { recieveArtist, logout } = artistSlice.actions;
+export const { recieveArtist, artistLogout } = artistSlice.actions;
 export default artistSlice.reducer;
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import { updateClient } from "../client/clientSlice";
+import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/clientSignUp.css";

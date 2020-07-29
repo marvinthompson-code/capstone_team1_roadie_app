@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "../../css/Login.css";
 import { useHistory } from "react-router-dom";
-import { updateUser } from "../token/userSlice";
+import { updateUser } from "../token/userTokenSlice";
 import { login } from "../../util/firebaseFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../Artist/modalSlice";
@@ -18,16 +18,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      // check which table info belongs to
-      // conditional (if artist, dispatch updateArtist)
-      // if client (dispatch updateClient)
-      // dispatch
+  
+      let res = await login(email, password);
+      dispatch(updateUser(res.user))
       history.push("/");
-
-      // check what type the user is 
-      // dispatch recieve artist if artist
-      // dispatch recieve client if client
 
     } catch (error) {
       setError(error.message);
