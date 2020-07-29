@@ -42,15 +42,31 @@ const NavBar = () => {
     } else {
       return (
         <>
-          <NavLink exact to={"/login"} onClick={() => dispatch(toggleModalState())}>Login</NavLink>
-          <NavLink to={"/signup"} onClick={() => dispatch(toggleModalState())}>Sign Up</NavLink>
+          <NavLink
+            className="inactive"
+            activeClassName="active"
+            exact
+            to={"/login"}
+            onClick={() => dispatch(toggleModalState())}
+          >
+            Login
+          </NavLink>
+          <NavLink
+            className="inactive"
+            activeClassName="active"
+            id="signUpLink"
+            to={"/signup"}
+            onClick={() => dispatch(toggleModalState())}
+          >
+            Sign Up
+          </NavLink>
         </>
       );
     }
   };
   return (
     <nav>
-      <NavLink exact to={"/"}>
+      <NavLink className="inactive" activeClassName="active" exact to={"/"}>
         Home
       </NavLink>
       {displayButtons()}

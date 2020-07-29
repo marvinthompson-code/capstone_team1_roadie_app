@@ -4,7 +4,7 @@ import SearchIndex from "./SearchIndex";
 const SearchResults = () => {
 
     return(
-        <div>
+        <div className="searchResults">
             <SearchIndex />
         </div>
     )
