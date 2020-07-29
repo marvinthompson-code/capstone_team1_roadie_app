@@ -18,6 +18,7 @@ const ClientProfile = () => {
   const [city, setCity] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState("");
   const [userEvents, setUserEvents] = useState([]);
+  const [toggleEditEvents, setToggleEditEvents] = useState(false);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const API = apiURL();
@@ -58,15 +59,43 @@ const ClientProfile = () => {
     fetchUserEvents(match.params.id);
   }, [userEvents]);
 
+  const handleEventDelete = async (id) => {
+    try {
+      await axios.delete(`${API}/events/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleToggle = () => {
+    toggleEditEvents ? setToggleEditEvents(false) : setToggleEditEvents(true);
+  };
+
   const userEventsThumbs = userEvents.map((event) => {
     return (
-      <li id={event.id} className={"eventThumb"} key={event.id}>
-        <h2 className={"eventName"}>{event.name}</h2>
-        <div className={"venueDateContainer"}>
-          <h3 id={"venue"}>{event.venue}</h3>
-          <h3 id={"date"}>{event.date.slice(0, 10)}</h3>
-        </div>
-      </li>
+      <div className="singleEventContainer">
+        <li id={event.id} className={"eventThumb"} key={event.id}>
+          <div className="eventHeading">
+            <h2 className={"eventName"}>{event.name}</h2>
+            {toggleEditEvents ? (
+              <img
+                src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
+                alt="delete"
+                id="deleteBttn"
+                onClick={() => {
+                  handleEventDelete(event.id);
+                }}
+              />
+            ) : null}
+          </div>
+          <div className={"venueDateContainer"}>
+            <h3 id={"venue"}>{event.venue}</h3>
+            <h3 id={"date"}>{event.date.slice(0, 10)}</h3>
+            <h3 id={"address"}>{event.address}</h3>
+            <h3 id={"city"}>{event.city}</h3>
+          </div>
+        </li>
+      </div>
     );
   });
 
@@ -86,12 +115,17 @@ const ClientProfile = () => {
   let createEventButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button
-          id={"CreateEventButton"}
-          onClick={() => dispatch(toggleEventModalState())}
-        >
-          Create Event
-        </button>
+        <div className="eventsButtonsDiv">
+          <button
+            id={"CreateEventButton"}
+            onClick={() => dispatch(toggleEventModalState())}
+          >
+            Create Event
+          </button>
+          <button id={"CreateEventButton"} onClick={handleToggle}>
+            Edit Events
+          </button>
+        </div>
       );
     }
   };
