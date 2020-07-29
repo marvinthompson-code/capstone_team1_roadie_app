@@ -17,14 +17,15 @@ const UploadVideoModal = () => {
 
   const API = apiURL();
 
-  useEffect(() => {
-    if (!artist) {
-      setCurrentId(client.id);
-    } else {
-      setCurrentId(artist.id);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (artist === null) {
+  //     setCurrentId(client.id);
+  //   } else {
+  //     setCurrentId(artist.id);
+  //   }
+  // }, []);
 
+  
   let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
   const closeModal = () => {
