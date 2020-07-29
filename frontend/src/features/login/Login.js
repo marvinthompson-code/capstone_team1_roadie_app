@@ -5,14 +5,14 @@ import { useHistory } from "react-router-dom";
 import { updateUser } from "../token/userTokenSlice";
 import { login } from "../../util/firebaseFunctions";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModalState } from "../Artist/modalSlice";
+import { toggleLoginModalState, recieveModalState } from "../login/loginModalSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const isOpen = useSelector((state) => state.modal);
+  const isOpen = useSelector((state) => state.loginModal);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -27,11 +27,12 @@ const Login = () => {
   };
 
   const closeModal = () => {
-    dispatch(toggleModalState());
+    dispatch(toggleLoginModalState());
+    history.push("/")
   };
 
   useEffect(() => {
-    dispatch(toggleModalState())
+    dispatch(recieveModalState(true))
   }, [])
 
   return (

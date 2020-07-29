@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { toggleModalState } from "../Artist/modalSlice";
+import { toggleLoginModalState } from "../login/loginModalSlice"
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";
@@ -63,7 +64,7 @@ const NavBar = () => {
             activeClassName="active"
             exact
             to={"/login"}
-            onClick={() => dispatch(toggleModalState())}
+            onClick={() => dispatch(toggleLoginModalState())}
           >
             Login
           </NavLink>

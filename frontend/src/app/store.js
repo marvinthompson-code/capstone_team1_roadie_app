@@ -4,6 +4,7 @@ import clientReducer from "../features/token/clientTokenSlice";
 import clientContactModalReducer from "../features/ClientContactForm/clientContactModalSlice"
 import bookMeModalReducer from "../features/Artist/bookMeModalSlice"
 import eventModalReducer from "../features/Events/eventModalSlice";
+import loginModalReducer from "../features/login/loginModalSlice"
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
 import artistReducer from "../features/token/artistTokenSlice";
 import tokenReducer from "../features/token/tokenSlice";
@@ -18,6 +19,7 @@ export default configureStore({
   reducer: {
     artist: artistReducer,
     token: tokenReducer,
+    loginModal: loginModalReducer,
     modal: modalReducer,
     client: clientReducer,
     eventModal: eventModalReducer,

@@ -4,11 +4,13 @@ import { toggleModalState } from "../Artist/modalSlice";
 import ArtistSignUpForm from "../Artist/ArtistSignUpForm";
 import ClientSignUp from "../client/clientSignUp";
 import Modal from "react-modal";
+import { useHistory } from "react-router-dom"
 import "../../css/DisplaySignUp.css";
 import styled, { css } from "styled-components";
 
 const DisplaySignUp = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   let isOpen = useSelector((state) => state.modal);
   const [toggle, setToggle] = useState(false);
   const onClick = () => {
@@ -44,6 +46,7 @@ const DisplaySignUp = () => {
 
   const closeModal = () => {
     dispatch(toggleModalState());
+    history.push("/")
   };
 
   return (

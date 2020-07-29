@@ -7,6 +7,7 @@ import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
+import { useHistory } from "react-router-dom"
 import "../../css/ArtistSignUpForm.css";
 
 const ArtistSignUpForm = () => {
@@ -28,6 +29,7 @@ const ArtistSignUpForm = () => {
 
   const API = apiURL();
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -98,6 +100,7 @@ const ArtistSignUpForm = () => {
 
   const closeModal = () => {
     dispatch(toggleModalState());
+    history.push("/")
   };
 
   return (
