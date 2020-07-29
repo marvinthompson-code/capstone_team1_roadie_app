@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import { toggleEventModalState } from "./eventModalSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
+
 import axios from "axios";
 import Modal from "react-modal";
 import "../../css/EventForm.css";
@@ -18,6 +19,11 @@ const EventForm = () => {
   const history = useHistory();
   const isOpen = useSelector((state) => state.eventModal);
   const API = apiURL();
+  const match = useRouteMatch();
+
+  const closeModal = () => {
+    dispatch(toggleEventModalState());
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,13 +36,10 @@ const EventForm = () => {
         city,
         client_id: client.id,
       });
+      closeModal();
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const closeModal = () => {
-    dispatch(toggleEventModalState());
   };
 
   return (

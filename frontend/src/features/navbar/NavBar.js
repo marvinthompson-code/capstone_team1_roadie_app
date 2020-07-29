@@ -6,6 +6,7 @@ import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
+import logo from "../../RoadieLogo.png";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 
@@ -24,7 +25,7 @@ const NavBar = () => {
           to={`/artist/${currentUser.id}`}
           activeClassName={"navItem"}
         >
-          Profile
+          PROFILE
         </NavLink>
       );
     } else if (client !== null && artist === null) {
@@ -34,7 +35,7 @@ const NavBar = () => {
           to={`/client/${currentUser.id}`}
           activeClassName={"navItem"}
         >
-          Profile
+          PROFILE
         </NavLink>
       );
     }
@@ -47,12 +48,11 @@ const NavBar = () => {
     logout();
   };
   const displayButtons = () => {
-    debugger;
     if (currentUser) {
       return (
         <>
           {routeExt()}
-          <button onClick={userLogout}>Logout</button>
+          <button onClick={userLogout}>LOGOUT</button>
           {/* <NavLink exact to={routeExt} activeClassName={"navItem"}>Profile</NavLink> */}
         </>
       );
@@ -64,10 +64,10 @@ const NavBar = () => {
             to={"/login"}
             onClick={() => dispatch(toggleModalState())}
           >
-            Login
+            LOGIN
           </NavLink>
           <NavLink to={"/signup"} onClick={() => dispatch(toggleModalState())}>
-            Sign Up
+            SIGN UP
           </NavLink>
         </>
       );
@@ -75,8 +75,9 @@ const NavBar = () => {
   };
   return (
     <nav>
+      <img src={logo} alt="logo" className="navLogo" />
       <NavLink exact to={"/"}>
-        Home
+        HOME
       </NavLink>
       {displayButtons()}
     </nav>
