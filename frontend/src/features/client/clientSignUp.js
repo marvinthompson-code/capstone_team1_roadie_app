@@ -100,28 +100,12 @@ const ClientSignUp = () => {
   };
   return (
 
-    <Modal
-      isOpen={true}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-        overlay: {
-          backgroundColor: "#164444",
-        },
-      }}
-    >
       <div className="FormContainer">
         <div className="artistSignUpTitle">
           <h3 id={"artisth3"}>Client Sign Up</h3>
         </div>
         <div className="artistSignUpForm">
-          <form onSubmit={handleSubmit} className="artistForm">
+          <form onSubmit={handleSubmit} id="artistForm">
             <div className="artistInput">
             <input
               type={"text"}
@@ -186,7 +170,6 @@ const ClientSignUp = () => {
           </form>
           </div>
           </div>
-    </Modal>
   );
 };
 export default ClientSignUp;
