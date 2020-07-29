@@ -73,6 +73,7 @@ const ClientSignUp = () => {
   };
 
   const handleSubmit = async (e) => {
+    debugger
     e.preventDefault();
     try {
       let res = await signUp(email, password);
@@ -93,10 +94,6 @@ const ClientSignUp = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
-  const closeModal = () => {
-    dispatch(toggleModalState());
-    history.push("/");
   };
   return (
 
