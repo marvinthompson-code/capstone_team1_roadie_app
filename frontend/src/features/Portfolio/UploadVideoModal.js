@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModalState } from "./uploadModalSlice";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
-import {apiURL} from '../../util/apiURL';
+import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 
 const UploadVideoModal = () => {
@@ -11,8 +11,19 @@ const UploadVideoModal = () => {
   const [videoUrl, setVideoUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const [caption, setCaption] = useState("");
+  const [currentId, setCurrentId] = useState("");
+  const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
 
-const API = apiURL()
+  const API = apiURL();
+
+  // useEffect(() => {
+  //   if (!artist) {
+  //     setCurrentId(client.id);
+  //   } else {
+  //     setCurrentId(artist.id);
+  //   }
+  // }, []);
 
   let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
@@ -64,24 +75,32 @@ const API = apiURL()
     }
   };
 
-  const handleSubmit = async (e) =>{
-      e.preventDefault();
-      try{
-          let res = await axios.post(`${API}/videos`, {
-              artist_id: res.user.uid,
-              content: caption
-          });
 
-      }catch(err){
-        console.log(err.message)
-      }
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    debugger;
+    try {
+      await axios.post(`${API}/media/artists/${artist.id}/videos`, {
+        caption: caption,
+        url: videoUrl,
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
 
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
       <form onSubmit={handleSubmit}>
         <input type="file" required onChange={handleVideoAsFile} />
-        <input type="text" placeholder="Caption" value={caption} onChange={(e) => setCaption(e.currentTarget.value)} required/>
+        <input
+          type="text"
+          placeholder="Caption"
+          value={caption}
+          onChange={(e) => setCaption(e.currentTarget.value)}
+          required
+        />
         <button type="button" onClick={handleFirebaseVideoUpload}>
           Upload Video
         </button>
