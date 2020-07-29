@@ -82,7 +82,9 @@ const NavBar = () => {
   };
   return (
     <nav>
-      <img src={logo} alt="logo" className="navLogo" />
+      <NavLink className="inactive" activeClassName="active" exact to={"/"}>
+      <img src={logo} alt="logo" className="navLogo" id="roadieLogo" />
+      </NavLink>
       <NavLink className="inactive" activeClassName="active" exact to={"/"}>
         Home
       </NavLink>

@@ -23,7 +23,7 @@
 
 nav {
   display: grid;
-  padding: 10px;
+  padding: 5px;
   grid-template-columns: repeat(4, 1fr);
   font-family: railwayLight;
   color: var(--darkGreen);
@@ -42,8 +42,12 @@ a {
   color: var(--pink);
   border-style: none solid none none;
   border-color: var(--lightGreen);
+  /* padding: 5px; */
 }
-
+#roadieLogo{
+  height: 40px;
+  width: 75px;
+}
 #signUpLink{
   border-style: none;
 }

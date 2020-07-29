@@ -11,7 +11,7 @@ const Home = () => {
 
             <div className="searchHomeContainer">
                 <div className="pinkContainer">
-                <h1 className="welcomeTitle">
+                <h1 id="titleHeader">
                 WELCOME TO ROADIE
                 </h1>
                 <Search />
