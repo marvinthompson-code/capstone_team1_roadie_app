@@ -10,10 +10,12 @@ const Home = () => {
         <div className="homeContainer">
 
             <div className="searchHomeContainer">
+                <div className="pinkContainer">
                 <h1 className="welcomeTitle">
                 WELCOME TO ROADIE
                 </h1>
                 <Search />
+                </div>
             </div>
 
             <div className="bookMeFormContainer">

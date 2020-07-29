@@ -60,5 +60,14 @@
 
   .homeContainer{
       display: grid;
-      border: 2px solid green;
+      background-color: var(--darkBlue);
+      grid-template-columns: 10% 80% 10%;
+      height: 100%;
   }
+
+  .searchHomeContainer{
+      background-color: var(--darkGreen);
+      grid-column: 2/ span 1;
+      height: 100%;
+  }
+

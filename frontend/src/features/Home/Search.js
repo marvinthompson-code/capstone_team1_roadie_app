@@ -38,7 +38,7 @@ const Search = () => {
             <form onSubmit={handleSubmit}>
                 <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)}/>
                 <select value={userType} onChange={(e)=> setUserType(e.target.value)}>
-                    <option disabled value="" selected>Search By...</option>
+                    <option disabled value="">Search By...</option>
                     <option value={"Artist"} >Artist</option>
                     <option value={"Client"}>Client</option>
                 </select>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "../../css/Login.css";
 import { useHistory } from "react-router-dom";
@@ -18,11 +18,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-  
       let res = await login(email, password);
       dispatch(updateUser(res.user))
       history.push("/");
-
     } catch (error) {
       setError(error.message);
     }
@@ -31,6 +29,10 @@ const Login = () => {
   const closeModal = () => {
     dispatch(toggleModalState());
   };
+
+  useEffect(() => {
+    dispatch(toggleModalState())
+  }, [])
 
   return (
     <Modal

@@ -24,7 +24,7 @@ nav {
   /* display: flex; */
   display: grid;
   padding: 10px;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(3, 1fr);
   /* justify-content: space-around; */
   font-family: railwayLight;
   color: var(--darkGreen);
@@ -32,6 +32,7 @@ nav {
   background-color: var(--darkBlue);
   border-style: none none solid none;
   border-color: var(--lightGreen);
+  z-index: 2;
 }
 
 .inactive {
