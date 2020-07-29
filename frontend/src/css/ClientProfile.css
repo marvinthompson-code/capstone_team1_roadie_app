@@ -98,8 +98,8 @@ label {
 }
 
 .eventUl {
-  display: grid;
-  grid-template-rows: 25% auto;
+  display: flex;
+  flex-direction: column;
   list-style: none;
 }
 

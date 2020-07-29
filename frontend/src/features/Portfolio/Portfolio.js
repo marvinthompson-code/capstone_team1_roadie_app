@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {toggleModalState} from './uploadModalSlice';
+import {toggleBookMeModalState} from'../Artist/bookMeModalSlice'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
@@ -36,6 +37,26 @@ const ArtistPortfolio = () => {
   //   }
   // };
 
+  const displayUploadPictureButton = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+        <button type="button" onClick={handleClick}>
+            +picture
+          </button>
+      )
+    }
+  }
+
+  const displayUploadVideoButton = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+      <button type="button" onClick={handleClick}>
+              +video
+          </button>
+      )
+    }
+  }
+
   useEffect(() => {
     const fetchArtist = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
@@ -62,7 +83,7 @@ const ArtistPortfolio = () => {
     <div className="artistPortfolioContainer">
       <div className="portfolioHeader">
         <img src={profilePic} />
-        <button>Book Me!</button>
+        <button onClick={() => dispatch(toggleBookMeModalState())}>Book Me!</button>
       </div>
       <div className="artistName">
         <h1>{name}</h1>
@@ -70,15 +91,11 @@ const ArtistPortfolio = () => {
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
-          <button type="button" onClick={handleClick}>
-            +picture
-          </button>
+          {displayUploadPictureButton()}
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
-          <button type="button" onClick={handleClick}>
-              +video
-          </button>
+          {displayUploadVideoButton()}
         </div>
       </div>
     </div>
