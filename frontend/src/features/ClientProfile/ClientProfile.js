@@ -73,7 +73,7 @@ const ClientProfile = () => {
 
   const userEventsThumbs = userEvents.map((event) => {
     return (
-      <div className="singleEventContainer">
+      <div className="singleEventContainer" key={event.id}>
         <li id={event.id} className={"eventThumb"} key={event.id}>
           <div className="eventHeading">
             <h2 className={"eventName"}>{event.name}</h2>
@@ -94,6 +94,7 @@ const ClientProfile = () => {
             <h3 id={"address"}>{event.address}</h3>
             <h3 id={"city"}>{event.city}</h3>
           </div>
+          
         </li>
       </div>
     );
