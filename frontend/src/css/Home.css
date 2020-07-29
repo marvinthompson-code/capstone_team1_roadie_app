@@ -38,7 +38,7 @@
 
 :root {
   --pumpkinOrange: #ec9b59;
-  --pink: #f4d8cd;
+  --pink: #E29678;
   --lightGreen: #9eb19e;
   --darkGreen: #164444;
   --darkBlue: #00202b;
@@ -79,16 +79,20 @@
   border-radius: 23px;
   box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
 }
+.titleContainer{
+  /* background-color: var(--); */
+  padding: 20px;
+}
 .pinkContainer {
   display: grid;
   z-index: 3;
-  background-color: var(--pink);
-  background-image: linear-gradient(
+  background-color: var(--pumpkinOrange);
+  /* background-image: linear-gradient(
     to right,
     var(--lightGreen),
     var(--pumpkinOrange),
     var(--pink)
-  );
+  ); */
   grid-column: 2 / span 1;
   text-align: center;
   border-radius: 23px;
@@ -98,6 +102,6 @@
 #titleHeader {
   z-index: 4;
   color: var(--lightGreen);
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 1px black;
   font-family: railwayLight;
 }

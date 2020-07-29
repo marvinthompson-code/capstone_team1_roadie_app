@@ -7,7 +7,7 @@ import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import "../../css/ArtistSignUpForm.css";
 
 const ArtistSignUpForm = () => {
@@ -29,7 +29,7 @@ const ArtistSignUpForm = () => {
 
   const API = apiURL();
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -90,9 +90,9 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
-      debugger
+      debugger;
       dispatch(updateArtist(res.user));
-      debugger
+      debugger;
     } catch (error) {
       console.log(error.message);
     }
@@ -100,7 +100,7 @@ const ArtistSignUpForm = () => {
 
   const closeModal = () => {
     dispatch(toggleModalState());
-    history.push("/")
+    history.push("/");
   };
 
   return (
@@ -125,7 +125,7 @@ const ArtistSignUpForm = () => {
           <h3 id={"artisth3"}>Artist Sign Up</h3>
         </div>
         <div className="artistSignUpForm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id="artistForm">
             <div className="artistInput">
               <input
                 type={"text"}
@@ -189,22 +189,22 @@ const ArtistSignUpForm = () => {
                     <option value={"$$$"}>$$$</option>
                     <option value={"Ask"}>Ask</option>
                 </select> */}
-            <div className="artistUploadImg">
-              <input type="file" onChange={handleImageAsFile} required />
-            </div>
-            <div className="artistImgUploadBttn">
+            <div className="artistSubmitButton">
+              <input type="file" onChange={handleImageAsFile} required id="fileUpload" />
+
               <button
                 type="button"
                 onClick={() => {
                   handleFirebaseUpload();
                 }}
+                id="firebaseUpload"
               >
                 Upload
               </button>
-              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
-            </div>
-            <div className="artistSignUpBttn">
-              <button type={"submit"}>Sign Up</button>
+
+              {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
+
+              <button type={"submit"} id="submitArtist">Sign Up</button>
             </div>
           </form>
         </div>
