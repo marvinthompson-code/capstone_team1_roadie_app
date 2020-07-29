@@ -96,5 +96,6 @@
 #searchButton:hover{
     background-color: var(--pink);
     border: 1px solid var(--lightGreen);
-    color: var(--darkBlue)
+    color: var(--darkBlue);
+    cursor: pointer;
 }
