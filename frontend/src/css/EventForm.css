@@ -14,6 +14,22 @@
 }
 
 .eventFormDiv {
+  display: grid;
+  grid-template-rows: 30% auto;
+  justify-content: center;
+}
+
+.eventFormTitle {
+  font-size: 24px;
+  font-weight: bolder;
+  font-family: railwayLight;
+}
+
+.eventForm {
   display: flex;
   flex-direction: column;
+}
+
+.eventFormInput {
+  font-family: railwayLight;
 }

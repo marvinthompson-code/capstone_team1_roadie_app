@@ -1,216 +1,220 @@
 :root {
-    --pumkinOrange: #ec9b59;
-    --pink: #f4d8cd;
-    --lightGreen: #9eb19e;
-    --darkGreen: #164444;
-    --darkBlue: #00202b;
+  --pumkinOrange: #ec9b59;
+  --pink: #f4d8cd;
+  --lightGreen: #9eb19e;
+  --darkGreen: #164444;
+  --darkBlue: #00202b;
 }
 
 @font-face {
-    src: url("../fonts/Raleway-Black.ttf");
-    font-family: railwayBlk;
+  src: url("../fonts/Raleway-Black.ttf");
+  font-family: railwayBlk;
 }
-  
+
 @font-face {
-    src: url("../fonts/Raleway-BoldItalic.ttf");
-    font-family: railwayBldIt;
+  src: url("../fonts/Raleway-BoldItalic.ttf");
+  font-family: railwayBldIt;
 }
-  
+
 @font-face {
-    src: url("../fonts/Raleway-Light.ttf");
-    font-family: railwayLight;
+  src: url("../fonts/Raleway-Light.ttf");
+  font-family: railwayLight;
 }
 
 /* body {
     background-color: var(--darkGreen);
 } */
+
+label {
+  color: var(--pumpkinOrange);
+}
+
 .eventsTitle {
-    font-family: railwayLight;
+  font-family: railwayLight;
 }
 .eventThumb {
-    background-color: var(--pumkinOrange);
-    border-radius: 10px;
-    width: 90%;
-    opacity: 0.6;
-    transition: 2s;
+  background-color: var(--pumpkinOrange);
+  border-radius: 10px;
+  width: 90%;
+  opacity: 0.6;
+  transition: 2s;
 }
 
 .eventThumb:hover {
-    opacity: 1;
+  opacity: 1;
 }
 .venueDateContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .eventName {
-    font-family: railwayLight;
-    margin: auto;
-    text-shadow: 0.5px 0.3px 1px black;
-    color:  var(--pink);
-    padding-left: 10%;
-    padding-right: 10%;
+  font-family: railwayLight;
+  margin: auto;
+  text-shadow: 0.5px 0.3px 1px black;
+  color: var(--pink);
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 #venue {
-    font-family: railwayBldIt;
-    color: var(--pink);
+  font-family: railwayBldIt;
+  color: var(--pink);
 }
 
 #date {
-    font-family: railwayBldIt;
-    color: var(--pink);
+  font-family: railwayBldIt;
+  color: var(--pink);
 }
 
 .name {
-    font-family: railwayLight;
-    font-size: xx-large;
-    color: var(--pink); 
-    text-shadow: 0.5px 0.3px 1px black;
-    text-align: center;
+  font-family: railwayLight;
+  font-size: xx-large;
+  color: var(--pink);
+  text-shadow: 0.5px 0.3px 1px black;
+  text-align: center;
 }
 
 .BioDiv {
-    background-color: var(--pink);
-    width: 40%;
-    border-radius: 20px;
-    text-align: center;
-    height: 300px;
-    transition: 2s;
+  background-color: var(--pink);
+  width: 40%;
+  border-radius: 20px;
+  text-align: center;
+  height: 300px;
+  transition: 2s;
 }
 
 .eventDiv {
-    width: 350px;
-    height: 285px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    background-color: var(--pink);
-    border-radius: 20px;
-    transition: 2s;
-    overflow: scroll;
+  width: 350px;
+  height: 285px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  background-color: var(--pink);
+  border-radius: 20px;
+  transition: 2s;
+  overflow: scroll;
 }
 
 .eventDiv:hover {
-    box-shadow: 0.5px 0.5px 2px darkgray
+  box-shadow: 0.5px 0.5px 2px darkgray;
 }
 .eventUl {
-    list-style: none;
+  list-style: none;
 }
 
 .eventTitleDiv {
-    justify-content: center;
+  justify-content: center;
 }
 
 .eventsTitle {
-    /* margin: auto; */
-    font-family: railwayLight;
-    margin-left: 35px;
+  /* margin: auto; */
+  font-family: railwayLight;
+  margin-left: 35px;
 }
 
 .BioPortfolioContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .BioDiv:hover {
-    box-shadow: 0.5px 0.5px 2px darkgray
+  box-shadow: 0.5px 0.5px 2px darkgray;
 }
 
 .aboutMe {
-    font-family: railwayLight;
-    font-size: x-large;
+  font-family: railwayLight;
+  font-size: x-large;
 }
 
 .bio {
-    font-family: railwayLight;
-    font-size: large; 
-    text-align: left;
+  font-family: railwayLight;
+  font-size: large;
+  text-align: left;
 }
 
 .contact {
-    font-family: railwayLight;
-    font-size: large;
-    color: var(--pink);  
-    text-shadow: 0.5px 0.3px 1px black;
+  font-family: railwayLight;
+  font-size: large;
+  color: var(--pink);
+  text-shadow: 0.5px 0.3px 1px black;
 }
 
 .city {
-    font-family: railwayLight;
-    font-size: x-large;
-    color: var(--pink); 
-    text-shadow: 0.5px 0.3px 1px black;
+  font-family: railwayLight;
+  font-size: x-large;
+  color: var(--pink);
+  text-shadow: 0.5px 0.3px 1px black;
 }
 
 .CityDiv {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .InfoDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .ContactInfoDiv {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 #ContactMeButton {
-    background-color: var(--pumkinOrange);
-    color: var(--pink);
-    font-size: x-large;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px;
-    height: 50px;
-    border: none;
-    opacity: 0.6;
-    transition: 2s;
-    width: 160px;
+  background-color: var(--pumkinOrange);
+  color: var(--pink);
+  font-size: x-large;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px;
+  height: 50px;
+  border: none;
+  opacity: 0.6;
+  transition: 2s;
+  width: 160px;
 }
 
 #ContactMeButton:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 #EditClientProfileButton {
-    background-color: var(--pumkinOrange);
-    color: var(--pink);
-    font-size: x-large;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px;
-    height: 50px;
-    border: none;
-    opacity: 0.6;
-    transition: 2s;
-    width: 160px;
+  background-color: var(--pumkinOrange);
+  color: var(--pink);
+  font-size: x-large;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px;
+  height: 50px;
+  border: none;
+  opacity: 0.6;
+  transition: 2s;
+  width: 160px;
 }
 
 #EditClientProfileButton:hover {
-    opacity: 1;
+  opacity: 1;
 }
 #CreateEventButton {
-    background-color: var(--pumkinOrange);
-    color: var(--pink);
-    font-size: x-large;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px;
-    height: 50px;
-    border: none;
-    opacity: 0.6;
-    transition: 2s;
-    width: 160px;
+  background-color: var(--pumkinOrange);
+  color: var(--pink);
+  font-size: x-large;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px;
+  height: 50px;
+  border: none;
+  opacity: 0.6;
+  transition: 2s;
+  width: 160px;
 }
 
 #CreateEventButton:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .buttonsDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-

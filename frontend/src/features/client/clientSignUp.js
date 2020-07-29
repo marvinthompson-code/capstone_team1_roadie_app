@@ -6,7 +6,6 @@ import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/clientSignUp.css";
-// import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
