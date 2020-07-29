@@ -58,45 +58,23 @@
   font-family: railwayLight;
 }
 
-.homeContainer {
-  display: grid;
-  background-color: var(--darkBlue);
-  grid-template-columns: 10% 80% 10%;
-  height: 100%;
-  z-index: 1;
-  padding: 60px;
-  height: 200%;
+input[type="text"] {
+  width: 120px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
-.searchHomeContainer {
-  display: grid;
-  background-color: var(--darkGreen);
-  grid-column: 2 / span 1;
-  height: 100%;
-  z-index: 2;
-  grid-template-columns: 10% 80% 10%;
-  padding: 40px;
-  border-radius: 23px;
-  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
-}
-.pinkContainer {
-  display: grid;
-  z-index: 3;
-  background-color: var(--pink);
-  background-image: linear-gradient(
-    to right,
-    var(--lightGreen),
-    var(--pumpkinOrange),
-    var(--pink)
-  );
-  grid-column: 2 / span 1;
-  text-align: center;
-  border-radius: 23px;
-  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
+/* When the input field gets focus, change its width to 100% */
+input[type="text"]:focus {
+  width: 30%;
 }
 
-#titleHeader {
-  z-index: 4;
-  color: var(--lightGreen);
-  text-shadow: 2px 2px 5px black;
+#searchInput{
+    background-color: white;
+    border: 1px solid var(--lightGreen);
+    border-radius: 13px 0px 0px 13px;
+};
+
+#searchSelect{
+    background-color: var(--lightGreen);
 }

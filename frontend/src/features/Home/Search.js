@@ -4,7 +4,8 @@ import { apiURL } from '../../util/apiURL'
 import { useHistory } from 'react-router-dom'
 import { receiveSearch } from "../SearchResults/searchSlice";
 import { receiveUserType } from "../user/userSlice";
-import axios from 'axios'
+import axios from 'axios';
+import "../../css/Search.css";
 
 const Search = () => {
     const [userType, setUserType] = useState("")
@@ -34,10 +35,10 @@ const Search = () => {
         
     }
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)}/>
-                <select value={userType} onChange={(e)=> setUserType(e.target.value)}>
+        <div className="searchContainer">
+            <form onSubmit={handleSubmit} className="searchForm">
+                <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)} id="searchInput"/>
+                <select value={userType} onChange={(e)=> setUserType(e.target.value)} id="searchSelect">
                     <option disabled value="">Search By...</option>
                     <option value={"Artist"} >Artist</option>
                     <option value={"Client"}>Client</option>
