@@ -34,9 +34,9 @@ const NavBar = () => {
     if (currentUser) {
       return (
         <>
+      {routeExt()}
       <button onClick={userLogout}>Logout</button>
       {/* <NavLink exact to={routeExt} activeClassName={"navItem"}>Profile</NavLink> */}
-      {routeExt()}
       </>
       )
     } else {
@@ -53,7 +53,6 @@ const NavBar = () => {
       <NavLink exact to={"/"}>
         Home
       </NavLink>
-      <NavLink to={"/users"}>All Users</NavLink>
       {displayButtons()}
     </nav>
   );

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModalState } from "../Artist/modalSlice";
+import EventDisplay from "../Events/EventDisplay"
 import { toggleEventModalState } from "../Events/eventModalSlice";
+import { toggleEventDisplayState } from "../Events/eventDisplaySlice"
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice"
 import axios from "axios";
+import Modal from "react-modal"
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "../../css/ClientProfile.css";
@@ -15,12 +17,19 @@ const ClientProfile = () => {
   const [contactInfo, setContactInfo] = useState("");
   const [city, setCity] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState("");
+  const [userEvents, setUserEvents] = useState([])
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const API = apiURL();
   const match = useRouteMatch();
   const dispatch = useDispatch();
+  const isOpen = useSelector(state => state.EventDisplay)
   const history = useHistory();
+
+  // const displayEventModal = (id, client_id) => {
+  //   dispatch(toggleEventDisplayState())
+  //   return  <EventDisplay id={id} client_id={client_id} isOpen={isOpen} />
+  // }
 
   useEffect(() => {
     const fetchUserInfo = async (id) => {
@@ -40,6 +49,31 @@ const ClientProfile = () => {
     };
     fetchUserInfo(match.params.id);
   }, []);
+
+  useEffect(() => {
+    const fetchUserEvents = async (id) => {
+      let res = await axios.get(`${API}/events/${id}`)
+      debugger
+      setUserEvents(res.data.body.events)
+    }
+    fetchUserEvents(match.params.id)
+  }, []);
+
+
+
+  const userEventsThumbs = userEvents.map((event) => {
+    return (
+      <>
+      <li id={event.id} className={"eventThumb"} key={event.id}>
+        <h2 className={"eventName"}>{event.name}</h2>
+        <div className={"venueDateContainer"}>
+          <h3 id={"venue"}>{event.venue}</h3>
+          <h3 id={"date"}>{event.date.slice(0,10)}</h3>
+        </div>
+      </li>
+      </>
+    )
+  })
 
   let editButton = () => {
     if (client !== null && client.id === match.params.id) {
@@ -80,12 +114,6 @@ const ClientProfile = () => {
         >
           Contact Me!
         </button>
-        {/* <button
-          id={"EditClientProfileButton"}
-          onClick={() => dispatch(toggleEditClientProfileModalState())}
-        >
-          Edit Profile
-        </button> */}
         {editButton()}
       </div>
 
@@ -114,10 +142,7 @@ const ClientProfile = () => {
             <h3 className={"eventsTitle"}>Created Events</h3>
           </div>
           <ul className={"eventUl"}>
-            <li>Example Event 1</li>
-            <li>Example Event 2</li>
-            <li>Example Event 3</li>
-            <li>Example Event 4</li>
+            {userEventsThumbs}
           </ul>
 
           <div className={"createEventButtonDiv"}>

@@ -7,6 +7,7 @@ import eventModalReducer from "../features/Events/eventModalSlice";
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
 import artistReducer from "../features/token/artistTokenSlice";
 import tokenReducer from "../features/token/tokenSlice";
+import eventDisplayReducer from "../features/Events/eventDisplaySlice"
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
 import userTypeReducer from "../features/user/userSlice";
@@ -26,7 +27,8 @@ export default configureStore({
     userType: userTypeReducer,
     userToken: userTokenReducer,
     uploadModal: uploadModalReducer,
-    bookMeModal: bookMeModalReducer
+    bookMeModal: bookMeModalReducer,
+    eventDisplay: eventDisplayReducer
   },
   middleware: [...getDefaultMiddleware(), logger],
 });
