@@ -24,8 +24,9 @@ const NavBar = () => {
           exact
           to={`/artist/${currentUser.id}`}
           activeClassName={"navItem"}
+          className="inactive"
         >
-          PROFILE
+          Profile
         </NavLink>
       );
     } else if (client !== null && artist === null) {
@@ -34,8 +35,9 @@ const NavBar = () => {
           exact
           to={`/client/${currentUser.id}`}
           activeClassName={"navItem"}
+          className="inactive"
         >
-          PROFILE
+          Profile
         </NavLink>
       );
     }
@@ -52,7 +54,9 @@ const NavBar = () => {
       return (
         <>
           {routeExt()}
-          <button onClick={userLogout}>LOGOUT</button>
+          <button className="logoutBttn" onClick={userLogout}>
+            Logout
+          </button>
         </>
       );
     } else {
@@ -83,7 +87,7 @@ const NavBar = () => {
   return (
     <nav>
       <NavLink className="inactive" activeClassName="active" exact to={"/"}>
-      <img src={logo} alt="logo" className="navLogo" id="roadieLogo" />
+        <img src={logo} alt="logo" className="navLogo" id="roadieLogo" />
       </NavLink>
       <NavLink className="inactive" activeClassName="active" exact to={"/"}>
         Home

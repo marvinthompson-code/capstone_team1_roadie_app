@@ -63,40 +63,55 @@
   display: grid;
   grid-template-rows: 10% 90%;
 }
-.artistContainer {
+
+.artistContainer,
+.clientContainer {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   text-align: center;
 }
-#artisth3 {
+
+#artisth3,
+#clienth3 {
   grid-column: 2 / span 1;
   font-size: medium;
   font-family: railwayLight;
 }
-.artistSignUpForm {
+
+.artistSignUpForm,
+.clientContainer {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
 }
-.artistForm {
+
+.artistForm,
+.clientForm {
   grid-column: 2 / span 1;
   display: grid;
 }
-.artistInputSpace {
+
+.artistInputSpace,
+.clientInputSpace {
   border: 1px solid lightgray;
   border-radius: 13px;
   grid-row-gap: 13px;
   font-family: railwayLight;
   box-shadow: 1px 1px 4px;
 }
-.artistUploadImg {
+
+.artistUploadImg,
+.clientUploadImg {
   display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, 50%);
 }
+
 #uploadHeader {
   font-family: railwayLight;
 }
-#artistImg {
+
+#artistImg,
+#clientImg {
   grid-area: 1/ 2 / span 1 / span 1;
   background-color: var(--lightGreen);
   font-family: railwayLight;

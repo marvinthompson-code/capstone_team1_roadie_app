@@ -44,10 +44,35 @@ a {
   border-color: var(--lightGreen);
   /* padding: 5px; */
 }
-#roadieLogo{
+
+.inactive:hover {
+  font-size: 25px;
+  font-weight: bolder;
+  color: var(--pumpkinOrange);
+}
+
+#roadieLogo {
   height: 40px;
   width: 75px;
 }
-#signUpLink{
+#signUpLink {
   border-style: none;
+}
+
+.logoutBttn {
+  align-self: center;
+  justify-self: center;
+  height: 50%;
+  width: 20%;
+  color: var(--darkBlue);
+  background-color: var(--pink);
+}
+
+.logoutBttn:hover {
+  align-self: center;
+  justify-self: center;
+  height: 50%;
+  width: 20%;
+  color: var(--pumpkinOrange);
+  background-color: var(--darkGreen);
 }

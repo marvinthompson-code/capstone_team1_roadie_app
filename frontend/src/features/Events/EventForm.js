@@ -57,6 +57,7 @@ const EventForm = () => {
       }}
     >
       <div className="eventFormDiv">
+        <h2 className="eventFormTitle">Create an Event</h2>
         <form className="eventForm" onSubmit={handleSubmit}>
           <input
             type="text"

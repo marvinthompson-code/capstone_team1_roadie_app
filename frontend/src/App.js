@@ -2,38 +2,37 @@ import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
-import firebase from './firebase'
-import { updateUser } from './features/token/userTokenSlice'
+import firebase from "./firebase";
+import { updateUser } from "./features/token/userTokenSlice";
 // import ClientSignUp from "./features/client/clientSignUp";
 // import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
-import BookMeForm from "./features/Artist/BookMeForm"
+import BookMeForm from "./features/Artist/BookMeForm";
 import EditClientProfileForm from "./features/ClientProfile/EditClientProfileForm";
-import ClientProfile from './features/ClientProfile/ClientProfile';
+import ClientProfile from "./features/ClientProfile/ClientProfile";
 import Login from "./features/login/Login";
-import EventForm from "./features/Events/EventForm"
-import EventDisplay from "./features/Events/EventDisplay"
+import EventForm from "./features/Events/EventForm";
+import EventDisplay from "./features/Events/EventDisplay";
 import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
-import Portfolio from './features/Portfolio/Portfolio'
+import Portfolio from "./features/Portfolio/Portfolio";
 import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
 import UploadVideoModal from "./features/Portfolio/UploadVideoModal";
 import UploadPictureModal from "./features/Portfolio/UploadPictureModal";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 
-Modal.setAppElement('#root');
-
+Modal.setAppElement("#root");
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      dispatch(updateUser(user))
-    })
-    return unsubscribe
-  }, [])
+      dispatch(updateUser(user));
+    });
+    return unsubscribe;
+  }, []);
 
   return (
     <div className="App">
@@ -49,24 +48,23 @@ function App() {
           <Login />
         </AuthRoute>
 
-      <Route exact path={"/results"}>
-        <SearchResults />
-      </Route>
+        <Route exact path={"/results"}>
+          <SearchResults />
+        </Route>
 
-      <ProtectedRoute exact path={"/client/:id"}>
-        <ClientProfile />
-        <ClientContactForm />
-        <EditClientProfileForm />
-        <EventForm />
-      </ProtectedRoute>
+        <ProtectedRoute exact path={"/client/:id"}>
+          <ClientProfile />
+          <ClientContactForm />
+          <EditClientProfileForm />
+          <EventForm />
+        </ProtectedRoute>
 
-      <ProtectedRoute exact path={"/artists/:id"}>
-        <Portfolio />
-        <UploadPictureModal />
-        <UploadVideoModal />
-        <BookMeForm />
-      </ProtectedRoute>
-      
+        <ProtectedRoute exact path={"/artist/:id"}>
+          <Portfolio />
+          <UploadPictureModal />
+          <UploadVideoModal />
+          <BookMeForm />
+        </ProtectedRoute>
       </AuthProvider>
     </div>
   );
