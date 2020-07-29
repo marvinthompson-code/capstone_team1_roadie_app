@@ -1,3 +1,11 @@
+:root {
+  --pumpkinOrange: #ec9b59;
+  --pink: #f4d8cd;
+  --lightGreen: #9eb19e;
+  --darkGreen: #164444;
+  --darkBlue: #00202b;
+}
+
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
   font-family: railwayBlk;
@@ -15,26 +23,27 @@
 
 nav {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 100px;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  font-family: railwayLight;
+  color: var(--darkGreen);
+  text-align: center;
+  background-color: var(--darkBlue);
+  border-style: none none solid none;
+  border-color: var(--lightGreen);
+  z-index: 2;
 }
 
 a {
   text-decoration: none;
-  font-weight: bold;
 }
 
-a:hover {
-  opacity: 80%;
+.inactive {
+  color: var(--pink);
+  border-style: none solid none none;
+  border-color: var(--lightGreen);
 }
 
-.navLogo {
-  height: 85px;
-  width: 85px;
-}
-
-.navButton {
-  text-decoration: none;
+#signUpLink{
+  border-style: none;
 }

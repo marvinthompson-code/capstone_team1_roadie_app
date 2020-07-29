@@ -17,13 +17,13 @@ const UploadVideoModal = () => {
 
   const API = apiURL();
 
-  // useEffect(() => {
-  //   if (!artist) {
-  //     setCurrentId(client.id);
-  //   } else {
-  //     setCurrentId(artist.id);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!artist) {
+      setCurrentId(client.id);
+    } else {
+      setCurrentId(artist.id);
+    }
+  }, []);
 
   let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
@@ -75,7 +75,6 @@ const UploadVideoModal = () => {
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     debugger;
@@ -88,7 +87,6 @@ const UploadVideoModal = () => {
       console.log(err.message);
     }
   };
-
 
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>

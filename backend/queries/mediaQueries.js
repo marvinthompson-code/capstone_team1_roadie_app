@@ -33,18 +33,18 @@ const getVideos = async (req, res, next) => {
   }
 };
 const addNewVideo = async (req, res, next) => {
-  let { artist_id, client_id, caption } = req.body;
+  let { artist_id, client_id, caption, url } = req.body;
   try {
     let video;
     if (!client_id) {
       video = await db.one(
-        `INSERT INTO videos (artist_id, caption ) VALUES($1, $2) RETURNING *`,
-        [artist_id, caption]
+        `INSERT INTO videos (artist_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
+        [artist_id, caption, url]
       );
     } else {
       video = await db.one(
-        `INSERT INTO videos (client_id, caption ) VALUES($1, $2) RETURNING *`,
-        [client_id, caption]
+        `INSERT INTO videos (client_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
+        [client_id, caption, url]
       );
     }
     res.status(200).json({
@@ -63,18 +63,18 @@ const addNewVideo = async (req, res, next) => {
 };
 
 const addNewPicture = async (req, res, next) => {
-  let { artist_id, client_id, caption } = req.body;
+  let { artist_id, client_id, caption, url } = req.body;
   try {
     let picture;
     if (!client_id) {
       picture = await db.one(
-        `INSERT INTO pictures (artist_id, caption ) VALUES($1, $2) RETURNING *`,
-        [artist_id, caption]
+        `INSERT INTO pictures (artist_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
+        [artist_id, caption, url]
       );
     } else {
       picture = await db.one(
-        `INSERT INTO pictures (client_id, caption ) VALUES($1, $2) RETURNING *`,
-        [client_id, caption]
+        `INSERT INTO pictures (client_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
+        [client_id, caption, url]
       );
     }
     res.status(200).json({

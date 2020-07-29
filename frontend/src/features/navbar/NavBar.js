@@ -53,21 +53,28 @@ const NavBar = () => {
         <>
           {routeExt()}
           <button onClick={userLogout}>LOGOUT</button>
-          {/* <NavLink exact to={routeExt} activeClassName={"navItem"}>Profile</NavLink> */}
         </>
       );
     } else {
       return (
         <>
           <NavLink
+            className="inactive"
+            activeClassName="active"
             exact
             to={"/login"}
             onClick={() => dispatch(toggleModalState())}
           >
-            LOGIN
+            Login
           </NavLink>
-          <NavLink to={"/signup"} onClick={() => dispatch(toggleModalState())}>
-            SIGN UP
+          <NavLink
+            className="inactive"
+            activeClassName="active"
+            id="signUpLink"
+            to={"/signup"}
+            onClick={() => dispatch(toggleModalState())}
+          >
+            Sign Up
           </NavLink>
         </>
       );
@@ -76,8 +83,8 @@ const NavBar = () => {
   return (
     <nav>
       <img src={logo} alt="logo" className="navLogo" />
-      <NavLink exact to={"/"}>
-        HOME
+      <NavLink className="inactive" activeClassName="active" exact to={"/"}>
+        Home
       </NavLink>
       {displayButtons()}
     </nav>
