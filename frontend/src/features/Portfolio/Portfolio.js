@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {toggleModalState} from './uploadModalSlice';
-import {toggleBookMeModalState} from'../Artist/bookMeModalSlice'
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
@@ -83,10 +82,6 @@ const ArtistPortfolio = () => {
     <div className="artistPortfolioContainer">
       <div className="portfolioHeader">
         <img src={profilePic} />
-        <button onClick={() => dispatch(toggleBookMeModalState())}>Book Me!</button>
-      </div>
-      <div className="artistName">
-        <h1>{name}</h1>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">

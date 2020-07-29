@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import EventDisplay from "../Events/EventDisplay";
 import { toggleEventModalState } from "../Events/eventModalSlice";
-import { toggleEventDisplayState } from "../Events/eventDisplaySlice";
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import axios from "axios";
-import Modal from "react-modal";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import "../../css/ClientProfile.css";
