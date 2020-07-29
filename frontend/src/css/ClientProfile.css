@@ -43,10 +43,11 @@ label {
 .eventThumb:hover {
   opacity: 1;
 }
+
 .venueDateContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
 }
 
 .eventName {
@@ -58,12 +59,8 @@ label {
   padding-right: 10%;
 }
 
-#venue {
-  font-family: railwayBldIt;
-  color: var(--pink);
-}
-
-#date {
+#venue,
+#address {
   font-family: railwayBldIt;
   color: var(--pink);
 }
@@ -99,7 +96,10 @@ label {
 .eventDiv:hover {
   box-shadow: 0.5px 0.5px 2px darkgray;
 }
+
 .eventUl {
+  display: grid;
+  grid-template-rows: 25% auto;
   list-style: none;
 }
 
@@ -197,6 +197,15 @@ label {
 #EditClientProfileButton:hover {
   opacity: 1;
 }
+
+.eventsButtonsDiv {
+  margin-left: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
 #CreateEventButton {
   background-color: var(--pumkinOrange);
   color: var(--pink);
@@ -217,4 +226,19 @@ label {
 .buttonsDiv {
   display: flex;
   flex-direction: column;
+}
+
+.eventHeading {
+  display: flex;
+  flex-direction: row;
+}
+
+#deleteBttn {
+  height: 35px;
+  width: 35px;
+}
+
+#deleteBttn:hover {
+  height: 30px;
+  width: 30px;
 }
