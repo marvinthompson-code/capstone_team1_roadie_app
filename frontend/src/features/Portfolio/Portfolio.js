@@ -37,6 +37,26 @@ const ArtistPortfolio = () => {
   //   }
   // };
 
+  const displayUploadPictureButton = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+        <button type="button" onClick={handleClick}>
+            +picture
+          </button>
+      )
+    }
+  }
+
+  const displayUploadVideoButton = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+      <button type="button" onClick={handleClick}>
+              +video
+          </button>
+      )
+    }
+  }
+
   useEffect(() => {
     const fetchArtist = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
@@ -71,15 +91,11 @@ const ArtistPortfolio = () => {
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
-          <button type="button" onClick={handleClick}>
-            +picture
-          </button>
+          {displayUploadPictureButton()}
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
-          <button type="button" onClick={handleClick}>
-              +video
-          </button>
+          {displayUploadVideoButton()}
         </div>
       </div>
     </div>

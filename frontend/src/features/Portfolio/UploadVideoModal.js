@@ -25,6 +25,7 @@ const UploadVideoModal = () => {
   //   }
   // }, []);
 
+  
   let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
   const closeModal = () => {
