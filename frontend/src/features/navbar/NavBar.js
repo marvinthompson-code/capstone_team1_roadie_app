@@ -19,6 +19,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   let routeExt = () => {
+    debugger
     if (client === null && artist !== null) {
       return (
         <NavLink
@@ -51,6 +52,8 @@ const NavBar = () => {
     logout();
   };
   const displayButtons = () => {
+    debugger
+    console.log(currentUser, "currentUser")
     if (currentUser) {
       return (
         <>
