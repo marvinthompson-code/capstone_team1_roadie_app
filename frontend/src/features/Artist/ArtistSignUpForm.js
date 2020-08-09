@@ -104,22 +104,22 @@ const ArtistSignUpForm = () => {
   };
 
   return (
-    <Modal
-      isOpen={true}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-        overlay: {
-          backgroundColor: "#164444",
-        },
-      }}
-    >
+    // <Modal
+    //   isOpen={true}
+    //   onRequestClose={closeModal}
+    //   isOpen={isOpen}
+    //   style={{
+    //     content: {
+    //       backgroundColor: "#F4D8CD",
+    //       borderRadius: "13px",
+    //       left: "25%",
+    //       right: "25%",
+    //     },
+    //     overlay: {
+    //       backgroundColor: "#164444",
+    //     },
+    //   }}
+    // >
       <div className={"FormContainer"}>
         <div className="artistSignUpTitle">
           <h3 id={"artisth3"}>Artist Sign Up</h3>
@@ -209,7 +209,7 @@ const ArtistSignUpForm = () => {
           </form>
         </div>
       </div>
-    </Modal>
+    // </Modal>
   );
 };
 

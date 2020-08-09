@@ -7,7 +7,7 @@ import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/ArtistSignUpForm.css";
+import "../../css/clientSignUp.css";
 import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
@@ -100,22 +100,22 @@ const ClientSignUp = () => {
   };
   return (
 
-    <Modal
-      isOpen={true}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-        overlay: {
-          backgroundColor: "#164444",
-        },
-      }}
-    >
+    // <Modal
+    //   isOpen={true}
+    //   onRequestClose={closeModal}
+    //   isOpen={isOpen}
+    //   style={{
+    //     content: {
+    //       backgroundColor: "#F4D8CD",
+    //       borderRadius: "13px",
+    //       left: "25%",
+    //       right: "25%",
+    //     },
+    //     overlay: {
+    //       backgroundColor: "#164444",
+    //     },
+    //   }}
+    // >
       <div className="FormContainer">
         <div className="artistSignUpTitle">
           <h3 id={"artisth3"}>Client Sign Up</h3>
@@ -186,7 +186,7 @@ const ClientSignUp = () => {
           </form>
           </div>
           </div>
-    </Modal>
+    // </Modal>
   );
 };
 export default ClientSignUp;
