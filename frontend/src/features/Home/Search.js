@@ -21,6 +21,18 @@ const Search = () => {
             let routeExtension = name === "" ? "" : `/search/${name}`
             // declaring the variable, assignment, conditional. if name === "", set it to "" ELSE set it to /search/${name}
 
+            if (userType === "Artist" && name === "") {
+                let res = await axios.get(`${API}/artists`);
+                debugger
+                dispatch(receiveSearch(res.data.body.artists));
+            }
+
+            if (userType === "Client" && name === "") {
+                let res = await axios.get(`${API}/clients`);
+                debugger
+                dispatch(receiveSearch(res.data.body.clients));
+            }
+
             if (userType === "Artist") {
                 let res = await axios.get(`${API}/artists` + routeExtension);
                 debugger
@@ -29,7 +41,7 @@ const Search = () => {
                 let res = await axios.get(`${API}/clients` + routeExtension);
                 debugger
                 dispatch(receiveSearch(res.data.body.searched_client));
-            }
+            } 
             debugger
             dispatch(receiveUserType(userType));
             history.push("/results");
