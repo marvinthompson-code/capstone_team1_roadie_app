@@ -73,6 +73,7 @@ const ClientSignUp = () => {
   };
 
   const handleSubmit = async (e) => {
+    debugger
     e.preventDefault();
     try {
       let res = await signUp(email, password);
@@ -93,10 +94,6 @@ const ClientSignUp = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
-  const closeModal = () => {
-    dispatch(toggleModalState());
-    history.push("/");
   };
   return (
 
@@ -121,7 +118,7 @@ const ClientSignUp = () => {
           <h3 id={"artisth3"}>Client Sign Up</h3>
         </div>
         <div className="artistSignUpForm">
-          <form onSubmit={handleSubmit} className="artistForm">
+          <form onSubmit={handleSubmit} id="artistForm">
             <div className="artistInput">
             <input
               type={"text"}

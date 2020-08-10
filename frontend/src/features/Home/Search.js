@@ -19,14 +19,16 @@ const Search = () => {
         e.preventDefault()
         try {
             let routeExtension = name === "" ? "" : `/search/${name}`
+            // declaring the variable, assignment, conditional. if name === "", set it to "" ELSE set it to /search/${name}
+
             if (userType === "Artist") {
                 let res = await axios.get(`${API}/artists` + routeExtension);
                 debugger
-                dispatch(receiveSearch(res.data.body.artists));
+                dispatch(receiveSearch(res.data.body.searched_artist));
             } else if (userType === "Client") {
                 let res = await axios.get(`${API}/clients` + routeExtension);
                 debugger
-                dispatch(receiveSearch(res.data.body.clients));
+                dispatch(receiveSearch(res.data.body.searched_client));
             }
             debugger
             dispatch(receiveUserType(userType));
