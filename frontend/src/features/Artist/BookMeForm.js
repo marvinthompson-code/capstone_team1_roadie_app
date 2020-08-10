@@ -58,7 +58,7 @@ const BookMeForm = () => {
                         <label>
                             Event:
                             <select>
-                                <option selected disabled>
+                                <option value="" disabled>
                                     Select an event
                                 </option>
                                 {clientEvents}
