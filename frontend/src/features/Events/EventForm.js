@@ -36,6 +36,11 @@ const EventForm = () => {
         city,
         client_id: client.id,
       });
+      setName("")
+      setVenue("")
+      setDate("")
+      setAddress("")
+      setCity("")
       closeModal();
     } catch (err) {
       console.log(err);

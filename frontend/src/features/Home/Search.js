@@ -19,13 +19,30 @@ const Search = () => {
         e.preventDefault()
         try {
             let routeExtension = name === "" ? "" : `/search/${name}`
-            if (userType === "Artist") {
-                let res = await axios.get(`${API}/artists` + routeExtension);
+            // declaring the variable, assignment, conditional. if name === "", set it to "" ELSE set it to /search/${name}
+
+            if (userType === "Artist" && name === "") {
+                let res = await axios.get(`${API}/artists`);
+                debugger
                 dispatch(receiveSearch(res.data.body.artists));
-            } else if (userType === "Client") {
-                let res = await axios.get(`${API}/clients` + routeExtension);
+            }
+
+            if (userType === "Client" && name === "") {
+                let res = await axios.get(`${API}/clients`);
+                debugger
                 dispatch(receiveSearch(res.data.body.clients));
             }
+
+            if (userType === "Artist") {
+                let res = await axios.get(`${API}/artists` + routeExtension);
+                debugger
+                dispatch(receiveSearch(res.data.body.searched_artist));
+            } else if (userType === "Client") {
+                let res = await axios.get(`${API}/clients` + routeExtension);
+                debugger
+                dispatch(receiveSearch(res.data.body.searched_client));
+            } 
+            debugger
             dispatch(receiveUserType(userType));
             history.push("/results");
             
@@ -38,7 +55,7 @@ const Search = () => {
         <div className="searchContainer">
             <form onSubmit={handleSubmit} className="searchForm">
                 <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)} id="searchInput"/>
-                <select value={userType} onChange={(e)=> setUserType(e.target.value)} id="searchSelect">
+                <select value={userType} required aria-required={"true"} onChange={(e)=> setUserType(e.target.value)} id="searchSelect">
                     <option disabled value="">Search By...</option>
                     <option value={"Artist"} >Artist</option>
                     <option value={"Client"}>Client</option>

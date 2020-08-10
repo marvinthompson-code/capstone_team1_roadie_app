@@ -210,6 +210,7 @@ const ArtistSignUpForm = () => {
           </form>
         </div>
       </div>
+    // </Modal>
   
   );
 };
