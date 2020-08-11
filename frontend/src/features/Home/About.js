@@ -7,7 +7,7 @@ const About = () => {
             <div className={"aboutRoadieText"}>
                 
           <div className={"aboutTitleContainer"}>
-            <h1 id="titleHeader">How does it work?</h1>
+            <h1 id="titleHeaderAbout">How does it work?</h1>
           </div>
           <div className={"aboutParagraphContainer"}>
             <p className={"aboutParagraph1"}> Roadie is an all in one booking platform for Artists and Clients, designed to remove the hassle of event booking that often plagues the music industry.</p>

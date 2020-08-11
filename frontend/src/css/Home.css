@@ -62,7 +62,7 @@
   display: grid;
   background-color: var(--darkBlue);
   grid-template-columns: 10% 80% 10%;
-  grid-template-rows: 2% 2fr 1fr 2fr 2%;
+  grid-template-rows: 2% 2fr 2fr 2fr 2%;
   height: 100%;
   z-index: 1;
   padding: 60px;
@@ -83,7 +83,7 @@
 
 .aboutContainer {
 /* padding-top: 45px; */
-grid-area: 4 / 2 / span 1 / span 2;
+grid-area: 4 / 2 / span 1 / span 1;
 }
 
 .titleContainer{
