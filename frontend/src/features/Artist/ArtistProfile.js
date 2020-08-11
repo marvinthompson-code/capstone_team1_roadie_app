@@ -38,16 +38,16 @@ const ArtistProfile = () => {
           setCity(city);
           setContactInfo(contact_info);
         };
+        const fetchUserBookings = async (id) => {
+          let res = await axios.get(`${API}/artists/${id}/`);
+          debugger;
+          console.log("bookings' res: ", res);
+        }; 
         fetchUserInfo(match.params.id);
-      }, []);
+        fetchUserBookings(match.params.id);
+    }, []);
       
-      const fetchUserBookings = async (id) => {
-        let res = await axios.get(`${API}/artists/${id}/bookings`);
-        debugger;
-        console.log("bookings res: ", res);
-      };
-      
-      fetchUserBookings(match.params.id);
+    
     //   const handleToggle = () => {
     //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
     //   };

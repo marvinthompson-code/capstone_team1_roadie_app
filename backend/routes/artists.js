@@ -1,5 +1,4 @@
 const artists = require("express").Router();
-const artistBookingsRouter = require("../routes/artistsBookings");
 
 const {
   getAllArtists,
@@ -7,12 +6,11 @@ const {
   addSingleArtist,
   deleteSingleArtist,
   searchForSingleArtist,
-  updateArtistInfo
+  updateArtistInfo,
+  getAllArtistBookings
 } = require("../queries/artistsQueries");
 
 // const { checkFirebaseToken } = require("../middleware/auth");
-
-artists.use("/:id", artistBookingsRouter);
 
 artists.get("/", getAllArtists);
 artists.get("/:id", getSingleArtistByID);
@@ -20,5 +18,6 @@ artists.post("/", addSingleArtist);
 artists.delete("/:id", deleteSingleArtist);
 artists.get("/search/:name", searchForSingleArtist);
 artists.patch("/:id", updateArtistInfo);
+artists.get("/:id/bookings", getAllArtistBookings)
 
 module.exports = artists;
