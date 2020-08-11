@@ -15,6 +15,7 @@ const ArtistProfile = () => {
     const [profilePicUrl, setProfilePicUrl] = useState("");
     const artist = useSelector((state) => state.artist);
     const [toggleEditBookings, setToggleEditBookings] = useState(false);
+    const [bookings, setBookings] = useState([]);
 
     // const history = useHistory()
     const API = apiURL()
@@ -37,12 +38,20 @@ const ArtistProfile = () => {
           setCity(city);
           setContactInfo(contact_info);
         };
+        const fetchUserBookings = async (id) => {
+          let res = await axios.get(`${API}/artists/${id}/`);
+          debugger;
+          console.log("bookings' res: ", res);
+        }; 
         fetchUserInfo(match.params.id);
-      }, []);
-
+        fetchUserBookings(match.params.id);
+    }, []);
+      
+    
     //   const handleToggle = () => {
     //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
     //   };
+
 
       let editButton = () => {
         if (artist !== null && artist.id === match.params.id) {
@@ -59,54 +68,59 @@ const ArtistProfile = () => {
 
     return (
         <div>
-            <div className={"ProfilePictureDiv"}>
-        <img
-          src={profilePicUrl}
-          alt={"Artist Profile"}
-          className={"profilePicture"}
-        />
-      </div>
-
-      <div className={"buttonsDiv"}>
-        <button
-          id={"BookMeButton"}
-          onClick={() => dispatch(toggleBookMeModalState())}
-        >
-          Book Me!
-        </button>
-        {editButton()}
-      </div>
-
-      <div className={"ArtistNameDiv"}>
-        <h2 className={"name"}>{name}</h2>
-      </div>
-      <div className={"InfoDiv"}>
-        <div className={"CityDiv"}>
-          <label>City:</label>
-          <h3 className={"city"}>{city}</h3>
-        </div>
-
-        <div className={"ContactInfoDiv"}>
-          <label>Contact:</label>
-          <h3 className={"contact"}>{contactInfo}</h3>
-        </div>
-      </div>
-      <div className={"BioPortfolioContainer"}>
-        <div className={"BioDiv"}>
-          <h4 className={"aboutMe"}>About me:</h4>
-          <h3 className={"bio"}>{bio}</h3>
-        </div>
-
-        {/* <div className={"eventDiv"}>
-          <div className={"eventTitleDiv"}>
-            <h3 className={"eventsTitle"}>Created Events</h3>
+          <div className={"ProfilePictureDiv"}>
+            <img
+              src={profilePicUrl}
+              alt={"Artist Profile"}
+              className={"profilePicture"}
+            />
           </div>
-          <ul className={"eventUl"}>{userEventsThumbs}</ul>
 
-          <div className={"createEventButtonDiv"}>{createEventButton()}</div>
-        </div> */}
-        <div className={"portfolioSection"}></div>
-      </div>
+          <div className={"buttonsDiv"}>
+            <button
+              id={"BookMeButton"}
+              onClick={() => dispatch(toggleBookMeModalState())}
+            >
+            Book Me!
+            </button>
+            {editButton()}
+          </div>
+
+          <div className={"ArtistNameDiv"}>
+            <h2 className={"name"}>{name}</h2>
+          </div>
+          <div className={"InfoDiv"}>
+            <div className={"CityDiv"}>
+              <label>City:</label>
+                <h3 className={"city"}>{city}</h3>
+            </div>
+
+            <div className={"ContactInfoDiv"}>
+              <label>Contact:</label>
+              <h3 className={"contact"}>{contactInfo}</h3>
+            </div>
+          </div>
+          <div className={"BioPortfolioContainer"}>
+            <div className={"BioDiv"}>
+              <h4 className={"aboutMe"}>About me:</h4>
+              <h3 className={"bio"}>{bio}</h3>
+            </div>
+
+            {/* <div className={"eventDiv"}>
+              <div className={"eventTitleDiv"}>
+                <h3 className={"eventsTitle"}>Created Events</h3>
+              </div>
+              <ul className={"eventUl"}>{userEventsThumbs}</ul>
+
+              <div className={"createEventButtonDiv"}>{createEventButton()}</div>
+            </div> */}
+          
+            <div className={"portfolioSection"}></div>
+          </div>
+          <div className="BookingsDisplayContainer">
+            <h2>Upcoming shows!</h2>
+
+          </div>
         </div>
     )
 }
