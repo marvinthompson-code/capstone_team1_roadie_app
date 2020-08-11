@@ -62,6 +62,7 @@
   display: grid;
   background-color: var(--darkBlue);
   grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 2% 2fr 1fr 2fr 2%;
   height: 100%;
   z-index: 1;
   padding: 60px;
@@ -71,7 +72,7 @@
 .searchHomeContainer {
   display: grid;
   background-color: var(--darkGreen);
-  grid-column: 2 / span 1;
+  grid-area: 2 / 2 / span 1 / span 1;
   height: 100%;
   z-index: 2;
   grid-template-columns: 10% 80% 10%;
@@ -79,6 +80,12 @@
   border-radius: 23px;
   box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
 }
+
+.aboutContainer {
+/* padding-top: 45px; */
+grid-area: 4 / 2 / span 1 / span 2;
+}
+
 .titleContainer{
   /* background-color: var(--); */
   padding: 20px;

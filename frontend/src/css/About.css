@@ -1,0 +1,30 @@
+:root {
+    --pumpkinOrange: #ec9b59;
+    --pink: #E29678;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+  }
+  @font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+  }
+  
+  @font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+  }
+  
+  @font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+  }
+
+  .aboutRoadieContainer {
+      display: grid;
+      grid-template-columns: 1% 2fr 2fr 1%;
+  }
+
+  .aboutRoadieText {
+      grid-column: 2/ span 1;
+  }

@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "./Search";
 import BookMeForm from "../Artist/BookMeForm";
+import About from './About'
 import "../../css/Home.css";
 
 const Home = () => {
@@ -14,9 +15,8 @@ const Home = () => {
           <Search />
         </div>
       </div>
-
-      <div className="bookMeFormContainer">
-        <BookMeForm />
+      <div className="aboutContainer">
+        <About />
       </div>
     </div>
   );
