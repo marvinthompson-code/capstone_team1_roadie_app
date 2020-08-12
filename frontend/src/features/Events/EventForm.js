@@ -47,6 +47,16 @@ const EventForm = () => {
     }
   };
 
+  const handleVenueSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      let res;
+      // https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${params}&limit=${amount}&v=${yyyymmdd}&near=${location}
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <Modal
       isOpen={false}
@@ -72,14 +82,19 @@ const EventForm = () => {
             onChange={(e) => setName(e.currentTarget.value)}
             required
           />
-          <input
-            type="text"
-            className="eventFormInput"
-            value={venue}
-            placeholder="Venue"
-            onChange={(e) => setVenue(e.currentTarget.value)}
-            required
-          />
+
+            <form onSubmit={handleVenueSubmit}>
+              <input
+                type="text"
+                className="eventFormInput"
+                value={venue}
+                placeholder="Search Venues..."
+                onChange={(e) => setVenue(e.currentTarget.value)}
+                required
+              />
+              <button type={"submit"} className={"submit"}>Search</button>
+            </form>
+
           <input
             type="text"
             className="eventFormInput"

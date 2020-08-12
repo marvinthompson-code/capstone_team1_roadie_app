@@ -54,7 +54,7 @@ const Search = () => {
     return(
         <div className="searchContainer">
             <form onSubmit={handleSubmit} className="searchForm">
-                <input type={"text"} value={name} placeholder={"Name"} onChange={(e) => setName(e.target.value)} id="searchInput"/>
+                <input type={"text"} value={name} placeholder={"Search for Roadies!"} onChange={(e) => setName(e.target.value)} id="searchInput"/>
                 <select value={userType} required aria-required={"true"} onChange={(e)=> setUserType(e.target.value)} id="searchSelect">
                     <option disabled value="">Search By...</option>
                     <option value={"Artist"} >Artist</option>
