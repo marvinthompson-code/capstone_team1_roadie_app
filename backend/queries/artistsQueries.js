@@ -140,8 +140,7 @@ const updateArtistInfo = async (req, res, next,) => {
 
 const getAllArtistBookings = async (req, res, next) => {
   let { id } = req.params;
-  console.log(req.params);
-  let artistBookings = await db.any("SELECT * FROM bookings INNER JOIN artists ON bookings.artist_id = artists.id WHERE bookings.artist_id = $1", [id]);
+  let artistBookings = await db.any("SELECT * FROM events INNER JOIN (SELECT bookings.id AS booking_id, client_id, event_id, bookings.bio AS bookings_bio, bookings.contact_info AS booking_contact_info, artists.id AS artist_id, name, profile_pic_url, artists.bio AS artist_bio, pricing, genre, city, artists.contact_info AS artist_contact_info FROM bookings INNER JOIN artists ON bookings.artist_id = artists.id) AS bookings_artists ON events.id = bookings_artists.event_id WHERE artist_id = $1", [id]);
   try {
       res.status(200).json({
           status: "Success",

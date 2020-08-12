@@ -10,47 +10,43 @@ import { toggleEditArtistProfileModalState } from "./editArtistProfileModalSlice
 import "../../css/ArtistProfile.css";
 
 const ArtistProfile = () => {
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [contactInfo, setContactInfo] = useState("");
-  const [city, setCity] = useState("");
-  const [profilePicUrl, setProfilePicUrl] = useState("");
-  const artist = useSelector((state) => state.artist);
-  const [toggleEditBookings, setToggleEditBookings] = useState(false);
-  const [bookings, setBookings] = useState([]);
+  
+    const [name, setName] = useState("");
+    const [bio, setBio] = useState("");
+    const [contactInfo, setContactInfo] = useState("");
+    const [city, setCity] = useState("");
+    const [profilePicUrl, setProfilePicUrl] = useState("");
+    const artist = useSelector((state) => state.artist);
+    const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
-  // const history = useHistory()
-  const API = apiURL();
-  const match = useRouteMatch();
-  const dispatch = useDispatch();
+    // const history = useHistory()
+    const API = apiURL();
+    const match = useRouteMatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchUserInfo = async (id) => {
-      let res = await axios.get(`${API}/artists/${id}`);
-      let {
-        name,
-        profile_pic_url,
-        bio,
-        city,
-        contact_info,
-      } = res.data.body.single_artist;
-      setName(name);
-      setProfilePicUrl(profile_pic_url);
-      setBio(bio);
-      setCity(city);
-      setContactInfo(contact_info);
-    };
-    const fetchUserBookings = async (id) => {
-      let res = await axios.get(`${API}/artists/${id}/`);
-      console.log("bookings' res: ", res);
-    };
-    fetchUserInfo(match.params.id);
-    fetchUserBookings(match.params.id);
-  }, []);
-
-  //   const handleToggle = () => {
-  //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
-  //   };
+    useEffect(() => {
+        const fetchUserInfo = async (id) => {
+          let res = await axios.get(`${API}/artists/${id}`);
+          let {
+            name,
+            profile_pic_url,
+            bio,
+            city,
+            contact_info,
+          } = res.data.body.single_artist;
+          setName(name);
+          setProfilePicUrl(profile_pic_url);
+          setBio(bio);
+          setCity(city);
+          setContactInfo(contact_info);
+        };
+        fetchUserInfo(match.params.id);
+    }, []);
+      
+    
+    //   const handleToggle = () => {
+    //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
+    //   };
 
   let editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
