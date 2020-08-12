@@ -15,7 +15,6 @@ const ArtistProfile = () => {
     const [profilePicUrl, setProfilePicUrl] = useState("");
     const artist = useSelector((state) => state.artist);
     const [toggleEditBookings, setToggleEditBookings] = useState(false);
-    const [bookings, setBookings] = useState([]);
 
     // const history = useHistory()
     const API = apiURL()
@@ -38,13 +37,7 @@ const ArtistProfile = () => {
           setCity(city);
           setContactInfo(contact_info);
         };
-        const fetchUserBookings = async (id) => {
-          let res = await axios.get(`${API}/artists/${id}/`);
-          debugger;
-          console.log("bookings' res: ", res);
-        }; 
         fetchUserInfo(match.params.id);
-        fetchUserBookings(match.params.id);
     }, []);
       
     
@@ -117,10 +110,7 @@ const ArtistProfile = () => {
           
             <div className={"portfolioSection"}></div>
           </div>
-          <div className="BookingsDisplayContainer">
-            <h2>Upcoming shows!</h2>
-
-          </div>
+          
         </div>
     )
 }
