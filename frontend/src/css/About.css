@@ -1,0 +1,79 @@
+:root {
+    --pumpkinOrange: #ec9b59;
+    --pink: #E29678;
+    --lightGreen: #9eb19e;
+    --darkGreen: #164444;
+    --darkBlue: #00202b;
+    --darkerBlue: #001a22;
+  }
+  @font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+  }
+  
+  @font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+  }
+  
+  @font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+  }
+
+  .aboutRoadieContainer {
+      display: grid;
+      grid-template-columns: 1% 2fr 2fr 1%;
+      padding: 30px;
+      background-color: var(--lightGreen);
+      border-radius: 13px;
+      box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .aboutRoadieText {
+      grid-column: 2/ span 1;
+  }
+
+  .aboutRoadieImg {
+    background-image: url('https://fq8ku9wqwk7gai1z3frl16nd-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/0L1A9321-996x515.jpg');
+    background-color: var(--darkBlue);
+    grid-column: 3 / span 1;
+    transition: 2s;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 13px;
+    box-shadow: 5px 10px 8px rgba(105, 105, 105, 0.5);
+  }
+
+  .aboutRoadieImg:hover {
+   transform: scale(1.12, 1.12);
+  }
+
+  .aboutUl {
+    list-style-type: "\1F44D";
+  }
+
+  .aboutLi {
+    font-family: railwayLight;
+    text-shadow: 2px 2px 1px rgba(105, 105, 105, 0.5);
+    font-weight: 590;
+    transition: 2s;
+    /* color: var(--lightGreen); */
+  }
+
+  .aboutLi:hover {
+    transform: scale(1.10, 1.10);
+  }
+
+  .aboutParagraph1 {
+    font-family: railwayLight;
+    text-shadow: 2px 2px 1px rgba(105, 105, 105, 0.5);
+    font-weight: 590;
+  }
+
+  #titleHeaderAbout {
+    z-index: 4;
+    color: black;
+    text-shadow: 2px 2px 1px rgba(105, 105, 105, 0.5);
+    font-family: railwayLight;
+  }
