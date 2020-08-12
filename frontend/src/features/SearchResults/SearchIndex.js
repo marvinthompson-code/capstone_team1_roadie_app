@@ -14,7 +14,7 @@ const SearchIndex = () => {
     return (
         <div className="resultContainer">
             { !searchResults.length ?
-                <h3>No results!</h3> :
+                <h3 style={{color: "white"}}>Sorry, no results!</h3> :
                 results  
             }
         </div>
