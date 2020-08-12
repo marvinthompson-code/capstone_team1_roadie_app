@@ -73,7 +73,6 @@ const ClientSignUp = () => {
   };
 
   const handleSubmit = async (e) => {
-    debugger
     e.preventDefault();
     try {
       let res = await signUp(email, password);

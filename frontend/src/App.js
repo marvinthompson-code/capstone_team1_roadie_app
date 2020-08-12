@@ -3,12 +3,11 @@ import Modal from "react-modal";
 import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 import firebase from "./firebase";
-import ArtistProfile from "./features/Artist/ArtistProfile"
 import { updateUser } from "./features/token/userTokenSlice";
+// import About from './features/Home/About'
 // import ClientSignUp from "./features/client/clientSignUp";
 // import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
-import BookMeForm from "./features/Artist/BookMeForm";
 import EditClientProfileForm from "./features/ClientProfile/EditClientProfileForm";
 import ClientProfile from "./features/ClientProfile/ClientProfile";
 import Login from "./features/login/Login";
@@ -18,11 +17,10 @@ import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
-import Portfolio from "./features/Portfolio/Portfolio";
 import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
-import UploadVideoModal from "./features/Portfolio/UploadVideoModal";
-import UploadPictureModal from "./features/Portfolio/UploadPictureModal";
 import { useSelector, useDispatch } from "react-redux";
+import Artist from "./features/Profiles/Artist";
+import Client from "./features/Profiles/Client";
 
 Modal.setAppElement("#root");
 
@@ -41,6 +39,7 @@ function App() {
         <NavBar />
         <Route exact path="/">
           <Home />
+          {/* <About /> */}
         </Route>
         <AuthRoute exact path="/signup">
           <DisplaySignUp />
@@ -54,18 +53,11 @@ function App() {
         </Route>
 
         <ProtectedRoute exact path={"/client/:id"}>
-          <ClientProfile />
-          <ClientContactForm />
-          <EditClientProfileForm />
-          <EventForm />
+          <Client />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>
-          <ArtistProfile />
-          <Portfolio />
-          <UploadPictureModal />
-          <UploadVideoModal />
-          <BookMeForm />
+          <Artist />
         </ProtectedRoute>
       </AuthProvider>
     </div>

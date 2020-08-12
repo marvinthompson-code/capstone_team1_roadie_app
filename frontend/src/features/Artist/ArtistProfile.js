@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
+import BookMeForm from "../Artist/BookMeForm";
+import Portfolio from "../Portfolio/Portfolio";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { toggleBookMeModalState } from "./bookMeModalSlice"
-import { toggleEditArtistProfileModalState } from "./editArtistProfileModalSlice"
-import '../../css/ArtistProfile.css'
+import { toggleBookMeModalState } from "./bookMeModalSlice";
+import { toggleEditArtistProfileModalState } from "./editArtistProfileModalSlice";
+import "../../css/ArtistProfile.css";
 
 const ArtistProfile = () => {
+  
     const [name, setName] = useState("");
     const [bio, setBio] = useState("");
     const [contactInfo, setContactInfo] = useState("");
@@ -17,9 +20,9 @@ const ArtistProfile = () => {
     const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
     // const history = useHistory()
-    const API = apiURL()
-    const match =  useRouteMatch()
-    const dispatch = useDispatch()
+    const API = apiURL();
+    const match = useRouteMatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchUserInfo = async (id) => {
@@ -45,61 +48,61 @@ const ArtistProfile = () => {
     //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
     //   };
 
+  let editButton = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+        <button
+          id={"EditArtistProfileButton"}
+          onClick={() => dispatch(toggleEditArtistProfileModalState())}
+        >
+          Edit Profile
+        </button>
+      );
+    }
+  };
 
-      let editButton = () => {
-        if (artist !== null && artist.id === match.params.id) {
-          return (
-            <button
-              id={"EditArtistProfileButton"}
-              onClick={() => dispatch(toggleEditArtistProfileModalState())}
-            >
-              Edit Profile
-            </button>
-          );
-        }
-      };
-
-    return (
-        <div>
-          <div className={"ProfilePictureDiv"}>
-            <img
-              src={profilePicUrl}
-              alt={"Artist Profile"}
-              className={"profilePicture"}
-            />
-          </div>
-
-          <div className={"buttonsDiv"}>
-            <button
-              id={"BookMeButton"}
-              onClick={() => dispatch(toggleBookMeModalState())}
-            >
+  return (
+    <div className="artistProfileContainer">
+      <div
+        className={"ProfilePictureDiv"}
+        style={{ backgroundImage: `url(${profilePicUrl})` }}
+      >
+        <div className={"buttonsDiv"}>
+          <button
+            id={"BookMeButton"}
+            onClick={() => dispatch(toggleBookMeModalState())}
+          >
             Book Me!
-            </button>
-            {editButton()}
+          </button>
+          {editButton()}
+        </div>
+      </div>
+      <div className="ArtistInfoProfile">
+        <div className={"ArtistNameDiv"}>
+          <h2 className={"artistProfileName"}>{name}</h2>
+        </div>
+        <div className={"InfoDiv"}>
+          <div className={"CityDiv"}>
+            <label>City:</label>
+            <h3 className={"city"}>{city}</h3>
           </div>
-
-          <div className={"ArtistNameDiv"}>
-            <h2 className={"name"}>{name}</h2>
+          <div className={"ContactInfoDiv"}>
+            <label>Contact:</label>
+            <h3 className={"contact"}>{contactInfo}</h3>
           </div>
-          <div className={"InfoDiv"}>
-            <div className={"CityDiv"}>
-              <label>City:</label>
-                <h3 className={"city"}>{city}</h3>
-            </div>
-
-            <div className={"ContactInfoDiv"}>
-              <label>Contact:</label>
-              <h3 className={"contact"}>{contactInfo}</h3>
-            </div>
+        </div>
+        <div className={"BioPortfolioContainer"}>
+          <div className={"BioDiv"}>
+            <h4 className={"aboutMe"}>About me:</h4>
+            <h3 className={"bio"}>{bio}</h3>
           </div>
-          <div className={"BioPortfolioContainer"}>
-            <div className={"BioDiv"}>
-              <h4 className={"aboutMe"}>About me:</h4>
-              <h3 className={"bio"}>{bio}</h3>
-            </div>
+          <div className="BookingsDisplayContainer">
+            {/* <BookMeForm /> */}
+            <h2>Upcoming shows!</h2>
+          </div>
+        </div>
 
-            {/* <div className={"eventDiv"}>
+        {/* <div className={"eventDiv"}>
               <div className={"eventTitleDiv"}>
                 <h3 className={"eventsTitle"}>Created Events</h3>
               </div>
@@ -107,12 +110,13 @@ const ArtistProfile = () => {
 
               <div className={"createEventButtonDiv"}>{createEventButton()}</div>
             </div> */}
-          
-            <div className={"portfolioSection"}></div>
-          </div>
-          
+
+        <div className={"portfolioSection"}>
+          <Portfolio />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default ArtistProfile;
