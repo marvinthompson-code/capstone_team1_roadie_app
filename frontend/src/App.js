@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import NavBar from "./features/navbar/NavBar";
 import firebase from "./firebase";
 import { updateUser } from "./features/token/userTokenSlice";
+// import About from './features/Home/About'
 // import ClientSignUp from "./features/client/clientSignUp";
 // import ArtistSignUpForm from "./features/Artist/ArtistSignUpForm";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
@@ -38,6 +39,7 @@ function App() {
         <NavBar />
         <Route exact path="/">
           <Home />
+          {/* <About /> */}
         </Route>
         <AuthRoute exact path="/signup">
           <DisplaySignUp />
