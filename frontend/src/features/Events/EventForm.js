@@ -5,6 +5,10 @@ import { receiveSearch } from '../SearchResults/searchSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import VenueSearchIndex from './VenueSearchIndex'
+import {
+  API_CLIENT_ID,
+  API_CLIENT_SECRET
+} from "./../../secrets"
 
 import axios from "axios";
 import Modal from "react-modal";
@@ -23,11 +27,6 @@ const EventForm = () => {
   const isOpen = useSelector((state) => state.eventModal);
   const API = apiURL();
   const match = useRouteMatch();
-
-  const {
-    API_CLIENT_ID,
-    API_CLIENT_SECRET
-  } = process.env
 
   const closeModal = () => {
     dispatch(toggleEventModalState());
@@ -58,8 +57,7 @@ const EventForm = () => {
   const handleVenueSubmit = async (e) => {
     e.preventDefault()
     try {
-      setDate(formatDate(date))
-      let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${25}&v=${date}&near=${city}`)
+      let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${5}&v=${date}&near=${city}`)
       debugger
       dispatch(receiveSearch())
     } catch (error) {
@@ -67,10 +65,7 @@ const EventForm = () => {
     }
   }
 
-  const formatDate = (date) => {
-    let newDate = date.split("").reverse().join("")
-    return newDate.split("-").join("")
-  }
+
 
   return (
     <Modal
@@ -88,17 +83,7 @@ const EventForm = () => {
     >
       <div className="eventFormDiv">
         <h2 className="eventFormTitle">Create an Event</h2>
-        <form className="eventForm" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="eventFormInput"
-            value={name}
-            placeholder="Name of Event"
-            onChange={(e) => setName(e.currentTarget.value)}
-            required
-          />
-          <div>
-
+        <div>
             <form onSubmit={handleVenueSubmit}>
               <input
                 type="text"
@@ -117,10 +102,10 @@ const EventForm = () => {
                 required
                 />
                  <input
-                type="date"
+                type="text"
                 className="eventFormInput"
                 value={date}
-                placeholder="Date"
+                placeholder="YYYYMMDD"
                 onChange={(e) => setDate(e.target.value)}
                 required
           />
@@ -130,6 +115,15 @@ const EventForm = () => {
             <div className={"SearchResultIndexContainer"}>
               <VenueSearchIndex venues={searchResults}/>
             </div>
+        <form className="eventForm" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="eventFormInput"
+            value={name}
+            placeholder="Name of Event"
+            onChange={(e) => setName(e.currentTarget.value)}
+            required
+          />
           <input
             type="text"
             className="eventFormInput"

@@ -20,7 +20,7 @@ const EditClientProfileForm = () => {
         e.preventDefault()
         // update client information
         let res = await axios.patch(`${API}/clients/${match.params.id}`)
-        debugger
+
     }
 
     const closeModal = () => {

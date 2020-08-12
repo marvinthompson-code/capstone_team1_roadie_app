@@ -138,11 +138,33 @@ const updateArtistInfo = async (req, res, next,) => {
   }
 };
 
+const getAllArtistBookings = async (req, res, next) => {
+  let { id } = req.params;
+  console.log(req.params);
+  let artistBookings = await db.any("SELECT * FROM bookings INNER JOIN artists ON bookings.artist_id = artists.id WHERE bookings.artist_id = $1", [id]);
+  try {
+      res.status(200).json({
+          status: "Success",
+          message: "Retrieved all bookings of artist!",
+          body: {
+              artistBookings
+          }
+      });
+  } catch (error) {
+      res.status(500).json({
+          status: "Error",
+          message: "Failed to retrieve all artist bookings!"
+      });
+      next(error);
+  }
+};
+
 module.exports = {
   getAllArtists,
   getSingleArtistByID,
   addSingleArtist,
   deleteSingleArtist,
   searchForSingleArtist,
-  updateArtistInfo
+  updateArtistInfo,
+  getAllArtistBookings
 };

@@ -20,7 +20,6 @@ const EditArtistProfileForm = () => {
         e.preventDefault()
         // update Artist information
         let res = await axios.patch(`${API}/artists/${match.params.id}`)
-        debugger
     }
 
     const closeModal = () => {
