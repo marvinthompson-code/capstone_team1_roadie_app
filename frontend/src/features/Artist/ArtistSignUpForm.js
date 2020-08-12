@@ -73,7 +73,7 @@ const ArtistSignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
-
+    debugger
     e.preventDefault();
     try {
       let res = await signUp(email, password);
@@ -91,9 +91,9 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
-      debugger;
+  
       dispatch(updateArtist(res.user));
-      debugger;
+  
     } catch (error) {
       console.log(error.message);
     }

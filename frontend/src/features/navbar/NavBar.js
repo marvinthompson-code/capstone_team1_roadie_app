@@ -19,7 +19,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   let routeExt = () => {
-    
+
     if (client === null && artist !== null) {
       return (
         <NavLink
