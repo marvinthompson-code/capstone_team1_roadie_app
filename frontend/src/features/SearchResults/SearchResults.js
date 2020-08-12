@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchIndex from "./SearchIndex";
+import "../../css/SearchResults.css"
 
 const SearchResults = () => {
 

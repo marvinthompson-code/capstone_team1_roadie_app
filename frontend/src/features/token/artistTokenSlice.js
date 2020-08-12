@@ -22,10 +22,8 @@ export const asyncLogout = () => (dispatch) => {
 export const updateArtist = (user) => async (dispatch) => {
     try {
         if (user) {
-            debugger
             const { email, uid } = user;
             const lastLogin = user.metadata.lastSignInTime;
-            debugger
             dispatch(recieveArtist({email, lastLogin, id: uid}));
             const token = await getFirebaseIdToken()
             dispatch(recieveToken(token))

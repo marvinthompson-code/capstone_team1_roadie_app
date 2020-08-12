@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "../../css/SearchResults.css";
+import "../../css/SearchResultItem.css"
 
 const SearchResultItem = ({ result }) => {
     const userType = useSelector(state => state.userType);
@@ -23,12 +23,12 @@ const SearchResultItem = ({ result }) => {
 
     return (
         <div className="resultItem">
+    
             <div className="nameDisplay">
                 <h1 className="name" onClick={() => setHistory(id)}>{name}</h1>
             </div>
-            
             <div className="picDisplay">
-                <img src={profile_pic_url}/>
+                <img id="profilePic" src={profile_pic_url}/>
             </div>
         </div>
     )

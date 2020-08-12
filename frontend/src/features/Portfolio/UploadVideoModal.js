@@ -78,7 +78,6 @@ const UploadVideoModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    debugger;
     try {
       await axios.post(`${API}/media/artists/${artist.id}/videos`, {
         caption: caption,
