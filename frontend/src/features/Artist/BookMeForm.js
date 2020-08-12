@@ -27,7 +27,6 @@ const BookMeForm = () => {
 
     const handleClientEventSelect = async (id) => {
         let res = await axios.get(`${API}/events/${id}`);
-        debugger;
         console.log(res.data.body);
         let { events } = res.data.body;
         setEvents(events);  

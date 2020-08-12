@@ -40,7 +40,6 @@ const ArtistProfile = () => {
         };
         const fetchUserBookings = async (id) => {
           let res = await axios.get(`${API}/artists/${id}/`);
-          debugger;
           console.log("bookings' res: ", res);
         }; 
         fetchUserInfo(match.params.id);

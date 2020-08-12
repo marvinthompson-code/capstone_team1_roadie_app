@@ -1,4 +1,4 @@
 .resultContainer {
     display: grid;
-    grid-template-columns: 1% 3fr 1%;
+    grid-template-columns: 1fr 1fr;
 };
