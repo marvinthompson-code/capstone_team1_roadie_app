@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 const VenueSearchIndex = ({ venues }) => {
     // iterate through the venues
     // forEach venue display a name and address, thumbnail picture
-    
     // const venueResults
     const venueResults = venues.forEach((venue) => {
         // stuff happens here
@@ -12,7 +11,7 @@ const VenueSearchIndex = ({ venues }) => {
 
     return(
         <div>
-            {venueResults}
+            {venues.length === 0? <h2>No results!</h2> : venueResults}
         </div>
     )
 }
