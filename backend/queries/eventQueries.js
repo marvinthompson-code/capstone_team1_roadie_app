@@ -48,6 +48,7 @@ const getSingleEventById = async (req, res, next) => {
 const addSingleEvent = async (req, res, next) => {
   let { name, venue, date, address, city, client_id } = req.body;
   try {
+    // 
     let event = await db.one(
       `INSERT INTO events (name, venue, date, address, city, client_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,
       [name, venue, date, address, city, client_id]
