@@ -59,7 +59,7 @@ const EventForm = () => {
     try {
       let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${5}&v=${date}&near=${city}`)
       debugger
-      dispatch(receiveSearch())
+      dispatch(receiveSearch(res.data.response.venues))
     } catch (error) {
       console.log(error)
     }
@@ -82,7 +82,9 @@ const EventForm = () => {
       }}
     >
       <div className="eventFormDiv">
+        
         <h2 className="eventFormTitle">Create an Event</h2>
+
         <div>
             <form onSubmit={handleVenueSubmit}>
               <input
@@ -112,8 +114,9 @@ const EventForm = () => {
               <button type={"submit"} className={"submit"}>Search</button>
             </form>
           </div>
+
             <div className={"SearchResultIndexContainer"}>
-              <VenueSearchIndex venues={searchResults}/>
+              <VenueSearchIndex/>
             </div>
         <form className="eventForm" onSubmit={handleSubmit}>
           <input

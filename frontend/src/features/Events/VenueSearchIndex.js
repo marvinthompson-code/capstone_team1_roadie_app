@@ -1,14 +1,13 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import VenueCardDisplay from './VenueCardDisplay'
+import '../../css/VenueSearchIndex.css'
 
-const VenueSearchIndex = ({ venues }) => {
-    // iterate through the venues
-    // forEach venue display a name and address, thumbnail picture
-    // const venueResults
-    const venueResults = venues.forEach((venue) => {
-        // stuff happens here
+const VenueSearchIndex = () => {
+    const venues = useSelector(state => state.search)
+    const venueResults = venues.map((venue) => {
+        return <VenueCardDisplay venue={venue} key={venue.id}/>
     })
-
     return(
         <div>
             {venues.length === 0? <h2>No results!</h2> : venueResults}
