@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useRouteMatch } from "react-router-dom";
-import BookMeForm from "../Artist/BookMeForm";
+import {  useRouteMatch } from "react-router-dom";
 import Portfolio from "../Portfolio/Portfolio";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
