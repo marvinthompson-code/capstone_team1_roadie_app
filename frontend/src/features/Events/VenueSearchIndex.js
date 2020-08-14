@@ -4,7 +4,7 @@ import VenueCardDisplay from './VenueCardDisplay'
 import '../../css/VenueSearchIndex.css'
 
 const VenueSearchIndex = () => {
-    const venues = useSelector(state => state.search)
+    const venues = useSelector(state => state.venues)
     const venueResults = venues.map((venue) => {
         return <VenueCardDisplay venue={venue} key={venue.id}/>
     })

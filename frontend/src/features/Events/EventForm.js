@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { apiURL } from "../../util/apiURL";
 import { toggleEventModalState } from "./eventModalSlice";
-import { receiveSearch } from '../SearchResults/searchSlice'
+import { receiveVenueSearch } from './venueSearchSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import VenueSearchIndex from './VenueSearchIndex'
@@ -18,15 +18,15 @@ const EventForm = () => {
   const [name, setName] = useState("");
   const [venue, setVenue] = useState("");
   const [date, setDate] = useState("");
+  const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const dispatch = useDispatch();
   const client = useSelector((state) => state.client);
-  const searchResults = useSelector((state) => state.search)
-  const history = useHistory();
   const isOpen = useSelector((state) => state.eventModal);
   const API = apiURL();
   const match = useRouteMatch();
+  // const loading = 
 
   const closeModal = () => {
     dispatch(toggleEventModalState());
@@ -54,18 +54,26 @@ const EventForm = () => {
     }
   };
 
+  const handleDate = (str) => {
+    let str2 = str.split("-")
+    let str3 = str2.join("")
+    return str3
+  }
+
   const handleVenueSubmit = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${5}&v=${date}&near=${city}`)
+      let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${5}&v=${handleDate(date)}&near=${city}`)
+      dispatch(receiveVenueSearch(res.data.response.venues))
       debugger
-      dispatch(receiveSearch(res.data.response.venues))
     } catch (error) {
       console.log(error)
     }
   }
 
-
+  if (loading) {
+    return <div>Loading ...</div>;
+  }
 
   return (
     <Modal
@@ -104,11 +112,12 @@ const EventForm = () => {
                 required
                 />
                  <input
-                type="text"
+                type="date"
                 className="eventFormInput"
                 value={date}
                 placeholder="YYYYMMDD"
                 onChange={(e) => setDate(e.target.value)}
+                // onClick={(e) => setDate(e.target.value)}
                 required
           />
               <button type={"submit"} className={"submit"}>Search</button>
@@ -116,7 +125,7 @@ const EventForm = () => {
           </div>
 
             <div className={"SearchResultIndexContainer"}>
-              <VenueSearchIndex/>
+              <VenueSearchIndex />
             </div>
         <form className="eventForm" onSubmit={handleSubmit}>
           <input

@@ -10,10 +10,9 @@ const Artist = () =>{
     return (
         <div className="realArtistProfile">
             <ArtistProfile />
-            {/*
             <UploadPictureModal />
             <UploadVideoModal />
-            <BookMeForm /> */}
+            <BookMeForm />
         </div>
     )
 };
