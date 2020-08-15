@@ -15,8 +15,26 @@
 
 .eventFormDiv {
   display: grid;
-  grid-template-rows: 30% auto;
+  /* grid-template-rows: 30% auto; */
+  border: 1px solid var(--pumpkinOrange);
   justify-content: center;
+  /* grid-template-columns: ; */
+}
+
+.venueList {
+  list-style-type: none;
+  /* color: var(--darkGreen); */
+  justify-items: center;
+}
+
+.venueItem {
+  background-color: var(--pumpkinOrange);
+  color: var(--darkGreen);
+  /* text-shadow: 2px 2px 1px black; */
+  border: 1px solid black;
+  border-radius:20px;
+  text-align: center;
+  font-family: railwayLight;
 }
 
 .eventFormTitle {

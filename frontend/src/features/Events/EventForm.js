@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { apiURL } from "../../util/apiURL";
 import { receiveVenueSearch } from './venueSearchSlice'
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
 // import VenueSearchIndex from './VenueSearchIndex'
 import {
   API_CLIENT_ID,
@@ -21,6 +22,7 @@ const EventForm = () => {
   const client = useSelector((state) => state.client);
   const venues = useSelector(state => state.venues)
   const API = apiURL();
+  const history = useHistory()
 
   // post req for new event
   const handleSubmit = async (e) => {
@@ -39,6 +41,7 @@ const EventForm = () => {
       setDate("")
       setAddress("")
       setCity("")
+      history.push(`/client/${client.id}`)
     } catch (err) {
       console.log(err);
     }
@@ -55,27 +58,30 @@ const EventForm = () => {
     try {
       let res = await axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${API_CLIENT_ID}&client_secret=${API_CLIENT_SECRET}&query=${venue}&limit=${5}&v=${handleDate(date)}&near=${city}`)
       dispatch(receiveVenueSearch(res.data.response.venues))
-      debugger
     } catch (error) {
       console.log(error)
     }
   }
 
-
   // venue mapping
   const VenueSearchIndex = () => {
+
+    const colorChange = (location) => {
+      return location.style = {
+        backgroundColor: "white"
+      }
+    }
     const venueResults = venues.map((venue) => {
-      debugger
       let { name } = venue
       let { address, crossStreet, postalCode, cc, city, state } = venue.location
           let { prefix, suffix } = venue.categories[0].icon
           let img = prefix.concat(suffix).replace(/\s/g, '')
           return (
           <li key={venue.id} onClick={() => {
+            // colorChange(this)
             setAddress(`${address}${city}${state}${cc}${postalCode}`)
             setVenue(`${name}`)
-            debugger
-          }} >
+          }} className={"venueItem"} >
               <div className={"venueNameDiv"}>
                 <h2 className={"venueName"}>{name}</h2>
                 </div>
@@ -94,7 +100,7 @@ const EventForm = () => {
           )
     })
     return(
-        <ul>
+        <ul className={"venueList"}>
             {venues.length === 0? <h2 className={"noResults"}>Search for Venues!</h2> : venueResults}
         </ul>
     )
@@ -108,7 +114,7 @@ const EventForm = () => {
   return (
       <div className="eventFormDiv">
         <h2 className="eventFormTitle">Create an Event</h2>
-        <div>
+        <div className={"venueForm"}>
             <form onSubmit={handleVenueSubmit}>
               <input
                 type="text"
