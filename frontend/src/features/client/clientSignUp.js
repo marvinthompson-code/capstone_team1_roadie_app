@@ -40,7 +40,7 @@ const ClientSignUp = () => {
 
   const handleFirebaseUpload = () => {
     if (imageAsFile === "") {
-      alert(`Please choose a valid file before uploading`);
+      alert("Please choose a valid file before uploading");
     } else if (imageAsFile !== null) {
       const uploadTask = storage
         .ref(`/images/${imageAsFile.name}`)
@@ -48,9 +48,6 @@ const ClientSignUp = () => {
       uploadTask.on(
         "state_changed",
         (snapShot) => {
-          var progress =
-            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
           console.log(snapShot);
         },
         (err) => {
@@ -62,6 +59,7 @@ const ClientSignUp = () => {
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
+              debugger
               setImageUrl(fireBaseUrl);
             });
         }
@@ -76,6 +74,7 @@ const ClientSignUp = () => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
+      debugger
       await axios.post(`${API}/clients`, {
         id: res.user.uid,
         name: name,
@@ -95,7 +94,6 @@ const ClientSignUp = () => {
     }
   };
   return (
-
     // <Modal
     //   isOpen={true}
     //   onRequestClose={closeModal}
@@ -112,13 +110,13 @@ const ClientSignUp = () => {
     //     },
     //   }}
     // >
-      <div className="FormContainer">
-        <div className="artistSignUpTitle">
-          <h3 id={"artisth3"}>Client Sign Up</h3>
-        </div>
-        <div className="artistSignUpForm">
-          <form onSubmit={handleSubmit} id="artistForm">
-            <div className="artistInput">
+    <div className="FormContainer">
+      <div className="artistSignUpTitle">
+        <h3 id={"artisth3"}>Client Sign Up</h3>
+      </div>
+      <div className="artistSignUpForm">
+        <form onSubmit={handleSubmit} id="artistForm">
+          <div className="artistInput">
             <input
               type={"text"}
               className={"artistInputSpace"}
@@ -168,20 +166,31 @@ const ClientSignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
             />
-            </div>
-        <div className="artistSubmitButton">
-            <input type="file" required onChange={handleImageAsFile} id="fileUpload" />
-        
-          <button type="button" onClick={handleFirebaseUpload} id="firebaseUpload">
-            upload
-          </button>
-          {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
-      
-        <input type="submit" id="submitArtist" value="Sign Up" />
-        </div>
-          </form>
           </div>
+          <div className="artistSubmitButton">
+            <input
+              type="file"
+              required
+              onChange={handleImageAsFile}
+              id="fileUpload"
+            />
+
+            <button
+              type="button"
+              onClick={handleFirebaseUpload}
+              id="firebaseUpload"
+            >
+              upload
+            </button>
+            {toggleUploadMsg ? (
+              <h5 id="uploadSuccess">Upload successful!</h5>
+            ) : null}
+
+            <input type="submit" id="submitArtist" value="Sign Up" />
           </div>
+        </form>
+      </div>
+    </div>
     // </Modal>
   );
 };

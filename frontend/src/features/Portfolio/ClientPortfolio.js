@@ -8,8 +8,8 @@ import { useRouteMatch } from "react-router-dom";
 import "../../css/Portfolio.css"
 import PictureCarousel from "./PictureCarousel";
 
-const ArtistPortfolio = () => {
-  const artist = useSelector((state) => state.artist);
+const ClientPortfolio = () => {
+  const client = useSelector((state) => state.client);
   const [name, setName] = useState("");
   const [video, setVideos] = useState([]);
   const [caption, setCaption] = useState("");
@@ -39,7 +39,7 @@ const ArtistPortfolio = () => {
   // };
 
   const displayUploadPictureButton = () => {
-    if (artist !== null && artist.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
         <button type="button" onClick={handleClick}>
             +picture
@@ -49,7 +49,7 @@ const ArtistPortfolio = () => {
   }
 
   const displayUploadVideoButton = () => {
-    if (artist !== null && artist.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
       <button type="button" onClick={handleClick}>
               +video
@@ -59,25 +59,27 @@ const ArtistPortfolio = () => {
   }
 
   useEffect(() => {
-    const fetchArtist = async (id) => {
-      let res = await axios.get(`${API}/artists/${id}`);
-      let { name, profile_pic_url } = res.data.body.single_artist;
+    const fetchClient = async (id) => {
+      let res = await axios.get(`${API}/clients/${id}`);
+      debugger
+      let { name, profile_pic_url } = res.data.body.single_client;
       setName(name);
       setProfilePic(profile_pic_url);
     };
-    const fetchArtistPictures = async (id) => {
-      let res = await axios.get(`${API}/media/artists/${id}/pictures`);
+    const fetchClientPictures = async (id) => {
+      let res = await axios.get(`${API}/media/clients/${id}/pictures`);
+      debugger
       let { picture } = res.data.body.picture;
       setPictures(picture);
     };
-    const fetchArtistVideos = async (id) => {
-      let res = await axios.get(`${API}/media/artists/${id}/videos`);
+    const fetchClientVideos = async (id) => {
+      let res = await axios.get(`${API}/media/clients/${id}/videos`);
       let { video } = res.data.body.video;
       setVideos(video);
     };
-    fetchArtist(match.params.id);
-    fetchArtistPictures(match.params.id);
-    fetchArtistVideos(match.params.id);
+    fetchClient(match.params.id);
+    fetchClientPictures(match.params.id);
+    fetchClientVideos(match.params.id);
   }, []);
 
   return (
@@ -99,4 +101,4 @@ const ArtistPortfolio = () => {
     </div>
   );
 };
-export default ArtistPortfolio;
+export default ClientPortfolio;

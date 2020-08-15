@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
+import ClientPortfolio from "../Portfolio/ClientPortfolio";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
@@ -128,15 +129,15 @@ const ClientProfile = () => {
   };
 
   return (
-    <div>
-      <div className={"ProfilePictureDiv"}>
+    <div className="clientProfileContainer">
+      <div className={"ProfilePictureDiv"} style={{ backgroundImage: `url(${profilePicUrl})` }}>
+        {/* <div className="imgDiv">
         <img
           src={profilePicUrl}
           alt={"Client Profile"}
           className={"profilePicture"}
         />
-      </div>
-
+        </div> */}
       <div className={"buttonsDiv"}>
         <button
           id={"ContactMeButton"}
@@ -146,9 +147,11 @@ const ClientProfile = () => {
         </button>
         {editButton()}
       </div>
+      </div>
 
+      <div className="ClientInfoProfile">
       <div className={"ClientNameDiv"}>
-        <h2 className={"name"}>{name}</h2>
+        <h2 className={"clientProfileName"}>{name}</h2>
       </div>
       <div className={"InfoDiv"}>
         <div className={"CityDiv"}>
@@ -167,7 +170,7 @@ const ClientProfile = () => {
           <h3 className={"bio"}>{bio}</h3>
         </div>
 
-        <div className={"eventDiv"}>
+        <div className={"EventDisplayContainer"}>
           <div className={"eventTitleDiv"}>
             <h3 className={"eventsTitle"}>Created Events</h3>
           </div>
@@ -175,7 +178,10 @@ const ClientProfile = () => {
 
           <div className={"createEventButtonDiv"}>{createEventButton()}</div>
         </div>
-        <div className={"portfolioSection"}></div>
+      </div>
+        <div className={"portfolioSection"}>
+        <ClientPortfolio />
+        </div>
       </div>
     </div>
   );
