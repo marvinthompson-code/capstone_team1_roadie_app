@@ -110,7 +110,7 @@ const searchForSingleClient = async (req, res, next) => {
   }
 };
 
-const updateClientInfo = async (req, res, next,) => {
+const updateClientInfo = async (req, res, next) => {
   try {
     let { id } = req.params;
     let { name, profile_pic_url, bio, contact_info } = req.body;
@@ -121,16 +121,16 @@ const updateClientInfo = async (req, res, next,) => {
         update_artist_info: await db.one(
           "UPDATE clients SET name = $1, profile_pic_url = $2, bio = $3, contact_info = $4 WHERE id = $5",
           [name, profile_pic_url, bio, contact_info, id]
-        )
-      }
+        ),
+      },
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({
       status: "Error",
-      message: "Failed to update client info!"
+      message: "Failed to update client info!",
     });
-    next(error)
+    next(error);
   }
 };
 
@@ -140,5 +140,5 @@ module.exports = {
   addSingleClient,
   deleteSingleClient,
   searchForSingleClient,
-  updateClientInfo
+  updateClientInfo,
 };

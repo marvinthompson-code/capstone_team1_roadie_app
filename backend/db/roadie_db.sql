@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS roadie_db;
+ DROP DATABASE IF EXISTS roadie_db;
 CREATE DATABASE roadie_db;
 \c roadie_db;
 DROP TABLE IF EXISTS users;
