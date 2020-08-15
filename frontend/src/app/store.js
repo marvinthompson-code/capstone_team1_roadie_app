@@ -12,6 +12,7 @@ import tokenReducer from "../features/token/tokenSlice";
 import eventDisplayReducer from "../features/Events/eventDisplaySlice"
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
+import venueSearchReducer from "../features/Events/venueSearchSlice"
 import userTypeReducer from "../features/user/userSlice";
 import uploadModalReducer from "../features/Portfolio/uploadModalSlice"
 import logger from "redux-logger";
@@ -26,6 +27,7 @@ export default configureStore({
     eventModal: eventModalReducer,
     clientContactModal: clientContactModalReducer,
     search: searchReducer,
+    venues: venueSearchReducer,
     editClientProfileModal: editClientProfileModalReducer,
     editArtistProfileModal: editArtistProfileModalReducer,
     userType: userTypeReducer,
