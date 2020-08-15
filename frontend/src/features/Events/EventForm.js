@@ -22,6 +22,7 @@ const EventForm = () => {
   const client = useSelector((state) => state.client);
   const venues = useSelector(state => state.venues)
   const API = apiURL();
+  const [searchMessage, setSearchMessage] = useState("Select A Venue")
   const history = useHistory()
 
   // post req for new event
@@ -66,21 +67,16 @@ const EventForm = () => {
   // venue mapping
   const VenueSearchIndex = () => {
 
-    const colorChange = (location) => {
-      return location.style = {
-        backgroundColor: "white"
-      }
-    }
     const venueResults = venues.map((venue) => {
       let { name } = venue
-      let { address, crossStreet, postalCode, cc, city, state } = venue.location
-          let { prefix, suffix } = venue.categories[0].icon
-          let img = prefix.concat(suffix).replace(/\s/g, '')
+      let { address, postalCode, cc, city, state, formattedAddress } = venue.location
+          let { prefix } = venue.categories[0].icon
+          let img = prefix + ".png"
           return (
-          <li key={venue.id} onClick={() => {
-            // colorChange(this)
+          <button key={venue.id} type={"button"} onClick={(e) => {
             setAddress(`${address}${city}${state}${cc}${postalCode}`)
             setVenue(`${name}`)
+            setSearchMessage(name)
           }} className={"venueItem"} >
               <div className={"venueNameDiv"}>
                 <h2 className={"venueName"}>{name}</h2>
@@ -89,19 +85,15 @@ const EventForm = () => {
                   <img src={img} alt={"venue"} className={"venueImage"}/>
               </div>
               <div className={"venueAddressDiv"}>
-                  <h3 className={"venueAddress"}>{address}</h3>
-                  <h3 className={"venueAddress"}>{city}</h3>
-                  <h3 className={"venueAddress"}>{state}</h3>
-                  <h3 className={"venueAddress"}>{cc}</h3>
-                  <h3 className={"venueAddress"}>{postalCode}</h3>
+                  <h3 className={"venueAddress"}>{formattedAddress[0]}</h3>
+                  <h3 className={"venueAddress"}>{formattedAddress[1]}</h3>  
               </div>
-              <div className={"venueCrossStreetDiv"}><h2>{crossStreet}</h2></div>
-          </li>
+          </button>
           )
     })
     return(
         <ul className={"venueList"}>
-            {venues.length === 0? <h2 className={"noResults"}>Search for Venues!</h2> : venueResults}
+            {venues.length === 0? <h2 className={"noResults"}>Venue Search Results</h2> : venueResults}
         </ul>
     )
 }
@@ -112,9 +104,9 @@ const EventForm = () => {
   }
 
   return (
-      <div className="eventFormDiv">
-        <h2 className="eventFormTitle">Create an Event</h2>
-        <div className={"venueForm"}>
+    <>
+      <h2 className="eventFormTitle">Create an Event</h2>
+      <div className={"venueForm"}>
             <form onSubmit={handleVenueSubmit}>
               <input
                 type="text"
@@ -144,10 +136,16 @@ const EventForm = () => {
             </form>
           </div>
 
-            <div className={"SearchResultIndexContainer"}>
-              {VenueSearchIndex()}
+          <div className={"selectedVenueContainer"}>
+            <div className={"selectedVenueDiv"}>
+                <h3 className={"selectedVenueMessage"}>Currently Selected:</h3>
+                <h3 className={"selectedVenueMessage"}>{searchMessage}</h3>
+                <div className={"selectedVenueDetails"}>
+                </div>
             </div>
+          </div>
 
+      <div className="eventFormDiv">
         <form className="eventForm" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -160,6 +158,12 @@ const EventForm = () => {
           <button type="submit" className={"eventSubmit"}>Add Event</button>
         </form>
       </div>
+
+      <div className={"SearchResultIndexContainer"}>
+              {VenueSearchIndex()}
+      </div>
+
+      </>
   );
 };
 
