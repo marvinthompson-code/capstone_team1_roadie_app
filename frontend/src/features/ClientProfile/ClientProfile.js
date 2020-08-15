@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleEventModalState } from "../Events/eventModalSlice";
 import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import ClientPortfolio from "../Portfolio/ClientPortfolio";
@@ -117,7 +116,7 @@ const ClientProfile = () => {
         <div className="eventsButtonsDiv">
           <button
             id={"CreateEventButton"}
-            onClick={() => dispatch(toggleEventModalState())}
+            onClick={() => history.push(`/client/${match.params.id}/createEvent`)}
           >
             Create Event
           </button>
