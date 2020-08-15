@@ -72,12 +72,13 @@ const EventForm = () => {
       }
     }
     const venueResults = venues.map((venue) => {
+      debugger
       let { name } = venue
-      let { address, crossStreet, postalCode, cc, city, state } = venue.location
+      let { address, crossStreet, postalCode, cc, city, state, formattedAddress } = venue.location
           let { prefix, suffix } = venue.categories[0].icon
           let img = prefix.concat(suffix).replace(/\s/g, '')
           return (
-          <li key={venue.id} onClick={() => {
+          <button key={venue.id} type={"button"} onClick={() => {
             // colorChange(this)
             setAddress(`${address}${city}${state}${cc}${postalCode}`)
             setVenue(`${name}`)
@@ -89,14 +90,11 @@ const EventForm = () => {
                   <img src={img} alt={"venue"} className={"venueImage"}/>
               </div>
               <div className={"venueAddressDiv"}>
-                  <h3 className={"venueAddress"}>{address}</h3>
-                  <h3 className={"venueAddress"}>{city}</h3>
-                  <h3 className={"venueAddress"}>{state}</h3>
+                  <h3 className={"venueAddress"}>{formattedAddress[0]}</h3>
+                  <h3 className={"venueAddress"}>{formattedAddress[1]}</h3>  
                   <h3 className={"venueAddress"}>{cc}</h3>
-                  <h3 className={"venueAddress"}>{postalCode}</h3>
               </div>
-              <div className={"venueCrossStreetDiv"}><h2>{crossStreet}</h2></div>
-          </li>
+          </button>
           )
     })
     return(
