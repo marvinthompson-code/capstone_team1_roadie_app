@@ -6,6 +6,7 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 import "../../css/Portfolio.css"
+import PictureCarousel from "./PictureCarousel";
 
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
@@ -88,6 +89,7 @@ const ArtistPortfolio = () => {
         <div className="artistAlbumDiv">
           <h2>{name}'s Album</h2>
           {displayUploadPictureButton()}
+          <PictureCarousel />
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
