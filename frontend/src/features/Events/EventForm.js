@@ -1,17 +1,13 @@
 import React, { useState, useContext } from "react";
 import { apiURL } from "../../util/apiURL";
-import { toggleEventModalState } from "./eventModalSlice";
 import { receiveVenueSearch } from './venueSearchSlice'
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useRouteMatch } from "react-router-dom";
-import VenueSearchIndex from './VenueSearchIndex'
+// import VenueSearchIndex from './VenueSearchIndex'
 import {
   API_CLIENT_ID,
   API_CLIENT_SECRET
 } from "./../../secrets"
-
 import axios from "axios";
-import Modal from "react-modal";
 import "../../css/EventForm.css";
 
 const EventForm = () => {
@@ -23,19 +19,14 @@ const EventForm = () => {
   const [city, setCity] = useState("");
   const dispatch = useDispatch();
   const client = useSelector((state) => state.client);
-  const isOpen = useSelector((state) => state.eventModal);
+  const venues = useSelector(state => state.venues)
   const API = apiURL();
-  const match = useRouteMatch();
-  // const loading = 
 
-  const closeModal = () => {
-    dispatch(toggleEventModalState());
-  };
-
+  // post req for new event
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post(`${API}/events/`, {
+        await axios.post(`${API}/events/`, {
         name,
         venue,
         date,
@@ -48,18 +39,17 @@ const EventForm = () => {
       setDate("")
       setAddress("")
       setCity("")
-      closeModal();
     } catch (err) {
       console.log(err);
     }
   };
 
+  // venue search
   const handleDate = (str) => {
     let str2 = str.split("-")
     let str3 = str2.join("")
     return str3
   }
-
   const handleVenueSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -71,28 +61,53 @@ const EventForm = () => {
     }
   }
 
+
+  // venue mapping
+  const VenueSearchIndex = () => {
+    const venueResults = venues.map((venue) => {
+      debugger
+      let { name } = venue
+      let { address, crossStreet, postalCode, cc, city, state } = venue.location
+          let { prefix, suffix } = venue.categories[0].icon
+          let img = prefix.concat(suffix).replace(/\s/g, '')
+          return (
+          <li key={venue.id} onClick={() => {
+            setAddress(`${address}${city}${state}${cc}${postalCode}`)
+            setVenue(`${name}`)
+            debugger
+          }} >
+              <div className={"venueNameDiv"}>
+                <h2 className={"venueName"}>{name}</h2>
+                </div>
+              <div className={"venueImageDiv"}>
+                  <img src={img} alt={"venue"} className={"venueImage"}/>
+              </div>
+              <div className={"venueAddressDiv"}>
+                  <h3 className={"venueAddress"}>{address}</h3>
+                  <h3 className={"venueAddress"}>{city}</h3>
+                  <h3 className={"venueAddress"}>{state}</h3>
+                  <h3 className={"venueAddress"}>{cc}</h3>
+                  <h3 className={"venueAddress"}>{postalCode}</h3>
+              </div>
+              <div className={"venueCrossStreetDiv"}><h2>{crossStreet}</h2></div>
+          </li>
+          )
+    })
+    return(
+        <ul>
+            {venues.length === 0? <h2 className={"noResults"}>Search for Venues!</h2> : venueResults}
+        </ul>
+    )
+}
+
+  // loading
   if (loading) {
     return <div>Loading ...</div>;
   }
 
   return (
-    <Modal
-      isOpen={false}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-      }}
-    >
       <div className="eventFormDiv">
-        
         <h2 className="eventFormTitle">Create an Event</h2>
-
         <div>
             <form onSubmit={handleVenueSubmit}>
               <input
@@ -117,16 +132,16 @@ const EventForm = () => {
                 value={date}
                 placeholder="YYYYMMDD"
                 onChange={(e) => setDate(e.target.value)}
-                // onClick={(e) => setDate(e.target.value)}
                 required
-          />
+                />
               <button type={"submit"} className={"submit"}>Search</button>
             </form>
           </div>
 
             <div className={"SearchResultIndexContainer"}>
-              <VenueSearchIndex />
+              {VenueSearchIndex()}
             </div>
+
         <form className="eventForm" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -136,18 +151,9 @@ const EventForm = () => {
             onChange={(e) => setName(e.currentTarget.value)}
             required
           />
-          <input
-            type="text"
-            className="eventFormInput"
-            value={address}
-            placeholder="Address"
-            onChange={(e) => setAddress(e.currentTarget.value)}
-            required
-          />
-          <button type="submit">Add Event</button>
+          <button type="submit" className={"eventSubmit"}>Add Event</button>
         </form>
       </div>
-    </Modal>
   );
 };
 
