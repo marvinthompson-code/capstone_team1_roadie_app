@@ -5,7 +5,6 @@ export const eventModalSlice = createSlice({
     initialState: false, 
     reducers: {
         toggleEventModalState: (state) => !state
-        
     }
 })
 
