@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleModalState } from "./uploadModalSlice";
+import { toggleModalState } from "./uploadVideoModalSlice";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
@@ -26,7 +26,8 @@ const UploadVideoModal = () => {
   // }, []);
 
   
-  let isOpen = useSelector((state) => state.uploadModal);
+  let isOpenTwo = useSelector((state) => state.uploadVideoModal);
+
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(toggleModalState());
@@ -43,6 +44,7 @@ const UploadVideoModal = () => {
   };
 
   const handleFirebaseVideoUpload = () => {
+    debugger
     if (videoAsFile === "") {
       alert(`Please choose a valid file before uploading`);
     } else if (videoAsFile !== null) {
@@ -89,7 +91,7 @@ const UploadVideoModal = () => {
   };
 
   return (
-    <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
+    <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpenTwo}>
       <form onSubmit={handleSubmit}>
         <input type="file" required onChange={handleVideoAsFile} />
         <input

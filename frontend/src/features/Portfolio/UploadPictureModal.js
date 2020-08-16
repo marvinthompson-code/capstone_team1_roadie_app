@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {toggleModalState} from './uploadModalSlice';
+import { toggleModalState } from "./uploadModalSlice";
 import Modal from "react-modal";
 import { storage } from "../../firebase";
+import { apiURL } from "../../util/apiURL";
+import axios from "axios";
 
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [caption, setCaption] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
+  const API = apiURL();
 
-  let isOpen = useSelector(state => state.uploadModal);
+  const artist = useSelector((state) => state.artist);
+
+  let isOpen = useSelector((state) => state.uploadModal);
   const dispatch = useDispatch();
-  const closeModal = () =>{
+  const closeModal = () => {
     dispatch(toggleModalState());
-  }
+  };
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -59,13 +65,36 @@ const UploadPictureModal = () => {
     }
   };
 
+  const insertPictureIntoAlbum = async (e) => {
+    e.preventDefault();
+    try {
+       await axios.post(`${API}/media/pictures`, {
+        artist_id: artist.id,
+        caption: caption,
+        url: imageUrl,
+      });
+      setCaption("")
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
-      <input type="file" required onChange={handleImageAsFile} />
-      <button type="button" onClick={handleFirebasePictureUpload}>
-        Upload Picture
-      </button>
-      {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+      <form onSubmit={insertPictureIntoAlbum}>
+        <input type="file" required onChange={handleImageAsFile} />
+        <input
+          type="text"
+          value={caption}
+          required
+          onChange={(e) => setCaption(e.target.value)}
+        />
+        <button type="button" onClick={handleFirebasePictureUpload}>
+          Upload Picture
+        </button>
+        <input type="submit" name="Click Here" />
+        {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+      </form>
     </Modal>
   );
 };
