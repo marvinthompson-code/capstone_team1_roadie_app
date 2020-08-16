@@ -12,12 +12,14 @@ const ClientContactForm = () => {
     const [body, setBody] = useState("")
     const [contact_info, setContact_info] = useState("")
     const [city, setCity] = useState("")
+    const [clientName, setClientName] = useState("");
     let isOpen = useSelector((state) => state.clientContactModal);
     const artist = useSelector((state) => state.artist);
     const client = useSelector((state) => state.client);
     const history  = useHistory()
     const dispatch = useDispatch()
     const API = apiURL()
+    const match = useRouteMatch();
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -55,7 +57,15 @@ const ClientContactForm = () => {
             setName("Please input name...")
         }
 
-    })
+    });
+
+    useEffect(() => {
+        const fetchClientName = async (id)  => {
+            let res = await axios.get(`${API}/clients/${id}`);
+            setClientName(res.data.body.single_client.name);
+        };
+        fetchClientName(match.params.id);
+    }, [])
 
     return (
          <Modal
@@ -64,8 +74,8 @@ const ClientContactForm = () => {
          isOpen={isOpen}
          style={{
             content: {
-                backgroundColor: "#F4D8CD",
-                borderRadius: "13px",
+                backgroundColor: "#164444",
+                borderRadius: "20px",
                 left: "25%",
                 right: "25%",
               }
@@ -74,25 +84,27 @@ const ClientContactForm = () => {
             <div>
                 <form onSubmit={handleSubmit} className={"ContactMeForm"}>
                     <div className={"inputDiv"}>
+                        <div className="clientNameDiv">
+                            <h1>Contact {clientName}!</h1>
+                        </div>
+                        <div className={"contactNameDiv"}>
+                            <input id={"contactNameInput"} type={"text"} value={name} onChange={(e) => setName(e.target.value)} placeholder={name}/>
+                        </div>
+                        <div className={"contactBodyDiv"}>
+                            <input id={"contactBodyInput"} type={"text"} value={body} onChange={(e) => setBody(e.target.value)} placeholder={"Briefly tell me who you are!"}/>
+                        </div>
 
-                    <div className={"contactNameDiv"}>
-                        <input id={"contactNameInput"} type={"text"} value={name} onChange={(e) => setName(e.target.value)} placeholder={name}/>
-                    </div>
-                    <div className={"contactBodyDiv"}>
-                        <input id={"contactBodyInput"} type={"text"} value={body} onChange={(e) => setBody(e.target.value)} placeholder={"Enter your Message..."}/>
-                    </div>
+                        <div className={"contactNumberDiv"}>
+                            <h3 className={"contact"}>{contact_info}</h3>
+                        </div>
 
-                    <div className={"contactNumberDiv"}>
-                        <h3 className={"contact"}>{contact_info}</h3>
-                    </div>
+                        <div className={"cityDiv"}>
+                            <h3 className={"city"}>{city}</h3>
+                        </div>
 
-                    <div className={"cityDiv"}>
-                        <h3 className={"city"}>{city}</h3>
-                    </div>
-
-                    <div className={"contactButtonDiv"}>
-                    <button id={"contactSubmitButton"} type={"submit"}>Submit</button>
-                    </div>
+                        <div className={"contactButtonDiv"}>
+                        <button id={"contactSubmitButton"} type={"submit"}>Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
