@@ -1,3 +1,13 @@
+root {
+  --pumpkinOrange: #ec9b59;
+  --pink: #f4d8cd;
+  --lightGreen: #9eb19e;
+  --darkGreen: #164444;
+  --darkBlue: #00202b;
+  --darkerBlue: #00161d;
+}
+
+
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
   font-family: railwayBlk;
@@ -15,21 +25,120 @@
 
 .eventFormDiv {
   display: grid;
-  grid-template-rows: 30% auto;
+  /* grid-template-rows: 30% auto; */
+  border: 1px solid var(--pumpkinOrange);
   justify-content: center;
+  /* grid-template-columns: ; */
 }
+
+.venueList {
+  list-style-type: none;
+  /* color: var(--darkGreen); */
+  width: 50%;
+  justify-items: center;
+}
+
+.venueItem {
+  background-color: var(--darkerBlue);
+  color: var(--lightGreen);
+  border: 1px solid black;
+  width: 40%;
+  height: 20%;
+  border-radius:20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: railwayLight;
+}
+
+.venueItem:active {
+  transform: translateY(4px);
+  border: 1px solid var(--pumpkinOrange);
+}
+
+.venueAddressDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+
+
+.venueName {
+  text-shadow: 2px 2px 1px black;
+}
+
+.venueForm {
+  width: 50%;
+  border: 1px solid var(--pumpkinOrange);
+}
+
 
 .eventFormTitle {
   font-size: 24px;
-  font-weight: bolder;
+  z-index: 4;
   font-family: railwayLight;
+  color: var(--lightGreen);
+  text-shadow: 2px 2px 1px black;
+}
+
+.noResults {
+  font-size: 24px;
+  z-index: 4;
+  font-family: railwayLight;
+  color: var(--lightGreen);
+  text-shadow: 2px 2px 1px black;
 }
 
 .eventForm {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  float: left;
 }
 
 .eventFormInput {
+  border: 1px solid white;
+  box-shadow: 1px 1px 4px;
+  border-radius: 13px;
   font-family: railwayLight;
+}
+
+.eventSubmit {
+  border: 1px solid var(--pumpkinOrange);
+  background-color: var(--pumpkinOrange);
+  color: var(--pink);
+  border-radius: 13px;
+}
+
+.submit {
+  border-radius: 13px;
+  border: 1px solid var(--darkGreen);
+  background-color: var(--darkGreen);
+  color: var(--pink);
+  font-family: railwayLight;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.SearchResultIndexContainer {
+  width: 50%;
+  border: 1px solid var(--pumpkinOrange);
+  height: 100%;
+  overflow: scroll;
+}
+
+
+.selectedVenueMessage {
+  font-size: 24px;
+  z-index: 4;
+  font-family: railwayLight;
+  color: var(--lightGreen);
+  text-shadow: 2px 2px 1px black;
+}
+
+
+.selectedVenueDiv {
+  width: 50%;
+  float: right;
 }

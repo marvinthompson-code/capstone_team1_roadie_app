@@ -13,7 +13,6 @@ const BookingsDisplay = () => {
         const fetchArtistBookings = async (id) => {
             let res = await axios.get(`${API}/artists/${id}/bookings`);
             setBookings(res.data.body.artistBookings);
-            debugger;
         };
         fetchArtistBookings(match.params.id);
     }, []);

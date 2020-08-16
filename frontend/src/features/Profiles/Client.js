@@ -12,9 +12,7 @@ const Client = () =>{
             <ClientProfile />
             <ClientContactForm />
             <EditClientProfileForm />
-            <EventForm />
         </div>
     )
-
 };
 export default Client;
