@@ -7,8 +7,8 @@ import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 import "../../css/Portfolio.css";
 
-const ArtistPortfolio = () => {
-  const artist = useSelector((state) => state.artist);
+const ClientPortfolio = () => {
+  const client = useSelector((state) => state.client);
   const [name, setName] = useState("");
   const [video, setVideos] = useState([]);
   const [caption, setCaption] = useState("");
@@ -24,36 +24,40 @@ const ArtistPortfolio = () => {
   };
 
   const displayUploadPictureButton = () => {
-    if (artist !== null && artist.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
         <button type="button" onClick={handleClick}>
-          +Upload picture
+          +picture
         </button>
       );
     }
   };
 
   const displayUploadVideoButton = () => {
-    if (artist !== null && artist.id === match.params.id) {
+    if (client !== null && client.id === match.params.id) {
       return (
         <button type="button" onClick={handleClick}>
-          +Upload video
+          +video
         </button>
       );
     }
   };
+
   const toPhotoAlbum = () => {
-    history.push(`/media/pictures/${artist.id}`);
+    debugger
+    history.push(`/media/pictures/${client.id}`);
   };
 
   useEffect(() => {
-    const fetchArtist = async (id) => {
-      let res = await axios.get(`${API}/artists/${id}`);
-      let { name, profile_pic_url } = res.data.body.single_artist;
+    const fetchClient = async (id) => {
+      debugger
+      let res = await axios.get(`${API}/clients/${id}`);
+      let { name, profile_pic_url } = res.data.body.single_client;
       setName(name);
       setProfilePic(profile_pic_url);
     };
-    fetchArtist(match.params.id);
+
+    fetchClient(match.params.id);
   }, []);
 
   return (
@@ -75,4 +79,4 @@ const ArtistPortfolio = () => {
     </div>
   );
 };
-export default ArtistPortfolio;
+export default ClientPortfolio;

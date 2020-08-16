@@ -24,7 +24,39 @@
 /* body {
     background-color: var(--darkGreen);
 } */
-
+.clientProfileContainer {
+  grid-column: 2 / span 1;
+  display: grid;
+  grid-template-columns: 1% 3fr 1%;
+  grid-template-rows: 25% 1fr;
+}
+.ClientInfoProfile {
+  grid-area: 2/ 2 / span 1 / span 1;
+  display: grid;
+  grid-template-rows: 15% 15% 50% 20%;
+  grid-row-gap: 15px;
+}
+.ClientNameDiv {
+  grid-row: 1 / span 1;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100%;
+}
+.clientProfileName {
+  grid-column: 1 / span 1;
+  text-align: center;
+  font-family: railwayLight;
+  font-size: xx-large;
+  color: var(--pink);
+  text-shadow: 0.5px 0.3px 1px black;
+}
+.EventDisplayContainer {
+  grid-column: 2 / span 1;
+  width: 100%;
+  background-color: var(--pumkinOrange);
+  border-radius: 20px;
+  text-align: center;
+}
 label {
   color: var(--pumpkinOrange);
 }
@@ -79,17 +111,6 @@ label {
   border-radius: 20px;
   text-align: center;
   transition: 2s;
-}
-
-.eventDiv {
-  width: 350px;
-  height: 285px;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  background-color: var(--pink);
-  border-radius: 20px;
-  transition: 2s;
-  overflow: scroll;
 }
 
 .eventDiv:hover {
