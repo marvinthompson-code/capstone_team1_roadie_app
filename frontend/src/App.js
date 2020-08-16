@@ -23,6 +23,8 @@ import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
 import { useSelector, useDispatch } from "react-redux";
 import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
+import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
+import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum"
 
 Modal.setAppElement("#root");
 
@@ -56,6 +58,11 @@ function App() {
 
         <ProtectedRoute exact path={"/client/:id"}>
           <Client />
+        </ProtectedRoute>
+        
+        <ProtectedRoute exact path={"/media/pictures/:artist_id"}>
+          <ArtistPhotoAlbum />
+          <ClientPhotoAlbum />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>

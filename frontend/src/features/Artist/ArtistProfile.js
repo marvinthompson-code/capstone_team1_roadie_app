@@ -18,7 +18,6 @@ const ArtistProfile = () => {
     const artist = useSelector((state) => state.artist);
     const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
-    // const history = useHistory()
     const API = apiURL();
     const match = useRouteMatch();
     const dispatch = useDispatch();
@@ -41,6 +40,7 @@ const ArtistProfile = () => {
         };
         fetchUserInfo(match.params.id);
     }, []);
+
       
     
     //   const handleToggle = () => {

@@ -13,7 +13,8 @@ import eventDisplayReducer from "../features/Events/eventDisplaySlice"
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
 import userTypeReducer from "../features/user/userSlice";
-import uploadModalReducer from "../features/Portfolio/uploadModalSlice"
+import uploadModalReducer from "../features/Portfolio/uploadModalSlice";
+import uploadVideoModalReducer from "../features/Portfolio/uploadVideoModalSlice"
 import logger from "redux-logger";
 
 export default configureStore({
@@ -31,6 +32,7 @@ export default configureStore({
     userType: userTypeReducer,
     userToken: userTokenReducer,
     uploadModal: uploadModalReducer,
+    uploadVideoModal: uploadVideoModalReducer,
     bookMeModal: bookMeModalReducer,
     eventDisplay: eventDisplayReducer
   },
