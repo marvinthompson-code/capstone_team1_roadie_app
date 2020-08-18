@@ -15,4 +15,6 @@ const Artist = () => {
     </div>
   );
 };
+
 export default Artist;
+
