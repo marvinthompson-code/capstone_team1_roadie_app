@@ -42,3 +42,24 @@
   border-bottom: 1px solid var(--darkSienna);
   padding: 10px;
 }
+
+.jumbotronTitle {
+  padding: 10px;
+}
+
+#searchInput {
+  background-color: var(--floralWhite);
+    border-color: var(--darkSienna);
+    box-shadow: 1px 1px 2px #888888;
+    outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.roadieDropdown {
+  background-color: var(--DesertSand);
+  border-color: var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+}

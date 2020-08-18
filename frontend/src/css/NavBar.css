@@ -47,3 +47,48 @@ a:hover {
   border: 1px solid var(--darkSienna);
   box-shadow: 1px 1px 2px #888888;
 }
+
+.roadieLogIn {
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  background-color: var(--floralWhite);
+  box-shadow: 1px 1px 2px #888888;
+  color: var(--darkSienna);
+}
+
+.roadieLogIn:hover {
+  background-color: var(--darkSienna);
+  color: var(--floralWhite) !important;
+}
+
+
+.roadieSignUp {
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+  color: var(--floralWhite) !important;
+  background-color: var(--darkSienna);
+  border-radius: 10px;
+}
+
+.roadieSignUp:hover {
+  background-color: var(--floralWhite);
+  color: var(--darkSienna) !important;
+}
+
+#navbarDropdownMenuLink {
+  color: var(--darkSienna);
+}
+
+.dropdown-item {
+  background-color: var(--darkSienna) !important;
+  color: var(--floralWhite) !important;
+}
+
+.dropdown-item:hover {
+  background-color: var(--floralWhite) !important;
+  color: var(--darkSienna) !important;
+}
+.dropdown-menu {
+  background-color: var(--darkSienna) !important;
+}
+
