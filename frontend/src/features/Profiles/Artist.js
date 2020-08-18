@@ -15,4 +15,5 @@ const Artist = () => {
       <BookMeForm />
     </div>
   );
-export default Artist;
+}
+export default Artist
