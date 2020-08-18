@@ -12,6 +12,7 @@ const DisplaySignUp = () => {
   const history = useHistory()
   let isOpen = useSelector((state) => state.modal);
   const [toggle, setToggle] = useState(false);
+
   const onClick = () => {
     if (!toggle) {
       setToggle(true);
@@ -64,12 +65,13 @@ const DisplaySignUp = () => {
       }}
     >
     <ul class="nav nav-tabs">
+    <li class="nav-item">
+    <a class="nav-link active" href="#" onClick={onClick}>Client</a>
+  </li>
   <li class="nav-item">
     <a class="nav-link active" href="#" onClick={onClick}>Artist</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="#" onClick={onClick}>Client</a>
-  </li>
+  
   </ul>
       {displayModal()}
     </Modal>
