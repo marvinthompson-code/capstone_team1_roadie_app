@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { receiveSearch } from "../SearchResults/searchSlice";
 import { receiveUserType } from "../user/userSlice";
 import axios from "axios";
-
+import "../../css/Search.css";
 
 const Search = () => {
   const [userType, setUserType] = useState("");
@@ -41,32 +41,33 @@ const Search = () => {
   };
 
   return (
-    <div className="searchContainer">
-      <form onSubmit={handleSubmit} className="searchForm">
-        <div className="row justify-content-md-center" >
-        <div className="col col-lg-2">
+      <form onSubmit={handleSubmit} className="roadieForm">
+        <div className="row justify-content-md-center form-group" >
+
+        <div className="col-sm-4">
         <input
           type={"text"} value={name} placeholder={"Search Roadie for Artists & Clients..."} className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
           onChange={(e) => setName(e.target.value)}
           id="searchInput"
           />
           </div>
-        <div className="form-group col-md-auto">
-          <select className="custom-select" onChange={(e) => setUserType(e.target.value)}>
+
+        <div className="col-sm-2">
+          <select className="custom-select form-control" onChange={(e) => setUserType(e.target.value)}>
           <option selected>Search By...</option>
           <option value="Artist">Artist</option>
           <option value="Client">Client</option>
           </select>
-
         </div>
-        <div className="col col-lg-2">
-        <button className="btn btn-primary" type="submit">
+
+        <div className="col-sm-1 roadieSearchButtonCol">
+        <button className="btn btn-primary roadieSearchButton" type="submit">
           Submit
         </button>
         </div>
+
           </div>
       </form>
-    </div>
   );
 };
 
