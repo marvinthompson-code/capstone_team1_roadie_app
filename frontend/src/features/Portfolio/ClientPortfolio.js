@@ -50,7 +50,6 @@ const ClientPortfolio = () => {
 
   useEffect(() => {
     const fetchClient = async (id) => {
-      debugger
       let res = await axios.get(`${API}/clients/${id}`);
       let { name, profile_pic_url } = res.data.body.single_client;
       setName(name);
