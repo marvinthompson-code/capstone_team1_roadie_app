@@ -39,32 +39,32 @@ const Search = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="searchContainer">
       <form onSubmit={handleSubmit} className="searchForm">
+        <div className="row justify-content-md-center" >
+        <div className="col col-lg-2">
         <input
-          type={"text"}
-          value={name}
-          placeholder={"Name"}
+          type={"text"} value={name} placeholder={"Search Roadie for Artists & Clients..."} className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
           onChange={(e) => setName(e.target.value)}
           id="searchInput"
-        />
-        <select
-          value={userType}
-          required
-          aria-required={"true"}
-          onChange={(e) => setUserType(e.target.value)}
-          id="searchSelect"
-        >
-          <option disabled value="">
-            Search By...
-          </option>
-          <option value={"Artist"}>Artist</option>
-          <option value={"Client"}>Client</option>
-        </select>
-        <button id="searchButton" type="submit">
+          />
+          </div>
+        <div className="form-group col-md-auto">
+          <select className="custom-select" onChange={(e) => setUserType(e.target.value)}>
+          <option selected>Search By...</option>
+          <option value="Artist">Artist</option>
+          <option value="Client">Client</option>
+          </select>
+
+        </div>
+        <div className="col col-lg-2">
+        <button className="btn btn-primary" type="submit">
           Submit
         </button>
+        </div>
+          </div>
       </form>
     </div>
   );

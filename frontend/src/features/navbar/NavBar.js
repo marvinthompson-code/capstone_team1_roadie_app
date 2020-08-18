@@ -19,28 +19,30 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   let routeExt = () => {
-
     if (client === null && artist !== null) {
       return (
+        <li className="nav-item active">
         <NavLink
           exact
           to={`/artist/${currentUser.id}`}
-          activeClassName={"navItem"}
-          className="inactive"
-        >
+          className="nav-link"
+          >
           Profile
         </NavLink>
+          </li>
+        
       );
     } else if (client !== null && artist === null) {
       return (
+       <li className="nav-item active">
         <NavLink
           exact
           to={`/client/${currentUser.id}`}
-          activeClassName={"navItem"}
-          className="inactive"
-        >
+          className="nav-link"
+          >
           Profile
         </NavLink>
+          </li>
       );
     }
   };
@@ -57,10 +59,14 @@ const NavBar = () => {
     if (currentUser) {
       return (
         <>
+        <li className="nav-item active">
           {routeExt()}
-          <button className="logoutBttn" onClick={userLogout}>
+        </li>
+  
+          <button className="logoutBttn justify-content-end" onClick={userLogout}>
             Logout
           </button>
+      
         </>
       );
     } else {
@@ -78,30 +84,28 @@ const NavBar = () => {
   };
 
   return (
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  {/* <NavLink className="navbar-brand" href="#" exact to="/"><img src={logo} alt="logo" className="navLogo" id="roadieLogo" /></NavLink> */}
+<nav className="navbar navbar-expand-lg navbar-light bg-light ">
+  <NavLink className="navbar-brand" href="#" exact to="/">Roadie</NavLink>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-  <div className="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul className="navbar-nav">
-      <li className="nav-item active">
+  <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+    <ul className="navbar-nav ">
+      {/* <li className="nav-item active">
         <NavLink className="nav-link" href="#" exact to="/">Home <span className="sr-only">(current)</span></NavLink>
-      </li>
-       {displayButtons()}
-      <li className="nav-item">
-        <a className="nav-link" href="#">Pricing</a>
-      </li>
+      </li> */}
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+          About
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="#">Action</a>
-          <a className="dropdown-item" href="#">Another action</a>
-          <a className="dropdown-item" href="#">Something else here</a>
+          <a className="dropdown-item" href="#">About Roadie</a>
+          <a className="dropdown-item" href="#">Why Roadie</a>
+          <a className="dropdown-item" href="#">Meet the Roadies</a>
         </div>
       </li>
+       {displayButtons()}
     </ul>
   </div>
 </nav>
