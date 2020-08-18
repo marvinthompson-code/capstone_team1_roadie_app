@@ -73,10 +73,10 @@ const NavBar = () => {
       return (
         <>
          <li className="nav-item active">
-        <NavLink className="nav-link" href="#" exact to="/login" onClick={() => dispatch(toggleLoginModalState())}>Log In <span className="sr-only">(current)</span></NavLink>
+        <NavLink className="nav-link roadieLogIn" href="#" exact to="/login" onClick={() => dispatch(toggleLoginModalState())}>Log In <span className="sr-only">(current)</span></NavLink>
       </li>
       <li className="nav-item active">
-        <NavLink className="nav-link" href="#" exact to="/signup" onClick={() => dispatch(toggleModalState())}>Sign Up <span className="sr-only">(current)</span></NavLink>
+        <NavLink className="nav-link roadieSignUp" href="#" exact to="/signup" onClick={() => dispatch(toggleModalState())}>Sign Up <span className="sr-only">(current)</span></NavLink>
       </li>
         </>
       );
@@ -96,7 +96,7 @@ const NavBar = () => {
         <NavLink className="nav-link" href="#" exact to="/">Home <span className="sr-only">(current)</span></NavLink>
       </li> */}
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a className="nav-link dropdown-toggle aboutTitle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           About
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

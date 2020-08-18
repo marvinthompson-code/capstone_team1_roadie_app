@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div className="home container">
     <div className="jumbotron text-center roadieJumbo">
-  <h1 className="display-4">Roadie</h1>
-  <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 className="display-4 jumbotronTitle">Roadie</h1>
+  <p className="lead display-5">Search for Musicians to play at your next event, or search for a Booking Agent today! </p>
   <Search />
   </div>
     </div>

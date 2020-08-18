@@ -53,7 +53,7 @@ const Search = () => {
           </div>
 
         <div className="col-sm-2">
-          <select className="custom-select form-control" onChange={(e) => setUserType(e.target.value)}>
+          <select className="custom-select form-control roadieDropdown" onChange={(e) => setUserType(e.target.value)}>
           <option selected>Search By...</option>
           <option value="Artist">Artist</option>
           <option value="Client">Client</option>

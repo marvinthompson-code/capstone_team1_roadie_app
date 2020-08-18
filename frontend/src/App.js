@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import '../src/App.css'
 import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { Route } from "react-router-dom";
