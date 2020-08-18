@@ -43,9 +43,11 @@ function App() {
           <Home />
           {/* <About /> */}
         </Route>
+        
         <AuthRoute exact path="/signup">
           <DisplaySignUp />
         </AuthRoute>
+
         <AuthRoute exact path="/login">
           <Login />
         </AuthRoute>

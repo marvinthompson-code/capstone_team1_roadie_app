@@ -6,7 +6,7 @@ import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/NavBar.css";
+// import "../../css/NavBar.css";
 import logo from "../../RoadieLogo.png";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
@@ -51,6 +51,7 @@ const NavBar = () => {
     dispatch(recieveToken(null));
     logout();
   };
+  
   const displayButtons = () => {
     console.log(currentUser, "currentUser")
     if (currentUser) {
@@ -65,38 +66,45 @@ const NavBar = () => {
     } else {
       return (
         <>
-          <NavLink
-            className="inactive"
-            activeClassName="active"
-            exact
-            to={"/login"}
-            onClick={() => dispatch(toggleLoginModalState())}
-          >
-            Login
-          </NavLink>
-          <NavLink
-            className="inactive"
-            activeClassName="active"
-            id="signUpLink"
-            to={"/signup"}
-            onClick={() => dispatch(toggleModalState())}
-          >
-            Sign Up
-          </NavLink>
+         <li className="nav-item active">
+        <NavLink className="nav-link" href="#" exact to="/login" onClick={() => dispatch(toggleLoginModalState())}>Log In <span className="sr-only">(current)</span></NavLink>
+      </li>
+      <li className="nav-item active">
+        <NavLink className="nav-link" href="#" exact to="/signup" onClick={() => dispatch(toggleModalState())}>Sign Up <span className="sr-only">(current)</span></NavLink>
+      </li>
         </>
       );
     }
   };
+
   return (
-    <nav>
-      <NavLink className="inactive" activeClassName="active" exact to={"/"}>
-        <img src={logo} alt="logo" className="navLogo" id="roadieLogo" />
-      </NavLink>
-      <NavLink className="inactive" activeClassName="active" exact to={"/"}>
-        Home
-      </NavLink>
-      {displayButtons()}
-    </nav>
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
+  {/* <NavLink className="navbar-brand" href="#" exact to="/"><img src={logo} alt="logo" className="navLogo" id="roadieLogo" /></NavLink> */}
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+        <NavLink className="nav-link" href="#" exact to="/">Home <span className="sr-only">(current)</span></NavLink>
+      </li>
+       {displayButtons()}
+      <li className="nav-item">
+        <a className="nav-link" href="#">Pricing</a>
+      </li>
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a className="dropdown-item" href="#">Action</a>
+          <a className="dropdown-item" href="#">Another action</a>
+          <a className="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
   );
 };
 

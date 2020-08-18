@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { receiveSearch } from "../SearchResults/searchSlice";
 import { receiveUserType } from "../user/userSlice";
 import axios from "axios";
-import "../../css/Search.css";
+
 
 const Search = () => {
   const [userType, setUserType] = useState("");
@@ -18,30 +18,21 @@ const Search = () => {
     e.preventDefault();
     try {
       let routeExtension = name === "" ? "" : `/search/${name}`;
-      // declaring the variable, assignment, conditional. if name === "", set it to "" ELSE set it to /search/${name}
-
       if (userType === "Artist" && name === "") {
         let res = await axios.get(`${API}/artists`);
-
         dispatch(receiveSearch(res.data.body.artists));
       }
-
       if (userType === "Client" && name === "") {
         let res = await axios.get(`${API}/clients`);
-
         dispatch(receiveSearch(res.data.body.clients));
       }
-
       if (userType === "Artist") {
         let res = await axios.get(`${API}/artists` + routeExtension);
-
         dispatch(receiveSearch(res.data.body.searched_artist));
       } else if (userType === "Client") {
         let res = await axios.get(`${API}/clients` + routeExtension);
-
         dispatch(receiveSearch(res.data.body.searched_client));
       }
-
       dispatch(receiveUserType(userType));
       history.push("/results");
     } catch (error) {

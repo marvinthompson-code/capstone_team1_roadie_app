@@ -1,24 +1,19 @@
 import React from "react";
 import Search from "./Search";
-import BookMeForm from "../Artist/BookMeForm";
 import About from './About'
-import "../../css/Home.css";
+// import "../../css/Home.css";
 
 const Home = () => {
   return (
-    <div className="homeContainer">
-      <div className="searchHomeContainer">
-        <div className="pinkContainer">
-          <div className="titleContainer">
-            <h1 id="titleHeader">WELCOME TO ROADIE</h1>
-          </div>
-          <Search />
-        </div>
-      </div>
-      <div className="aboutContainer">
-        <About />
-      </div>
-    </div>
+    <div className="jumbotron text-center">
+  <h1 className="display-4">Roadie</h1>
+  <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <Search />
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p className="lead">
+    <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+  </div>
   );
 };
 

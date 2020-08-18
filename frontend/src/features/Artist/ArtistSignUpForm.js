@@ -7,8 +7,7 @@ import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import { useHistory } from "react-router-dom";
-import "../../css/ArtistSignUpForm.css";
+// import "../../css/ArtistSignUpForm.css";
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -20,16 +19,13 @@ const ArtistSignUpForm = () => {
   const [pricing, setPricing] = useState("");
   const [contact_info, setContactInfo] = useState("");
   let isOpen = useSelector((state) => state.modal);
-  // const [ isOpen, setIsOpen ] = useState(false)
 
-  //imageUpload
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const API = apiURL();
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -98,29 +94,8 @@ const ArtistSignUpForm = () => {
     }
   };
 
-  const closeModal = () => {
-    dispatch(toggleModalState());
-    history.push("/");
-  };
-
   return (
-    // <Modal
-    //   isOpen={true}
-    //   onRequestClose={closeModal}
-    //   isOpen={isOpen}
-    //   style={{
-    //     content: {
-    //       backgroundColor: "#F4D8CD",
-    //       borderRadius: "13px",
-    //       left: "25%",
-    //       right: "25%",
-    //     },
-    //     overlay: {
-    //       backgroundColor: "#164444",
-    //     },
-    //   }}
-    // >
-      <div className={"FormContainer"}>
+      <div className="form-group">
         <div className="artistSignUpTitle">
           <h3 id={"artisth3"}>Artist Sign Up</h3>
         </div>
@@ -182,16 +157,8 @@ const ArtistSignUpForm = () => {
                 onChange={(e) => setCity(e.currentTarget.value)}
               ></input>
             </div>
-            {/* Set Range: */}
-            {/* <select>
-                    <option value={"$"}>$</option>
-                    <option value={"$$"}>$$</option>
-                    <option value={"$$$"}>$$$</option>
-                    <option value={"Ask"}>Ask</option>
-                </select> */}
             <div className="artistSubmitButton">
               <input type="file" onChange={handleImageAsFile} required id="fileUpload" />
-
               <button
                 type="button"
                 onClick={() => {
@@ -201,16 +168,12 @@ const ArtistSignUpForm = () => {
               >
                 Upload
               </button>
-
               {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
-
               <button type={"submit"} id="submitArtist">Sign Up</button>
             </div>
           </form>
         </div>
       </div>
-    // </Modal>
-  
   );
 };
 

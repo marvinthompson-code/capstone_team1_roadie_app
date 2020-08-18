@@ -7,7 +7,6 @@ import Modal from "react-modal";
 import { useHistory } from "react-router-dom"
 import "../../css/DisplaySignUp.css";
 import styled, { css } from "styled-components";
-
 const DisplaySignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -20,9 +19,6 @@ const DisplaySignUp = () => {
       setToggle(false);
     }
   };
-
-
-
   const Button = styled.button`
     background: #ec9b59;
     border-radius: 13px;
@@ -38,18 +34,15 @@ const DisplaySignUp = () => {
     return (
       <div className="displaySignUpContainer">
         <div className="buttonContainer">
-          {toggle ? <Button onClick={onClick}>Artist</Button> : <Button onClick={onClick} primary>Client</Button>}
         </div>
         {toggle ? <ArtistSignUpForm /> : <ClientSignUp />}
       </div>
     );
   };
-
   const closeModal = () => {
     dispatch(toggleModalState());
     history.push("/")
   };
-
   return (
     <Modal
       isOpen={true}
@@ -70,9 +63,16 @@ const DisplaySignUp = () => {
         },
       }}
     >
+    <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#" onClick={onClick}>Artist</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#" onClick={onClick}>Client</a>
+  </li>
+  </ul>
       {displayModal()}
     </Modal>
   );
 };
-
 export default DisplaySignUp;
