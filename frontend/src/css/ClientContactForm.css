@@ -34,10 +34,12 @@
 }
 
 #contactSubmitButton {
-    /* background-color: red; */
+    background-color: var(--lightGreen);
     height: 40px;
     width: 40%;
     margin-left: 35%;
+    border-radius: 20px;
+    color: var(--darkBlue);
 }
 
 .contactButtonDiv {
