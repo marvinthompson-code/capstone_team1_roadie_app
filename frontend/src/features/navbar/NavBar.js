@@ -6,7 +6,7 @@ import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-// import "../../css/NavBar.css";
+import "../../css/NavBar.css";
 import logo from "../../RoadieLogo.png";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
@@ -63,7 +63,7 @@ const NavBar = () => {
           {routeExt()}
         </li>
   
-          <button className="logoutBttn justify-content-end" onClick={userLogout}>
+          <button className="logoutBttn justify-content-end" id="roadieLogout" onClick={userLogout}>
             Logout
           </button>
       
@@ -84,7 +84,7 @@ const NavBar = () => {
   };
 
   return (
-<nav className="navbar navbar-expand-lg navbar-light bg-light ">
+<nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav">
   <NavLink className="navbar-brand" href="#" exact to="/">Roadie</NavLink>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
