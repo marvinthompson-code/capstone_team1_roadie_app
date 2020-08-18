@@ -19,28 +19,30 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   let routeExt = () => {
-
     if (client === null && artist !== null) {
       return (
+        <li className="nav-item active">
         <NavLink
           exact
           to={`/artist/${currentUser.id}`}
-          activeClassName={"navItem"}
-          className="inactive"
-        >
+          className="nav-link"
+          >
           Profile
         </NavLink>
+          </li>
+        
       );
     } else if (client !== null && artist === null) {
       return (
+       <li className="nav-item active">
         <NavLink
           exact
           to={`/client/${currentUser.id}`}
-          activeClassName={"navItem"}
-          className="inactive"
-        >
+          className="nav-link"
+          >
           Profile
         </NavLink>
+          </li>
       );
     }
   };
@@ -57,7 +59,9 @@ const NavBar = () => {
     if (currentUser) {
       return (
         <>
+        <li className="nav-item active">
           {routeExt()}
+        </li>
           <button className="logoutBttn" onClick={userLogout}>
             Logout
           </button>
