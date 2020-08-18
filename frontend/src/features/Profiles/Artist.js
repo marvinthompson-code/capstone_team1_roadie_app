@@ -5,7 +5,6 @@ import UploadVideoModal from "../Portfolio/UploadVideoModal";
 import BookMeForm from "../Artist/BookMeForm";
 import "../../css/Profiles/Artist.css";
 
-
 const Artist = () => {
   return (
     <div className="realArtistProfile">
@@ -15,4 +14,5 @@ const Artist = () => {
       <BookMeForm />
     </div>
   );
+};
 export default Artist;
