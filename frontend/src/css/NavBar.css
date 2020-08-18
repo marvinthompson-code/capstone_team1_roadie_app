@@ -1,15 +1,10 @@
 :root {
-  --pumpkinOrange: #ec9b59;
-  --pink: #f4d8cd;
-  --lightGreen: #9eb19e;
-  --darkGreen: #164444;
-  --darkBlue: #00202b;
-  --darkSienna: #3C1414;
-  --Cinereous: #9A8378;
-  --DesertSand: #DBC2AD;
-  --PaleSilver: #C9BBAA;
-  --eggShell: #F8F2DC;
-  --floralWhite: #FFFAF0;
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #fffaf0;
 }
 
 @font-face {
@@ -27,58 +22,28 @@
   font-family: railwayLight;
 }
 
-nav {
-  display: grid;
-  padding: 5px;
-  grid-template-columns: repeat(4, 1fr);
-  font-family: railwayLight;
-  color: var(--darkGreen);
-  text-align: center;
-  background-color: var(--darkBlue);
-  border-style: none none solid none;
-  border-color: var(--lightGreen);
-  z-index: 2;
+.navbar {
+  background-color: var(--floralWhite) !important;
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+}
+a:hover {
+  background-color: 000000 !important;
 }
 
-a {
-  text-decoration: none;
+.roadieNav a {
+  margin-right: 20px;
 }
 
-.inactive {
-  color: var(--pink);
-  border-style: none solid none none;
-  border-color: var(--lightGreen);
-  /* padding: 5px; */
+.roadieNav a:hover {
+  border-bottom: 2px solid var(--darkSienna);
+
 }
 
-.inactive:hover {
-  font-size: 25px;
-  font-weight: bolder;
-  color: var(--pumpkinOrange);
-}
-
-#roadieLogo {
-  height: 40px;
-  width: 75px;
-}
-#signUpLink {
-  border-style: none;
-}
-
-.logoutBttn {
-  align-self: center;
-  justify-self: center;
-  height: 50%;
-  width: 20%;
-  color: var(--darkBlue);
-  background-color: var(--pink);
-}
-
-.logoutBttn:hover {
-  align-self: center;
-  justify-self: center;
-  height: 50%;
-  width: 20%;
-  color: var(--pumpkinOrange);
-  background-color: var(--darkGreen);
+#roadieLogout{
+  background-color: var(--darkSienna);
+  color: var(--floralWhite);
+  border-radius: 10px;
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
 }
