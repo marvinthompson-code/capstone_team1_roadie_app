@@ -1,29 +1,4 @@
-.artistPortfolioContainer {
-  grid-row: 4 / span 1;
-  display: grid;
-  grid-template-columns: 30% 70%;
-}
-.portfolioHeader {
-  grid-column: 1 / span 1;
-}
-.artistMediaContainer {
-  grid-column: 2 / span 1;
-  display: grid;
-  grid-template-rows: 50% 50%;
-  grid-row-gap: 10px;
-}
-.artistAlbumDiv {
-  grid-row: 1 / span 1;
-  background-color: var(--lightGreen);
-  border-radius: 20px;
-}
-.artistVideoDiv {
-  grid-row: 2 / span 1;
-  background-color: var(--darkGreen);
-  border-radius: 20px;
-}
-#portfolioPic {
+#portfolioImg{
   width: 300px;
-  height: 275px;
-  border-radius: 50%;
+  height: auto;
 }
