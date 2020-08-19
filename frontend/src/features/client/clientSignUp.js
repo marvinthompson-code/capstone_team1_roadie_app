@@ -5,7 +5,7 @@ import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import '../../css/clientSignUp.css'
+import "../../css/clientSignUp.css";
 import { useDispatch, useSelector } from "react-redux";
 
 const ClientSignUp = () => {
@@ -91,9 +91,9 @@ const ClientSignUp = () => {
       console.log(error.message);
     }
   };
+
   return (
     <div className="FormContainer">
-
       <div className="modal-header">
         <h3 className="modal-title" id="exampleModalLongTitle">
           Client Sign Up
@@ -104,124 +104,124 @@ const ClientSignUp = () => {
           <label for="exampleInputEmail1" id="labelItem">
             Name
           </label>
+          <input
+            type="text"
+            className="form-control clientSignUpInput"
+            placeholder={"Client Name.."}
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
+          />
+        </div>
 
-          <div className="artistInput">
-            <input
-              type="text"
-              className="form-control clientSignUpInput"
-              placeholder={"Client Name.."}
-              value={name}
-              onChange={(e) => setName(e.currentTarget.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            Email
+          </label>
+          <input
+            type="email"
+            className="form-control clientSignUpInput"
+            placeholder="Client Email.."
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control clientSignUpInput"
-              placeholder="Client Email.."
-              value={email}
-              onChange={(e) => setEmail(e.currentTarget.value)}
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="labelItem">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control clientSignUpInput"
+            placeholder={"Client Password.."}
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+            id="exampleInputPassword1"
+          />
+        </div>
 
-              id="exampleInputEmail1" aria-describedby="emailHelp"
-              />
-              </div>
-            
-            <div class="form-group">
-            <label for="exampleInputPassword1" id="labelItem">Password</label>
-            <input
-              type="password"
-              className="form-control clientSignUpInput"
-              placeholder={"Client Password.."}
-              value={password}
-              onChange={(e) => setPassword(e.currentTarget.value)}
-              id="exampleInputPassword1"
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            City
+          </label>
+          <input
+            type="text"
+            className="form-control clientSignUpInput"
+            placeholder="Client City.."
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">
-              City
-            </label>
-            <input
-              type="text"
-              className="form-control clientSignUpInput"
-              placeholder="Client City.."
-              value={city}
-              onChange={(e) => setCity(e.currentTarget.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            Contact Info/Phone Number
+          </label>
+          <input
+            type="text"
+            className="form-control clientSignUpInput"
+            placeholder={"Client Contact Information.."}
+            value={contact_info}
+            onChange={(e) => setContactInfo(e.currentTarget.value)}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">
-              Contact Info/Phone Number
-            </label>
-            <input
-              type="text"
-              className="form-control clientSignUpInput"
-              placeholder={"Client Contact Information.."}
-              value={contact_info}
-              onChange={(e) => setContactInfo(e.currentTarget.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            Company
+          </label>
+          <input
+            type="text"
+            className="form-control clientSignUpInput"
+            placeholder={"Client Company.."}
+            value={company}
+            onChange={(e) => setCompany(e.currentTarget.value)}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">
-              Company
-            </label>
-            <input
-              type="text"
-              className="form-control clientSignUpInput"
-              placeholder={"Client Company.."}
-              value={company}
-              onChange={(e) => setCompany(e.currentTarget.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            Bio
+          </label>
+          <input
+            type="text"
+            className="form-control clientSignUpInput"
+            placeholder="Client Bio.."
+            value={bio}
+            onChange={(e) => setBio(e.currentTarget.value)}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">
-              Bio
-            </label>
-            <input
-              type="text"
-              className="form-control clientSignUpInput"
-              placeholder="Client Bio.."
-              value={bio}
-              onChange={(e) => setBio(e.currentTarget.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label for="exampleFormControlFile1" id="labelItem">
+            Upload Profile Image
+          </label>
+          <input
+            type="file"
+            className="form-control-file"
+            id="exampleFormControlFile1"
+            required
+            onChange={handleImageAsFile}
+          />
+        </div>
+        <button
+          type="button"
+          className="clientUploadButton btn-secondary"
+          onClick={handleFirebaseUpload}
+          id="firebaseUpload"
+        >
+          upload
+        </button>
+        {toggleUploadMsg ? <h5 id="labelItem">Upload successful!</h5> : null}
 
-          <div className="form-group">
-          <label for="exampleFormControlFile1" id="labelItem">Upload Profile Image</label>
-            <input
-              type="file"
-              className="form-control-file"
-              id="exampleFormControlFile1"
-              required
-              onChange={handleImageAsFile}
-              />
-              </div>
-            <button
-              type="button"
-              className="clientUploadButton btn-secondary"
-              onClick={handleFirebaseUpload}
-              id="firebaseUpload"
-            >
-              upload
-            </button>
-            {toggleUploadMsg ? (
-              <h5 id="labelItem">Upload successful!</h5>
-            ) : null}
-
-            <input
-             type="submit" className="btn btn-primary clientSignUpButton" value="Sign Up" 
-             />
-          
-        </form>
-
+        <input
+          type="submit"
+          className="btn btn-primary clientSignUpButton"
+          value="Sign Up"
+        />
+      </form>
     </div>
   );
 };
