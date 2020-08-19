@@ -5,10 +5,18 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #fffaf0;
+  --floralGrey: #f4efe5;
 }
 
 .clientSignUpInput {
   box-shadow: 1px 1px 2px #888888;
+  background-color: var(--floralWhite);
+  border-color: var(--darkSienna);
+  outline: none;
+}
+
+.clientSignUpHeader {
+  border-bottom-color: var(--floralGrey);
 }
 
 #labelItem {
@@ -16,9 +24,34 @@
   text-shadow: 0.5px 0.3px 1px #888888;
 }
 
-#exampleInputEmail1 {
+.clientSignUpBody {
+  background-color: var(--floralGrey);
+}
+/* #exampleInputEmail1 {
   box-shadow: 1px 1px 2px #888888;
   background-color: var(--floralWhite);
   border-color: var(--darkSienna);
   outline: none;
+} */
+
+#exampleModalLongTitle {
+  color: var(--darkSienna);
+  text-shadow: 0.5px 0.3px 1px #888888;
+}
+
+.clientSignUpButton {
+  background-color: var(--darkSienna) !important;
+  color: var(--floralWhite) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  border: 1px solid var(--darkSienna) !important;
+}
+
+.clientUploadButton {
+  background-color: var(--floralWhite) !important;
+  color: var(--darkSienna) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  height: 35px;
+  border: 1px solid var(--darkSienna) !important;
 }

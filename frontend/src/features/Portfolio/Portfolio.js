@@ -70,7 +70,10 @@ const ArtistPortfolio = () => {
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
+          <div className="artistHeaderAlbumDiv">
           <h2 id="artistNameAlbum">{name}'s Album</h2>
+          </div>
+          <div className="artistButtonAlbumDiv">
           {displayUploadPictureButton()}
           <input
             type="button"
@@ -78,9 +81,13 @@ const ArtistPortfolio = () => {
             onClick={toPhotoAlbum}
             value={`${name}'s Photo Album`}
           />
+          </div>
         </div>
         <div className="artistVideoDiv">
+        <div className="artistHeaderAlbumDiv">
           <h2>{name}'s Videos</h2>
+          </div>
+          <div className="artistButtonAlbumDiv">
           {displayUploadVideoButton()}
           <input
             type="button"
@@ -88,6 +95,7 @@ const ArtistPortfolio = () => {
             onClick={toVideoAlbum}
             value={`${name}'s Photo Videos`}
           />
+          </div>
         </div>
       </div>
     </div>

@@ -101,7 +101,7 @@ const ClientProfile = () => {
     if (client !== null && client.id === match.params.id) {
       return (
         <button
-          id={"EditClientProfileButton"}
+          id={"EditArtistProfileButton"}
           onClick={() => dispatch(toggleEditClientProfileModalState())}
         >
           Edit Profile

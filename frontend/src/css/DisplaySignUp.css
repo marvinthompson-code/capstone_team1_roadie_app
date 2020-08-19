@@ -5,22 +5,66 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #fffaf0;
+  --floralGrey: #F4EFE5;
 }
 
-.displaySignUpContainer{
+.displaySignUpContainer {
   display: grid;
   border-radius: 13px;
   grid-template-rows: 5% 95%;
   height: 100%;
 }
-.buttonContainer{
+.buttonContainer {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-};
+}
 
 .displayHeaderSignUp {
   background-color: var(--PaleSilver) !important;
   border-bottom-color: var(--PaleSilver) !important;
   color: var(--floralWhite) !important;
   text-shadow: 0.5px 0.3px 1px #888888 !important;
+}
+
+.signUpModalBody {
+  background-color: var(--floralGrey);
+}
+
+#signUpTabs {
+  color: var(--floralWhite);
+  text-shadow: 0.5px 0.3px 1px #888888 !important;
+  background-color: var(--DesertSand);
+  border-color: var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+}
+
+#signUpTabsArtist {
+  color: var(--floralWhite);
+  text-shadow: 0.5px 0.3px 1px #888888 !important;
+  background-color: var(--darkSienna);
+  border-color: var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.nav-tabs {
+  border-bottom-color: var(--darkSienna);
+}
+
+.clientSignUpHeader {
+  border-bottom-color: var(--floralGrey);
+}
+
+.signUpModalFooter {
+  background-color: var(--floralGrey);
+  border-top-color: var(--floralGrey);
+}
+
+.signUpCloseButton {
+  background-color: var(--floralWhite) !important;
+  color: var(--darkSienna) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  border: 1px solid var(--darkSienna) !important;
+  height: 40px;
+  width: 65px;
 }

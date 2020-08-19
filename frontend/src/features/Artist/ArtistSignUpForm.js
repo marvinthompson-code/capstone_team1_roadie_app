@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { storage } from "../../firebase";
-import Modal from "react-modal";
 import axios from "axios";
 import { updateArtist } from "../token/artistTokenSlice";
-import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-
+import '../../css/ArtistSignUpForm.css'
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -18,7 +16,6 @@ const ArtistSignUpForm = () => {
   const [bio, setBio] = useState("");
   const [pricing, setPricing] = useState("");
   const [contact_info, setContactInfo] = useState("");
-  let isOpen = useSelector((state) => state.modal);
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -86,9 +83,7 @@ const ArtistSignUpForm = () => {
         id: res.user.uid,
         type: "artist",
       });
-  
       dispatch(updateArtist(res.user));
-  
     } catch (error) {
       console.log(error.message);
     }
@@ -96,13 +91,13 @@ const ArtistSignUpForm = () => {
 
   return (
       <div className="form-group">
-      <div className="modal-header">
+      <div className="modal-header artistSignUpHeader">
         <h3 className="modal-title" id="exampleModalLongTitle">Artist Sign Up</h3>
       </div>
           <form onSubmit={handleSubmit} id="artistForm">
             
           <div className="form-group">
-              <label for="exampleInputEmail1">Name</label>
+              <label for="exampleInputEmail1" id="labelitem">Name</label>
               <input
                 type="text"
                 className="form-control artistSignUpInput"
@@ -113,7 +108,7 @@ const ArtistSignUpForm = () => {
                 ></input>
                 </div>
         <div className="form-group">
-        <label for="exampleInputEmail1">Email</label>
+        <label for="exampleInputEmail1" id="labelitem">Email</label>
             <div className="artistInput">
               <input
                 type="email"
@@ -126,7 +121,7 @@ const ArtistSignUpForm = () => {
                 </div>
 
               <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="exampleInputPassword1" id="labelitem">Password</label>
               <input
                 type="password"
                 className="form-control  artistSignUpInput"
@@ -138,7 +133,7 @@ const ArtistSignUpForm = () => {
                 </div>
 
               <div className="form-group">
-              <label for="exampleInputEmail1">Genre</label>
+              <label for="exampleInputEmail1" id="labelitem">Genre</label>
               <input
                 type="text"
                 className="form-control artistSignUpInput"
@@ -150,7 +145,7 @@ const ArtistSignUpForm = () => {
                 </div>
 
               <div className="form-group">
-              <label for="exampleInputEmail1">Contact/Phone Number</label>
+              <label for="exampleInputEmail1" id="labelitem">Contact/Phone Number</label>
               <input
                 type="text"
                 className="form-control artistSignUpInput"
@@ -162,7 +157,7 @@ const ArtistSignUpForm = () => {
                 </div>
 
               <div className="form-group">
-              <label for="exampleInputEmail1">Bio</label>
+              <label for="exampleInputEmail1" id="labelitem">Bio</label>
               <input
                 type="text"
                 className="form-control artistSignUpInput"
@@ -173,7 +168,7 @@ const ArtistSignUpForm = () => {
                 </div>
 
               <div className="form-group">
-              <label for="exampleInputEmail1">City</label>
+              <label for="exampleInputEmail1" id="labelitem">City</label>
               <input
                 type="text"
                 className="form-control artistSignUpInput"
@@ -185,7 +180,7 @@ const ArtistSignUpForm = () => {
 
               </div>
             <div className="form-group">
-            <label for="exampleFormControlFile1">Upload Profile Image</label>
+            <label for="exampleFormControlFile1" id="labelitem">Upload Profile Image</label>
               <input type="file"
                onChange={handleImageAsFile}
                required
@@ -196,7 +191,7 @@ const ArtistSignUpForm = () => {
 
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="artistUploadButton btn-secondary"
                 onClick={() => {
                   handleFirebaseUpload();
                 }}
@@ -204,9 +199,9 @@ const ArtistSignUpForm = () => {
                 >
                 Upload
               </button>
-              {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
+              {toggleUploadMsg ? <h5 id="uploadSuccess" id="labelitem">Upload successful!</h5> : null}
               <input
-             type="submit" className="btn btn-primary" value="Sign Up" 
+             type="submit" className="artistSignUpButton btn-primary" value="Sign Up" 
              />
           </form>
       </div>

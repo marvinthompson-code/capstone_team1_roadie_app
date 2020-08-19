@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      debugger
+      debugger;
       let res = await login(email, password);
       dispatch(updateUser(res.user));
       history.push("/");
@@ -75,7 +75,7 @@ const Login = () => {
                   />
                 </div>
 
-                <div class="form-group clientSignUpInput">
+                <div className="form-group">
                   <label for="exampleInputPassword1" id="labelItem">
                     Password
                   </label>
@@ -97,6 +97,7 @@ const Login = () => {
               </form>
             </div>
           </div>
+
           <div className="modal-footer loginModalBody">
             <button
               type="button"
