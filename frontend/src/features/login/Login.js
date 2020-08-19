@@ -54,9 +54,47 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="modal-body loginModalBody">
-            <div className="loginForm">
-              {error ? <div>{error}</div> : null}
+
+        <div className="modal-header logInModalHeader">
+        <h5 className="modal-title" id="exampleModalLongTitle">Roadie Log In</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+        <div className="modal-body loginModalBody">
+
+        <div className="loginForm">
+          {error ? <div>{error}</div> : null}
+
+          <form onSubmit={handleSubmit}>
+
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">Email</label>
+            <input
+              id="exampleInputEmail1"
+              className="form-control loginInput"
+              placeholder="Enter Email"
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              />
+              </div>
+
+            <div class="form-group">
+            <label for="exampleInputPassword1" id="labelItem">Password</label>
+            <input
+              type="password"
+              id="exampleInputPassword1" 
+              className="form-control  logInInput"
+              value={password}
+              placeholder="Enter Password"
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              />
+              </div>
+
 
               <form onSubmit={handleSubmit}>
                 <div className="form-group">

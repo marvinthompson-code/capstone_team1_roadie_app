@@ -5,6 +5,7 @@ import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import '../../css/clientSignUp.css'
 import { useDispatch, useSelector } from "react-redux";
 
 const ClientSignUp = () => {
@@ -92,6 +93,7 @@ const ClientSignUp = () => {
   };
   return (
     <div className="FormContainer">
+
       <div className="modal-header">
         <h3 className="modal-title" id="exampleModalLongTitle">
           Client Sign Up
@@ -102,6 +104,7 @@ const ClientSignUp = () => {
           <label for="exampleInputEmail1" id="labelItem">
             Name
           </label>
+
           <div className="artistInput">
             <input
               type="text"
@@ -122,15 +125,13 @@ const ClientSignUp = () => {
               placeholder="Client Email.."
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-          </div>
 
-          <div class="form-group clientSignUpInput">
-            <label for="exampleInputPassword1" id="labelItem">
-              Password
-            </label>
+              id="exampleInputEmail1" aria-describedby="emailHelp"
+              />
+              </div>
+            
+            <div class="form-group">
+            <label for="exampleInputPassword1" id="labelItem">Password</label>
             <input
               type="password"
               className="form-control clientSignUpInput"
@@ -192,31 +193,35 @@ const ClientSignUp = () => {
               onChange={(e) => setBio(e.currentTarget.value)}
             />
           </div>
-        </div>
-        <div className="form-group">
-          <label for="exampleFormControlFile1" id="labelItem">
-            Upload Profile Image
-          </label>
-          <input
-            type="file"
-            className="form-control-file"
-            id="exampleFormControlFile1"
-            required
-            onChange={handleImageAsFile}
-          />
-        </div>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={handleFirebaseUpload}
-          id="firebaseUpload"
-        >
-          upload
-        </button>
-        {toggleUploadMsg ? <h5 id="labelItem">Upload successful!</h5> : null}
 
-        <input type="submit" className="btn btn-primary" value="Sign Up" />
-      </form>
+          <div className="form-group">
+          <label for="exampleFormControlFile1" id="labelItem">Upload Profile Image</label>
+            <input
+              type="file"
+              className="form-control-file"
+              id="exampleFormControlFile1"
+              required
+              onChange={handleImageAsFile}
+              />
+              </div>
+            <button
+              type="button"
+              className="clientUploadButton btn-secondary"
+              onClick={handleFirebaseUpload}
+              id="firebaseUpload"
+            >
+              upload
+            </button>
+            {toggleUploadMsg ? (
+              <h5 id="labelItem">Upload successful!</h5>
+            ) : null}
+
+            <input
+             type="submit" className="btn btn-primary clientSignUpButton" value="Sign Up" 
+             />
+          
+        </form>
+
     </div>
   );
 };
