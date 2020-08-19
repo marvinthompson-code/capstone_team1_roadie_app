@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import "../../css/ClientContactForm.css";
+// import "../../css/ClientContactForm.css";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 
 const ClientContactForm = () => {
@@ -80,44 +80,40 @@ const ClientContactForm = () => {
       }}
     >
       <div>
-        <form onSubmit={handleSubmit} className={"ContactMeForm"}>
-          <div className={"inputDiv"}>
-            <div className="clientNameDiv">
-              <h1>Contact {clientName}!</h1>
-            </div>
-            <div className={"contactNameDiv"}>
-              <input
-                id={"contactNameInput"}
-                type={"text"}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={name}
-              />
-            </div>
-            <div className={"contactBodyDiv"}>
-              <input
-                id={"contactBodyInput"}
-                type={"text"}
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-                placeholder={"Briefly tell me who you are!"}
-              />
-            </div>
-
-            <div className={"contactNumberDiv"}>
-              <h3 className={"contact"}>{contact_info}</h3>
-            </div>
-
-            <div className={"cityDiv"}>
-              <h3 className={"city"}>{city}</h3>
-            </div>
-
-            <div className={"contactButtonDiv"}>
-              <button id={"contactSubmitButton"} type={"submit"}>
-                Submit
-              </button>
-            </div>
+        <form onSubmit={handleSubmit}>
+          <h3>Contact {clientName}</h3>
+          <div className="form-group">
+            <label for="contactNameInput">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id={"contactNameInput"}
+              type={"text"}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={name}
+            />
           </div>
+          <div className="form-group">
+            <label for="contactBodyInput">Message</label>
+            <textarea
+              type="text"
+              className="form-control"
+              id={"contactBodyInput"}
+              type={"textarea"}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              placeholder={"Briefly tell me who you are!"}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <h3>{clientName}'s info</h3>
+            <h4 className="lead">{contact_info}</h4>
+            <h4 className="lead">{city}</h4>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Send
+          </button>
         </form>
       </div>
     </Modal>
