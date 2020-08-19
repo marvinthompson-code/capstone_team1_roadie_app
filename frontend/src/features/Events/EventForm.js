@@ -125,11 +125,11 @@ const EventForm = () => {
       <h2 className="eventFormTitle">Create an Event</h2>
       <div className={"venueForm"}>
         <form onSubmit={handleVenueSubmit}>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputVenue">Venue</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               value={venue}
               id="exampleInputVenue"
               placeholder="Search Venues..."
@@ -137,11 +137,11 @@ const EventForm = () => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputCity">City</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               value={city}
               id="exampleInputCity"
               placeholder="City"
@@ -149,11 +149,11 @@ const EventForm = () => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputCity">Date</label>
             <input
               type="date"
-              class="form-control"
+              className="form-control"
               value={date}
               id="exampleInputDate"
               placeholder="YYYYMMDD"
@@ -161,22 +161,22 @@ const EventForm = () => {
               required
             />
           </div>
-          <button type="submit" class="btn btn-secondary">
+          <button type="submit" className="btn btn-secondary">
             Search
           </button>
         </form>
       </div>
 
       <div className={"selectedVenueContainer"}>
-        <div class="form-group">
-          <label for="selectedVenue" class="col-sm-2 col-form-label">
+        <div className="form-group">
+          <label for="selectedVenue" className="col-sm-2 col-form-label">
             Selected Venue:
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="text"
               readonly
-              class="form-control-plaintext"
+              className="form-control-plaintext"
               id="selectedVenue"
               value={searchMessage}
             />
@@ -186,7 +186,7 @@ const EventForm = () => {
 
       <div className="eventFormDiv">
         <form onSubmit={handleSubmit}>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputName">Name</label>
             <input
               type="text"
