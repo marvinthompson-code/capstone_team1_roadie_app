@@ -1,4 +1,11 @@
-
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #fffaf0;
+}
 
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
@@ -14,6 +21,45 @@
   src: url("../fonts/Raleway-Light.ttf");
   font-family: railwayLight;
 }
-#artistBanner{
-  height: 270px !important;
+
+#BookMeButton {
+  background-color: var(--darkSienna);
+  color: var(--floralWhite);
+  border-radius: 10px;
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+  height: 100%;
+}
+#BookMeButton:hover {
+  background-color: var(--floralWhite);
+  color: var(--darkSienna) !important;
+}
+
+#EditArtistProfileButton {
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  background-color: var(--floralWhite);
+  box-shadow: 1px 1px 2px #888888;
+  color: var(--darkSienna);
+}
+#EditArtistProfileButton:hover {
+  background-color: var(--darkSienna);
+  color: var(--floralWhite) !important;
+}
+.portfolioDiv {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.artistInfo{
+  grid-column: 2/span 1;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+.infoDiv{
+  grid-row: 1/ span 1;
+  background-color: var(--Cinereous) !important;
+}
+.bookingsDisplayContainer{
+  grid-row: 2/ span 1;
 }

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
-
+import "../../css/Portfolio.css"
 
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
@@ -59,7 +59,7 @@ const ArtistPortfolio = () => {
   return (
     <div className="artistPortfolioContainer">
       <div className="portfolioHeader">
-        <img id="portfolioPic" src={profilePic} />
+        <img className="rounded float-left" id="portfolioImg" src={profilePic} />
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">

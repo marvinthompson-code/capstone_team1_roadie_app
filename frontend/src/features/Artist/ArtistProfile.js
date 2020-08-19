@@ -6,7 +6,7 @@ import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import { toggleBookMeModalState } from "./bookMeModalSlice";
 import { toggleEditArtistProfileModalState } from "./editArtistProfileModalSlice";
-// import "../../css/ArtistProfile.css";
+import "../../css/ArtistProfile.css";
 
 const ArtistProfile = () => {
   const [name, setName] = useState("");
@@ -59,7 +59,10 @@ const ArtistProfile = () => {
 
   return (
     <div className="container">
-      <div className="row artistBanner" id="artistBanner">
+      <div
+        className="row artistBanner align-items-center justify-content-center"
+        id="artistBanner"
+      >
         <div className={"col-sm-2"}>
           <button
             id={"BookMeButton"}
@@ -67,46 +70,39 @@ const ArtistProfile = () => {
           >
             Book Me!
           </button>
-          {editButton()}
         </div>
-      </div>
-      <div className="ArtistInfoProfile">
-        <div className={"ArtistNameDiv"}>
+        <div className="col-sm-6 text-center artistProfileHeader">
           <h2 className={"artistProfileName"}>{name}</h2>
         </div>
-        <div className={"InfoDiv"}>
-          <div className={"CityDiv"}>
-            <label>City:</label>
-            <h3 className={"city"}>{city}</h3>
-          </div>
-          <div className={"ContactInfoDiv"}>
-            <label>Contact:</label>
-            <h3 className={"contact"}>{contactInfo}</h3>
-          </div>
-        </div>
-        <div className={"BioPortfolioContainer"}>
-          <div className={"BioDiv"}>
-            <h4 className={"aboutMe"}>About me:</h4>
-            <h3 className={"bio"}>{bio}</h3>
-          </div>
-          <div className="BookingsDisplayContainer">
-            {/* <BookMeForm /> */}
-            <h2>Upcoming shows!</h2>
-          </div>
-        </div>
+        <div className="col-sm-2">{editButton()}</div>
+      </div>
 
-        {/* <div className={"eventDiv"}>
-              <div className={"eventTitleDiv"}>
-                <h3 className={"eventsTitle"}>Created Events</h3>
-              </div>
-              <ul className={"eventUl"}>{userEventsThumbs}</ul>
+      {/* This page has two divs */}
 
-              <div className={"createEventButtonDiv"}>{createEventButton()}</div>
-            </div> */}
-
-        <div className={"portfolioSection"}>
+      <div className="row portfolioDiv">
+        <div className={"col-lg-2"}>
           <Portfolio />
         </div>
+        <div className="col artistInfo">
+          <div className={"infoDiv jumbotron"}>
+            <div className={"CityDiv"}>
+              <label>City:</label>
+              <h3 className={"city"}>{city}</h3>
+            </div>
+            <div className={"ContactInfoDiv"}>
+              <label>Contact:</label>
+              <h3 className={"contact"}>{contactInfo}</h3>
+            </div>
+            <div className={"BioDiv"}>
+              <h4 className={"aboutMe"}>About me:</h4>
+              <p className={"bio"}>{bio}</p>
+            </div>
+          </div>
+            <div className="bookingsDisplayContainer">
+              {/* <BookMeForm /> */}
+              <h2>Upcoming shows!</h2>
+            </div>
+      </div>
       </div>
     </div>
   );
