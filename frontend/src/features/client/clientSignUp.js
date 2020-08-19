@@ -5,6 +5,7 @@ import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import '../../css/clientSignUp.css'
 import { useDispatch, useSelector } from "react-redux";
 
 const ClientSignUp = () => {
@@ -92,12 +93,12 @@ const ClientSignUp = () => {
   };
   return (
     <div className="FormContainer">
-      <div className="modal-header">
+      <div className="modal-header clientSignUpHeader">
         <h3 className="modal-title" id="exampleModalLongTitle">Client Sign Up</h3>
       </div>
         <form onSubmit={handleSubmit}>
 
-      <div className="form-group">
+      <div className="form-group clientSignUpBody">
       <label for="exampleInputEmail1" id="labelItem">Name</label>
           <div className="artistInput">
             <input
@@ -121,7 +122,7 @@ const ClientSignUp = () => {
               />
               </div>
             
-            <div class="form-group clientSignUpInput">
+            <div class="form-group">
             <label for="exampleInputPassword1" id="labelItem">Password</label>
             <input
               type="password"
@@ -195,7 +196,7 @@ const ClientSignUp = () => {
               </div>
             <button
               type="button"
-              className="btn btn-secondary"
+              className="clientUploadButton btn-secondary"
               onClick={handleFirebaseUpload}
               id="firebaseUpload"
             >
@@ -206,7 +207,7 @@ const ClientSignUp = () => {
             ) : null}
 
             <input
-             type="submit" className="btn btn-primary" value="Sign Up" 
+             type="submit" className="btn btn-primary clientSignUpButton" value="Sign Up" 
              />
           
         </form>
