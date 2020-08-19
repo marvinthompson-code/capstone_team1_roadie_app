@@ -85,24 +85,24 @@ const ArtistProfile = () => {
         </div>
         <div className="col artistInfo">
           <div className={"infoDiv jumbotron"}>
-            <div className={"CityDiv"}>
-              <label>City:</label>
-              <h3 className={"city"}>{city}</h3>
+            <div className={"cityDiv"}>
+              <label className="labelInfo">From:</label>
+              <h4 className={"city"}>{city}</h4>
             </div>
-            <div className={"ContactInfoDiv"}>
-              <label>Contact:</label>
-              <h3 className={"contact"}>{contactInfo}</h3>
+            <div className={"contactInfoDiv"}>
+              <label className="labelInfo">Contact:</label>
+              <h4 className={"contact"}>{contactInfo}</h4>
             </div>
-            <div className={"BioDiv"}>
-              <h4 className={"aboutMe"}>About me:</h4>
-              <p className={"bio"}>{bio}</p>
+            <div className={"bioDiv"}>
+              <label className="labelInfo">About me:</label>
+              <p className={"bioContent"}>{bio}</p>
             </div>
           </div>
-            <div className="bookingsDisplayContainer">
-              {/* <BookMeForm /> */}
-              <h2>Upcoming shows!</h2>
-            </div>
-      </div>
+          <div className="bookingsDisplayContainer">
+            {/* <BookMeForm /> */}
+            <h2>Upcoming shows!</h2>
+          </div>
+        </div>
       </div>
     </div>
   );

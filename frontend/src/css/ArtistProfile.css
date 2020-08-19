@@ -55,11 +55,46 @@
   grid-column: 2/span 1;
   display: grid;
   grid-template-rows: 1fr 2fr;
+  color: var(--darkSienna) !important;
+}
+.artistBanner{
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  padding: 10px;
 }
 .infoDiv{
   grid-row: 1/ span 1;
   background-color: var(--Cinereous) !important;
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr;
+}
+.cityDiv{
+  grid-row: 1 / span 1;
+  padding: 2px;
+}
+.contactInfoDiv{
+  grid-row: 2/ span 1;
+  padding: 2px;
+}
+.bioDiv{
+  grid-row: 3/ span 1;
+  padding: 2px;
+}
+.bioContent{
+  text-align: start;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  height: 100%;
+  padding: 5px;
 }
 .bookingsDisplayContainer{
   grid-row: 2/ span 1;
+}
+.labelInfo{
+  color: var(--floralWhite);
+  text-shadow: 1px 1px 4px #000000;
+}
+.bookingsDisplayContainer{
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
 }
