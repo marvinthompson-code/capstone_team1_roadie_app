@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
-import "../../css/Portfolio.css";
+
 
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
