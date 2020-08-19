@@ -5,7 +5,7 @@ import "../../css/SearchResults.css"
 const SearchResults = () => {
 
     return(
-        <div className="searchResults">
+        <div className="container-fluid searchResult">
             <SearchIndex />
         </div>
     )

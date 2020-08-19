@@ -12,9 +12,9 @@ const SearchIndex = () => {
   });
 
     return (
-        <div className="resultContainer">
+        <div className="container-fluid resultContainer">
             { !searchResults.length ?
-                <h3 style={{color: "white"}}>Sorry, no results!</h3> :
+                <h3 style={{color: "#9a8378"}}>Sorry, no results!</h3> :
                 results  
             }
         </div>
