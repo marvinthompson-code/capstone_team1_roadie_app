@@ -54,20 +54,6 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="modal-header logInModalHeader">
-            <h5 className="modal-title" id="exampleModalLongTitle">
-              Roadie Log In
-            </h5>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
           <div className="modal-body loginModalBody">
             <div className="loginForm">
               {error ? <div>{error}</div> : null}
@@ -89,7 +75,7 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="form-group clientSignUpInput">
+                <div className="form-group">
                   <label for="exampleInputPassword1" id="labelItem">
                     Password
                   </label>
@@ -111,6 +97,7 @@ const Login = () => {
               </form>
             </div>
           </div>
+
           <div className="modal-footer loginModalBody">
             <button
               type="button"

@@ -94,7 +94,7 @@ const ClientSignUp = () => {
 
   return (
     <div className="FormContainer">
-      <div className="modal-header">
+      <div className="modal-header clientSignUpHeader">
         <h3 className="modal-title" id="exampleModalLongTitle">
           Client Sign Up
         </h3>
