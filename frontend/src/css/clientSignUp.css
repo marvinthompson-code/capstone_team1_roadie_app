@@ -5,7 +5,7 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #fffaf0;
-  --floralGrey: #F4EFE5;
+  --floralGrey: #f4efe5;
 }
 
 .clientSignUpInput {
@@ -15,6 +15,9 @@
   outline: none;
 }
 
+.clientSignUpHeader {
+  border-bottom-color: var(--floralGrey);
+}
 
 #labelItem {
   color: var(--darkSienna);
@@ -52,4 +55,3 @@
   height: 35px;
   border: 1px solid var(--darkSienna) !important;
 }
-
