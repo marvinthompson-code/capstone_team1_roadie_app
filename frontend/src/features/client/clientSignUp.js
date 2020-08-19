@@ -16,7 +16,7 @@ const ClientSignUp = () => {
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
-  const history = useHistory()
+  const history = useHistory();
   let isOpen = useSelector((state) => state.modal);
 
   const [imageAsFile, setImageAsFile] = useState("");
@@ -56,7 +56,7 @@ const ClientSignUp = () => {
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              debugger
+              debugger;
               setImageUrl(fireBaseUrl);
             });
         }
@@ -71,7 +71,7 @@ const ClientSignUp = () => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      debugger
+      debugger;
       await axios.post(`${API}/clients`, {
         id: res.user.uid,
         name: name,
@@ -86,20 +86,25 @@ const ClientSignUp = () => {
         type: "client",
       });
       dispatch(updateClient(res.user));
-      history.push("/")
+      history.push("/");
     } catch (error) {
       console.log(error.message);
     }
   };
   return (
     <div className="FormContainer">
-      <div className="modal-header clientSignUpHeader">
-        <h3 className="modal-title" id="exampleModalLongTitle">Client Sign Up</h3>
-      </div>
-        <form onSubmit={handleSubmit}>
 
-      <div className="form-group clientSignUpBody">
-      <label for="exampleInputEmail1" id="labelItem">Name</label>
+      <div className="modal-header">
+        <h3 className="modal-title" id="exampleModalLongTitle">
+          Client Sign Up
+        </h3>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label for="exampleInputEmail1" id="labelItem">
+            Name
+          </label>
+
           <div className="artistInput">
             <input
               type="text"
@@ -107,17 +112,20 @@ const ClientSignUp = () => {
               placeholder={"Client Name.."}
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
-              />
-              </div>
+            />
+          </div>
 
-            <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">Email</label>
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">
+              Email
+            </label>
             <input
               type="email"
               className="form-control clientSignUpInput"
               placeholder="Client Email.."
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
+
               id="exampleInputEmail1" aria-describedby="emailHelp"
               />
               </div>
@@ -130,60 +138,62 @@ const ClientSignUp = () => {
               placeholder={"Client Password.."}
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
-              id="exampleInputPassword1" 
-              />
-              </div>
+              id="exampleInputPassword1"
+            />
+          </div>
 
-            <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">City</label>
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">
+              City
+            </label>
             <input
               type="text"
               className="form-control clientSignUpInput"
               placeholder="Client City.."
               value={city}
               onChange={(e) => setCity(e.currentTarget.value)}
-              />
-              </div>
+            />
+          </div>
 
-               
-            <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">Contact Info/Phone Number</label>
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">
+              Contact Info/Phone Number
+            </label>
             <input
               type="text"
               className="form-control clientSignUpInput"
               placeholder={"Client Contact Information.."}
               value={contact_info}
               onChange={(e) => setContactInfo(e.currentTarget.value)}
-              />
-              </div>
+            />
+          </div>
 
-            <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">Company</label>
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">
+              Company
+            </label>
             <input
               type="text"
               className="form-control clientSignUpInput"
               placeholder={"Client Company.."}
               value={company}
               onChange={(e) => setCompany(e.currentTarget.value)}
-              />
-              </div>
+            />
+          </div>
 
-            <div className="form-group">
-            <label for="exampleInputEmail1" id="labelItem">Bio</label>
+          <div className="form-group">
+            <label for="exampleInputEmail1" id="labelItem">
+              Bio
+            </label>
             <input
               type="text"
               className="form-control clientSignUpInput"
               placeholder="Client Bio.."
               value={bio}
               onChange={(e) => setBio(e.currentTarget.value)}
-              />
-              </div>
-           
-
-           
-
-
+            />
           </div>
+
           <div className="form-group">
           <label for="exampleFormControlFile1" id="labelItem">Upload Profile Image</label>
             <input
@@ -211,6 +221,7 @@ const ClientSignUp = () => {
              />
           
         </form>
+
     </div>
   );
 };

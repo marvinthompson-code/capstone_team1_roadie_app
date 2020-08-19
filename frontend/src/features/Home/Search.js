@@ -44,7 +44,7 @@ const Search = () => {
       <form onSubmit={handleSubmit} className="roadieForm">
         <div className="row justify-content-md-center form-group" >
 
-        <div className="col-sm-4">
+        <div className="col-sm-5">
         <input
           type={"text"} value={name} placeholder={"Search Roadie for Artists & Clients..."} className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
           onChange={(e) => setName(e.target.value)}
