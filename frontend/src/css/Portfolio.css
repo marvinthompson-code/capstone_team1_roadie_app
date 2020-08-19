@@ -1,4 +1,48 @@
-#portfolioImg{
+#portfolioImg {
   width: 300px;
   height: auto;
+}
+.artistPortfolioContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5px;
+}
+.portfolioHeader {
+  grid-row: 1 / span 1;
+  padding: 10px;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+}
+.artistMediaContainer {
+  grid-row: 2 / span 1;
+  padding: 5px;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 10px;
+}
+
+.artistAlbumDiv {
+  grid-row: 1/ span 1;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  padding: 5px;
+}
+.artistVideoDiv {
+  grid-row: 2/ span 1;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  padding: 5px;
+}
+#uploadArtistButton {
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+  color: var(--floralWhite) !important;
+  background-color: var(--darkSienna);
+  border-radius: 10px;
+}
+#uploadArtistButton:hover {
+  background-color: var(--floralWhite);
+  color: var(--darkSienna) !important;
 }
