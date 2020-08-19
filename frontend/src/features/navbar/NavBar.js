@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { toggleModalState } from "../Artist/modalSlice";
+import { NavLink, useHistory } from "react-router-dom";
 import { toggleLoginModalState } from "../login/loginModalSlice"
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
-import logo from "../../RoadieLogo.png";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 
@@ -16,6 +14,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.userToken);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
+  const history = useHistory()
   const dispatch = useDispatch();
 
   let routeExt = () => {
@@ -73,10 +72,10 @@ const NavBar = () => {
       return (
         <>
          <li className="nav-item active">
-        <NavLink className="nav-link roadieLogIn" href="#" exact to="/login" onClick={() => dispatch(toggleLoginModalState())}>Log In <span className="sr-only">(current)</span></NavLink>
+        <NavLink className="nav-link roadieLogIn" href="#" exact to="/" data-toggle="modal" data-target="#logInModalCenter" >Log In <span className="sr-only">(current)</span></NavLink>
       </li>
       <li className="nav-item active">
-        <NavLink className="nav-link roadieSignUp" href="#" exact to="/signup" onClick={() => dispatch(toggleModalState())}>Sign Up <span className="sr-only">(current)</span></NavLink>
+        <NavLink className="nav-link roadieSignUp" href="#" exact to="/" data-toggle="modal" data-target="#exampleModalCenter">Sign Up <span className="sr-only">(current)</span></NavLink>
       </li>
         </>
       );
@@ -92,9 +91,6 @@ const NavBar = () => {
   <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 
     <ul className="navbar-nav ">
-      {/* <li className="nav-item active">
-        <NavLink className="nav-link" href="#" exact to="/">Home <span className="sr-only">(current)</span></NavLink>
-      </li> */}
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle aboutTitle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           About

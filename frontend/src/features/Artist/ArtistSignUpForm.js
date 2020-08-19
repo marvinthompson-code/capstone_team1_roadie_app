@@ -7,7 +7,7 @@ import { toggleModalState } from "../Artist/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-// import "../../css/ArtistSignUpForm.css";
+
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -96,83 +96,119 @@ const ArtistSignUpForm = () => {
 
   return (
       <div className="form-group">
-        <div className="artistSignUpTitle">
-          <h3 id={"artisth3"}>Artist Sign Up</h3>
-        </div>
-        <div className="artistSignUpForm">
+      <div className="modal-header">
+        <h3 className="modal-title" id="exampleModalLongTitle">Artist Sign Up</h3>
+      </div>
           <form onSubmit={handleSubmit} id="artistForm">
-            <div className="artistInput">
+            
+          <div className="form-group">
+              <label for="exampleInputEmail1">Name</label>
               <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"email"}
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-                required
-              ></input>
-              <input
-                type={"password"}
-                className={"artistInputSpace"}
-                placeholder={"password"}
-                value={password}
-                onChange={(e) => setPassword(e.currentTarget.value)}
-                required
-              ></input>
-              <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"Band Name"}
+                type="text"
+                className="form-control artistSignUpInput"
+                placeholder="Artist Name.."
                 value={name}
                 onChange={(e) => setName(e.currentTarget.value)}
                 required
-              ></input>
+                ></input>
+                </div>
+        <div className="form-group">
+        <label for="exampleInputEmail1">Email</label>
+            <div className="artistInput">
               <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"genre"}
+                type="email"
+                className="form-control artistSignUpInput"
+                placeholder="Artist Email.."
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
+                required
+                ></input>
+                </div>
+
+              <div className="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input
+                type="password"
+                className="form-control  artistSignUpInput"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.currentTarget.value)}
+                required
+                ></input>
+                </div>
+
+              <div className="form-group">
+              <label for="exampleInputEmail1">Genre</label>
+              <input
+                type="text"
+                className="form-control artistSignUpInput"
+                placeholder="Artist Genre.."
                 value={genre}
                 onChange={(e) => setGenre(e.currentTarget.value)}
                 required
-              ></input>
+                ></input>
+                </div>
+
+              <div className="form-group">
+              <label for="exampleInputEmail1">Contact/Phone Number</label>
               <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"contact"}
+                type="text"
+                className="form-control artistSignUpInput"
+                placeholder="Artist Contact Information.."
                 value={contact_info}
                 onChange={(e) => setContactInfo(e.currentTarget.value)}
                 required
-              ></input>
+                ></input>
+                </div>
+
+              <div className="form-group">
+              <label for="exampleInputEmail1">Bio</label>
               <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"bio"}
+                type="text"
+                className="form-control artistSignUpInput"
+                placeholder="Artist Bio.."
                 value={bio}
                 onChange={(e) => setBio(e.currentTarget.value)}
-              ></input>
+                ></input>
+                </div>
+
+              <div className="form-group">
+              <label for="exampleInputEmail1">City</label>
               <input
-                type={"text"}
-                className={"artistInputSpace"}
-                placeholder={"city"}
+                type="text"
+                className="form-control artistSignUpInput"
+                placeholder="Artist City.."
                 value={city}
                 onChange={(e) => setCity(e.currentTarget.value)}
-              ></input>
-            </div>
-            <div className="artistSubmitButton">
-              <input type="file" onChange={handleImageAsFile} required id="fileUpload" />
+                ></input>
+                </div>
+
+              </div>
+            <div className="form-group">
+            <label for="exampleFormControlFile1">Upload Profile Image</label>
+              <input type="file"
+               onChange={handleImageAsFile}
+               required
+               className="form-control-file"
+               id="exampleFormControlFile1"
+               />
+              </div>
+
               <button
                 type="button"
+                className="btn btn-secondary"
                 onClick={() => {
                   handleFirebaseUpload();
                 }}
                 id="firebaseUpload"
-              >
+                >
                 Upload
               </button>
               {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
-              <button type={"submit"} id="submitArtist">Sign Up</button>
-            </div>
+              <input
+             type="submit" className="btn btn-primary" value="Sign Up" 
+             />
           </form>
-        </div>
       </div>
   );
 };

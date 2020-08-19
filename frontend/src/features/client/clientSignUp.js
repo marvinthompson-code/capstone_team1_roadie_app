@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { storage } from "../../firebase";
-import Modal from "react-modal";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
 import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/clientSignUp.css";
-import { toggleModalState } from "../Artist/modalSlice";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -18,13 +15,12 @@ const ClientSignUp = () => {
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
+  const history = useHistory()
   let isOpen = useSelector((state) => state.modal);
 
-  //imageUpload
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
-  const history = useHistory();
   const API = apiURL();
   const dispatch = useDispatch();
 
@@ -89,94 +85,117 @@ const ClientSignUp = () => {
         type: "client",
       });
       dispatch(updateClient(res.user));
+      history.push("/")
     } catch (error) {
       console.log(error.message);
     }
   };
   return (
-    // <Modal
-    //   isOpen={true}
-    //   onRequestClose={closeModal}
-    //   isOpen={isOpen}
-    //   style={{
-    //     content: {
-    //       backgroundColor: "#F4D8CD",
-    //       borderRadius: "13px",
-    //       left: "25%",
-    //       right: "25%",
-    //     },
-    //     overlay: {
-    //       backgroundColor: "#164444",
-    //     },
-    //   }}
-    // >
     <div className="FormContainer">
-      <div className="artistSignUpTitle">
-        <h3 id={"artisth3"}>Client Sign Up</h3>
+      <div className="modal-header">
+        <h3 className="modal-title" id="exampleModalLongTitle">Client Sign Up</h3>
       </div>
-      <div className="artistSignUpForm">
-        <form onSubmit={handleSubmit} id="artistForm">
+        <form onSubmit={handleSubmit}>
+
+      <div className="form-group">
+      <label for="exampleInputEmail1">Name</label>
           <div className="artistInput">
             <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"name"}
+              type="text"
+              className="form-control clientSignUpInput"
+              placeholder={"Client Name.."}
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
-            />
+              />
+              </div>
+
+            <div className="form-group">
+            <label for="exampleInputEmail1">Email</label>
             <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"email"}
+              type="email"
+              className="form-control clientSignUpInput"
+              placeholder="Client Email.."
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
-            />
+              id="exampleInputEmail1" aria-describedby="emailHelp"
+              />
+              </div>
+            
+            <div class="form-group clientSignUpInput">
+            <label for="exampleInputPassword1">Password</label>
             <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"city"}
-              value={city}
-              onChange={(e) => setCity(e.currentTarget.value)}
-            />
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"company name"}
-              value={company}
-              onChange={(e) => setCompany(e.currentTarget.value)}
-            />
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"bio"}
-              value={bio}
-              onChange={(e) => setBio(e.currentTarget.value)}
-            />
-            <input
-              type={"text"}
-              className={"artistInputSpace"}
-              placeholder={"Contact Information"}
-              value={contact_info}
-              onChange={(e) => setContactInfo(e.currentTarget.value)}
-            />
-            <input
-              type={"password"}
-              className={"artistInputSpace"}
-              placeholder={"password"}
+              type="password"
+              className="form-control  clientSignUpInput"
+              placeholder={"Client Password.."}
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
-            />
+              id="exampleInputPassword1" 
+              />
+              </div>
+
+            <div className="form-group">
+            <label for="exampleInputEmail1">City</label>
+            <input
+              type="text"
+              className="form-control clientSignUpInput"
+              placeholder="Client City.."
+              value={city}
+              onChange={(e) => setCity(e.currentTarget.value)}
+              />
+              </div>
+
+               
+            <div className="form-group">
+            <label for="exampleInputEmail1">Contact Info/Phone Number</label>
+            <input
+              type="text"
+              className="form-control clientSignUpInput"
+              placeholder={"Client Contact Information.."}
+              value={contact_info}
+              onChange={(e) => setContactInfo(e.currentTarget.value)}
+              />
+              </div>
+
+            <div className="form-group">
+            <label for="exampleInputEmail1">Company</label>
+            <input
+              type="text"
+              className="form-control clientSignUpInput"
+              placeholder={"Client Company.."}
+              value={company}
+              onChange={(e) => setCompany(e.currentTarget.value)}
+              />
+              </div>
+
+            <div className="form-group">
+            <label for="exampleInputEmail1">Bio</label>
+            <input
+              type="text"
+              className="form-control clientSignUpInput"
+              placeholder="Client Bio.."
+              value={bio}
+              onChange={(e) => setBio(e.currentTarget.value)}
+              />
+              </div>
+           
+
+           
+
+
           </div>
-          <div className="artistSubmitButton">
+          <div className="form-group">
+          <label for="exampleFormControlFile1">Upload Profile Image</label>
             <input
               type="file"
+              className="form-control-file"
+              id="exampleFormControlFile1"
               required
               onChange={handleImageAsFile}
-              id="fileUpload"
-            />
-
+              />
+              </div>
             <button
               type="button"
+              className="btn btn-secondary"
               onClick={handleFirebaseUpload}
               id="firebaseUpload"
             >
@@ -186,12 +205,12 @@ const ClientSignUp = () => {
               <h5 id="uploadSuccess">Upload successful!</h5>
             ) : null}
 
-            <input type="submit" id="submitArtist" value="Sign Up" />
-          </div>
+            <input
+             type="submit" className="btn btn-primary" value="Sign Up" 
+             />
+          
         </form>
-      </div>
     </div>
-    // </Modal>
   );
 };
 export default ClientSignUp;
