@@ -133,6 +133,7 @@ const Login = () => {
                   value="Log In"
                 />
               </form>
+
             </div>
           </div>
           <div className="modal-footer loginModalBody">
@@ -147,6 +148,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

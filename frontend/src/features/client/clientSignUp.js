@@ -91,6 +91,7 @@ const ClientSignUp = () => {
       console.log(error.message);
     }
   };
+
   return (
     <div className="FormContainer">
 
@@ -99,13 +100,13 @@ const ClientSignUp = () => {
           Client Sign Up
         </h3>
       </div>
+
       <form onSubmit={handleSubmit}>
+
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Name
           </label>
-
-          <div className="artistInput">
             <input
               type="text"
               className="form-control clientSignUpInput"
@@ -125,10 +126,9 @@ const ClientSignUp = () => {
               placeholder="Client Email.."
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value)}
-
               id="exampleInputEmail1" aria-describedby="emailHelp"
               />
-              </div>
+          </div>
             
             <div class="form-group">
             <label for="exampleInputPassword1" id="labelItem">Password</label>
@@ -204,6 +204,7 @@ const ClientSignUp = () => {
               onChange={handleImageAsFile}
               />
               </div>
+
             <button
               type="button"
               className="clientUploadButton btn-secondary"
@@ -219,9 +220,9 @@ const ClientSignUp = () => {
             <input
              type="submit" className="btn btn-primary clientSignUpButton" value="Sign Up" 
              />
-          
-        </form>
 
+            </div> 
+        </form>
     </div>
   );
 };
