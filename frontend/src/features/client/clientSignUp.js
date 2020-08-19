@@ -98,7 +98,7 @@ const ClientSignUp = () => {
         <form onSubmit={handleSubmit}>
 
       <div className="form-group">
-      <label for="exampleInputEmail1">Name</label>
+      <label for="exampleInputEmail1" id="labelItem">Name</label>
           <div className="artistInput">
             <input
               type="text"
@@ -110,7 +110,7 @@ const ClientSignUp = () => {
               </div>
 
             <div className="form-group">
-            <label for="exampleInputEmail1">Email</label>
+            <label for="exampleInputEmail1" id="labelItem">Email</label>
             <input
               type="email"
               className="form-control clientSignUpInput"
@@ -122,10 +122,10 @@ const ClientSignUp = () => {
               </div>
             
             <div class="form-group clientSignUpInput">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1" id="labelItem">Password</label>
             <input
               type="password"
-              className="form-control  clientSignUpInput"
+              className="form-control clientSignUpInput"
               placeholder={"Client Password.."}
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
@@ -134,7 +134,7 @@ const ClientSignUp = () => {
               </div>
 
             <div className="form-group">
-            <label for="exampleInputEmail1">City</label>
+            <label for="exampleInputEmail1" id="labelItem">City</label>
             <input
               type="text"
               className="form-control clientSignUpInput"
@@ -146,7 +146,7 @@ const ClientSignUp = () => {
 
                
             <div className="form-group">
-            <label for="exampleInputEmail1">Contact Info/Phone Number</label>
+            <label for="exampleInputEmail1" id="labelItem">Contact Info/Phone Number</label>
             <input
               type="text"
               className="form-control clientSignUpInput"
@@ -157,7 +157,7 @@ const ClientSignUp = () => {
               </div>
 
             <div className="form-group">
-            <label for="exampleInputEmail1">Company</label>
+            <label for="exampleInputEmail1" id="labelItem">Company</label>
             <input
               type="text"
               className="form-control clientSignUpInput"
@@ -168,7 +168,7 @@ const ClientSignUp = () => {
               </div>
 
             <div className="form-group">
-            <label for="exampleInputEmail1">Bio</label>
+            <label for="exampleInputEmail1" id="labelItem">Bio</label>
             <input
               type="text"
               className="form-control clientSignUpInput"
@@ -184,7 +184,7 @@ const ClientSignUp = () => {
 
           </div>
           <div className="form-group">
-          <label for="exampleFormControlFile1">Upload Profile Image</label>
+          <label for="exampleFormControlFile1" id="labelItem">Upload Profile Image</label>
             <input
               type="file"
               className="form-control-file"
@@ -202,7 +202,7 @@ const ClientSignUp = () => {
               upload
             </button>
             {toggleUploadMsg ? (
-              <h5 id="uploadSuccess">Upload successful!</h5>
+              <h5 id="labelItem">Upload successful!</h5>
             ) : null}
 
             <input

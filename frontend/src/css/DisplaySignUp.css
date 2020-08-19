@@ -18,3 +18,9 @@
   grid-template-columns: 1fr 2fr 1fr;
 };
 
+.displayHeaderSignUp {
+  background-color: var(--PaleSilver) !important;
+  border-bottom-color: var(--PaleSilver) !important;
+  color: var(--floralWhite) !important;
+  text-shadow: 0.5px 0.3px 1px #888888 !important;
+}

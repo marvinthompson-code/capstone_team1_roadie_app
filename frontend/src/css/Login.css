@@ -1,0 +1,60 @@
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #fffaf0;
+  --floralGrey: #F4EFE5;
+}
+
+.roadieLogInButton{
+  background-color: var(--darkSienna) !important;
+  color: var(--floralWhite) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  border: 1px solid var(--darkSienna) !important;
+}
+
+.logInModalHeader {
+  background-color: var(--PaleSilver);
+  border-bottom-color: var(--PaleSilver);
+  color: var(--floralWhite);
+  text-shadow: 0.5px 0.3px 1px #888888;
+}
+
+#labelItem {
+  color: var(--darkSienna);
+  text-shadow: 0.5px 0.3px 1px #888888;
+}
+
+.logInCloseButton {
+    background-color: var(--floralWhite) !important;
+    color: var(--darkSienna) !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px #888888;
+    border: 1px solid var(--darkSienna) !important;
+}
+
+.loginModalBody {
+  background-color: var(--floralGrey) !important;
+  border-top-color: var(--floralGrey) !important;
+}
+
+#exampleInputEmail1 {
+  box-shadow: 1px 1px 2px #888888;
+  background-color: var(--floralWhite);
+  border-color: var(--darkSienna);
+  outline: none;
+}
+
+#exampleInputPassword1 {
+  box-shadow: 1px 1px 2px #888888;
+  background-color: var(--floralWhite);
+  border-color: var(--darkSienna);
+  outline: none;
+}
+
+.logInModal {
+  border-radius: 10px !important;
+}

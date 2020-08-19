@@ -10,3 +10,15 @@
 .clientSignUpInput {
   box-shadow: 1px 1px 2px #888888;
 }
+
+#labelItem {
+  color: var(--darkSienna);
+  text-shadow: 0.5px 0.3px 1px #888888;
+}
+
+#exampleInputEmail1 {
+  box-shadow: 1px 1px 2px #888888;
+  background-color: var(--floralWhite);
+  border-color: var(--darkSienna);
+  outline: none;
+}

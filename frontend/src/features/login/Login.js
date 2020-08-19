@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { updateUser } from "../token/userTokenSlice";
 import { login } from "../../util/firebaseFunctions";
 import { useDispatch } from "react-redux";
+import '../../css/Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,14 +28,14 @@ const Login = () => {
         <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content logInModal">
 
-        <div className="modal-header">
+        <div className="modal-header logInModalHeader">
         <h5 className="modal-title" id="exampleModalLongTitle">Roadie Log In</h5>
         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
         </div>
 
-        <div className="modal-body">
+        <div className="modal-body loginModalBody">
 
         <div className="loginForm">
           {error ? <div>{error}</div> : null}
@@ -42,11 +43,11 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
 
           <div className="form-group">
-            <label for="exampleInputEmail1">Email</label>
+            <label for="exampleInputEmail1" id="labelItem">Email</label>
             <input
               id="exampleInputEmail1"
               className="form-control loginInput"
-              placeholder="Enter your email"
+              placeholder="Enter Email"
               type="email"
               value={email}
               onChange={(e) => {
@@ -56,7 +57,7 @@ const Login = () => {
               </div>
 
             <div class="form-group clientSignUpInput">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1" id="labelItem">Password</label>
             <input
               type="password"
               id="exampleInputPassword1" 
@@ -69,14 +70,14 @@ const Login = () => {
 
 
             <input
-             type="submit" className="btn btn-primary" value="Log In" 
+             type="submit" className="btn btn-primary roadieLogInButton" value="Log In" 
              />
           </form>
           </div>
 
         </div>
-        <div className="modal-footer">
-         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div className="modal-footer loginModalBody">
+         <button type="button" className="btn btn-secondary logInCloseButton" data-dismiss="modal">Close</button>
        </div>
             </div>
         </div>

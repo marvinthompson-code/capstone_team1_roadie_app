@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import ArtistSignUpForm from "../Artist/ArtistSignUpForm";
 import ClientSignUp from "../client/clientSignUp";
-import styled, { css } from "styled-components";
+import "../../css/DisplaySignUp.css"
 
 const DisplaySignUp = () => {
   const [toggle, setToggle] = useState(false);
@@ -13,17 +12,17 @@ const DisplaySignUp = () => {
       setToggle(false);
     }
   };
-  const Button = styled.button`
-    background: #ec9b59;
-    border-radius: 13px;
-    border: 2px solid #ec9b59;
-    color: #00202b;
-    box-shadow: 1px 1px 4px;
-    ${props => props.primary && css`
-    background: #9eb19e;
-    border: 2px solid #9eb19e;
-  `}
-  `;
+  // const Button = styled.button`
+  //   background: #ec9b59;
+  //   border-radius: 13px;
+  //   border: 2px solid #ec9b59;
+  //   color: #00202b;
+  //   box-shadow: 1px 1px 4px;
+  //   ${props => props.primary && css`
+  //   background: #9eb19e;
+  //   border: 2px solid #9eb19e;
+  // `}
+  // `;
   const displayModal = () => {
     return (
       <div className="displaySignUpContainer">
@@ -39,7 +38,7 @@ const DisplaySignUp = () => {
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content signUpModal">
 
-          <div className="modal-header">
+          <div className="modal-header displayHeaderSignUp">
             <h5 className="modal-title" id="exampleModalLongTitle">Roadie Sign Up</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
