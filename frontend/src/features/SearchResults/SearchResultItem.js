@@ -22,13 +22,12 @@ const SearchResultItem = ({ result }) => {
     };
 
     return (
-        <div className="resultItem">
-    
-            <div className="nameDisplay">
-                <h1 className="name" onClick={() => setHistory(id)}>{name}</h1>
-            </div>
+        <div className="container-fluid resultItem" onClick={() => setHistory(id)}>
             <div className="picDisplay">
                 <img id="profilePic" src={profile_pic_url}/>
+            </div>
+            <div className="nameDisplay">
+                <h1 className="name">{name}</h1>
             </div>
         </div>
     )
