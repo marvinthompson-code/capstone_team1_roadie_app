@@ -1,29 +1,48 @@
+#portfolioImg {
+  width: 300px;
+  height: auto;
+}
 .artistPortfolioContainer {
-  grid-row: 4 / span 1;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5px;
 }
 .portfolioHeader {
-  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  padding: 10px;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
 }
 .artistMediaContainer {
-  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  padding: 5px;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
   display: grid;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
 }
+
 .artistAlbumDiv {
-  grid-row: 1 / span 1;
-  background-color: var(--lightGreen);
-  border-radius: 20px;
+  grid-row: 1/ span 1;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  padding: 5px;
 }
 .artistVideoDiv {
-  grid-row: 2 / span 1;
-  background-color: var(--darkGreen);
-  border-radius: 20px;
+  grid-row: 2/ span 1;
+  border: 1px solid var(--darkSienna);
+  border-radius: 10px;
+  padding: 5px;
 }
-#portfolioPic {
-  width: 300px;
-  height: 275px;
-  border-radius: 50%;
+#uploadArtistButton {
+  border: 1px solid var(--darkSienna);
+  box-shadow: 1px 1px 2px #888888;
+  color: var(--floralWhite) !important;
+  background-color: var(--darkSienna);
+  border-radius: 10px;
+}
+#uploadArtistButton:hover {
+  background-color: var(--floralWhite);
+  color: var(--darkSienna) !important;
 }

@@ -20,3 +20,8 @@
     src: url("../fonts/Raleway-Light.ttf");
     font-family: railwayLight;
 }
+
+.searchResult{
+    position: relative;
+    top: 20px;
+}

@@ -6,7 +6,7 @@ import ClientPortfolio from "../Portfolio/ClientPortfolio";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import "../../css/ClientProfile.css";
+// import "../../css/ClientProfile.css";
 
 const ClientProfile = () => {
   const [name, setName] = useState("");
