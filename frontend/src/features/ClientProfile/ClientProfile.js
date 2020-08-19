@@ -6,7 +6,7 @@ import ClientPortfolio from "../Portfolio/ClientPortfolio";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-// import "../../css/ClientProfile.css";
+
 
 const ClientProfile = () => {
   const [name, setName] = useState("");
@@ -129,48 +129,46 @@ const ClientProfile = () => {
   };
 
   return (
-    <div className="clientProfileContainer">
-      <div className={"ProfilePictureDiv"} style={{ backgroundImage: `url(${profilePicUrl})` }}>
-        {/* <div className="imgDiv">
-        <img
-          src={profilePicUrl}
-          alt={"Client Profile"}
-          className={"profilePicture"}
-        />
-        </div> */}
-      <div className={"buttonsDiv"}>
+    <div className="container-fluid">
+      <div className="row artistBanner align-items-center justify-content-center"
+        id="artistBanner">
+      <div className={"col-sm-2"}>
         <button
-          id={"ContactMeButton"}
+          id={"BookMeButton"}
           onClick={() => dispatch(toggleClientContactModalState())}
         >
           Contact Me!
         </button>
-        {editButton()}
       </div>
+      <div className="col-sm-6 text-center artistProfileHeader">
+          <h2 className={"artistProfileName"}>{name}</h2>
+        </div>
+        <div className="col-sm-2">{editButton()}</div>
       </div>
+      {/* This page has two divs */}
 
-      <div className="ClientInfoProfile">
-      <div className={"ClientNameDiv"}>
-        <h2 className={"clientProfileName"}>{name}</h2>
-      </div>
-      <div className={"InfoDiv"}>
-        <div className={"CityDiv"}>
-          <label>City:</label>
-          <h3 className={"city"}>{city}</h3>
+      <div className="row portfolioDiv">
+        <div className={"col-lg-2"}>
+          <ClientPortfolio />
         </div>
 
-        <div className={"ContactInfoDiv"}>
-          <label>Contact:</label>
+      <div className="col artistInfo">
+      <div className={"infoDiv jumbotron"}>
+        <div className={"cityDiv"}>
+          <label className="labelInfo">City:</label>
+          <h4 className={"city"}>{city}</h4>
+        </div>
+        <div className={"contactInfoDiv"}>
+          <label className="labelInfo">Contact:</label>
           <h3 className={"contact"}>{contactInfo}</h3>
         </div>
-      </div>
-      <div className={"BioPortfolioContainer"}>
-        <div className={"BioDiv"}>
-          <h4 className={"aboutMe"}>About me:</h4>
-          <h3 className={"bio"}>{bio}</h3>
+        <div className={"bioDiv"}>
+          <label className="labelInfo">About me:</label>
+          <p className={"bioContent"}>{bio}</p>
+        </div>
         </div>
 
-        <div className={"EventDisplayContainer"}>
+        <div className={"bookingsDisplayContainer"}>
           <div className={"eventTitleDiv"}>
             <h3 className={"eventsTitle"}>Created Events</h3>
           </div>
@@ -179,9 +177,6 @@ const ClientProfile = () => {
           <div className={"createEventButtonDiv"}>{createEventButton()}</div>
         </div>
       </div>
-        <div className={"portfolioSection"}>
-        <ClientPortfolio />
-        </div>
       </div>
     </div>
   );
