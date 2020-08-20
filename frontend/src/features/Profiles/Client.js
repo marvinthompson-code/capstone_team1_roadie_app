@@ -3,15 +3,21 @@ import ClientProfile from '../ClientProfile/ClientProfile';
 import ClientContactForm from '../ClientContactForm/ClientContactForm';
 import EditClientProfileForm from '../ClientProfile/EditClientProfileForm';
 import EventForm from '../Events/EventForm';
-import "../../css/Profiles/Client.css"
+
 
 
 const Client = () =>{
     return(
-        <div className="realClientProfile">
+        <div className="realArtistProfile container-fluid">
+            <div className="row justify-content-md-center">
             <ClientProfile />
+            </div>
+            <div className="row">
             <ClientContactForm />
+            </div>
+            <div className="row">
             <EditClientProfileForm />
+            </div>
         </div>
     )
 };

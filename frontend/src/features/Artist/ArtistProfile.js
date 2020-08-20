@@ -67,7 +67,7 @@ const ArtistProfile = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div
         className="row artistBanner align-items-center justify-content-center"
         id="artistBanner"

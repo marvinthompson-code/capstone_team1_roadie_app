@@ -6,7 +6,6 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
 
-
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
   const [name, setName] = useState("");
@@ -44,8 +43,11 @@ const ClientPortfolio = () => {
   };
 
   const toPhotoAlbum = () => {
-    debugger
+    debugger;
     history.push(`/media/pictures/${client.id}`);
+  };
+  const toVideoAlbum = () => {
+    history.push(`/media/videos/${client.id}`);
   };
 
   useEffect(() => {
@@ -62,17 +64,32 @@ const ClientPortfolio = () => {
   return (
     <div className="artistPortfolioContainer">
       <div className="portfolioHeader">
-        <img id="portfolioPic" src={profilePic} />
+        <img
+          className="rounded float-left"
+          id="portfolioImg"
+          src={profilePic}
+        />
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
-          <h2>{name}'s Album</h2>
+          <h2 id="artistNameAlbum">{name}'s Album</h2>
           {displayUploadPictureButton()}
-          <input type="button" onClick={toPhotoAlbum} value={`${name}'s Photo Album`} />
+          <input
+            type="button"
+            id="uploadArtistButton"
+            onClick={toPhotoAlbum}
+            value={`${name}'s Photo Album`}
+          />
         </div>
         <div className="artistVideoDiv">
           <h2>{name}'s Videos</h2>
           {displayUploadVideoButton()}
+          <input
+            type="button"
+            id="uploadArtistButton"
+            onClick={toVideoAlbum}
+            value={`${name}'s Photo Videos`}
+          />
         </div>
       </div>
     </div>
