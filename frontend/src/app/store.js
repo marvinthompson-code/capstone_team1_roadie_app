@@ -10,6 +10,7 @@ import editArtistProfileModalReducer from "../features/Artist/editArtistProfileM
 import artistReducer from "../features/token/artistTokenSlice";
 import tokenReducer from "../features/token/tokenSlice";
 import eventDisplayReducer from "../features/Events/eventDisplaySlice"
+import bookMeEventsReducer from '../features/Artist/bookMeEventsSlice'
 import modalReducer from "../features/Artist/modalSlice";
 import searchReducer from "../features/SearchResults/searchSlice";
 import venueSearchReducer from "../features/Events/venueSearchSlice"
@@ -25,6 +26,7 @@ export default configureStore({
     loginModal: loginModalReducer,
     modal: modalReducer,
     client: clientReducer,
+    bookMeEvents: bookMeEventsReducer,
     eventModal: eventModalReducer,
     clientContactModal: clientContactModalReducer,
     search: searchReducer,

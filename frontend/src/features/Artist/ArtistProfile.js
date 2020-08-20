@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
+import { recieveClientEvents } from "./bookMeEventsSlice";
 import Portfolio from "../Portfolio/Portfolio";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
@@ -15,6 +16,7 @@ const ArtistProfile = () => {
   const [city, setCity] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState("");
   const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
   const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
   const API = apiURL();
@@ -57,6 +59,13 @@ const ArtistProfile = () => {
     }
   };
 
+  const handleClientEvents = async (id) => {
+    let res = await axios.get(`${API}/events/${id}`);
+    let { events } = res.data.body;
+    dispatch(recieveClientEvents(events));
+    dispatch(toggleBookMeModalState());
+  };
+
   return (
     <div className="container">
       <div
@@ -65,8 +74,12 @@ const ArtistProfile = () => {
       >
         <div className={"col-sm-2"}>
           <button
+            type="button"
             id={"BookMeButton"}
-            onClick={() => dispatch(toggleBookMeModalState())}
+            onClick={() => handleClientEvents(client.id)}
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#bookMeModalCenter"
           >
             Book Me!
           </button>
@@ -99,7 +112,6 @@ const ArtistProfile = () => {
             </div>
           </div>
           <div className="bookingsDisplayContainer">
-            {/* <BookMeForm /> */}
             <h2>Upcoming shows!</h2>
           </div>
         </div>
