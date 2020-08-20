@@ -95,6 +95,7 @@ const Login = () => {
                   value="Log In"
                 />
               </form>
+
             </div>
           </div>
 
@@ -110,6 +111,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

@@ -1,0 +1,55 @@
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #fffaf0;
+  --floralGrey: #f4efe5;
+}
+
+.bookMeInput {
+  box-shadow: 1px 1px 2px #888888;
+  background-color: var(--floralWhite);
+  border-color: var(--darkSienna);
+  outline: none;
+}
+
+.bookMeHeader {
+  background-color: var(--PaleSilver);
+  border-bottom-color: var(--PaleSilver);
+  color: var(--floralWhite);
+  text-shadow: 0.5px 0.3px 1px #888888;
+  border-bottom-color: var(--floralGrey);
+}
+
+.bookMeFooter {
+  background-color: var(--floralGrey);
+  border-top-color: var(--floralGrey);
+}
+
+#labelitem {
+  color: var(--darkSienna);
+  text-shadow: 0.5px 0.3px 1px #888888;
+}
+
+.bookMeModalBody {
+  background-color: var(--floralGrey);
+}
+
+.bookMeButton {
+  background-color: var(--darkSienna) !important;
+  color: var(--floralWhite) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  border: 1px solid var(--darkSienna) !important;
+}
+
+.bookMeCloseButton {
+  background-color: var(--floralWhite) !important;
+  color: var(--darkSienna) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #888888;
+  height: 35px;
+  border: 1px solid var(--darkSienna) !important;
+}

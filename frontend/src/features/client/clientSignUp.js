@@ -99,7 +99,9 @@ const ClientSignUp = () => {
           Client Sign Up
         </h3>
       </div>
+
       <form onSubmit={handleSubmit}>
+
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Name
