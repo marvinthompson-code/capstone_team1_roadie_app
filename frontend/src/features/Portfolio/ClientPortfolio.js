@@ -25,7 +25,7 @@ const ClientPortfolio = () => {
   const displayUploadPictureButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" onClick={handleClick}>
+        <button type="button" className="uploadBtn" onClick={handleClick}>
           +picture
         </button>
       );
@@ -35,7 +35,7 @@ const ClientPortfolio = () => {
   const displayUploadVideoButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" onClick={handleClick}>
+        <button type="button" className="uploadBtn" onClick={handleClick}>
           +video
         </button>
       );
