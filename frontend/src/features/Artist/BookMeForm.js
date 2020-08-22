@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import '../../css/BookMeModal.css'
+import { useSelector } from "react-redux";
+import "../../css/BookMeModal.css";
 
 const BookMeForm = () => {
   const [bio, setBio] = useState("");
@@ -10,6 +10,7 @@ const BookMeForm = () => {
   const [numberContact, setNumberContact] = useState("");
   const [body, setBody] = useState("");
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [eventDetails, setEventDetails] = useState(null);
 
   const API = apiURL();
   const client = useSelector((state) => state.client);
@@ -20,25 +21,52 @@ const BookMeForm = () => {
   };
 
   const bookingEvents = () => {
-    return clientEvents.forEach((event) => {
-      debugger;
+    return clientEvents.map((event) => {
       return (
-        <option key={event.id} value={event.name}>
-          <h1>{event.name}</h1>
+        <option
+          key={event.id}
+          value={event.id}
+          onClick={(e) => setSelectedEvent(e.target.value)}
+        >
+          {event.name}
         </option>
       );
     });
   };
 
-  // useEffect(() => {
-  //   const fetchClientInfo = async (id) => {
-  //     let res = await axios.get(`${API}/clients/${id}`);
-  //     let { single_client } = res.data.body;
-  //     setNumberContact(single_client.contact_info);
-  //     debugger;
-  //   };
-  //   fetchClientInfo(client.id);
-  // }, []);
+  const handleSelectedEvent = async (id) => {
+    setSelectedEvent(id);
+    let res = await axios.get(`${API}/events/${id}/${client.id}`);
+    setEventDetails({
+      name: res.data.body.event.name,
+      venue: res.data.body.event.venue,
+      city: res.data.body.event.city,
+      address: res.data.body.event.address,
+      date: res.data.body.event.date.slice(0, 10),
+    });
+    debugger;
+  };
+
+  const handleEventDetails = (obj) => {
+    return (
+      <>
+        <label for="EventName" id="lableitemDetails">
+          Event Name
+        </label>
+        <p className="card-text">{obj.name}</p>
+        <label for="EventName" id="lableitemDetails">
+          Venue
+        </label>
+        <p className="card-text">{obj.venue}</p>
+        <label for="EventName" id="lableitemDetails">
+          Location
+        </label>
+        <p className="card-text">{obj.city}</p>
+        <p className="card-text">{obj.date}</p>
+        <p className="card-text">{obj.address}</p>
+      </>
+    );
+  };
 
   return (
     <div
@@ -66,9 +94,14 @@ const BookMeForm = () => {
           <div className="modal-body bookMeModalBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="Event" id="lableitem">Event</label>
+                <label for="Event" id="lableitem">
+                  Event
+                </label>
                 <div className="col-sm-4">
-                  <select className="custom-select form-control roadieDropdown">
+                  <select
+                    className="custom-select form-control roadieDropdown"
+                    onChange={(e) => handleSelectedEvent(e.target.value)}
+                  >
                     <option value="" disabled>
                       Select an event
                     </option>
@@ -77,7 +110,9 @@ const BookMeForm = () => {
                 </div>
               </div>
               <div className="form-group">
-                <label for="Bio" id="lableitem">Tell me about yourself: </label>
+                <label for="Bio" id="lableitem">
+                  Tell me about yourself:{" "}
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -89,7 +124,9 @@ const BookMeForm = () => {
               </div>
 
               <div className="form-group">
-                <label for="Body" id="lableitem">Body</label>
+                <label for="Body" id="lableitem">
+                  Body
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -100,8 +137,28 @@ const BookMeForm = () => {
                 />
               </div>
 
+              <div className="card eventDetailsCard" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title">Event Details</h5>
+
+                  <div>
+                    <div className="card-text-div">
+                      {eventDetails === null ? (
+                        <p className="card-text">
+                          Your event details will appear here
+                        </p>
+                      ) : (
+                        handleEventDetails(eventDetails)
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="form-group">
-                <label for="Contact_info" id="lableitem">Your Contact Info</label>
+                <label for="Contact_info" id="lableitem">
+                  Your Contact Info
+                </label>
                 <input
                   type="email"
                   className="form-control bookMeInput"
