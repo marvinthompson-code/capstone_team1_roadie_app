@@ -119,7 +119,7 @@ const updateClientInfo = async (req, res, next) => {
       message: "Updated client's info!",
       body: {
         update_artist_info: await db.one(
-          "UPDATE clients SET name = $1, profile_pic_url = $2, bio = $3, contact_info = $4 WHERE id = $5",
+          "UPDATE clients SET name = $1, profile_pic_url = $2, bio = $3, contact_info = $4 WHERE id = $5 RETURNING *",
           [name, profile_pic_url, bio, contact_info, id]
         ),
       },

@@ -18,6 +18,7 @@ const BookMeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // make notification request here
   };
 
   const bookingEvents = () => {
