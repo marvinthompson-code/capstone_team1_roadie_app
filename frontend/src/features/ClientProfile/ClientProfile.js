@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import ClientPortfolio from "../Portfolio/ClientPortfolio";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-
 
 const ClientProfile = () => {
   const [name, setName] = useState("");
@@ -23,11 +21,6 @@ const ClientProfile = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.EventDisplay);
   const history = useHistory();
-
-  // const displayEventModal = (id, client_id) => {
-  //   dispatch(toggleEventDisplayState())
-  //   return  <EventDisplay id={id} client_id={client_id} isOpen={isOpen} />
-  // }
 
   useEffect(() => {
     const fetchUserInfo = async (id) => {
@@ -91,18 +84,23 @@ const ClientProfile = () => {
             <h3 id={"address"}>{event.address}</h3>
             <h3 id={"city"}>{event.city}</h3>
           </div>
-          
         </li>
       </div>
     );
   });
 
+  //   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  //   Launch demo modal
+  // </button>
+
   let editButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
         <button
-          id={"EditArtistProfileButton"}
-          onClick={() => dispatch(toggleEditClientProfileModalState())}
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#editClientProfileModalCenter"
         >
           Edit Profile
         </button>
@@ -116,7 +114,9 @@ const ClientProfile = () => {
         <div className="eventsButtonsDiv">
           <button
             id={"CreateEventButton"}
-            onClick={() => history.push(`/client/${match.params.id}/createEvent`)}
+            onClick={() =>
+              history.push(`/client/${match.params.id}/createEvent`)
+            }
           >
             Create Event
           </button>
@@ -130,17 +130,19 @@ const ClientProfile = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row artistBanner align-items-center justify-content-center"
-        id="artistBanner">
-      <div className={"col-sm-2"}>
-        <button
-          id={"BookMeButton"}
-          onClick={() => dispatch(toggleClientContactModalState())}
-        >
-          Contact Me!
-        </button>
-      </div>
-      <div className="col-sm-6 text-center artistProfileHeader">
+      <div
+        className="row artistBanner align-items-center justify-content-center"
+        id="artistBanner"
+      >
+        <div className={"col-sm-2"}>
+          <button
+            id={"BookMeButton"}
+            onClick={() => dispatch(toggleClientContactModalState())}
+          >
+            Contact Me!
+          </button>
+        </div>
+        <div className="col-sm-6 text-center artistProfileHeader">
           <h2 className={"artistProfileName"}>{name}</h2>
         </div>
         <div className="col-sm-2">{editButton()}</div>
@@ -152,31 +154,31 @@ const ClientProfile = () => {
           <ClientPortfolio />
         </div>
 
-      <div className="col artistInfo">
-      <div className={"infoDiv jumbotron"}>
-        <div className={"cityDiv"}>
-          <label className="labelInfo">City:</label>
-          <h4 className={"city"}>{city}</h4>
-        </div>
-        <div className={"contactInfoDiv"}>
-          <label className="labelInfo">Contact:</label>
-          <h3 className={"contact"}>{contactInfo}</h3>
-        </div>
-        <div className={"bioDiv"}>
-          <label className="labelInfo">About me:</label>
-          <p className={"bioContent"}>{bio}</p>
-        </div>
-        </div>
-
-        <div className={"bookingsDisplayContainer"}>
-          <div className={"eventTitleDiv"}>
-            <h3 className={"eventsTitle"}>Created Events</h3>
+        <div className="col artistInfo">
+          <div className={"infoDiv jumbotron"}>
+            <div className={"cityDiv"}>
+              <label className="labelInfo">City:</label>
+              <h4 className={"city"}>{city}</h4>
+            </div>
+            <div className={"contactInfoDiv"}>
+              <label className="labelInfo">Contact:</label>
+              <h3 className={"contact"}>{contactInfo}</h3>
+            </div>
+            <div className={"bioDiv"}>
+              <label className="labelInfo">About me:</label>
+              <p className={"bioContent"}>{bio}</p>
+            </div>
           </div>
-          <ul className={"eventUl"}>{userEventsThumbs}</ul>
 
-          <div className={"createEventButtonDiv"}>{createEventButton()}</div>
+          <div className={"bookingsDisplayContainer"}>
+            <div className={"eventTitleDiv"}>
+              <h3 className={"eventsTitle"}>Created Events</h3>
+            </div>
+            <ul className={"eventUl"}>{userEventsThumbs}</ul>
+
+            <div className={"createEventButtonDiv"}>{createEventButton()}</div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

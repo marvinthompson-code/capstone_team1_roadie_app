@@ -26,6 +26,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
+      debugger
       let {
         name,
         profile_pic_url,
@@ -50,8 +51,10 @@ const ArtistProfile = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
         <button
-          id={"EditArtistProfileButton"}
-          onClick={() => dispatch(toggleEditArtistProfileModalState())}
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#editArtistProfileModalCenter"
         >
           Edit Profile
         </button>
@@ -63,7 +66,7 @@ const ArtistProfile = () => {
     let res = await axios.get(`${API}/events/${id}`);
     let { events } = res.data.body;
     dispatch(recieveClientEvents(events));
-    dispatch(toggleBookMeModalState());
+    // dispatch(toggleBookMeModalState());
   };
 
   return (

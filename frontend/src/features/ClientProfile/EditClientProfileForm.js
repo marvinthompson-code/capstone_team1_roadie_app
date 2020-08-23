@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { toggleEditClientProfileModalState } from "./editClientProfileModalSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { apiURL } from "../../util/apiURL";
-import Modal from "react-modal";
 import axios from "axios";
 
 const EditClientProfileForm = () => {
-  let isOpen = useSelector((state) => state.editClientProfileModal);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
@@ -19,11 +16,8 @@ const EditClientProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // update client information
+    debugger;
     let res = await axios.patch(`${API}/clients/${match.params.id}`);
-  };
-
-  const closeModal = () => {
-    dispatch(toggleEditClientProfileModalState());
   };
 
   useEffect(() => {
@@ -40,63 +34,88 @@ const EditClientProfileForm = () => {
       setBio(bio);
       setContactInfo(contact_info);
     };
-    // we can also use useParams, ive just been using this lately. Takes the id straight from the url, and since this is a modal, the ending of the url doesnt change, so aye
     fetchClientInfo(match.params.id);
-    // call the function here ^^^
   }, []);
   return (
-    <Modal
-      isOpen={false}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-      }}
+    <div
+      class="modal fade"
+      id="editClientProfileModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
     >
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label for="Name">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            value={name}
-            id="Name"
-            placeholder={name}
-            onChange={(e) => setName(e.currentTarget.value)}
-          />
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bookMeHeader">
+            <h1>Edit Profile</h1>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body bookMeModalBody">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label for="Name" id="lableitem">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control bookMeInput"
+                  value={name}
+                  id="Name"
+                  placeholder={name}
+                  onChange={(e) => setName(e.currentTarget.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label for="Bio" id="lableitem">
+                  Bio
+                </label>
+                <input
+                  type="text"
+                  className="form-control bookMeInput"
+                  value={bio}
+                  id="Bio"
+                  placeholder={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label for="Contact_info" id="lableitem">
+                  Contact Info
+                </label>
+                <input
+                  type="text"
+                  className="form-control bookMeInput"
+                  value={contact_info}
+                  id="Contact_info"
+                  placeholder={contact_info}
+                  onChange={(e) => setContactInfo(e.currentTarget.value)}
+                />
+              </div>
+              <button type="submit" className="btn btn-info">
+                Update
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer bookMeFooter">
+            <button
+              type="button"
+              class="bookMeCloseButton btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
         </div>
-        <div className="form-group">
-          <label for="Bio">Bio</label>
-          <input
-            type="text"
-            className="form-control"
-            value={bio}
-            id="Bio"
-            placeholder={bio}
-            onChange={(e) => setBio(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label for="Contact_info">Contact Info</label>
-          <input
-            type="text"
-            className="form-control"
-            value={contact_info}
-            id="Contact_info"
-            placeholder={contact_info}
-            onChange={(e) => setContactInfo(e.currentTarget.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-info">
-          Update
-        </button>
-      </form>
-    </Modal>
+      </div>
+    </div>
   );
 };
 
