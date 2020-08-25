@@ -1,23 +1,76 @@
 import React, { useState, useEffect } from "react";
+import { storage } from "../../firebase";
+import { toggleLoadingState } from '../Loading/loadingSlice'
 import { useRouteMatch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 
 const EditClientProfileForm = () => {
-  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
+  const [ toggle, setToggle ] = useState(false)
+  const dispatch = useDispatch()
+
+  const [imageAsFile, setImageAsFile] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   const match = useRouteMatch();
   const API = apiURL();
 
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0];
+    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
+    if (types.every((type) => image.type !== type)) {
+      alert(`${image.type} is not a supported format`);
+    } else {
+      setImageAsFile((imageFile) => image);
+    }
+  };
+
+  const handleFirebaseUpload = () => {
+    if (imageAsFile === "") {
+      alert("Please choose a valid file before uploading");
+    } else if (imageAsFile !== null) {
+      const uploadTask = storage
+        .ref(`/images/${imageAsFile.name}`)
+        .put(imageAsFile);
+      uploadTask.on(
+        "state_changed",
+        (snapShot) => {
+          console.log(snapShot);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(imageAsFile.name)
+            .getDownloadURL()
+            .then((fireBaseUrl) => {
+              setImageUrl(fireBaseUrl);
+            });
+        }
+      );
+      setToggleUploadMsg(true);
+    } else {
+      setToggleUploadMsg(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // update client information
-    debugger;
-    let res = await axios.patch(`${API}/clients/${match.params.id}`);
+      await axios.patch(`${API}/clients/${match.params.id}`, {
+      name,
+      profile_pic_url: imageUrl,
+      bio,
+      contact_info,
+    });
+    dispatch(toggleLoadingState())
+    dispatch(toggleLoadingState())
   };
 
   useEffect(() => {
@@ -25,9 +78,7 @@ const EditClientProfileForm = () => {
       let res = await axios.get(`${API}/clients/${id}`);
       let {
         name,
-        profile_pic_url,
         bio,
-        city,
         contact_info,
       } = res.data.body.single_client;
       setName(name);
@@ -36,6 +87,12 @@ const EditClientProfileForm = () => {
     };
     fetchClientInfo(match.params.id);
   }, []);
+
+  const handleClick = () => {
+    setToggle(true)
+  }
+
+
   return (
     <div
       class="modal fade"
@@ -54,6 +111,7 @@ const EditClientProfileForm = () => {
               class="close"
               data-dismiss="modal"
               aria-label="Close"
+              onClick={handleClick}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -73,6 +131,35 @@ const EditClientProfileForm = () => {
                   onChange={(e) => setName(e.currentTarget.value)}
                 />
               </div>
+              <div className="form-group">
+                <label for="exampleFormControlFile1" id="labelitem">
+                  Upload Profile Image
+                </label>
+                <input
+                  type="file"
+                  onChange={handleImageAsFile}
+                  required
+                  className="form-control-file"
+                  id="exampleFormControlFile1"
+                />
+              </div>
+
+              <button
+                type="button"
+                className="artistUploadButton btn-secondary"
+                onClick={() => {
+                  handleFirebaseUpload();
+                }}
+                id="firebaseUpload"
+              >
+                Upload
+              </button>
+              {toggleUploadMsg ? (
+                <h5 id="uploadSuccess" id="labelitem">
+                  Upload successful!
+                </h5>
+              ) : null}
+
               <div className="form-group">
                 <label for="Bio" id="lableitem">
                   Bio
@@ -99,7 +186,7 @@ const EditClientProfileForm = () => {
                   onChange={(e) => setContactInfo(e.currentTarget.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-info">
+              <button type="submit" className="btn btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close" >
                 Update
               </button>
             </form>

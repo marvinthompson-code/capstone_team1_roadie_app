@@ -15,6 +15,7 @@ import venueSearchReducer from "../features/Events/venueSearchSlice"
 import userTypeReducer from "../features/user/userSlice";
 import uploadModalReducer from "../features/Portfolio/uploadModalSlice";
 import uploadVideoModalReducer from "../features/Portfolio/uploadVideoModalSlice"
+import loadingReducer from '../features/Loading/loadingSlice';
 import logger from "redux-logger";
 
 export default configureStore({
@@ -22,6 +23,7 @@ export default configureStore({
     artist: artistReducer,
     token: tokenReducer,
     loginModal: loginModalReducer,
+    loading: loadingReducer,
     modal: modalReducer,
     client: clientReducer,
     bookMeEvents: bookMeEventsReducer,

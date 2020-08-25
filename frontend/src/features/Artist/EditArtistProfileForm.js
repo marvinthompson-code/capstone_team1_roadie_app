@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { storage } from "../../firebase";
 import { useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
@@ -58,31 +59,24 @@ const EditArtistProfileForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.patch(`${API}/artists/${match.params.id}` {
+    let res = await axios.patch(`${API}/artists/${match.params.id}`, {
       name,
       profile_pic_url: imageUrl,
       bio,
-      contact_info
+      contact_info,
     });
   };
 
   useEffect(() => {
     const fetchArtistInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-      let {
-        name,
-        bio,
-        city,
-        contact_info,
-      } = res.data.body.single_artist;
+      let { name, bio, city, contact_info } = res.data.body.single_artist;
       setName(name);
       setBio(bio);
       setContactInfo(contact_info);
     };
     fetchArtistInfo(match.params.id);
   }, []);
-
-  
 
   return (
     <div
@@ -96,9 +90,7 @@ const EditArtistProfileForm = () => {
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bookMeHeader">
           <div class="modal-header">
-            <h1>
-              Edit Profile
-            </h1>
+            <h1>Edit Profile</h1>
             <button
               type="button"
               class="close"
@@ -111,7 +103,9 @@ const EditArtistProfileForm = () => {
           <div class="modal-body bookMeModalBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="Name" id="lableitem">Name</label>
+                <label for="Name" id="lableitem">
+                  Name
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -123,13 +117,16 @@ const EditArtistProfileForm = () => {
               </div>
 
               <div className="form-group">
-            <label for="exampleFormControlFile1" id="labelitem">Upload Profile Image</label>
-              <input type="file"
-               onChange={handleImageAsFile}
-               required
-               className="form-control-file"
-               id="exampleFormControlFile1"
-               />
+                <label for="exampleFormControlFile1" id="labelitem">
+                  Upload Profile Image
+                </label>
+                <input
+                  type="file"
+                  onChange={handleImageAsFile}
+                  required
+                  className="form-control-file"
+                  id="exampleFormControlFile1"
+                />
               </div>
 
               <button
@@ -139,14 +136,19 @@ const EditArtistProfileForm = () => {
                   handleFirebaseUpload();
                 }}
                 id="firebaseUpload"
-                >
+              >
                 Upload
               </button>
-              {toggleUploadMsg ? <h5 id="uploadSuccess" id="labelitem">Upload successful!</h5> : null}
-
+              {toggleUploadMsg ? (
+                <h5 id="uploadSuccess" id="labelitem">
+                  Upload successful!
+                </h5>
+              ) : null}
 
               <div className="form-group">
-                <label for="Bio" id="lableitem">Bio</label>
+                <label for="Bio" id="lableitem">
+                  Bio
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInpu"
@@ -157,7 +159,9 @@ const EditArtistProfileForm = () => {
                 />
               </div>
               <div className="form-group">
-                <label for="Contact_info"  id="lableitem">Contact Info</label>
+                <label for="Contact_info" id="lableitem">
+                  Contact Info
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -167,8 +171,6 @@ const EditArtistProfileForm = () => {
                   onChange={(e) => setContactInfo(e.currentTarget.value)}
                 />
               </div>
-
-             
 
               <button type="submit" className="btn btn-info">
                 Update
@@ -182,9 +184,6 @@ const EditArtistProfileForm = () => {
               data-dismiss="modal"
             >
               Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Save changes
             </button>
           </div>
         </div>
