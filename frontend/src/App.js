@@ -25,6 +25,10 @@ import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
 import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum"
 
+import AboutRoadie from "./features/About/AboutRoadie";
+import WhyRoadie from "./features/About/WhyRoadie";
+import MeetTheRoadies from "./features/About/MeetRoadies";
+
 Modal.setAppElement("#root");
 
 function App() {
@@ -46,7 +50,15 @@ function App() {
           <DisplaySignUp />
           <Login />
         </Route>
-
+        <Route path="/about">
+          <AboutRoadie />
+        </Route>
+        <Route path="/whyRoadie">
+          <WhyRoadie />
+        </Route>
+        <Route path="/team">
+          <MeetTheRoadies />
+        </Route>
         <Route exact path={"/results"}>
           <SearchResults />
         </Route>
