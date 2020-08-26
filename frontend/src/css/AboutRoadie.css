@@ -1,0 +1,19 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #fffaf0;
+    --floralGrey: #F4EFE5;
+}
+
+.imageCarouselDiv {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.imageCarouselCol {
+    grid-column: 2 / span 1;
+    justify-self: center;
+}

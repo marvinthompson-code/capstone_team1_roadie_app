@@ -5,8 +5,6 @@ import { recieveClientEvents } from "./bookMeEventsSlice";
 import Portfolio from "../Portfolio/Portfolio";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { toggleBookMeModalState } from "./bookMeModalSlice";
-import { toggleEditArtistProfileModalState } from "./editArtistProfileModalSlice";
 import "../../css/ArtistProfile.css";
 
 const ArtistProfile = () => {
@@ -17,6 +15,7 @@ const ArtistProfile = () => {
   const [profilePicUrl, setProfilePicUrl] = useState("");
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
+  const loading = useSelector((state) => state.loading);
   const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
   const API = apiURL();
@@ -26,7 +25,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-      debugger
+      debugger;
       let {
         name,
         profile_pic_url,
@@ -43,10 +42,6 @@ const ArtistProfile = () => {
     fetchUserInfo(match.params.id);
   }, []);
 
-  //   const handleToggle = () => {
-  //     toggleEditBookings ? setToggleEditBookings(false) : setToggleEditBookings(true);
-  //   };
-
   let editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
@@ -62,11 +57,13 @@ const ArtistProfile = () => {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   const handleClientEvents = async (id) => {
     let res = await axios.get(`${API}/events/${id}`);
     let { events } = res.data.body;
     dispatch(recieveClientEvents(events));
-    // dispatch(toggleBookMeModalState());
   };
 
   return (
