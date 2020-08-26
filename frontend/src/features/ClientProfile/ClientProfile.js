@@ -41,7 +41,7 @@ const ClientProfile = () => {
       setContactInfo(contact_info);
     };
     fetchUserInfo(match.params.id);
-    // dispatch(toggleLoadingState())
+    
   }, []);
 
   useEffect(() => {

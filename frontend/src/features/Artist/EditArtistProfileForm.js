@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
+import { toggleLoadingState } from '../Loading/loadingSlice';
 import { useRouteMatch } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 
@@ -8,6 +10,8 @@ const EditArtistProfileForm = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
+  const [ toggle, setToggle ] = useState(false)
+  const dispatch = useDispatch()
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -65,18 +69,24 @@ const EditArtistProfileForm = () => {
       bio,
       contact_info,
     });
+    dispatch(toggleLoadingState())
+    dispatch(toggleLoadingState())
   };
 
   useEffect(() => {
     const fetchArtistInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-      let { name, bio, city, contact_info } = res.data.body.single_artist;
+      let { name, bio, contact_info } = res.data.body.single_artist;
       setName(name);
       setBio(bio);
       setContactInfo(contact_info);
     };
     fetchArtistInfo(match.params.id);
   }, []);
+
+  const handleClick = () => {
+    setToggle(true)
+  }
 
   return (
     <div
@@ -96,6 +106,7 @@ const EditArtistProfileForm = () => {
               class="close"
               data-dismiss="modal"
               aria-label="Close"
+              onClick={handleClick}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -172,7 +183,7 @@ const EditArtistProfileForm = () => {
                 />
               </div>
 
-              <button type="submit" className="btn btn-info">
+              <button type="submit" className="btn btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
                 Update
               </button>
             </form>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
-import { toggleLoadingState } from '../Loading/loadingSlice'
+import { toggleLoadingState } from "../Loading/loadingSlice";
 import { useRouteMatch } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 
@@ -10,8 +10,8 @@ const EditClientProfileForm = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
-  const [ toggle, setToggle ] = useState(false)
-  const dispatch = useDispatch()
+  const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -63,24 +63,20 @@ const EditClientProfileForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      await axios.patch(`${API}/clients/${match.params.id}`, {
+    await axios.patch(`${API}/clients/${match.params.id}`, {
       name,
       profile_pic_url: imageUrl,
       bio,
       contact_info,
     });
-    dispatch(toggleLoadingState())
-    dispatch(toggleLoadingState())
+    dispatch(toggleLoadingState());
+    dispatch(toggleLoadingState());
   };
 
   useEffect(() => {
     const fetchClientInfo = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
-      let {
-        name,
-        bio,
-        contact_info,
-      } = res.data.body.single_client;
+      let { name, bio, contact_info } = res.data.body.single_client;
       setName(name);
       setBio(bio);
       setContactInfo(contact_info);
@@ -89,9 +85,8 @@ const EditClientProfileForm = () => {
   }, []);
 
   const handleClick = () => {
-    setToggle(true)
-  }
-
+    setToggle(true);
+  };
 
   return (
     <div
@@ -186,7 +181,13 @@ const EditClientProfileForm = () => {
                   onChange={(e) => setContactInfo(e.currentTarget.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close" >
+              <button
+                type="submit"
+                className="btn btn-info"
+                onClick={handleSubmit}
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 Update
               </button>
             </form>

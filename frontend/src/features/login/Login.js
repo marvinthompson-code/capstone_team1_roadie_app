@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { updateUser } from "../token/userTokenSlice";
 import { login } from "../../util/firebaseFunctions";
+import { toggleLoadingState } from "../Loading/loadingSlice";
 import { useDispatch } from "react-redux";
 import "../../css/Login.css";
 
@@ -19,6 +20,8 @@ const Login = () => {
       let res = await login(email, password);
       dispatch(updateUser(res.user));
       history.push("/");
+      dispatch(toggleLoadingState());
+      dispatch(toggleLoadingState());
     } catch (error) {
       setError(error.message);
     }
@@ -93,9 +96,11 @@ const Login = () => {
                   type="submit"
                   className="btn btn-primary roadieLogInButton"
                   value="Log In"
+                  onClick={handleSubmit}
+                  data-dismiss="modal"
+                  aria-label="Close"
                 />
               </form>
-
             </div>
           </div>
 
@@ -111,7 +116,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 
