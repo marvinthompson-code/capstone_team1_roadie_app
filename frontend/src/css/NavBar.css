@@ -4,7 +4,20 @@
   --DesertSand: #dbc2ad;
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
-  --floralWhite: #fffaf0;
+  --floralWhite: #ffffff;
+  --steel: #3a5049;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075D3E;
+  --jade: #00A86B;
+  --indiaGreen: #078809;
+  --electricGreen: #00FF00;
+  --eerieBlk2: #1C1E1E;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5A7272;
+  --hotPink: #FF69B4;
+  --scarlet: #ff2400;
+  --kobe: #881D0B;
 }
 
 @font-face {
@@ -23,9 +36,13 @@
 }
 
 .navbar {
-  background-color: var(--floralWhite) !important;
-  border: 1px solid var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
+  background-color: var(--eerieBlk) !important;
+  border-bottom: 1px solid var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+}
+
+.navTitle {
+  color: var(--floralWhite) !important;
 }
 a:hover {
   background-color: 000000 !important;
@@ -35,9 +52,9 @@ a:hover {
   margin-right: 20px;
 }
 
-.roadieNav a:hover {
-  border-bottom: 2px solid var(--darkSienna);
-
+.nav-item {
+  padding: 5px 10px;
+  margin: 2px 3px;
 }
 
 #roadieLogout{
@@ -46,49 +63,54 @@ a:hover {
   border-radius: 10px;
   border: 1px solid var(--darkSienna);
   box-shadow: 1px 1px 2px #888888;
+  transition: 2s;
 }
 
 .roadieLogIn {
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--eerieBlk3);
   border-radius: 10px;
-  background-color: var(--floralWhite);
-  box-shadow: 1px 1px 2px #888888;
-  color: var(--darkSienna);
+  background-color: var(--eerieBlk3);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: var(--jade) !important;
+  transition: 1s;
 }
 
 .roadieLogIn:hover {
-  background-color: var(--darkSienna);
-  color: var(--floralWhite) !important;
+  background-color: var(--jade);
+  color: white !important;
 }
 
 
 .roadieSignUp {
-  border: 1px solid var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
-  color: var(--floralWhite) !important;
-  background-color: var(--darkSienna);
+  border: 1px solid var(--eerieBlk3);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: var(--jade) !important;
+  background-color: var(--eerieBlk3);
   border-radius: 10px;
+  transition: 1s;
 }
 
 .roadieSignUp:hover {
-  background-color: var(--floralWhite);
-  color: var(--darkSienna) !important;
+  background-color: var(--jade);
+  color: white !important;
 }
 
 #navbarDropdownMenuLink {
-  color: var(--darkSienna);
+  color: #ffffff;
 }
 
 .dropdown-item {
-  background-color: var(--darkSienna) !important;
-  color: var(--floralWhite) !important;
+  background-color: var(--eerieBlk) !important;
+  color: white !important;
+  transition: 1s;
 }
 
 .dropdown-item:hover {
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+  background-color: var(--jade) !important;
+  color: white !important;
 }
 .dropdown-menu {
-  background-color: var(--darkSienna) !important;
+  background-color: var(--eerieBlk) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk) !important;
 }
 

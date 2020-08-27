@@ -12,17 +12,6 @@ const DisplaySignUp = () => {
       setToggle(false);
     }
   };
-  // const Button = styled.button`
-  //   background: #ec9b59;
-  //   border-radius: 13px;
-  //   border: 2px solid #ec9b59;
-  //   color: #00202b;
-  //   box-shadow: 1px 1px 4px;
-  //   ${props => props.primary && css`
-  //   background: #9eb19e;
-  //   border: 2px solid #9eb19e;
-  // `}
-  // `;
   const displayModal = () => {
     return (
       <div className="displaySignUpContainer">

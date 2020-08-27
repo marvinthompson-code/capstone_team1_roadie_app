@@ -9,6 +9,7 @@ import firebase from "./firebase";
 import { updateUser } from "./features/token/userTokenSlice";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
 import EditClientProfileForm from "./features/ClientProfile/EditClientProfileForm";
+import EditArtistProfileForm from "./features/Artist/EditArtistProfileForm"
 import ClientProfile from "./features/ClientProfile/ClientProfile";
 import Login from "./features/login/Login";
 import EventForm from "./features/Events/EventForm";
@@ -74,6 +75,7 @@ function App() {
 
         <ProtectedRoute exact path={"/artist/:id"}>
           <Artist />
+          <EditArtistProfileForm />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/client/:id/createEvent"}>
