@@ -94,9 +94,9 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav">
-      <NavLink className="navbar-brand" href="#" exact to="/">
-        Roadie
+    <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav sticky-top">
+      <NavLink className="navbar-brand navTitle" href="#" exact to="/">
+      <span id="roadieR">R</span>oadie
       </NavLink>
       <button
         className="navbar-toggler"

@@ -4,10 +4,18 @@
   --DesertSand: #dbc2ad;
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
-  --floralWhite: #fffaf0;
-  --floralGrey: #F4EFE5;
+  --floralWhite: #ffffff;
+  --steel: #55828B;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075D3E;
+  --jade: #00A86B;
+  --indiaGreen: #078809;
+  --electricGreen: #00FF00;
+  --eerieBlk2: #1C1E1E;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5A7272;
 }
-
 .displaySignUpContainer {
   display: grid;
   border-radius: 13px;
@@ -20,51 +28,58 @@
 }
 
 .displayHeaderSignUp {
-  background-color: var(--PaleSilver) !important;
-  border-bottom-color: var(--PaleSilver) !important;
+  background-color: var(--jade) !important;
+  border-bottom-color: var(--eerieBlk
+  ) !important;
   color: var(--floralWhite) !important;
-  text-shadow: 0.5px 0.3px 1px #888888 !important;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
 }
 
 .signUpModalBody {
-  background-color: var(--floralGrey);
+  background-color: var(--eerieBlk3);
 }
 
 #signUpTabs {
   color: var(--floralWhite);
-  text-shadow: 0.5px 0.3px 1px #888888 !important;
-  background-color: var(--DesertSand);
-  border-color: var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
+  background-color: var(--jade);
+  border-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
 }
 
 #signUpTabsArtist {
   color: var(--floralWhite);
-  text-shadow: 0.5px 0.3px 1px #888888 !important;
-  background-color: var(--darkSienna);
-  border-color: var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
+  background-color: var(--kobe);
+  border-color: var(--eerieBlk);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
 }
 
 .nav-tabs {
-  border-bottom-color: var(--darkSienna);
+  border-bottom-color: var(--eerieBlk3);
 }
 
 .clientSignUpHeader {
-  border-bottom-color: var(--floralGrey);
+  border-bottom-color: var(--eerieBlk3);
 }
 
 .signUpModalFooter {
-  background-color: var(--floralGrey);
-  border-top-color: var(--floralGrey);
+  background-color: var(--eerieBlk3);
+  border-top-color: var(--eerieBlk3);
 }
 
 .signUpCloseButton {
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+  background-color: var(--eerieBlk3) !important;
+  color: var(--jade) !important;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  border: 1px solid var(--darkSienna) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  border: 1px solid var(--eerieBlk3) !important;
   height: 40px;
   width: 65px;
+  transition: 1s;
+}
+
+.signUpCloseButton:hover {
+  background-color: var(--jade) !important;
+  color: white !important;
 }
