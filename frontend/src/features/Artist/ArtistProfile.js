@@ -49,7 +49,7 @@ const ArtistProfile = () => {
           type="button"
           class="btn btn-primary"
           data-toggle="modal"
-          data-target="#editArtistProfileModalCenter"
+          data-target="#editClientProfileModalCenter"
         >
           Edit Profile
         </button>

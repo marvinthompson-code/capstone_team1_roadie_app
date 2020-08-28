@@ -4,14 +4,22 @@
   --DesertSand: #dbc2ad;
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
-  --floralWhite: #fffaf0;
-  --floralGrey: #f4efe5;
+  --floralWhite: #ffffff;
+  --steel: #55828B;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075D3E;
+  --jade: #00A86B;
+  --indiaGreen: #078809;
+  --electricGreen: #00FF00;
+  --eerieBlk2: #1C1E1E;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5A7272;
 }
-
 .clientSignUpInput {
-  box-shadow: 1px 1px 2px #888888;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
   background-color: var(--floralWhite);
-  border-color: var(--darkSienna);
+  border-color: var(--eerieBlk);
   outline: none;
 }
 
@@ -20,12 +28,12 @@
 }
 
 #labelItem {
-  color: var(--darkSienna);
-  text-shadow: 0.5px 0.3px 1px #888888;
+  color: var(--jade);
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
 }
 
 .clientSignUpBody {
-  background-color: var(--floralGrey);
+  background-color: var(--floralGrey) ;
 }
 /* #exampleInputEmail1 {
   box-shadow: 1px 1px 2px #888888;
@@ -35,23 +43,29 @@
 } */
 
 #exampleModalLongTitle {
-  color: var(--darkSienna);
-  text-shadow: 0.5px 0.3px 1px #888888;
+  color: white;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk2);
 }
 
 .clientSignUpButton {
-  background-color: var(--darkSienna) !important;
-  color: var(--floralWhite) !important;
+  background-color: var(--eerieBlk3) !important;
+  color: var(--jade) !important;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  border: 1px solid var(--darkSienna) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  border: 1px solid var(--eerieBlk3) !important;
+}
+
+
+.clientSignUpButton:hover {
+  background-color: var(--kobe) !important;
+  color: white !important;
 }
 
 .clientUploadButton {
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+  background-color: var(--jade) !important;
+  color: white!important;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
+  box-shadow: 1px 1px 2px var(--eerieBlk3);
   height: 35px;
-  border: 1px solid var(--darkSienna) !important;
+  border: 1px solid var(--eerieBlk3) !important;
 }
