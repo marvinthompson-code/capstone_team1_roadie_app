@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toggleLoadingState } from '../Loading/loadingSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import ClientPortfolio from "../Portfolio/ClientPortfolio";
@@ -16,6 +17,7 @@ const ClientProfile = () => {
   const [toggleEditEvents, setToggleEditEvents] = useState(false);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
+  const loading = useSelector((state) => state.loading)
   const API = apiURL();
   const match = useRouteMatch();
   const dispatch = useDispatch();
@@ -39,6 +41,7 @@ const ClientProfile = () => {
       setContactInfo(contact_info);
     };
     fetchUserInfo(match.params.id);
+    
   }, []);
 
   useEffect(() => {
@@ -60,6 +63,10 @@ const ClientProfile = () => {
   const handleToggle = () => {
     toggleEditEvents ? setToggleEditEvents(false) : setToggleEditEvents(true);
   };
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const userEventsThumbs = userEvents.map((event) => {
     return (

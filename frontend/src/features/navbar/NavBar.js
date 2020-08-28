@@ -129,15 +129,15 @@ const NavBar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a className="dropdown-item" href="#">
+              <NavLink className="dropdown-item" exact to="/about">
                 About Roadie
-              </a>
-              <a className="dropdown-item" href="#">
+              </NavLink>
+              <NavLink className="dropdown-item" exact to="/whyRoadie">
                 Why Roadie
-              </a>
-              <a className="dropdown-item" href="#">
+              </NavLink>
+              <NavLink className="dropdown-item" exact to="/team">
                 Meet the Roadies
-              </a>
+              </NavLink>
             </div>
           </li>
           {displayButtons()}

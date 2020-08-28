@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useRouteMatch } from "react-router-dom";
 import "../../css/BookMeModal.css";
+import { db } from "../../firebase";
 
 const BookMeForm = () => {
   const [bio, setBio] = useState("");
@@ -15,10 +17,26 @@ const BookMeForm = () => {
   const API = apiURL();
   const client = useSelector((state) => state.client);
   const clientEvents = useSelector((state) => state.bookMeEvents);
+  const match = useRouteMatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // make notification request here
+    await db
+      .collection("bookings")
+      .doc(match.params.id)
+      .collection("messages")
+      .add({
+        bio: bio,
+        email: emailContact,
+        number: numberContact,
+        message: "A client is trying to book you!",
+        body: body,
+        selectedEvent: selectedEvent,
+        eventDetails: eventDetails,
+      });
+    // create alert that says "You sent a book request"
+    // close modal
   };
 
   const bookingEvents = () => {
@@ -45,7 +63,6 @@ const BookMeForm = () => {
       address: res.data.body.event.address,
       date: res.data.body.event.date.slice(0, 10),
     });
-    debugger;
   };
 
   const handleEventDetails = (obj) => {

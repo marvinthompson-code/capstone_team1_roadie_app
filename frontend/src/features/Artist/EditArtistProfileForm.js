@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { storage } from "../../firebase";
+import { toggleLoadingState } from '../Loading/loadingSlice';
 import { useRouteMatch } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 
@@ -7,6 +10,8 @@ const EditArtistProfileForm = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
+  const [ toggle, setToggle ] = useState(false)
+  const dispatch = useDispatch()
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -58,23 +63,20 @@ const EditArtistProfileForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.patch(`${API}/artists/${match.params.id}` {
+    let res = await axios.patch(`${API}/artists/${match.params.id}`, {
       name,
       profile_pic_url: imageUrl,
       bio,
-      contact_info
+      contact_info,
     });
+    dispatch(toggleLoadingState())
+    dispatch(toggleLoadingState())
   };
 
   useEffect(() => {
     const fetchArtistInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-      let {
-        name,
-        bio,
-        city,
-        contact_info,
-      } = res.data.body.single_artist;
+      let { name, bio, contact_info } = res.data.body.single_artist;
       setName(name);
       setBio(bio);
       setContactInfo(contact_info);
@@ -82,7 +84,9 @@ const EditArtistProfileForm = () => {
     fetchArtistInfo(match.params.id);
   }, []);
 
-  
+  const handleClick = () => {
+    setToggle(true)
+  }
 
   return (
     <div
@@ -96,14 +100,13 @@ const EditArtistProfileForm = () => {
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bookMeHeader">
           <div class="modal-header">
-            <h1>
-              Edit Profile
-            </h1>
+            <h1>Edit Profile</h1>
             <button
               type="button"
               class="close"
               data-dismiss="modal"
               aria-label="Close"
+              onClick={handleClick}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -111,7 +114,9 @@ const EditArtistProfileForm = () => {
           <div class="modal-body bookMeModalBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="Name" id="lableitem">Name</label>
+                <label for="Name" id="lableitem">
+                  Name
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -123,13 +128,16 @@ const EditArtistProfileForm = () => {
               </div>
 
               <div className="form-group">
-            <label for="exampleFormControlFile1" id="labelitem">Upload Profile Image</label>
-              <input type="file"
-               onChange={handleImageAsFile}
-               required
-               className="form-control-file"
-               id="exampleFormControlFile1"
-               />
+                <label for="exampleFormControlFile1" id="labelitem">
+                  Upload Profile Image
+                </label>
+                <input
+                  type="file"
+                  onChange={handleImageAsFile}
+                  required
+                  className="form-control-file"
+                  id="exampleFormControlFile1"
+                />
               </div>
 
               <button
@@ -139,14 +147,19 @@ const EditArtistProfileForm = () => {
                   handleFirebaseUpload();
                 }}
                 id="firebaseUpload"
-                >
+              >
                 Upload
               </button>
-              {toggleUploadMsg ? <h5 id="uploadSuccess" id="labelitem">Upload successful!</h5> : null}
-
+              {toggleUploadMsg ? (
+                <h5 id="uploadSuccess" id="labelitem">
+                  Upload successful!
+                </h5>
+              ) : null}
 
               <div className="form-group">
-                <label for="Bio" id="lableitem">Bio</label>
+                <label for="Bio" id="lableitem">
+                  Bio
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInpu"
@@ -157,7 +170,9 @@ const EditArtistProfileForm = () => {
                 />
               </div>
               <div className="form-group">
-                <label for="Contact_info"  id="lableitem">Contact Info</label>
+                <label for="Contact_info" id="lableitem">
+                  Contact Info
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeInput"
@@ -168,9 +183,7 @@ const EditArtistProfileForm = () => {
                 />
               </div>
 
-             
-
-              <button type="submit" className="btn btn-info">
+              <button type="submit" className="btn btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
                 Update
               </button>
             </form>
@@ -182,9 +195,6 @@ const EditArtistProfileForm = () => {
               data-dismiss="modal"
             >
               Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Save changes
             </button>
           </div>
         </div>
