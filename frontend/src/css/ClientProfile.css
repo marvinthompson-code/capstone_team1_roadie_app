@@ -31,9 +31,6 @@
   font-family: railwayLight;
 }
 
-/* body {
-    background-color: var(--darkGreen);
-} */
 .clientProfileContainer {
   grid-column: 2 / span 1;
   display: grid;
@@ -52,219 +49,7 @@
   grid-template-columns: 1fr 3fr;
   height: 100%;
 }
-.clientProfileName {
-  grid-column: 1 / span 1;
-  text-align: center;
-  font-family: railwayLight;
-  font-size: xx-large;
-  color: var(--pink);
-  text-shadow: 0.5px 0.3px 1px black;
-}
-.EventDisplayContainer {
-  grid-column: 2 / span 1;
-  width: 100%;
-  background-color: var(--pumkinOrange);
-  border-radius: 20px;
-  text-align: center;
-}
-label {
-  color: var(--pumpkinOrange);
-}
 
-.eventsTitle {
-  font-family: railwayLight;
-}
-.eventThumb {
-  background-color: var(--pumpkinOrange);
-  border-radius: 10px;
-  width: 90%;
-  opacity: 0.6;
-  transition: 2s;
-}
-
-.eventThumb:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.venueDateContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
-}
-
-.eventName {
-  font-family: railwayLight;
-  margin: auto;
-  text-shadow: 0.5px 0.3px 1px black;
-  color: var(--pink);
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-#venue,
-#address {
-  font-family: railwayBldIt;
-  color: var(--pink);
-}
-
-.name {
-  font-family: railwayLight;
-  font-size: xx-large;
-  color: var(--pink);
-  text-shadow: 0.5px 0.3px 1px black;
-  text-align: center;
-}
-
-.BioDiv {
-  background-color: var(--pink);
-  width: 40%;
-  border-radius: 20px;
-  text-align: center;
-  transition: 2s;
-}
-
-.eventDiv:hover {
-  box-shadow: 0.5px 0.5px 2px darkgray;
-  cursor: pointer;
-}
-
-.eventUl {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-}
-
-.eventTitleDiv {
-  justify-content: center;
-}
-
-.eventsTitle {
-  /* margin: auto; */
-  font-family: railwayLight;
-  margin-left: 35px;
-}
-
-.BioPortfolioContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.BioDiv:hover {
-  box-shadow: 0.5px 0.5px 2px darkgray;
-  cursor: pointer;
-}
-
-.aboutMe {
-  font-family: railwayLight;
-  font-size: x-large;
-}
-
-.bio {
-  font-family: railwayLight;
-  font-size: large;
-  text-align: left;
-}
-
-.contact {
-  font-family: railwayLight;
-  font-size: large;
-  color: var(--pink);
-  text-shadow: 0.5px 0.3px 1px black;
-}
-
-.city {
-  font-family: railwayLight;
-  font-size: x-large;
-  color: var(--pink);
-  text-shadow: 0.5px 0.3px 1px black;
-}
-
-.CityDiv {
-  display: flex;
-  flex-direction: row;
-}
-
-.InfoDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.ContactInfoDiv {
-  display: flex;
-  flex-direction: row;
-}
-
-#ContactMeButton {
-  background-color: var(--pumkinOrange);
-  color: var(--pink);
-  font-size: x-large;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px;
-  height: 50px;
-  border: none;
-  opacity: 0.6;
-  transition: 2s;
-  width: 160px;
-}
-
-#ContactMeButton:hover {
-  opacity: 1;
-}
-
-#EditClientProfileButton {
-  background-color: var(--pumkinOrange);
-  color: var(--pink);
-  font-size: x-large;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px;
-  height: 50px;
-  border: none;
-  opacity: 0.6;
-  transition: 2s;
-  width: 160px;
-}
-
-#EditClientProfileButton:hover {
-  opacity: 1;
-}
-
-.eventsButtonsDiv {
-  margin-left: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  align-items: center;
-}
-
-#CreateEventButton {
-  background-color: var(--pumkinOrange);
-  color: var(--pink);
-  font-size: x-large;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px;
-  height: 50px;
-  border: none;
-  opacity: 0.6;
-  transition: 2s;
-  width: 160px;
-}
-
-#CreateEventButton:hover {
-  opacity: 1;
-}
-
-.buttonsDiv {
-  display: flex;
-  flex-direction: column;
-}
-
-.eventHeading {
-  display: flex;
-  flex-direction: row;
-}
 
 #deleteBttn {
   height: 35px;
@@ -274,4 +59,18 @@ label {
 #deleteBttn:hover {
   height: 30px;
   width: 30px;
+}
+
+.editClientProfile{
+  border: 1px solid black !important;
+  border-radius: 10px;
+  background-color: var(--jade) !important; 
+  box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
+  color: white !important;
+  transition: 1s;
+}
+.editClientProfile:hover {
+  background-color: var(--kobe) !important;
+  color: white !important;
+  cursor: pointer;
 }
