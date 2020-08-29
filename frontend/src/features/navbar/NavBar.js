@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
+import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
-
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -20,19 +20,38 @@ const NavBar = () => {
   let routeExt = () => {
     if (client === null && artist !== null) {
       return (
-        <li className="nav-item active">
-          <NavLink exact to={`/artist/${currentUser.id}`} className="nav-link profileTab">
-            Profile
-          </NavLink>
-        </li>
+        <>
+          <li className="nav-item active">
+            <NavLink
+              exact
+              to={`/artist/${currentUser.id}`}
+              className="nav-link profileTab"
+            >
+              Profile
+            </NavLink>
+          </li>
+
+          <li className="nav-item active">
+            <img src={notificationBell} alt="notification" className="bell"/>
+          </li>
+        </>
       );
     } else if (client !== null && artist === null) {
       return (
-        <li className="nav-item active">
-          <NavLink exact to={`/client/${currentUser.id}`} className="nav-link profileTab">
-            Profile
-          </NavLink>
-        </li>
+        <>
+          <li className="nav-item active">
+            <NavLink
+              exact
+              to={`/client/${currentUser.id}`}
+              className="nav-link profileTab"
+            >
+              Profile
+            </NavLink>
+          </li>
+          <li className="nav-item active">
+            <img src={notificationBell} alt="notification" className="bell"/>
+          </li>
+        </>
       );
     }
   };
@@ -57,7 +76,8 @@ const NavBar = () => {
               href="#"
               id="roadieLogout"
               onClick={userLogout}
-              exact to="/"
+              exact
+              to="/"
             >
               Logout <span className="sr-only">(current)</span>
             </NavLink>
