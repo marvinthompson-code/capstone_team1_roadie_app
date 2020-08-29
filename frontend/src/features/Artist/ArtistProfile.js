@@ -107,7 +107,7 @@ const ArtistProfile = () => {
               <h4 className={"contact"}>{contactInfo}</h4>
             </div>
             <div className={"bioDiv"}>
-              <label className="labelInfo">About me:</label>
+              <label className="labelInfo">Bio:</label>
               <p className={"bioContent"}>{bio}</p>
             </div>
           </div>

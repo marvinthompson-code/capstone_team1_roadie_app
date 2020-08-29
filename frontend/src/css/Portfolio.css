@@ -1,3 +1,36 @@
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #55828B;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075D3E;
+  --jade: #00A86B;
+  --indiaGreen: #078809;
+  --electricGreen: #00FF00;
+  --eerieBlk2: #1C1E1E;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5A7272;
+}
+@font-face {
+  src: url("../fonts/Raleway-Black.ttf");
+  font-family: railwayBlk;
+}
+
+@font-face {
+  src: url("../fonts/Raleway-BoldItalic.ttf");
+  font-family: railwayBldIt;
+}
+
+@font-face {
+  src: url("../fonts/Raleway-Light.ttf");
+  font-family: railwayLight;
+}
+
 #portfolioImg {
   width: 300px;
   height: auto;
@@ -10,51 +43,55 @@
 .portfolioHeader {
   grid-row: 1 / span 1;
   padding: 10px;
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
+  background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
   padding: 5px;
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
   border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
+  color: white;
 }
 
 .artistAlbumDiv {
   grid-row: 1/ span 1;
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
+  background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
 }
 .artistVideoDiv {
   grid-row: 2/ span 1;
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
+  background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
 
 }
 #uploadArtistButton {
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
   box-shadow: 1px 1px 2px #888888;
-  color: var(--floralWhite) !important;
-  background-color: var(--darkSienna);
+  color: var(--jade) !important;
+  background-color: var(--richBlk);
   border-radius: 10px;
 }
 #uploadArtistButton:hover {
-  background-color: var(--floralWhite);
-  color: var(--darkSienna) !important;
+  background-color: var(--jade);
+  color: var(--richBlk) !important;
 }
 .uploadBtn{
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--richBlk);
   border-radius: 10px;
-  background-color: var(--floralWhite);
+  background-color: var(--castletonGrn);
   box-shadow: 1px 1px 2px #888888;
-  color: var(--darkSienna);
+  color: var(--richBlk);
 }
 .uploadBtn:hover {
-  background-color: var(--darkSienna);
-  color: var(--floralWhite) !important;
+  background-color: darkred;
+  color: white !important;
 }
