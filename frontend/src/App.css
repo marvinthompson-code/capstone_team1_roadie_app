@@ -22,7 +22,8 @@
 
 .App {
   /* background-color: var(--eerieBlk2); */
-  background-image: url("./features/images/blkconcert.jpg");
+  background-image: url("../../frontend/src/features/images/svgFiles/wave.svg");
+  background-color: var(--eerieBlk) !important;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

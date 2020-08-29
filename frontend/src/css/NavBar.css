@@ -57,14 +57,34 @@ a:hover {
   margin: 2px 3px;
 }
 
-#roadieLogout{
-  background-color: var(--darkSienna);
-  color: var(--floralWhite);
+.logoutBttn {
+  border: 1px solid var(--eerieBlk3);
   border-radius: 10px;
-  border: 1px solid var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
-  transition: 2s;
+  background-color: var(--eerieBlk3);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: var(--jade) !important;
+  transition: 1s;
 }
+
+.logoutBttn:hover {
+  background-color: var(--jade);
+  color: white !important;
+}
+
+.profileTab {
+  border: 1px solid var(--eerieBlk3);
+  border-radius: 10px;
+  background-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: white !important;
+  transition: 1s;
+}
+
+.profileTab:hover {
+  background-color: var(--kobe);
+  color: white !important;
+}
+
 
 .roadieLogIn {
   border: 1px solid var(--eerieBlk3);
