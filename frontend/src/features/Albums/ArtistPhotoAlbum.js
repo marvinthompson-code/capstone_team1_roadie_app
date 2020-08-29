@@ -9,18 +9,24 @@ const ArtistPhotoAlbum = () => {
   const match = useRouteMatch();
 
   useEffect(() => {
-    const fetchUsersPhotoAlbum = async (artist_id) => {
-      let res = await axios.get(`${API}/media/pictures/${artist_id}`);
+    debugger
+    const fetchUsersPhotoAlbum = async (id) => {
+      let res = await axios.get(`${API}/media/pictures/${id}`);
       setPictures(res.data.body.picture);
     };
-    fetchUsersPhotoAlbum(match.params.artist_id);
+    fetchUsersPhotoAlbum(match.params.id);
   }, []);
+
+  const imgSize = {
+    height: "auto",
+    width: "400px"
+  }
 
   const getUsersPictures = pictures.map((picture) => {
     return (
       <div>
         <li>
-          <img alt={picture.caption} src={picture.url} />
+          <img style={imgSize} alt={picture.caption} src={picture.url} />
           <p>{picture.caption}</p>
         </li>
       </div>
@@ -28,8 +34,8 @@ const ArtistPhotoAlbum = () => {
   });
 
   return (
-    <div>
-      <div>
+    <div className="carousel slide">
+      <div className="carousel-inner">
         <ul>{getUsersPictures}</ul>
       </div>
     </div>

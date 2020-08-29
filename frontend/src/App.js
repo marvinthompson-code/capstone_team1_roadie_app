@@ -70,7 +70,7 @@ function App() {
         
         <ProtectedRoute exact path={"/media/pictures/:id"}>
           <ArtistPhotoAlbum />
-          <ClientPhotoAlbum />
+          {/* <ClientPhotoAlbum /> */}
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>
