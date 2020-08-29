@@ -82,4 +82,5 @@
 .signUpCloseButton:hover {
   background-color: var(--jade) !important;
   color: white !important;
+  cursor: pointer;
 }
