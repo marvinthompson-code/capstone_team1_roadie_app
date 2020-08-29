@@ -43,10 +43,10 @@ const ArtistPortfolio = () => {
     }
   };
   const toPhotoAlbum = () => {
-    history.push(`/media/pictures/${artist.id}`);
+    history.push(`/media/pictures/${match.params.id}`);
   };
   const toVideoAlbum = () => {
-    history.push(`/media/videos/${artist.id}`);
+    history.push(`/media/videos/${match.params.id}`);
   };
 
   useEffect(() => {

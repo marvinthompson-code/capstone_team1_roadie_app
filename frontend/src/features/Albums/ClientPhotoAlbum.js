@@ -9,11 +9,11 @@ const ClientPhotoAlbum = () => {
   const match = useRouteMatch();
 
   useEffect(() => {
-    const fetchUsersPhotoAlbum = async (client_id) => {
-      let res = await axios.get(`${API}/media/pictures/${client_id}`);
+    const fetchUsersPhotoAlbum = async (id) => {
+      let res = await axios.get(`${API}/media/pictures/${id}`);
       setPictures(res.data.body.picture);
     };
-    fetchUsersPhotoAlbum(match.params.client_id);
+    fetchUsersPhotoAlbum(match.params.id);
   }, []);
 
   const getUsersPictures = pictures.map((picture) => {

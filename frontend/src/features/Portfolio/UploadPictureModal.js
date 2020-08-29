@@ -8,7 +8,7 @@ import axios from "axios";
 
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState("");
   const [caption, setCaption] = useState("");
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const API = apiURL();
@@ -29,6 +29,7 @@ const UploadPictureModal = () => {
     } else {
       setImageAsFile((imageFile) => image);
     }
+    debugger
   };
 
   const handleFirebasePictureUpload = () => {
@@ -55,10 +56,11 @@ const UploadPictureModal = () => {
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              setImageUrl(fireBaseUrl);
+              setImageAsUrl(fireBaseUrl);
             });
         }
-      );
+        );
+        debugger
       setToggleUploadMsg(true);
     } else {
       setToggleUploadMsg(false);
@@ -67,11 +69,12 @@ const UploadPictureModal = () => {
 
   const insertPictureIntoAlbum = async (e) => {
     e.preventDefault();
+    debugger
     try {
        await axios.post(`${API}/media/pictures`, {
         artist_id: artist.id,
         caption: caption,
-        url: imageUrl,
+        url: imageAsUrl,
       });
       setCaption("")
     } catch (err) {
@@ -92,8 +95,8 @@ const UploadPictureModal = () => {
         <button type="button" onClick={handleFirebasePictureUpload}>
           Upload Picture
         </button>
-        <input type="submit" name="Click Here" />
         {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+        <input type="submit" name="Click Here" />
       </form>
     </Modal>
   );
