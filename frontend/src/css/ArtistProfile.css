@@ -32,16 +32,28 @@
 }
 
 #BookMeButton {
-  background-color: var(--darkSienna);
-  color: var(--floralWhite);
+  border: 1px solid var(--jade);
   border-radius: 10px;
-  border: 1px solid var(--darkSienna);
-  box-shadow: 1px 1px 2px #888888;
-  height: 100%;
+  background-color: var(--eerieBlk3);
+  box-shadow: 1px 1px 2px var(--spaceGrey);
+  color: var(--jade) !important;
+  transition: 1s;
 }
 #BookMeButton:hover {
-  background-color: var(--floralWhite);
-  color: var(--darkSienna) !important;
+  background-color: var(--jade);
+  color: white !important;
+}
+.editArtistProfile{
+  border: 1px solid black !important;
+  border-radius: 10px;
+  background-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--spaceGrey);
+  color: white !important;
+  transition: 1s;
+}
+.editArtistProfile:hover {
+  background-color: var(--castletonGrn) !important;
+  color: black !important;
 }
 
 #EditArtistProfileButton {
@@ -67,9 +79,11 @@
   color: var(--darkSienna) !important;
 }
 .artistBanner{
-  border: 1px solid var(--darkSienna);
+  border: 2px solid var(--jade) !important;
+  background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 10px;
+  color: white !important;
 }
 .infoDiv{
   grid-row: 1/ span 1;

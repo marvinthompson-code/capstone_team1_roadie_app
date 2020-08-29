@@ -56,7 +56,6 @@ const ClientSignUp = () => {
             .child(imageAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
-              debugger;
               setImageUrl(fireBaseUrl);
             });
         }
@@ -71,7 +70,6 @@ const ClientSignUp = () => {
     e.preventDefault();
     try {
       let res = await signUp(email, password);
-      debugger;
       await axios.post(`${API}/clients`, {
         id: res.user.uid,
         name: name,

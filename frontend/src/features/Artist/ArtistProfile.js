@@ -25,7 +25,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-      debugger;
+    
       let {
         name,
         profile_pic_url,
@@ -47,7 +47,7 @@ const ArtistProfile = () => {
       return (
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary editArtistProfile"
           data-toggle="modal"
           data-target="#editClientProfileModalCenter"
         >
