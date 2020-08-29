@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { toggleLoginModalState } from "../login/loginModalSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
 import { recieveToken } from "../token/tokenSlice";

@@ -17,7 +17,9 @@ const serviceAccount = {
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://roadie-app-382ad.firebaseio.com",
-
 });
 
+
 const db = admin.firestore();
+
+
