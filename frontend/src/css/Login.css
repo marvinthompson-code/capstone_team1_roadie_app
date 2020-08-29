@@ -28,6 +28,7 @@
 .roadieLogInButton:hover {
   background-color: var(--jade) !important;
   color: white !important;
+  cursor: pointer;
 }
 
 .logInModalHeader {
@@ -54,6 +55,7 @@
 .logInCloseButton:hover {
   background-color: var(--jade) !important;
   color: white !important;
+  cursor: pointer;
 }
 
 .loginModalBody {

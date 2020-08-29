@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);

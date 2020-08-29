@@ -44,7 +44,6 @@ const UploadVideoModal = () => {
   };
 
   const handleFirebaseVideoUpload = () => {
-    debugger
     if (videoAsFile === "") {
       alert(`Please choose a valid file before uploading`);
     } else if (videoAsFile !== null) {

@@ -43,7 +43,6 @@ const ClientPortfolio = () => {
   };
 
   const toPhotoAlbum = () => {
-    debugger;
     history.push(`/media/pictures/${client.id}`);
   };
   const toVideoAlbum = () => {
