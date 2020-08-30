@@ -141,3 +141,7 @@ a:hover {
   /* background-color: white !important; */
   filter: invert(100%);
 }
+#roadieR{
+  color: var(--jade) !important;
+  font-weight: bold !important;
+}

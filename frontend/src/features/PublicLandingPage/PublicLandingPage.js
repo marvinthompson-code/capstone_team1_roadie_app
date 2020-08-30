@@ -32,12 +32,17 @@ const PublicLandingPage = () => {
                 <div className="jumbotron-fluid max-width: 100% text-center leftTwoPec">
                   <h5 className="lead display-4 ">For Artists</h5>
                   <p className="lead display-5">
+                    <span className="badge badge-success">R</span>
                     Create and Customize a Profile and promote upcoming shows.
                   </p>
                   <p className="lead display-5">
+                    <span className="badge badge-success">R</span>
                     Get in touch with Clients and book your next gig today.
                   </p>
-                  <p className="lead display-5">Become a Roadie Today.</p>
+                  <p className="lead display-5">
+                    <span className="badge badge-success">R</span>Become a Roadie
+                    Today.
+                  </p>
                 </div>
               </div>
             </div>
@@ -49,18 +54,23 @@ const PublicLandingPage = () => {
                 <div className="jumbotron-fluid max-width: 100% text-center float-left">
                   <h5 className="lead-fluid display-4 ">For Clients</h5>
                   <p className="lead display-5">
+                    <span className="badge badge-success">R</span>
                     Seemless Event creation. Search for venues, set show
                     details, and make your night unforgettable.
                   </p>
                   <p className="lead display-5">
+                    <span className="badge badge-success">R</span>
                     Search for Artists, Book them and add them to your show.
                   </p>
-                  <p className="lead display-5">Become a Roadie Today.</p>
+                  <p className="lead display-5">
+                    <span className="badge badge-success">R</span>Become a Roadie
+                    Today.
+                  </p>
                 </div>
               </div>
               <div className="col">
                 <img
-                id="imgTwo"
+                  id="imgTwo"
                   src={guitarist}
                   className="rounded float-right img-fluid max-width: 100%"
                 />
