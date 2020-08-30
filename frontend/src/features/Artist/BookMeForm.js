@@ -37,6 +37,7 @@ const BookMeForm = () => {
         eventDetails: eventDetails,
       });
     // create alert that says "You sent a book request"
+    // Toastify?
     // close modal
   };
 

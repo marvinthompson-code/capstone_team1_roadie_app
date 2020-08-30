@@ -24,9 +24,6 @@ const ClientContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (artist && client === null) {
-      history.push("/join");
-    }
     await db
       .collection("contactMessages")
       .doc(match.params.id)
@@ -36,7 +33,9 @@ const ClientContactForm = () => {
         message: "An artist messaged you",
         body: body,
       });
-    // however we send the body, maybe an email?
+    // create alert that says "You sent a message"
+    // Toastify?
+    // close modal
   };
 
   const closeModal = () => {
