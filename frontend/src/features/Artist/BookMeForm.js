@@ -196,7 +196,7 @@ const BookMeForm = () => {
                   required
                 />
               </div>
-              <button type="submit" className="bookMeButton btn-primary">
+              <button type="submit" className="bookMeButton btn-primary" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
                 Book
               </button>
             </form>

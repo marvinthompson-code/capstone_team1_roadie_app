@@ -6,10 +6,12 @@ import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
-import { logout } from "../../util/firebaseFunctions";
+import { logout, signUp } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import Notifications from "./Notifications";
 import { db } from "../../firebase";
+import Login from "../login/Login"
+import DisplaySignUp from "../Display/DisplaySignUp"
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
