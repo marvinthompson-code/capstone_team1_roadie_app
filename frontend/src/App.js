@@ -43,9 +43,9 @@ function App() {
         <Route exact path="/">
           <Home />
           {/* <About /> */}
+        </Route>
           <DisplaySignUp />
           <Login />
-        </Route>
         <Route path="/about">
           <AboutRoadie />
         </Route>

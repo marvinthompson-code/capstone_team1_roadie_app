@@ -92,7 +92,7 @@ const NavBar = () => {
               className="nav-link roadieLogIn"
               href="#"
               exact
-              to="/"
+              to="*"
               data-toggle="modal"
               data-target="#logInModalCenter"
             >
