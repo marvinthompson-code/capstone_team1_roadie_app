@@ -17,6 +17,16 @@
     --spaceGrey: #5A7272;
   }
 
+
+.aboutRoadieContainer{
+    padding: 20px;
+    position: relative;
+}
+.aboutJumbotron{
+    /* background-image: url("../features//images//pexels-harrison-haines-2921541.jpg") !important; */
+    /* background-size: contain; */
+}
+
 .imageCarouselDiv {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
