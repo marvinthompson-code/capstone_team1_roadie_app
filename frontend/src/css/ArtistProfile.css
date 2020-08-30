@@ -47,14 +47,14 @@
 .editArtistProfile{
   border: 1px solid black !important;
   border-radius: 10px;
-  background-color: var(--jade);
-  box-shadow: 1px 1px 2px var(--spaceGrey);
+  background-color: var(--jade) !important; 
+  box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
   color: white !important;
   transition: 1s;
 }
 .editArtistProfile:hover {
-  background-color: var(--castletonGrn) !important;
-  color: black !important;
+  background-color: var(--kobe) !important;
+  color: white !important;
   cursor: pointer;
 }
 
@@ -79,7 +79,7 @@
   grid-column: 2/span 1;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  color: var(--darkSienna) !important;
+  color: var(--jade) !important;
 }
 .artistBanner{
   border: 2px solid var(--jade) !important;
@@ -90,9 +90,10 @@
 }
 .infoDiv{
   grid-row: 1/ span 1;
-  background-color: var(--Cinereous) !important;
+  background-color: rgba(28, 30, 30, 0.8) !important;
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
+  border: 1px solid var(--jade) !important;
 }
 .cityDiv{
   grid-row: 1 / span 1;
@@ -108,19 +109,19 @@
 }
 .bioContent{
   text-align: start;
-  border: 1px solid var(--darkSienna);
+  border: 1px solid var(--jade);
   border-radius: 10px;
   height: 100%;
   padding: 5px;
 }
-.bookingsDisplayContainer{
-  grid-row: 2/ span 1;
-}
 .labelInfo{
-  color: var(--floralWhite);
+  color: white !important;
   text-shadow: 1px 1px 4px #000000;
 }
 .bookingsDisplayContainer{
-  border: 1px solid var(--darkSienna);
+  grid-row: 2/ span 1;
+  border: 1px solid var(--jade);
+  background-color: rgba(28, 30, 30, 0.8) !important;
+  color: white !important;
   border-radius: 10px;
 }

@@ -25,7 +25,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-    
+
       let {
         name,
         profile_pic_url,
@@ -42,16 +42,33 @@ const ArtistProfile = () => {
     fetchUserInfo(match.params.id);
   }, []);
 
-  let editButton = () => {
+  const editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
         <button
           type="button"
           className="btn btn-primary editArtistProfile"
           data-toggle="modal"
-          data-target="#editClientProfileModalCenter"
+          data-target="#editArtistProfileModalCenter"
         >
           Edit Profile
+        </button>
+      );
+    }
+  };
+
+  const bookMeButton = () => {
+    if (client !== null) {
+      return (
+        <button
+          type="button"
+          id={"BookMeButton"}
+          onClick={() => handleClientEvents(client.id)}
+          className="btn btn-primary"
+          data-toggle="modal"
+          data-target="#bookMeModalCenter"
+        >
+          Book Me!
         </button>
       );
     }
@@ -72,18 +89,7 @@ const ArtistProfile = () => {
         className="row artistBanner align-items-center justify-content-center"
         id="artistBanner"
       >
-        <div className={"col-sm-2"}>
-          <button
-            type="button"
-            id={"BookMeButton"}
-            onClick={() => handleClientEvents(client.id)}
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#bookMeModalCenter"
-          >
-            Book Me!
-          </button>
-        </div>
+        <div className={"col-sm-2"}>{bookMeButton()}</div>
         <div className="col-sm-6 text-center artistProfileHeader">
           <h2 className={"artistProfileName"}>{name}</h2>
         </div>
@@ -107,7 +113,7 @@ const ArtistProfile = () => {
               <h4 className={"contact"}>{contactInfo}</h4>
             </div>
             <div className={"bioDiv"}>
-              <label className="labelInfo">About me:</label>
+              <label className="labelInfo">Bio:</label>
               <p className={"bioContent"}>{bio}</p>
             </div>
           </div>

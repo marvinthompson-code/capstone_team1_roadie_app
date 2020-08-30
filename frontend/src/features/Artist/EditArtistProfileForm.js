@@ -5,6 +5,7 @@ import { useRouteMatch } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
+import '../../css/EditArtistProfileForm.css'
 
 const EditArtistProfileForm = () => {
   const [name, setName] = useState("");
@@ -90,20 +91,22 @@ const EditArtistProfileForm = () => {
 
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id="editArtistProfileModalCenter"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bookMeHeader">
-          <div class="modal-header">
-            <h1>Edit Profile</h1>
+      <div className="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal-content">
+          <div className="modal-header editArtistProfileHeader">
+            <h3 className="modal-title" id="exampleModalLongTitle">
+              Edit Profile
+              </h3>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="modal"
               aria-label="Close"
               onClick={handleClick}
@@ -111,15 +114,15 @@ const EditArtistProfileForm = () => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body bookMeModalBody">
+          <div className="modal-body editArtistProfileBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="Name" id="lableitem">
+                <label for="Name" id="labelitem">
                   Name
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInput"
+                  className="form-control editArtistProfileInput"
                   value={name}
                   id="Name"
                   placeholder={name}
@@ -157,12 +160,12 @@ const EditArtistProfileForm = () => {
               ) : null}
 
               <div className="form-group">
-                <label for="Bio" id="lableitem">
+                <label for="Bio" id="labelitem">
                   Bio
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInpu"
+                  className="form-control editArtistProfileInpu"
                   value={bio}
                   id="Bio"
                   placeholder={bio}
@@ -170,12 +173,12 @@ const EditArtistProfileForm = () => {
                 />
               </div>
               <div className="form-group">
-                <label for="Contact_info" id="lableitem">
+                <label for="Contact_info" id="labelitem">
                   Contact Info
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInput"
+                  className="form-control editArtistProfileInput"
                   value={contact_info}
                   id="Contact_info"
                   placeholder={contact_info}
@@ -183,15 +186,15 @@ const EditArtistProfileForm = () => {
                 />
               </div>
 
-              <button type="submit" className="btn btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
+              <button type="submit" className="editArtistProfileSubmit btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
                 Update
               </button>
             </form>
           </div>
-          <div class="modal-footer  bookMeFooter">
+          <div className="modal-footer  editArtistProfileFooter">
             <button
               type="button"
-              class="bookMeCloseButton btn-secondary"
+              className="editArtistProfileCloseButton btn-secondary"
               data-dismiss="modal"
             >
               Close

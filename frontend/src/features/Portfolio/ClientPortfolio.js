@@ -43,10 +43,10 @@ const ClientPortfolio = () => {
   };
 
   const toPhotoAlbum = () => {
-    history.push(`/media/pictures/${client.id}`);
+    history.push(`/media/pictures/${match.params.id}`);
   };
   const toVideoAlbum = () => {
-    history.push(`/media/videos/${client.id}`);
+    history.push(`/media/videos/${match.params.id}`);
   };
 
   useEffect(() => {
