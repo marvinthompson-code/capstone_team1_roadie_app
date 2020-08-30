@@ -14,7 +14,6 @@ const ArtistPhotoAlbum = () => {
 
   const getUser = async (id) => {
     let res = await axios.get(`${API}/clients/${id}`);
-    debugger
     if(res.data.body === undefined){
       res = await axios.get(`${API}/artists/${id}`);
       setUserInfo(res.data.body.single_artist)
@@ -23,7 +22,6 @@ const ArtistPhotoAlbum = () => {
     }
     
   };
-
   useEffect(() => {
     const fetchUsersPhotoAlbum = async (id) => {
       let res = await axios.get(`${API}/media/pictures/${id}`);
