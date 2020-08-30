@@ -6,7 +6,7 @@ import { updateClient } from "../token/clientTokenSlice";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../../css/clientSignUp.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -17,7 +17,7 @@ const ClientSignUp = () => {
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
   const history = useHistory();
-  let isOpen = useSelector((state) => state.modal);
+
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");

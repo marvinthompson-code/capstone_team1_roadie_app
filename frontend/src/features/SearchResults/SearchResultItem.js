@@ -18,7 +18,7 @@ const SearchResultItem = ({ result }) => {
             history.push(`/artist/${id}`);
         } else if (userType === "Client") {
             history.push(`/client/${id}`);
-        }
+        } 
     };
 
     return (

@@ -24,7 +24,7 @@ const ClientContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (artist && client === null) {
-      history.push("/login");
+      history.push("/join");
     }
     // however we send the body, maybe an email?
   };

@@ -8,19 +8,14 @@ import NavBar from "./features/navbar/NavBar";
 import firebase from "./firebase";
 import { updateUser } from "./features/token/userTokenSlice";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
-import EditClientProfileForm from "./features/ClientProfile/EditClientProfileForm";
-import EditArtistProfileForm from "./features/Artist/EditArtistProfileForm"
-import ClientProfile from "./features/ClientProfile/ClientProfile";
 import Login from "./features/login/Login";
-import EventForm from "./features/Events/EventForm";
-import EventDisplay from "./features/Events/EventDisplay";
 import CreateEvent from "./features/Events/CreateEvent"
+import PublicLandingPage from "./features/PublicLandingPage/PublicLandingPage"
 import SearchResults from "./features/SearchResults/SearchResults";
 import Home from "./features/Home/Home";
 import AuthProvider from "./providers/AuthContext";
-import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
-import ClientContactForm from "./features/ClientContactForm/ClientContactForm";
-import { useSelector, useDispatch } from "react-redux";
+import { ProtectedRoute } from "./util/routesUtil";
+import { useDispatch } from "react-redux";
 import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
@@ -75,12 +70,15 @@ function App() {
 
         <ProtectedRoute exact path={"/artist/:id"}>
           <Artist />
-          <EditArtistProfileForm />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/client/:id/createEvent"}>
           <CreateEvent />
         </ProtectedRoute>
+
+        <Route path="/join">
+          <PublicLandingPage />
+        </Route>
 
       </AuthProvider>
     </div>

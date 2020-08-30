@@ -5,6 +5,7 @@ import { useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
+import '../../css/EditClientProfileForm.css'
 
 const EditClientProfileForm = () => {
   const [name, setName] = useState("");
@@ -99,8 +100,8 @@ const EditClientProfileForm = () => {
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header bookMeHeader">
-            <h1>Edit Profile</h1>
+          <div class="modal-header editClientProfileHeader">
+            <h3 className="modal-title" id="exampleModalLongTitle">Edit Profile</h3>
             <button
               type="button"
               class="close"
@@ -111,7 +112,7 @@ const EditClientProfileForm = () => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body bookMeModalBody">
+          <div class="modal-body editClientProfileBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label for="Name" id="lableitem">
@@ -119,7 +120,7 @@ const EditClientProfileForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInput"
+                  className="form-control editClientProfileInput"
                   value={name}
                   id="Name"
                   placeholder={name}
@@ -141,7 +142,7 @@ const EditClientProfileForm = () => {
 
               <button
                 type="button"
-                className="artistUploadButton btn-secondary"
+                className="clientUploadButton btn-secondary"
                 onClick={() => {
                   handleFirebaseUpload();
                 }}
@@ -161,7 +162,7 @@ const EditClientProfileForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInput"
+                  className="form-control editClientProfileInput"
                   value={bio}
                   id="Bio"
                   placeholder={bio}
@@ -174,7 +175,7 @@ const EditClientProfileForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control bookMeInput"
+                  className="form-control editClientProfileInput"
                   value={contact_info}
                   id="Contact_info"
                   placeholder={contact_info}
@@ -183,7 +184,7 @@ const EditClientProfileForm = () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-info"
+                className="editClientProfileSubmit btn-info"
                 onClick={handleSubmit}
                 data-dismiss="modal"
                 aria-label="Close"
@@ -192,10 +193,10 @@ const EditClientProfileForm = () => {
               </button>
             </form>
           </div>
-          <div class="modal-footer bookMeFooter">
+          <div class="modal-footer editClientProfileFooter">
             <button
               type="button"
-              class="bookMeCloseButton btn-secondary"
+              class="editClientProfileCloseButton btn-secondary"
               data-dismiss="modal"
             >
               Close
