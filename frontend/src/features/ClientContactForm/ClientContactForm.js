@@ -6,6 +6,7 @@ import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 // import "../../css/ClientContactForm.css";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
+import { db } from "../../firebase";
 
 const ClientContactForm = () => {
   const [name, setName] = useState("");
@@ -21,11 +22,20 @@ const ClientContactForm = () => {
   const API = apiURL();
   const match = useRouteMatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (artist && client === null) {
       history.push("/login");
     }
+    await db
+      .collection("contactMessages")
+      .doc(match.params.id)
+      .collection("messages")
+      .add({
+        name: name,
+        message: "An artist messaged you",
+        body: body,
+      });
     // however we send the body, maybe an email?
   };
 

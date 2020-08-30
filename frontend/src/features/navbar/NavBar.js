@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
+import Notifications from "./Notifications";
+import { db } from "../../firebase";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -15,10 +17,49 @@ const NavBar = () => {
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const history = useHistory();
+  const [notifications, setNotifications] = useState([]);
   const dispatch = useDispatch();
 
+  const loadNotifications = async (type) => {
+    let notificationsArr = [];
+    if (type === artist) {
+      await db
+        .collection("bookings")
+        .doc(type.id)
+        .collection("messages")
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            notificationsArr.push({
+              id: doc.id,
+              data: doc.data(),
+            });
+          });
+        });
+      setNotifications(notificationsArr);
+    } else if (type === client) {
+      await db
+        .collection("contactMessages")
+        .doc(type.id)
+        .collection("messages")
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            notificationsArr.push({
+              id: doc.id,
+              data: doc.data(),
+            });
+          });
+        });
+      setNotifications(notificationsArr);
+    }
+  };
+
   let routeExt = () => {
-    if (client === null && artist !== null) {
+    if (client === null && artist) {
+      loadNotifications(artist);
       return (
         <>
           <li className="nav-item active">
@@ -30,13 +71,58 @@ const NavBar = () => {
               Profile
             </NavLink>
           </li>
-
-          <li className="nav-item active">
-            <img src={notificationBell} alt="notification" className="bell"/>
+          <li className="nav-item dropdown">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src={notificationBell}
+                  alt="notification"
+                  className="bell"
+                />
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {notifications.map((notification) => {
+                  let {
+                    message,
+                    bio,
+                    body,
+                    email,
+                    number,
+                    eventDetails,
+                  } = notification.data;
+                  return (
+                    <div class="dropdown-item">
+                      <h4>{message}</h4>
+                      <h5>{bio}</h5>
+                      <p>{body}</p>
+                      <ul>
+                        <h5>Event details:</h5>
+                        <li>Name: {eventDetails?.name}</li>
+                        <li>Address: {eventDetails?.address}</li>
+                        <li>City: {eventDetails?.city}</li>
+                        <li>Date: {eventDetails?.date}</li>
+                        <li>Venue: {eventDetails?.venue}</li>
+                      </ul>
+                      <h6>Contact Info:</h6>
+                      <p>{number}</p>
+                      <p>{email}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </li>
         </>
       );
-    } else if (client !== null && artist === null) {
+    } else if (client && artist === null) {
+      loadNotifications(client);
       return (
         <>
           <li className="nav-item active">
@@ -48,8 +134,35 @@ const NavBar = () => {
               Profile
             </NavLink>
           </li>
-          <li className="nav-item active">
-            <img src={notificationBell} alt="notification" className="bell"/>
+          <li className="nav-item dropdown">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src={notificationBell}
+                  alt="notification"
+                  className="bell"
+                />
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {notifications.map((notification) => {
+                  let { name, message, body } = notification.data;
+                  return (
+                    <div class="dropdown-item">
+                      <h4>{message}</h4>
+                      <h3>{name}</h3>
+                      <p>{body}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </li>
         </>
       );
@@ -65,7 +178,6 @@ const NavBar = () => {
   };
 
   const displayButtons = () => {
-    console.log(currentUser, "currentUser");
     if (currentUser) {
       return (
         <>
