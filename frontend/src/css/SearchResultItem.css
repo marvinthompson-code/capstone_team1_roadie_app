@@ -23,14 +23,17 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  border: 1px solid var(--darkSienna);
+  border: 2px solid var(--castletonGrn);
+  background-color: rgba(6,8,8, 0.8) !important;
   border-radius: 10px;
+  color: var(--jade);
   padding: 10px;
 }
 .resultItem:hover{
-  background-color: var(--darkSienna);
-  color: var(--DesertSand);
-  box-shadow: 5px 10px 8px #888888;
+  background-color: var(--jade) !important;
+  color: var(--richBlk);
+  /* box-shadow: 2px 3px 18px #ffffff; */
+  transition: .5s;
 }
 
 .picDisplay{
