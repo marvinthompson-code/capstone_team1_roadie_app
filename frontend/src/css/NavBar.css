@@ -145,3 +145,6 @@ a:hover {
   color: var(--jade) !important;
   font-weight: bold !important;
 }
+#roadieLogo{
+  margin-right: 5px;
+}

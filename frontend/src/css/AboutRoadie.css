@@ -1,28 +1,67 @@
 :root {
-    --darkSienna: #3c1414;
-    --Cinereous: #9a8378;
-    --DesertSand: #dbc2ad;
-    --PaleSilver: #c9bbaa;
-    --eggShell: #f8f2dc;
-    --floralWhite: #ffffff;
-    --steel: #55828B;
-    --eerieBlk: #101515;
-    --richBlk: #060808;
-    --castletonGrn: #075D3E;
-    --jade: #00A86B;
-    --indiaGreen: #078809;
-    --electricGreen: #00FF00;
-    --eerieBlk2: #1C1E1E;
-    --eerieBlk3: #212222;
-    --spaceGrey: #5A7272;
-  }
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #55828b;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
+  --indiaGreen: #078809;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5a7272;
+}
+
+.aboutRoadieContainer {
+  padding: 20px;
+  position: relative;
+}
+.aboutJumbotron {
+  border-radius: 10px;
+  background-color: var(--eerieBlk3) !important;
+  background-color: rgba(28, 30, 30, 0.8) !important;
+  border: 2px solid var(--jade) !important;
+  color: white;
+  border: 1px solid var(--eerieBlk3);
+  transition: 2s;
+}
 
 .imageCarouselDiv {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .imageCarouselCol {
-    grid-column: 2 / span 1;
-    justify-self: center;
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
+#dualUser {
+  color: white !important;
+}
+.aboutRoadieCaption {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.aboutRoadieItem {
+  border: 2px solid var(--richBlk) !important;
+  border-radius: 13px;
+  background-color: var(--richBlk) !important;
+  padding: 20px;
+}
+.imageCarouselDiv{
+    padding: 20px;
+}
+.aboutContainer{
+    border-bottom: 3px solid var(--jade);
+    margin: 10px 0px;
+}
+.aboutMeFooter{
+    padding: 20px;
+    border-top: 3px solid var(--jade);
 }

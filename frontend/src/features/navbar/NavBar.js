@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
@@ -9,6 +9,8 @@ import { addNotification } from "../Notifications/notificationsSlice"
 import "../../css/NavBar.css";
 import { logout, signUp } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
+import Notifications from "./Notifications";
+import logo from "../images/FinalRoadieLogoblk.png"
 import { db } from "../../firebase";
 import Login from "../login/Login"
 import DisplaySignUp from "../Display/DisplaySignUp"
@@ -19,11 +21,9 @@ const NavBar = () => {
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const history = useHistory();
-  // const [notifications, setNotifications] = useState([]);
   const dispatch = useDispatch();
 
   const loadNotifications = async (type) => {
-    let notificationsArr = [];
     if (type === artist) {
       await db
         .collection("bookings")
@@ -200,6 +200,7 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav sticky-top">
       <NavLink className="navbar-brand navTitle" href="#" exact to="/">
+        <img src={logo} width="30" height="30" class="d-inline-block align-top" id="roadieLogo"/>
         <span id="roadieR">R</span>oadie
       </NavLink>
       <button
