@@ -16,7 +16,7 @@ const AboutRoadie = () => {
     <div className="aboutRoadieContainer container">
       <div className="aboutJumbotron jumbotron text-center">
         <div className="aboutContainer">
-          <h1 className="display-4 aboutContainerH1">What is Roadie?</h1>
+          <h1 className="display-4 aboutContainerH1">What is <span id="WhyR">R</span>oadie?</h1>
         </div>
         <div className="imageCarouselDiv row align-items-center">
           <div className="imageCarouselCol col" /*style={sizeImage}*/>
