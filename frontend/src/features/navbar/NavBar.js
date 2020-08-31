@@ -5,11 +5,13 @@ import { artistLogout } from "../token/artistTokenSlice";
 import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addNotification } from "../Notifications/notificationsSlice"
 import "../../css/NavBar.css";
-import { logout } from "../../util/firebaseFunctions";
+import { logout, signUp } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
-import Notifications from "./Notifications";
 import { db } from "../../firebase";
+import Login from "../login/Login"
+import DisplaySignUp from "../Display/DisplaySignUp"
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -17,7 +19,7 @@ const NavBar = () => {
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const history = useHistory();
-  const [notifications, setNotifications] = useState([]);
+  // const [notifications, setNotifications] = useState([]);
   const dispatch = useDispatch();
 
   const loadNotifications = async (type) => {
@@ -31,13 +33,13 @@ const NavBar = () => {
         .then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            notificationsArr.push({
+            dispatch(addNotification({
               id: doc.id,
               data: doc.data(),
-            });
+            }));
           });
         });
-      setNotifications(notificationsArr);
+      
     } else if (type === client) {
       await db
         .collection("contactMessages")
@@ -47,19 +49,18 @@ const NavBar = () => {
         .then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            notificationsArr.push({
+            dispatch(addNotification({
               id: doc.id,
               data: doc.data(),
-            });
+            }));
           });
         });
-      setNotifications(notificationsArr);
     }
   };
 
   let routeExt = () => {
     if (client === null && artist) {
-      loadNotifications(artist);
+       loadNotifications(artist);
       return (
         <>
           <li className="nav-item active">
@@ -71,53 +72,20 @@ const NavBar = () => {
               Profile
             </NavLink>
           </li>
-          <li className="nav-item dropdown">
-            <div class="dropdown">
+          <li className="nav-item">
+            {/* <div class="dropdown"> */}
               <button
-                class="btn btn-secondary dropdown-toggle"
+                class="btn btn-secondary "
                 type="button"
                 id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
               >
                 <img
                   src={notificationBell}
                   alt="notification"
                   className="bell"
+                  onClick={() => history.push('/notifications')}
                 />
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {notifications.map((notification) => {
-                  let {
-                    message,
-                    bio,
-                    body,
-                    email,
-                    number,
-                    eventDetails,
-                  } = notification.data;
-                  return (
-                    <div class="dropdown-item" key={notification.id}>
-                      <h4>{message}</h4>
-                      <h5>{bio}</h5>
-                      <p>{body}</p>
-                      <ul>
-                        <h5>Event details:</h5>
-                        <li>Name: {eventDetails?.name}</li>
-                        <li>Address: {eventDetails?.address}</li>
-                        <li>City: {eventDetails?.city}</li>
-                        <li>Date: {eventDetails?.date}</li>
-                        <li>Venue: {eventDetails?.venue}</li>
-                      </ul>
-                      <h6>Contact Info:</h6>
-                      <p>{number}</p>
-                      <p>{email}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </li>
         </>
       );
@@ -148,9 +116,10 @@ const NavBar = () => {
                   src={notificationBell}
                   alt="notification"
                   className="bell"
+                  onClick={() => history.push('/notifications')}
                 />
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {notifications.map((notification) => {
                   let { name, message, body } = notification.data;
                   return (
@@ -161,7 +130,7 @@ const NavBar = () => {
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
             </div>
           </li>
         </>
