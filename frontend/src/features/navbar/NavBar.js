@@ -5,15 +5,14 @@ import { artistLogout } from "../token/artistTokenSlice";
 import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addNotification } from "../Notifications/notificationsSlice"
+import { addNotification } from "../Notifications/notificationsSlice";
 import "../../css/NavBar.css";
 import { logout, signUp } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
-import Notifications from "./Notifications";
-import logo from "../images/FinalRoadieLogoblk.png"
+import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
-import Login from "../login/Login"
-import DisplaySignUp from "../Display/DisplaySignUp"
+import Login from "../login/Login";
+import DisplaySignUp from "../Display/DisplaySignUp";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -33,13 +32,14 @@ const NavBar = () => {
         .then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            dispatch(addNotification({
-              id: doc.id,
-              data: doc.data(),
-            }));
+            dispatch(
+              addNotification({
+                id: doc.id,
+                data: doc.data(),
+              })
+            );
           });
         });
-      
     } else if (type === client) {
       await db
         .collection("contactMessages")
@@ -49,10 +49,12 @@ const NavBar = () => {
         .then(function (querySnapshot) {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            dispatch(addNotification({
-              id: doc.id,
-              data: doc.data(),
-            }));
+            dispatch(
+              addNotification({
+                id: doc.id,
+                data: doc.data(),
+              })
+            );
           });
         });
     }
@@ -60,7 +62,7 @@ const NavBar = () => {
 
   let routeExt = () => {
     if (client === null && artist) {
-       loadNotifications(artist);
+      loadNotifications(artist);
       return (
         <>
           <li className="nav-item active">
@@ -74,18 +76,18 @@ const NavBar = () => {
           </li>
           <li className="nav-item">
             {/* <div class="dropdown"> */}
-              <button
-                class="btn btn-secondary "
-                type="button"
-                id="dropdownMenuButton"
-              >
-                <img
-                  src={notificationBell}
-                  alt="notification"
-                  className="bell"
-                  onClick={() => history.push('/notifications')}
-                />
-              </button>
+            <button
+              class="btn btn-secondary "
+              type="button"
+              id="dropdownMenuButton"
+            >
+              <img
+                src={notificationBell}
+                alt="notification"
+                className="bell"
+                onClick={() => history.push("/notifications")}
+              />
+            </button>
           </li>
         </>
       );
@@ -116,7 +118,7 @@ const NavBar = () => {
                   src={notificationBell}
                   alt="notification"
                   className="bell"
-                  onClick={() => history.push('/notifications')}
+                  onClick={() => history.push("/notifications")}
                 />
               </button>
               {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -200,7 +202,13 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav sticky-top">
       <NavLink className="navbar-brand navTitle" href="#" exact to="/">
-        <img src={logo} width="30" height="30" class="d-inline-block align-top" id="roadieLogo"/>
+        <img
+          src={logo}
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          id="roadieLogo"
+        />
         <span id="roadieR">R</span>oadie
       </NavLink>
       <button
