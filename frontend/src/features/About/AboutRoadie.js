@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/AboutRoadie.css";
-import image1 from "../images/pexels-fillipe-gomes-2287298.jpg";
-import image2 from "../images/pexels-matheus-bertelli-3697810.jpg";
+import image1 from "../images/pexels-wendy-wei-3733341.jpg";
+import image2 from "../images/pexels-atiabii-2354163.jpg";
 import image3 from "../images/pexels-wendy-wei-1677710.jpg";
 import image4 from "../images/pexels-caleb-oquendo-2927080.jpg";
 import image5 from "../images/pexels-harrison-haines-2921541.jpg";
@@ -16,7 +16,7 @@ const AboutRoadie = () => {
     <div className="aboutRoadieContainer container">
       <div className="aboutJumbotron jumbotron text-center">
         <div className="aboutContainer">
-          <h1 className="display-4">What is Roadie?</h1>
+          <h1 className="display-4 aboutContainerH1">What is Roadie?</h1>
         </div>
         <div className="imageCarouselDiv row align-items-center">
           <div className="imageCarouselCol col" /*style={sizeImage}*/>
@@ -40,7 +40,7 @@ const AboutRoadie = () => {
                   data-slide-to="2"
                 ></li>
               </ol>
-              <div className="carousel-inner">
+              <div className="carousel-inner aboutRoadieItem">
                 <div className="carousel-item active">
                   <img
                     className="d-block w-100"
@@ -48,14 +48,16 @@ const AboutRoadie = () => {
                     src={image1}
                     alt="First slide"
                   />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h3 className="item-title">Dual user experience</h3>
-                    <p className="item-p">
+                  <div className="carousel-caption aboutRoadieCaption d-none d-md-block">
+                    <h3 className="item-title" id="dualUser" >
+                      Dual user experience
+                    </h3>
+                    <p className="item-p" id="dualUser" >
                       Sign up as an artist as a solo musician or band, or as a
                       client.
                     </p>
                   </div>
-                </div>
+                </div >
                 <div className="carousel-item">
                   <img
                     className="d-block w-100"
@@ -63,26 +65,26 @@ const AboutRoadie = () => {
                     src={image2}
                     alt="Second slide"
                   />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h3 className="item-title">Personalize your profile</h3>
-                    <p className="item-p">
+                  <div className="carousel-caption aboutRoadieCaption d-none d-md-block">
+                    <h3 className="item-title" id="dualUser">Personalize your profile</h3>
+                    <p className="item-p" id="dualUser">
                       Upload pictures and videos to your portfolio of your shows
                       and events.
                     </p>
                   </div>
-                </div>
+                </div >
                 <div className="carousel-item">
                   <img
                     className="d-block w-100"
                     style={sizeImage}
-                    src={image3}
+                    src={image5}
                     alt="Third slide"
                   />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h3 className="item-title">
+                  <div className="carousel-caption aboutRoadieCaption d-none d-md-block">
+                    <h3 className="item-title" id="dualUser">
                       Direct request to contact artists or clients
                     </h3>
-                    <p className="item-p">
+                    <p className="item-p" id="dualUser">
                       Instant notification to any client or artist you'd like to
                       connect with.
                     </p>
@@ -116,11 +118,13 @@ const AboutRoadie = () => {
             </div>
           </div>
         </div>
-        <p className="lead">
+        <div className="aboutMeFooter">
+        <p className="lead"><strong>
           Roadie is an all in one booking platform for Artists and Clients,
           designed to remove the hassle of event booking that often plagues the
-          music industry.
+          music industry.</strong>
         </p>
+        </div>
       </div>
     </div>
   );
