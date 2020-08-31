@@ -9,6 +9,7 @@ import "../../css/NavBar.css";
 import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import Notifications from "./Notifications";
+import logo from "../images/FinalRoadieLogoblk.png"
 import { db } from "../../firebase";
 
 const NavBar = () => {
@@ -231,6 +232,7 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav sticky-top">
       <NavLink className="navbar-brand navTitle" href="#" exact to="/">
+        <img src={logo} width="30" height="30" class="d-inline-block align-top" id="roadieLogo"/>
         <span id="roadieR">R</span>oadie
       </NavLink>
       <button
