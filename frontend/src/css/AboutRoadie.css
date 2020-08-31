@@ -59,6 +59,7 @@
 }
 .aboutContainer{
     border-bottom: 3px solid var(--jade);
+    margin: 10px 0px;
 }
 .aboutMeFooter{
     padding: 20px;
