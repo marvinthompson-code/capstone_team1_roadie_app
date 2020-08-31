@@ -9,6 +9,7 @@ import firebase from "./firebase";
 import { updateUser } from "./features/token/userTokenSlice";
 import DisplaySignUp from "./features/Display/DisplaySignUp";
 import Login from "./features/login/Login";
+import NotificationDisplay from "./features/Notifications/NotificationDisplay"
 import CreateEvent from "./features/Events/CreateEvent"
 import PublicLandingPage from "./features/PublicLandingPage/PublicLandingPage"
 import SearchResults from "./features/SearchResults/SearchResults";
@@ -71,6 +72,10 @@ function App() {
         <ProtectedRoute exact path={"/artist/:id"}>
           <Artist />
         </ProtectedRoute>
+
+        <Route exact path={"/notifications"}>
+          <NotificationDisplay />
+        </Route>
 
         <ProtectedRoute exact path={"/client/:id/createEvent"}>
           <CreateEvent />
