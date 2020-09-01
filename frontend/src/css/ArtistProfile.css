@@ -32,7 +32,7 @@
 }
 
 #BookMeButton {
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   border-radius: 10px;
   background-color: var(--eerieBlk3);
   box-shadow: 1px 1px 2px var(--spaceGrey);
@@ -82,7 +82,7 @@
   color: var(--jade) !important;
 }
 .artistBanner {
-  border: 2px solid var(--jade) !important;
+  border: 2px solid var(--indiaGreen) !important;
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 10px;
@@ -93,7 +93,7 @@
   background-color: rgba(28, 30, 30, 0.8) !important;
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
-  border: 2px solid var(--jade) !important;
+  border: 2px solid var(--indiaGreen) !important;
 }
 .cityDiv {
   grid-row: 1 / span 1;
@@ -109,7 +109,7 @@
 }
 .bioContent {
   text-align: start;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   border-radius: 10px;
   height: 100%;
   padding: 5px;
@@ -120,7 +120,7 @@
 }
 .bookingsDisplayContainer {
   grid-row: 2 / span 1;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   color: white !important;
   border-radius: 10px;

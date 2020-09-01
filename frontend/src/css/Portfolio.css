@@ -43,14 +43,14 @@
 .portfolioHeader {
   grid-row: 1 / span 1;
   padding: 10px;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
   padding: 5px;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -60,20 +60,20 @@
 
 .artistAlbumDiv {
   grid-row: 1 / span 1;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
 }
 .artistVideoDiv {
   grid-row: 2 / span 1;
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
 }
 #uploadArtistButton {
-  border: 2px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   box-shadow: 1px 1px 2px #888888;
   color: var(--jade) !important;
   background-color: var(--richBlk);
