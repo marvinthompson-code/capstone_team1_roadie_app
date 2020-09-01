@@ -48,7 +48,6 @@
   background-color: rgba(28, 30, 30, 0.8) !important;
   border: 2px solid var(--jade);
   border-radius: 10px;
-  /* box-shadow: 5px 10px 18px var(--eerieBlk2); */
   color: white;
   transition: 2s;
 }
@@ -58,16 +57,17 @@
   background-color: var(--eerieBlk3) !important;
   background-color: rgba(28, 30, 30, 0.8) !important;
   border: 2px solid var(--jade) !important;
-  /* background-image: url('../features/images/outdoorRed.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; */
-  /* -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
-  -ms-content-zooming: none;
-  position: absolute; */
   color: white;
   border: 1px solid var(--eerieBlk3);
   transition: 2s;
+  padding: 30px;
+}
+
+.pTagHeader{
+  padding: 20px;
+  border-bottom: 3px solid var(--jade);
+  margin-bottom: 10px;
+}
+.Homecarousel{
+  padding: 20px;
 }
