@@ -3,7 +3,7 @@ import EventForm from './EventForm'
 const CreateEvent = () => {
 
     return (
-        <div>
+        <div className="createEvent container">
             <EventForm />
             <div className={"description"}>
                 

@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <div className="home container">
       <div className="jumbotron text-center roadieJumbo">
-        <h1 className="display-4 jumbotronTitle">Roadie</h1>
-        <p className="lead display-5">
+        <h1 className="display-4 jumbotronTitle"><span id="WhyR">R</span>oadie</h1>
+        <p className="lead display-5 pTagHeader">
           Search for Musicians to play at your next event, or search for a
           Booking Agent today!{" "}
         </p>
@@ -26,12 +26,12 @@ const Home = () => {
 
       <div className="jumbotron text-center missionJumbo">
         <h1 className="display-4 jumbotronTitle">Book. Play. Connect.</h1>
-        <p className="lead display-5">
+        <p className="lead display-5 pTagHeader">
           With Roadie, your next packed gig is only moments away.{" "}
         </p>
         <div
           id="carouselExampleIndicators"
-          className="carousel slide"
+          className="carousel slide Homecarousel"
           data-ride="carousel"
         >
           <ol className="carousel-indicators">
@@ -47,7 +47,7 @@ const Home = () => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img src={guitar} alt="Guitar Player" className={"slideshowImage"}/>
-              <div className="carousel-caption d-none d-md-block">
+              <div className="carousel-caption homeRoadingCaption d-none d-md-block">
                 <h5>Artists</h5>
                 <p>Connect with Booking Agents. Get gigs. Play shows. </p>
               </div>
@@ -55,7 +55,7 @@ const Home = () => {
 
             <div className="carousel-item">
               <img src={headshot} alt="Woman with Afro" className={"slideshowImage"} />
-              <div className="carousel-caption d-none d-md-block">
+              <div className="carousel-caption homeRoadingCaption d-none d-md-block">
                 <h5>Clients</h5>
                 <p>
                   Seemless Event Creation. Find that next star for your stage.
@@ -65,7 +65,7 @@ const Home = () => {
 
             <div className="carousel-item">
               <img src={concert} alt="Blue Concert Outdoor" className={"slideshowImage"}/>
-              <div className="carousel-caption d-none d-md-block">
+              <div className="carousel-caption homeRoadingCaption d-none d-md-block">
                 <h5>Grow</h5>
                 <p>Customize profies. Promote events. Grow together.</p>
               </div>
@@ -79,7 +79,7 @@ const Home = () => {
             data-slide="prev"
           >
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
+            <span className="sr-only homeSlideBtn">Previous</span>
           </a>
           <a
             className="carousel-control-next"
@@ -88,7 +88,7 @@ const Home = () => {
             data-slide="next"
           >
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
+            <span className="sr-only homeSlideBtn">Next</span>
           </a>
         </div>
       </div>

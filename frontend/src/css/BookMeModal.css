@@ -18,63 +18,75 @@
 }
 
 .bookMeInput {
-  box-shadow: 1px 1px 2px #888888;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
   background-color: var(--floralWhite);
-  border-color: var(--darkSienna);
+  border-color: var(--eerieBlk);
   outline: none;
 }
 
 .bookMeHeader {
-  background-color: var(--PaleSilver);
-  border-bottom-color: var(--PaleSilver);
+  background-color: var(--jade);
+  border-bottom-color: var(--eerieBlk3);
   color: var(--floralWhite);
-  text-shadow: 0.5px 0.3px 1px #888888;
-  border-bottom-color: var(--floralGrey);
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
 }
 
 .bookMeFooter {
-  background-color: var(--floralGrey);
-  border-top-color: var(--floralGrey);
+  background-color: var(--eerieBlk3) !important;
+  border-top-color: var(--eerieBlk3) !important;
 }
 
 #labelitem {
-  color: var(--darkSienna);
-  text-shadow: 0.5px 0.3px 1px #888888;
+  color: var(--jade) !important;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
 }
 
 #lableitemDetails {
-  color: var(--Cinereous);
-  text-shadow: 0.5px 0.3px 1px #888888;
+  color: white;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
 }
 
 .bookMeModalBody {
-  background-color: var(--floralGrey);
+  background-color: var(--eerieBlk3);
 }
 
 .bookMeButton {
-  background-color: var(--darkSienna) !important;
-  color: var(--floralWhite) !important;
+  border: 1px solid var(--eerieBlk3);
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  border: 1px solid var(--darkSienna) !important;
+  background-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: white !important;
+  transition: 1s;
+}
+
+.bookMeButton:hover {
+  background-color: var(--kobe);
+  color: white !important;
+  border-color: var(--eerieBlk) !important;
 }
 
 .bookMeCloseButton {
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+  border: 1px solid var(--eerieBlk3);
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  height: 35px;
-  border: 1px solid var(--darkSienna) !important;
+  background-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: white !important;
+  transition: 1s;
+}
+
+.bookMeCloseButton:hover {
+  background-color: var(--kobe);
+  color: white !important;
+  border-color: var(--eerieBlk);
 }
 
 .eventDetailsCard {
   margin: auto;
+  background-color: rgba(28, 30, 30, 0.8) !important;
+  border: 2px solid var(--jade);
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  text-shadow: 0.5px 0.3px 1px #888888;
-  border: 1px solid var(--darkSienna) !important;
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+  /* box-shadow: 5px 10px 18px var(--eerieBlk2); */
+  color: white;
+  transition: 2s;
   padding-bottom: 5px;
 }

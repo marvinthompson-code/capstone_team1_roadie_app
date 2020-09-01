@@ -41,6 +41,7 @@
   box-shadow: 1px 1px 2px var(--eerieBlk);
 }
 
+
 .navTitle {
   color: var(--floralWhite) !important;
 }
@@ -93,6 +94,7 @@ a:hover {
   box-shadow: 1px 1px 2px var(--eerieBlk);
   color: var(--jade) !important;
   transition: 1s;
+  text-align: center;
 }
 
 .roadieLogIn:hover {
@@ -108,6 +110,7 @@ a:hover {
   background-color: var(--eerieBlk3);
   border-radius: 10px;
   transition: 1s;
+  text-align: center;
 }
 
 .roadieSignUp:hover {

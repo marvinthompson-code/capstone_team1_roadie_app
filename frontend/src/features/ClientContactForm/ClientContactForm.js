@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { useHistory, useRouteMatch } from "react-router-dom";
-// import "../../css/ClientContactForm.css";
-import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
+import { useRouteMatch } from "react-router-dom";
 import { db } from "../../firebase";
+import "../../css/ClientContactForm.css"
 
 const ClientContactForm = () => {
   const [name, setName] = useState("");
@@ -14,11 +12,8 @@ const ClientContactForm = () => {
   const [contact_info, setContact_info] = useState("");
   const [city, setCity] = useState("");
   const [clientName, setClientName] = useState("");
-  let isOpen = useSelector((state) => state.clientContactModal);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
-  const history = useHistory();
-  const dispatch = useDispatch();
   const API = apiURL();
   const match = useRouteMatch();
 
@@ -36,10 +31,6 @@ const ClientContactForm = () => {
     // create alert that says "You sent a message"
     // Toastify?
     // close modal
-  };
-
-  const closeModal = () => {
-    dispatch(toggleClientContactModalState());
   };
 
   useEffect(() => {
@@ -75,57 +66,85 @@ const ClientContactForm = () => {
   }, []);
 
   return (
-    <Modal
-      isOpen={false}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#164444",
-          borderRadius: "20px",
-          left: "25%",
-          right: "25%",
-        },
-      }}
+    <div
+      class="modal fade"
+      id="contactClientModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
     >
-      <div>
-        <form onSubmit={handleSubmit}>
-          <h3>Contact {clientName}</h3>
-          <div className="form-group">
-            <label for="contactNameInput">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id={"contactNameInput"}
-              type={"text"}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={name}
-            />
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content clientContact">
+          <div class="modal-header clientContactHeader">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Contact {clientName}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div className="form-group">
-            <label for="contactBodyInput">Message</label>
-            <textarea
-              type="text"
-              className="form-control"
-              id={"contactBodyInput"}
-              type={"textarea"}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              placeholder={"Briefly tell me who you are!"}
-            ></textarea>
+          <div class="modal-body clientContactBody">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label for="contactNameInput" id="labelItem">Name</label>
+                <input
+                  type="text"
+                  className="form-control contactModalInput"
+                  id={"eexampleInputEmail1"}
+                  type={"text"}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={name}
+                />
+              </div>
+              <div className="form-group">
+                <label for="contactBodyInput" id="labelItem">Message</label>
+                <textarea
+                  type="text"
+                  className="form-control contactModalInput"
+                  id={"exampleInputEmail1"}
+                  type="textarea"
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                  placeholder={"Briefly tell me who you are!"}
+                ></textarea>
+              </div>
+
+              <div className="form-group">
+                <h3>{clientName}'s info</h3>
+                <h4 className="lead">{contact_info}</h4>
+                <h4 className="lead">{city}</h4>
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary contactModalButton"
+                onClick={handleSubmit}
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                Send
+              </button>
+            </form>
           </div>
-          <div className="form-group">
-            <h3>{clientName}'s info</h3>
-            <h4 className="lead">{contact_info}</h4>
-            <h4 className="lead">{city}</h4>
+          <div class="modal-footer contactModalBodyFooter">
+            <button
+              type="button"
+              class="btn btn-secondary contactModalCloseButton"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Send
-          </button>
-        </form>
+        </div>
       </div>
-    </Modal>
+    </div>
   );
 };
 

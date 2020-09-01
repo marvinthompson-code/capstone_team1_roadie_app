@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleModalState } from "./uploadModalSlice";
-import Modal from "react-modal";
+import { useSelector } from "react-redux";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
@@ -15,12 +13,6 @@ const UploadPictureModal = () => {
 
   const artist = useSelector((state) => state.artist);
 
-  let isOpen = useSelector((state) => state.uploadModal);
-  const dispatch = useDispatch();
-  const closeModal = () => {
-    dispatch(toggleModalState());
-  };
-
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
     const types = ["image/png", "image/jpeg", "image/jpg"];
@@ -29,7 +21,7 @@ const UploadPictureModal = () => {
     } else {
       setImageAsFile((imageFile) => image);
     }
-    debugger
+    debugger;
   };
 
   const handleFirebasePictureUpload = () => {
@@ -59,8 +51,8 @@ const UploadPictureModal = () => {
               setImageAsUrl(fireBaseUrl);
             });
         }
-        );
-        debugger
+      );
+      debugger;
       setToggleUploadMsg(true);
     } else {
       setToggleUploadMsg(false);
@@ -69,36 +61,71 @@ const UploadPictureModal = () => {
 
   const insertPictureIntoAlbum = async (e) => {
     e.preventDefault();
-    debugger
+    debugger;
     try {
-       await axios.post(`${API}/media/pictures`, {
+      await axios.post(`${API}/media/pictures`, {
         artist_id: artist.id,
         caption: caption,
         url: imageAsUrl,
       });
-      setCaption("")
+      setCaption("");
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <Modal isOpen={false} onRequestClose={closeModal} isOpen={isOpen}>
-      <form onSubmit={insertPictureIntoAlbum}>
-        <input type="file" required onChange={handleImageAsFile} />
-        <input
-          type="text"
-          value={caption}
-          required
-          onChange={(e) => setCaption(e.target.value)}
-        />
-        <button type="button" onClick={handleFirebasePictureUpload}>
-          Upload Picture
-        </button>
-        {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
-        <input type="submit" name="Click Here" />
-      </form>
-    </Modal>
+    <div
+      class="modal fade"
+      id="uploadPictureModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Upload Picture
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onSubmit={insertPictureIntoAlbum}>
+              <input type="file" required onChange={handleImageAsFile} />
+              <input
+                type="text"
+                value={caption}
+                required
+                onChange={(e) => setCaption(e.target.value)}
+              />
+              <button type="button" onClick={handleFirebasePictureUpload}>
+                Upload Picture
+              </button>
+              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+              <input type="submit" name="Click Here" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
