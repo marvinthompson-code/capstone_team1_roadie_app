@@ -3,10 +3,9 @@ import { apiURL } from "../../util/apiURL";
 import { receiveVenueSearch } from "./venueSearchSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import VenueSearchIndex from './VenueSearchIndex'
 import { API_CLIENT_ID, API_CLIENT_SECRET } from "./../../secrets";
 import axios from "axios";
-// import "../../css/EventForm.css";
+import "../../css/EventForm.css";
 
 const EventForm = () => {
   const [name, setName] = useState("");
@@ -19,7 +18,7 @@ const EventForm = () => {
   const client = useSelector((state) => state.client);
   const venues = useSelector((state) => state.venues);
   const API = apiURL();
-  const [searchMessage, setSearchMessage] = useState("Select A Venue");
+  const [searchMessage, setSearchMessage] = useState("");
   const history = useHistory();
 
   // post req for new event
@@ -39,6 +38,7 @@ const EventForm = () => {
       setDate("");
       setAddress("");
       setCity("");
+      dispatch(receiveVenueSearch(null))
       history.push(`/client/${client.id}`);
     } catch (err) {
       console.log(err);
@@ -81,15 +81,17 @@ const EventForm = () => {
       let { prefix } = venue.categories[0].icon;
       let img = prefix + ".png";
       return (
-        <button
+        <a
           key={venue.id}
           type={"button"}
+          href="#"
+
           onClick={(e) => {
             setAddress(`${address}${city}${state}${cc}${postalCode}`);
             setVenue(`${name}`);
             setSearchMessage(name);
           }}
-          className={"venueItem"}
+          className={"venueItem list-group-item list-group-item-action"}
         >
           <div className={"venueNameDiv"}>
             <h2 className={"venueName"}>{name}</h2>
@@ -101,17 +103,31 @@ const EventForm = () => {
             <h3 className={"venueAddress"}>{formattedAddress[0]}</h3>
             <h3 className={"venueAddress"}>{formattedAddress[1]}</h3>
           </div>
-        </button>
+        </a>
       );
     });
     return (
-      <ul className={"venueList"}>
-        {venues.length === 0 ? (
-          <h2 className={"noResults"}>Venue Search Results</h2>
-        ) : (
-          venueResults
-        )}
-      </ul>
+      <div className="jumbotron text-center eventFormJumbo">
+        <ul className={"venueList"}>
+          {venues.length === 0 ? (
+            <>
+              <h1 class="display-4">Search for a Venue</h1>
+              <p class="lead">Venue Search Results will populate below.</p>
+            </>
+          ) : (
+            <>
+              <h1 class="display-4">Select a Venue</h1>
+              <p class="lead">
+                Venue details will auto-populate after selection.
+              </p>
+              <hr class="my-4"></hr>
+              <div class="list-group venueSearchResultsList">
+                {venueResults}
+              </div>
+            </>
+          )}
+        </ul>
+      </div>
     );
   };
 
@@ -121,8 +137,9 @@ const EventForm = () => {
   }
 
   return (
-    <>
-      <h2 className="eventFormTitle">Create an Event</h2>
+    <div className="jumbotron text-center eventFormJumbo">
+      <h4 className="display-4">Create an Event</h4>
+      <p className="lead">Search for a venue and add event details below.</p>
       <div className={"venueForm"}>
         <form onSubmit={handleVenueSubmit}>
           <div className="form-group">
@@ -161,27 +178,47 @@ const EventForm = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-secondary">
+          <button
+            type="submit"
+            className="btn btn-secondary eventFormSearchButton"
+          >
             Search
           </button>
         </form>
       </div>
 
-      <div className={"selectedVenueContainer"}>
-        <div className="form-group">
-          <label for="selectedVenue" className="col-sm-2 col-form-label">
-            Selected Venue:
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readonly
-              className="form-control-plaintext"
-              id="selectedVenue"
-              value={searchMessage}
-            />
+      {/* <div className={"selectedVenueContainer"}> */}
+      <div className="jumbotron text-center eventFormJumbo">
+        <div
+          class="card justify-self: center eventFormCard"
+          style={{ width: "18rem" }}
+        >
+          <div class="card-body">
+            <div className="form-group">
+              <h5 class="card-title">Selected Venue</h5>
+              <p class="card-text">
+                The venue information will be automatically added to the event
+                details.
+              </p>
+              {/* <a href="#" class="card-link">
+                Card link
+                </a>
+                <a href="#" class="card-link">
+                Another link
+              </a> */}
+              <div className="col-sm-10">
+                <input
+                  type="text"
+                  readonly
+                  className="form-control-plaintext"
+                  id="selectedVenue"
+                  value={searchMessage}
+                />
+              </div>
+            </div>
           </div>
         </div>
+        {/* </div> */}
       </div>
 
       <div className="eventFormDiv">
@@ -198,14 +235,17 @@ const EventForm = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary eventFormSubmitButton"
+          >
             Add Event
           </button>
         </form>
       </div>
 
       <div className={"SearchResultIndexContainer"}>{VenueSearchIndex()}</div>
-    </>
+    </div>
   );
 };
 

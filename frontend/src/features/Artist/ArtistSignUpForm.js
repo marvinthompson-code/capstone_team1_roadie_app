@@ -3,7 +3,7 @@ import { storage } from "../../firebase";
 import axios from "axios";
 import { updateArtist } from "../token/artistTokenSlice";
 import { toggleLoadingState } from "../Loading/loadingSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
 import "../../css/ArtistSignUpForm.css";

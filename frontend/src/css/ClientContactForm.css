@@ -1,59 +1,77 @@
 :root {
-    --darkSienna: #3c1414;
-    --Cinereous: #9a8378;
-    --DesertSand: #dbc2ad;
-    --PaleSilver: #c9bbaa;
-    --eggShell: #f8f2dc;
-    --floralWhite: #ffffff;
-    --steel: #55828B;
-    --eerieBlk: #101515;
-    --richBlk: #060808;
-    --castletonGrn: #075D3E;
-    --jade: #00A86B;
-    --indiaGreen: #078809;
-    --electricGreen: #00FF00;
-    --eerieBlk2: #1C1E1E;
-    --eerieBlk3: #212222;
-    --spaceGrey: #5A7272;
-  }
-
-#contactNameInput {
-    background: var(--pumkinOrange);
-    border-radius: 5px;
-    height: 50px;
-    color: black;
-    box-shadow: 0.5px 0.5px 2px darkgray;
-    font-size: x-large;
-    width: 100%;
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #55828b;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
+  --indiaGreen: #078809;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5a7272;
 }
 
-#contactBodyInput {
-    background: var(--pumkinOrange);
-    color: black;
-    box-shadow: 0.5px 0.5px 2px darkgray;
-    width: 100%;
-    font-size: x-large;
-    height: 100px;
-    border-radius: 5px;
+.clientContactHeader {
+  background-color: var(--jade);
+  border-bottom-color: var(--eerieBlk);
+  color: white !important;
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
 }
 
-.inputDiv {
-    width: 80%;
-    margin: auto;
-    height: 300px;
-    margin-top: 20%;
+.contactModalButton {
+  background-color: var(--eerieBlk3) !important;
+  color: var(--jade) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  border: 1px solid var(--eerieBlk3) !important;
+  transition: 1s;
 }
 
-#contactSubmitButton {
-    background-color: var(--lightGreen);
-    height: 40px;
-    width: 40%;
-    margin-left: 35%;
-    border-radius: 20px;
-    color: var(--darkBlue);
+.contactModalButton:hover {
+  background-color: var(--jade) !important;
+  color: white !important;
+  cursor: pointer;
 }
 
-.contactButtonDiv {
-    justify-content: center;
-    /* background-color: red; */
+#labelItem {
+  color: var(--jade);
+  text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
+}
+
+.contactModalCloseButton {
+  background-color: var(--eerieBlk3) !important;
+  color: var(--jade) !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px var(--eerieBlk) !important;
+  border: 1px solid var(--eerieBlk3) !important;
+  transition: 1s;
+}
+
+.contactModalCloseButton:hover {
+  background-color: var(--jade) !important;
+  color: white !important;
+  cursor: pointer;
+}
+
+.contactModalInput {
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  background-color: white;
+  border-color: var(--eerieBlk);
+  outline: none;
+}
+
+.clientContactBody {
+  background-color: var(--eerieBlk3) !important;
+  border-top-color: var(--eerieBlk3) !important;
+}
+
+.contactModalBodyFooter {
+  background-color: var(--eerieBlk3) !important;
+  border-top-color: var(--eerieBlk3) !important;
 }
