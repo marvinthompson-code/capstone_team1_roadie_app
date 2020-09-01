@@ -5,16 +5,16 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #ffffff;
-  --steel: #55828B;
+  --steel: #55828b;
   --eerieBlk: #101515;
   --richBlk: #060808;
-  --castletonGrn: #075D3E;
-  --jade: #00A86B;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
   --indiaGreen: #078809;
-  --electricGreen: #00FF00;
-  --eerieBlk2: #1C1E1E;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
   --eerieBlk3: #212222;
-  --spaceGrey: #5A7272;
+  --spaceGrey: #5a7272;
 }
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
@@ -32,7 +32,7 @@
 }
 
 #BookMeButton {
-  border: 1px solid var(--jade);
+  border: 2px solid var(--jade);
   border-radius: 10px;
   background-color: var(--eerieBlk3);
   box-shadow: 1px 1px 2px var(--spaceGrey);
@@ -44,10 +44,10 @@
   color: white !important;
   cursor: pointer;
 }
-.editArtistProfile{
-  border: 1px solid black !important;
+.editArtistProfile {
+  border: 2px solid black !important;
   border-radius: 10px;
-  background-color: var(--jade) !important; 
+  background-color: var(--jade) !important;
   box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
   color: white !important;
   transition: 1s;
@@ -59,7 +59,7 @@
 }
 
 #EditArtistProfileButton {
-  border: 1px solid var(--darkSienna);
+  border: 2px solid var(--darkSienna);
   border-radius: 10px;
   background-color: var(--floralWhite);
   box-shadow: 1px 1px 2px #888888;
@@ -75,52 +75,52 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
-.artistInfo{
-  grid-column: 2/span 1;
+.artistInfo {
+  grid-column: 2 / span 1;
   display: grid;
   grid-template-rows: 1fr 2fr;
   color: var(--jade) !important;
 }
-.artistBanner{
+.artistBanner {
   border: 2px solid var(--jade) !important;
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 10px;
   color: white !important;
 }
-.infoDiv{
-  grid-row: 1/ span 1;
+.infoDiv {
+  grid-row: 1 / span 1;
   background-color: rgba(28, 30, 30, 0.8) !important;
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
-  border: 1px solid var(--jade) !important;
+  border: 2px solid var(--jade) !important;
 }
-.cityDiv{
+.cityDiv {
   grid-row: 1 / span 1;
   padding: 2px;
 }
-.contactInfoDiv{
-  grid-row: 2/ span 1;
+.contactInfoDiv {
+  grid-row: 2 / span 1;
   padding: 2px;
 }
-.bioDiv{
-  grid-row: 3/ span 1;
+.bioDiv {
+  grid-row: 3 / span 1;
   padding: 2px;
 }
-.bioContent{
+.bioContent {
   text-align: start;
-  border: 1px solid var(--jade);
+  border: 2px solid var(--jade);
   border-radius: 10px;
   height: 100%;
   padding: 5px;
 }
-.labelInfo{
+.labelInfo {
   color: white !important;
   text-shadow: 1px 1px 4px #000000;
 }
-.bookingsDisplayContainer{
-  grid-row: 2/ span 1;
-  border: 1px solid var(--jade);
+.bookingsDisplayContainer {
+  grid-row: 2 / span 1;
+  border: 2px solid var(--jade);
   background-color: rgba(28, 30, 30, 0.8) !important;
   color: white !important;
   border-radius: 10px;
