@@ -139,10 +139,14 @@ a:hover {
 
 .bell {
   height: auto;
-  width: 40px;
+  width: 26px;
   align-self: center;
   /* background-color: white !important; */
   filter: invert(100%);
+}
+#dropdownMenuButton{
+  background-color: var(--richBlk) !important;
+  border: 1px solid var(--jade) !important;
 }
 #roadieR{
   color: var(--jade) !important;
