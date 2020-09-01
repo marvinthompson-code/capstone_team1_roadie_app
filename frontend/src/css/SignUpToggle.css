@@ -25,7 +25,17 @@
 
   .ant-switch{
       border: 2px solid var(--jade) !important;
+      height: fit-content;
+      grid-column: 2/ span 1;
+      border-radius: 0px;
+  }
+  .ant-switch-handle{
+    height: 42px;
+    width: 20px;
+    top: 0px  !important;
+    transition: all 0.3s ease-in-out;
   }
   .ant-switch-checked{
       background-color: var(--jade) !important;
+      border-radius: 0px;
   }
