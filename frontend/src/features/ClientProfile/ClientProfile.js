@@ -97,10 +97,6 @@ const ClientProfile = () => {
     );
   });
 
-  //   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  //   Launch demo modal
-  // </button>
-
   let editButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
@@ -136,6 +132,10 @@ const ClientProfile = () => {
     }
   };
 
+//   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+//   Launch demo modal
+// </button>
+
   return (
     <div className="container-fluid">
       <div
@@ -144,7 +144,10 @@ const ClientProfile = () => {
       >
         <div className={"col-sm-2"}>
           <button
-            id={"BookMeButton"}
+           className="btn btn-primary"
+           data-toggle="modal"
+           data-target="#contactClientModalCenter"
+            id="BookMeButton"
             onClick={() => dispatch(toggleClientContactModalState())}
           >
             Contact Me!
