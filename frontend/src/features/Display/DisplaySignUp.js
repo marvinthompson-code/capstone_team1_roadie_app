@@ -35,7 +35,7 @@ const DisplaySignUp = () => {
           </div>
           
           <div className="modal-body signUpModalBody">
-    <ul className="nav nav-tabs">
+    {/* <ul className="nav nav-tabs">
     <li className="nav-item">
     <a className="nav-link active" id="signUpTabs"href="#" onClick={onClick}>Client</a>
   </li>
@@ -43,7 +43,9 @@ const DisplaySignUp = () => {
     <a className="nav-link active" id="signUpTabsArtist" href="#" onClick={onClick}>Artist</a>
   </li>
   
-  </ul>
+  </ul> */}
+  <input type="checkbox" checked data-toggle="toggle" data-on="Hello<br>World" data-off="Goodbye<br>World"/>
+
       {displayModal()}
     </div>
     <div className="modal-footer signUpModalFooter">
