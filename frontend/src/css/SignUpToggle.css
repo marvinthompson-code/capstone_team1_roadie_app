@@ -1,0 +1,31 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828B;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075D3E;
+    --jade: #00A86B;
+    --indiaGreen: #078809;
+    --electricGreen: #00FF00;
+    --eerieBlk2: #1C1E1E;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5A7272;
+  }
+
+  .switchToggler{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+  }
+
+  .ant-switch{
+      border: 2px solid var(--jade) !important;
+  }
+  .ant-switch-checked{
+      background-color: var(--jade) !important;
+  }
