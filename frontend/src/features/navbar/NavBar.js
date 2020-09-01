@@ -214,7 +214,7 @@ const NavBar = () => {
         <span id="roadieR">R</span>oadie
       </NavLink>
       <button
-        className="navbar-toggler"
+        className="navbar-toggler navBarBox"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNavDropdown"
