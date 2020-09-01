@@ -5,7 +5,10 @@ import { artistLogout } from "../token/artistTokenSlice";
 import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addNotification } from "../Notifications/notificationsSlice";
+import {
+  receiveNotifications,
+  addNotification,
+} from "../Notifications/notificationsSlice";
 import "../../css/NavBar.css";
 import { logout, signUp } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
@@ -23,22 +26,22 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const loadNotifications = async (type) => {
+    let notificationsArr = [];
     if (type === artist) {
       await db
         .collection("bookings")
         .doc(type.id)
         .collection("messages")
         .get()
-        .then(function (querySnapshot) {
+        .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            dispatch(
-              addNotification({
-                id: doc.id,
-                data: doc.data(),
-              })
-            );
+            notificationsArr.push({
+              id: doc.id,
+              data: doc.data(),
+            });
           });
+          dispatch(receiveNotifications(notificationsArr));
         });
     } else if (type === client) {
       await db
@@ -46,16 +49,15 @@ const NavBar = () => {
         .doc(type.id)
         .collection("messages")
         .get()
-        .then(function (querySnapshot) {
+        .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            dispatch(
-              addNotification({
-                id: doc.id,
-                data: doc.data(),
-              })
-            );
+            notificationsArr.push({
+              id: doc.id,
+              data: doc.data(),
+            });
           });
+          dispatch(receiveNotifications(notificationsArr));
         });
     }
   };
