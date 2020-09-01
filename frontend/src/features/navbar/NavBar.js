@@ -77,12 +77,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            {/* <div class="dropdown"> */}
-            <button
-              class="btn btn-secondary "
-              type="button"
-              id="dropdownMenuButton"
-            >
+            <button class="btn btn-secondary " type="button">
               <img
                 src={notificationBell}
                 alt="notification"
@@ -106,36 +101,15 @@ const NavBar = () => {
               Profile
             </NavLink>
           </li>
-          <li className="nav-item dropdown">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  src={notificationBell}
-                  alt="notification"
-                  className="bell"
-                  onClick={() => history.push("/notifications")}
-                />
-              </button>
-              {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {notifications.map((notification) => {
-                  let { name, message, body } = notification.data;
-                  return (
-                    <div class="dropdown-item" key={notification.id}>
-                      <h4>{message}</h4>
-                      <h3>{name}</h3>
-                      <p>{body}</p>
-                    </div>
-                  );
-                })}
-              </div> */}
-            </div>
+          <li className="nav-item">
+            <button class="btn btn-secondary" type="button">
+              <img
+                src={notificationBell}
+                alt="notification"
+                className="bell"
+                onClick={() => history.push("/notifications")}
+              />
+            </button>
           </li>
         </>
       );

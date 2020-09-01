@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const NotificationItem = ({ notification }) => {
   const [isArtist, setIsArtist] = useState(null);
@@ -10,6 +10,10 @@ const NotificationItem = ({ notification }) => {
       setIsArtist(false);
     }
   };
+
+  useEffect(() => {
+    toggleArtist();
+  }, []);
 
   let {
     message,
@@ -23,7 +27,6 @@ const NotificationItem = ({ notification }) => {
 
   return (
     <>
-      {toggleArtist}
       {isArtist ? (
         <div className="card" style={{ width: "18rem" }}>
           <div className="card-body">
@@ -51,6 +54,10 @@ const NotificationItem = ({ notification }) => {
             <h6 className="card-subtitle mb-2 text-muted">Contact Info:</h6>
             <p className="card-text">{number}</p>
             <p className="card-text">{email}</p>
+          </div>
+          <div className="buttons">
+            <button>Accept</button>
+            <button>Decline</button>
           </div>
         </div>
       ) : (
