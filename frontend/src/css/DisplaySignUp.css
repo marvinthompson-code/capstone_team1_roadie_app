@@ -5,16 +5,16 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #ffffff;
-  --steel: #55828B;
+  --steel: #55828b;
   --eerieBlk: #101515;
   --richBlk: #060808;
-  --castletonGrn: #075D3E;
-  --jade: #00A86B;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
   --indiaGreen: #078809;
-  --electricGreen: #00FF00;
-  --eerieBlk2: #1C1E1E;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
   --eerieBlk3: #212222;
-  --spaceGrey: #5A7272;
+  --spaceGrey: #5a7272;
 }
 .displaySignUpContainer {
   display: grid;
@@ -29,8 +29,7 @@
 
 .displayHeaderSignUp {
   background-color: var(--jade) !important;
-  border-bottom-color: var(--eerieBlk
-  ) !important;
+  border-bottom-color: var(--eerieBlk) !important;
   color: var(--floralWhite) !important;
   text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
 }
@@ -73,7 +72,7 @@
   color: var(--jade) !important;
   border-radius: 10px;
   box-shadow: 1px 1px 2px var(--eerieBlk);
-  border: 1px solid var(--eerieBlk3) !important;
+  border: 2px solid var(--eerieBlk3) !important;
   height: 40px;
   width: 65px;
   transition: 1s;

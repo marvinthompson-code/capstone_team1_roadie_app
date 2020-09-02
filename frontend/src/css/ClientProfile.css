@@ -51,9 +51,27 @@
 }
 
 
+.eventThumb {
+  list-style: none;
+  width: fit-content;
+}
+
+.eventCard {
+  box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
+  background-color: rgba(28, 30, 30, 0.8) !important;
+  border: 2px solid var(--jade);
+  border-radius: 10px;
+  transition: 2s;
+}
+
+
 #deleteBttn {
   height: 35px;
   width: 35px;
+}
+
+.eventThumbCardText {
+  color: white
 }
 
 #deleteBttn:hover {
@@ -61,10 +79,10 @@
   width: 30px;
 }
 
-.editClientProfile{
-  border: 1px solid black !important;
+.editClientProfile {
+  border: 2px solid black !important;
   border-radius: 10px;
-  background-color: var(--jade) !important; 
+  background-color: var(--jade) !important;
   box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
   color: white !important;
   transition: 1s;

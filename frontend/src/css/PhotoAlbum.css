@@ -43,15 +43,15 @@
   padding: 10px;
   margin: 10px;
 }
-#usersAlbumHeader{
-    color: white !important;
-    padding: 20px;
-    margin: 10px;
+#usersAlbumHeader {
+  color: white !important;
+  padding: 20px;
+  margin: 10px;
 }
 
-#imgCaption{
-    border: 1px solid var(--jade) !important;
-    border-radius: 13px;
-    padding: 10px;
-    margin: 10px;
+#imgCaption {
+  border: 2px solid var(--jade) !important;
+  border-radius: 13px;
+  padding: 10px;
+  margin: 10px;
 }
