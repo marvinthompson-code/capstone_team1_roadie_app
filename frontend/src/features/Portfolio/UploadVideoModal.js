@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
+import '../../css/uploadModal.css'
 import axios from "axios";
+
 
 const UploadVideoModal = () => {
   const [videoAsFile, setVideoAsFile] = useState("");
@@ -70,53 +72,74 @@ const UploadVideoModal = () => {
 
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id="uploadVideoModalCenter"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
+      <div className="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal-content">
+          <div className="modal-header uploadModalHeader">
+            <h5 className="modal-title" id="exampleModalLongTitle">
               Upload Video
             </h5>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body uploadModalBody">
             <form onSubmit={handleSubmit}>
-              <input type="file" required onChange={handleVideoAsFile} />
-              <input
-                type="text"
-                placeholder="Caption"
-                value={caption}
-                onChange={(e) => setCaption(e.currentTarget.value)}
-                required
-              />
-              <button type="button" onClick={handleFirebaseVideoUpload}>
-                Upload Video
+              <div className="custom-file">
+                <input
+                  type="file"
+                  required
+                  className="custom-file-input uploadModalInput"
+                  id="customFile"
+                  onChange={handleVideoAsFile}
+                />
+                <label className="custom-file-label" for="customFile">
+                  Choose file
+                </label>
+              </div>
+              <button
+                type="button"
+                className="btn btn-primary activeButton"
+                onClick={handleFirebaseVideoUpload}
+              >
+                Upload
               </button>
+              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+              <div className="form-group">
+                <textarea
+                  type="text"
+                  className="form-control uploadModalInput"
+                  placeholder="Enter Caption here..."
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  value={caption}
+                  onChange={(e) => setCaption(e.currentTarget.value)}
+                  required
+                />
+              </div>
+              <input type="submit" className="btn btn-primary activeButton" name="Click Here" />
             </form>
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer uploadModalBody">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary uploadModalCloseButton"
               data-dismiss="modal"
             >
               Close
             </button>
           </div>
-          <div>{toggleUploadMsg ? <h5>Upload successful!</h5> : null}</div>
         </div>
       </div>
     </div>

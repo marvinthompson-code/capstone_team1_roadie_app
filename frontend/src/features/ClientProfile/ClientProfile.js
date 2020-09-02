@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { toggleLoadingState } from '../Loading/loadingSlice'
+import { toggleLoadingState } from "../Loading/loadingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import ClientPortfolio from "../Portfolio/ClientPortfolio";
 import axios from "axios";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
-import "../../css/ClientProfile.css"
+import logo from "../images/FinalRoadieLogoblk.png";
+import "../../css/ClientProfile.css";
 
 const ClientProfile = () => {
   const [name, setName] = useState("");
@@ -18,7 +19,7 @@ const ClientProfile = () => {
   const [toggleEditEvents, setToggleEditEvents] = useState(false);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
-  const loading = useSelector((state) => state.loading)
+  const loading = useSelector((state) => state.loading);
   const API = apiURL();
   const match = useRouteMatch();
   const dispatch = useDispatch();
@@ -42,7 +43,6 @@ const ClientProfile = () => {
       setContactInfo(contact_info);
     };
     fetchUserInfo(match.params.id);
-    
   }, []);
 
   useEffect(() => {
@@ -66,34 +66,44 @@ const ClientProfile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   const userEventsThumbs = userEvents.map((event) => {
     return (
-      <div className="singleEventContainer" key={event.id}>
-        <li id={event.id} className={"eventThumb"} key={event.id}>
-          <div className="eventHeading">
-            <h2 className={"eventName"}>{event.name}</h2>
-            {toggleEditEvents ? (
-              <img
-                src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
-                alt="delete"
-                id="deleteBttn"
-                onClick={() => {
-                  handleEventDelete(event.id);
-                }}
-              />
-            ) : null}
+      <li id={event.id} className={"eventThumb container-fluid row"} key={event.id}>
+        <div class="card eventCard" style={{ width: "18rem" }}>
+          <img
+            src={logo}
+            alt="roadieLogo"
+            width="50"
+            height="50"
+            class="d-inline-block align-top"
+            id="roadieLogo"
+          />
+          <div class="card-body">
+            <div className="eventHeading">
+              <h5 class="card-title eventThumbCardText">{event.name}</h5>
+              {toggleEditEvents ? (
+                <img
+                  src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
+                  alt="delete"
+                  id="deleteBttn"
+                  onClick={() => {
+                    handleEventDelete(event.id);
+                  }}
+                />
+              ) : null}
+            </div>
+            <div className={"venueDateContainer"}>
+              <p class="card-text eventThumbCardText">{event.venue}</p>
+              <p class="card-text eventThumbCardText">{event.date.slice(0, 10)}</p>
+              <p class="card-text eventThumbCardText">{event.address}</p>
+              <p class="card-text eventThumbCardText">{event.city}</p>
+            </div>
           </div>
-          <div className={"venueDateContainer"}>
-            <h3 id={"venue"}>{event.venue}</h3>
-            <h3 id={"date"}>{event.date.slice(0, 10)}</h3>
-            <h3 id={"address"}>{event.address}</h3>
-            <h3 id={"city"}>{event.city}</h3>
-          </div>
-        </li>
-      </div>
+        </div>
+      </li>
     );
   });
 
@@ -132,9 +142,9 @@ const ClientProfile = () => {
     }
   };
 
-//   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-//   Launch demo modal
-// </button>
+  //   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  //   Launch demo modal
+  // </button>
 
   return (
     <div className="container-fluid">
@@ -144,9 +154,9 @@ const ClientProfile = () => {
       >
         <div className={"col-sm-2"}>
           <button
-           className="btn btn-primary"
-           data-toggle="modal"
-           data-target="#contactClientModalCenter"
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#contactClientModalCenter"
             id="BookMeButton"
             onClick={() => dispatch(toggleClientContactModalState())}
           >
@@ -185,7 +195,7 @@ const ClientProfile = () => {
             <div className={"eventTitleDiv"}>
               <h3 className={"eventsTitle"}>Created Events</h3>
             </div>
-            <ul className={"eventUl"}>{userEventsThumbs}</ul>
+            <ul className={"eventUl container-fluid col"}>{userEventsThumbs}</ul>
 
             <div className={"createEventButtonDiv"}>{createEventButton()}</div>
           </div>

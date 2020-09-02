@@ -111,17 +111,17 @@ const EventForm = () => {
         <ul className={"venueList"}>
           {venues.length === 0 ? (
             <>
-              <h1 class="display-4">Search for a Venue</h1>
-              <p class="lead">Venue Search Results will populate below.</p>
+              <h1 className="display-4">Search for a Venue</h1>
+              <p className="lead">Venue Search Results will populate below.</p>
             </>
           ) : (
             <>
-              <h1 class="display-4">Select a Venue</h1>
-              <p class="lead">
+              <h1 className="display-4">Select a Venue</h1>
+              <p className="lead">
                 Venue details will auto-populate after selection.
               </p>
-              <hr class="my-4"></hr>
-              <div class="list-group venueSearchResultsList">
+              <hr className="my-4"></hr>
+              <div className="list-group venueSearchResultsList">
                 {venueResults}
               </div>
             </>
@@ -190,20 +190,20 @@ const EventForm = () => {
       {/* <div className={"selectedVenueContainer"}> */}
       <div className="jumbotron text-center eventFormJumbo">
         <div
-          class="card justify-self: center eventFormCard"
+          className="card justify-self: center eventFormCard"
           style={{ width: "18rem" }}
         >
-          <div class="card-body">
+          <div className="card-body">
             <div className="form-group">
-              <h5 class="card-title">Selected Venue</h5>
-              <p class="card-text">
+              <h5 className="card-title">Selected Venue</h5>
+              <p className="card-text">
                 The venue information will be automatically added to the event
                 details.
               </p>
-              {/* <a href="#" class="card-link">
+              {/* <a href="#" className="card-link">
                 Card link
                 </a>
-                <a href="#" class="card-link">
+                <a href="#" className="card-link">
                 Another link
               </a> */}
               <div className="col-sm-10">
