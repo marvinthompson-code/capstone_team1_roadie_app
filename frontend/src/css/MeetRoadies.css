@@ -1,0 +1,51 @@
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #55828b;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
+  --indiaGreen: #078809;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5a7272;
+}
+.meetTheRoadies {
+  padding: 20px;
+}
+
+.meetTheRoadiesJumbo {
+  border-radius: 13px;
+  background-color: var(--eerieBlk3) !important;
+  background-color: rgba(28, 30, 30, 0.8) !important;
+  border: 2px solid var(--indiaGreen) !important;
+  color: white !important;
+  /* padding: 20px; */
+}
+.meetTheRoadiesHeader {
+  text-align: center;
+}
+.meetTheRoadiesPTag {
+  border-bottom: 2px solid var(--indiaGreen);
+  padding: 10px 10px 25px 10px;
+  text-align: center;
+}
+.meetTheRoadiesDiv {
+  padding: 20px;
+  display: grid;
+  text-align: center;
+}
+.roadieMembers{
+  padding: 10px;
+  border-bottom: 3px solid var(--indiaGreen);
+  margin-bottom: 10px;
+}
+.leftMembers{
+  border-right: 3px solid var(--indiaGreen);
+}

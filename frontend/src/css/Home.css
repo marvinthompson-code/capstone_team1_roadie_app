@@ -58,16 +58,16 @@
   background-color: rgba(28, 30, 30, 0.8) !important;
   border: 2px solid var(--jade) !important;
   color: white;
-  border: 1px solid var(--eerieBlk3);
+  border: 2px solid var(--eerieBlk3);
   transition: 2s;
   padding: 30px;
 }
 
-.pTagHeader{
+.pTagHeader {
   padding: 20px;
   border-bottom: 3px solid var(--jade);
   margin-bottom: 10px;
 }
-.Homecarousel{
+.Homecarousel {
   padding: 20px;
 }
