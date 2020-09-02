@@ -1,5 +1,8 @@
 import React from "react";
 import "../../css/MeetRoadies.css";
+import Henry from "../images/memberPic/IMG_2419.jpg";
+import Ashya from "../images/memberPic/Jam-e-que82011.png.jpg";
+import Marvin from "../images/memberPic/31144273_2083306295032165_9077676068885757952_o.jpg";
 
 const MeetTheRoadies = () => {
   return (
@@ -23,18 +26,18 @@ const MeetTheRoadies = () => {
           <div className="container roadieMembers">
             <div className="row">
               <div className="col leftMembers">
-                <h3>Marvin Thombson</h3>
+                <h3>Marvin Thompson</h3>
               </div>
-              <div className="col">
-                <p>images of Marvin</p>
+              <div className="col membersImg">
+              <img src={Marvin} alt="Marvin's image" class="img-thumbnail" id="marvinsImg"/>
               </div>
             </div>
           </div>
           {/* Ashya */}
           <div className="container roadieMembers">
             <div className="row">
-              <div className="col leftMembers">
-                <p>images of Marvin</p>
+              <div className="col leftMembers ashyaDiv">
+              <img src={Ashya} alt="Ashya's image" class="img-thumbnail" id="ashImg"/>
               </div>
               <div className="col">
                 <h3>Ashya Manning</h3>
@@ -45,11 +48,11 @@ const MeetTheRoadies = () => {
           {/* Henry */}
           <div className="container roadieMembers">
             <div className="row">
-              <div className="col leftMembers">
+              <div className="col leftMembers henryDiv">
                 <h3>Henry Nuñez</h3>
               </div>
               <div className="col">
-                <p>images of Marvin</p>
+              <img src={Henry} alt="Henry's image" class="img-thumbnail" id="henryImg"/>
               </div>
             </div>
           </div>
