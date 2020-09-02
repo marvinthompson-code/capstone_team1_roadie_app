@@ -73,9 +73,9 @@ function App() {
           <Artist />
         </ProtectedRoute>
 
-        <Route exact path={"/notifications"}>
+        <ProtectedRoute exact path={"/notifications"}>
           <NotificationDisplay />
-        </Route>
+        </ProtectedRoute>
 
         <ProtectedRoute exact path={"/client/:id/createEvent"}>
           <CreateEvent />
