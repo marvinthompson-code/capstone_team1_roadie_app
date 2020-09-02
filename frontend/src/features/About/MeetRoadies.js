@@ -18,47 +18,51 @@ const MeetTheRoadies = () => {
             actually being seen by the clients creating those events.{" "}
           </p>
         </div>
-        <div className="meetTheRoadiesDiv">
-          <div
-            id="carouselExampleControls"
-            className="meetTheRoadiesCar carousel slide"
-            data-ride="carousel"
-          >
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img className="d-block w-100" src="..." alt="First slide" />
+        <div className="container meetTheRoadiesDiv">
+          {/* Marvin */}
+          <div className="container roadieMembers">
+            <div className="row">
+              <div className="col leftMembers">
+                <h3>Marvin Thombson</h3>
               </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="..." alt="Second slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="..." alt="Third slide" />
+              <div className="col">
+                <p>images of Marvin</p>
               </div>
             </div>
-            <a
-              className="carousel-control-prev"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="sr-only">Previous</span>
-            </a>
-            <a
-              className="carousel-control-next"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="sr-only">Next</span>
-            </a>
+          </div>
+          {/* Ashya */}
+          <div className="container roadieMembers">
+            <div className="row">
+              <div className="col leftMembers">
+                <p>images of Marvin</p>
+              </div>
+              <div className="col">
+                <h3>Ashya Manning</h3>
+              </div>
+            </div>
+          </div>
+
+          {/* Henry */}
+          <div className="container roadieMembers">
+            <div className="row">
+              <div className="col leftMembers">
+                <h3>Henry Nuñez</h3>
+              </div>
+              <div className="col">
+                <p>images of Marvin</p>
+              </div>
+            </div>
+          </div>
+          {/* Kevin */}
+          <div className="container roadieMembers">
+            <div className="row">
+              <div className="col leftMembers">
+                <p>images of Marvin</p>
+              </div>
+              <div className="col">
+                <h3>Kevin Wong</h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
