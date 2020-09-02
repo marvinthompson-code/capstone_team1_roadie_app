@@ -8,28 +8,29 @@
   background-color: rgba(28, 30, 30, 0.8) !important;
   border: 2px solid var(--jade) !important;
   color: white;
-  border: 1px solid var(--eerieBlk3);
+  border: 2px solid var(--eerieBlk3);
   transition: 2s;
 }
-#whyRh, #whyRH4 {
+#whyRh,
+#whyRH4 {
   border-bottom: 3px solid var(--jade) !important;
   padding: 20px;
 }
-#WhyR{
-    color: var(--jade) !important;
-    font-weight: bold;
+#WhyR {
+  color: var(--jade) !important;
+  font-weight: bold;
 }
-#whyRUl{
-    border: 2px solid var(--jade);
-    background-color: var(--eerieBlk2);
-    border-radius: 13px;
-    padding: 40px;
-    list-style-type: none;
-    font-weight: bold;
+#whyRUl {
+  border: 2px solid var(--jade);
+  background-color: var(--eerieBlk2);
+  border-radius: 13px;
+  padding: 40px;
+  list-style-type: none;
+  font-weight: bold;
 }
-.whyBadge{
-    padding: 6px;
-    margin: 4px;
+.whyBadge {
+  padding: 6px;
+  margin: 4px;
 }
 
 .whyRoadieSubHeader {

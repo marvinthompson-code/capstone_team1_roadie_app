@@ -5,16 +5,16 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #ffffff;
-  --steel: #55828B;
+  --steel: #55828b;
   --eerieBlk: #101515;
   --richBlk: #060808;
-  --castletonGrn: #075D3E;
-  --jade: #00A86B;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
   --indiaGreen: #078809;
-  --electricGreen: #00FF00;
-  --eerieBlk2: #1C1E1E;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
   --eerieBlk3: #212222;
-  --spaceGrey: #5A7272;
+  --spaceGrey: #5a7272;
 }
 @font-face {
   src: url("../fonts/Raleway-Black.ttf");
@@ -43,14 +43,14 @@
 .portfolioHeader {
   grid-row: 1 / span 1;
   padding: 10px;
-  border: 1px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
   padding: 5px;
-  border: 1px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -59,22 +59,21 @@
 }
 
 .artistAlbumDiv {
-  grid-row: 1/ span 1;
-  border: 1px solid var(--jade);
+  grid-row: 1 / span 1;
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
 }
 .artistVideoDiv {
-  grid-row: 2/ span 1;
-  border: 1px solid var(--jade);
+  grid-row: 2 / span 1;
+  border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.8) !important;
   border-radius: 10px;
   padding: 5px;
-
 }
 #uploadArtistButton {
-  border: 1px solid var(--jade);
+  border: 2px solid var(--indiaGreen);
   box-shadow: 1px 1px 2px #888888;
   color: var(--jade) !important;
   background-color: var(--richBlk);
@@ -84,8 +83,8 @@
   background-color: var(--jade);
   color: var(--richBlk) !important;
 }
-.uploadBtn{
-  border: 1px solid var(--richBlk);
+.uploadBtn {
+  border: 2px solid var(--richBlk);
   border-radius: 10px;
   background-color: var(--castletonGrn);
   box-shadow: 1px 1px 2px #888888;
@@ -95,7 +94,6 @@
   background-color: darkred;
   color: white !important;
 }
-
 .uploadPictureArtistButton {
   border: 1px solid var(--eerieBlk3);
   border-radius: 10px;
@@ -119,7 +117,6 @@
   color: white !important;
   transition: 1s;
 }
-
 .uploadVideoArtistButton:hover {
   background-color: var(--kobe);
   color: white !important;
