@@ -26,7 +26,7 @@ const ArtistPortfolio = () => {
   const displayUploadPictureButton = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
-        <button type="button" className="uploadBtn" onClick={handleClick}>
+        <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
           +Upload picture
         </button>
       );
@@ -36,7 +36,7 @@ const ArtistPortfolio = () => {
   const displayUploadVideoButton = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
-        <button type="button" className="uploadBtn" onClick={handleClick}>
+        <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
           +Upload video
         </button>
       );
