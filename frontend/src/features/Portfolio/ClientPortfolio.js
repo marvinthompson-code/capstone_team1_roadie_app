@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
+import '../../css/Portfolio.css'
 
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
@@ -25,8 +26,8 @@ const ClientPortfolio = () => {
   const displayUploadPictureButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="uploadBtn" onClick={handleClick}>
-          +picture
+        <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
+          +Upload picture
         </button>
       );
     }
@@ -35,8 +36,8 @@ const ClientPortfolio = () => {
   const displayUploadVideoButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="uploadBtn" onClick={handleClick}>
-          +video
+        <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
+          +Upload video
         </button>
       );
     }

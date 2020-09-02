@@ -1,0 +1,67 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828B;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075D3E;
+    --jade: #00A86B;
+    --indiaGreen: #078809;
+    --electricGreen: #00FF00;
+    --eerieBlk2: #1C1E1E;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5A7272;
+  }
+
+  .uploadModalHeader {
+    background-color: var(--jade);
+    border-bottom-color: var(--eerieBlk);
+    color: white !important;
+    text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
+  }
+
+  .uploadModalCloseButton {
+    background-color: var(--eerieBlk3) !important;
+    color: var(--jade) !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--eerieBlk) !important;
+    border: 1px solid var(--eerieBlk3) !important;
+    transition: 1s;
+}
+
+.uploadModalCloseButton:hover {
+    background-color: var(--jade) !important;
+    color: white !important;
+    cursor: pointer;
+  }
+
+  .uploadModalBody {
+    background-color: var(--eerieBlk3) !important;
+    border-top-color: var(--eerieBlk3) !important;
+  }
+
+
+.uploadModalInput {
+    box-shadow: 1px 1px 2px var(--eerieBlk);
+    background-color: white;
+    border-color: var(--eerieBlk);
+    outline: none;
+  }
+
+  .activeButton {
+    border: 1px solid var(--eerieBlk3);
+    border-radius: 10px;
+    background-color: var(--jade);
+    box-shadow: 1px 1px 2px var(--eerieBlk);
+    color: white !important;
+    transition: 1s;
+  }
+
+  .activeButton:hover {
+    background-color: var(--kobe);
+    color: white !important;
+  }

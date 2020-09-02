@@ -95,30 +95,30 @@
   color: white !important;
 }
 .uploadPictureArtistButton {
-  border: 1px solid var(--eerieBlk3);
+  border: 1px solid var(--eerieBlk3) !important;
   border-radius: 10px;
-  background-color: var(--jade);
-  box-shadow: 1px 1px 2px var(--eerieBlk);
+  background-color: var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
 }
 
 .uploadPictureArtistButton:hover {
-  background-color: var(--kobe);
+  background-color: var(--kobe) !important;
   color: white !important;
   border-color: var(--eerieBlk) !important;
 }
 
 .uploadVideoArtistButton {
-  border: 1px solid var(--eerieBlk3);
+  border: 1px solid var(--eerieBlk3) !important;
   border-radius: 10px;
-  background-color: var(--jade);
-  box-shadow: 1px 1px 2px var(--eerieBlk);
+  background-color: var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
 }
 .uploadVideoArtistButton:hover {
-  background-color: var(--kobe);
+  background-color: var(--kobe) !important;
   color: white !important;
   border-color: var(--eerieBlk) !important;
 }
