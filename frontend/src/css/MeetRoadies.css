@@ -41,11 +41,36 @@
   display: grid;
   text-align: center;
 }
-.roadieMembers{
-  padding: 10px;
+.roadieMembers {
+  padding: 11px;
   border-bottom: 3px solid var(--indiaGreen);
   margin-bottom: 10px;
 }
-.leftMembers{
+.leftMembers {
   border-right: 3px solid var(--indiaGreen);
+}
+#marvinsImg {
+  width: 300px;
+  background-color: var(--jade);
+  border: solid var(--jade);
+  border-radius: 13px;
+}
+.membersImg {
+  padding: 20px;
+}
+#ashImg {
+  width: 280px;
+  background-color: var(--jade);
+  border: solid var(--jade);
+  border-radius: 13px;
+}
+#henryImg {
+  width: 300px;
+  background-color: var(--jade);
+  border: solid var(--jade);
+  border-radius: 13px;
+}
+.ashyaDiv,
+.henryDiv {
+  padding: 11px;
 }
