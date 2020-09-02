@@ -22,7 +22,7 @@
   position: relative;
 }
 .aboutJumbotron {
-  border-radius: 10px;
+  border-radius: 13px;
   background-color: var(--eerieBlk3) !important;
   background-color: rgba(28, 30, 30, 0.8) !important;
   border: 2px solid var(--jade) !important;
