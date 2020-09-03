@@ -20,6 +20,10 @@
   --kobe: #881d0b;
 }
 
+.card-body {
+  background: black;
+}
+
 .buttonsDiv {
   background: black;
 }

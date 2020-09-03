@@ -5,17 +5,12 @@ import { artistLogout } from "../token/artistTokenSlice";
 import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  receiveNotifications,
-  addNotification,
-} from "../Notifications/notificationsSlice";
+import { receiveNotifications } from "../Notifications/notificationsSlice";
 import "../../css/NavBar.css";
-import { logout, signUp } from "../../util/firebaseFunctions";
+import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
-import Login from "../login/Login";
-import DisplaySignUp from "../Display/DisplaySignUp";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);

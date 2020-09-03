@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "../../css/NotificationItem.css";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 
 const NotificationItem = ({ notification }) => {
+  const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
   const API = apiURL();
   const [isArtist, setIsArtist] = useState(null);
   const [clientID, setClientID] = useState("");
@@ -12,14 +15,12 @@ const NotificationItem = ({ notification }) => {
   const toggleArtist = () => {
     if (notification.data.eventDetails) {
       setClientID(notification.client_id);
-      setArtistID(notification.id);
+      setArtistID(artist.id);
       setIsArtist(true);
-      debugger;
     } else if (notification.data.name) {
-      setClientID(notification.id);
-      setArtistID(notification.data.artist_id);
+      // setClientID(client.id);
+      // setArtistID(notification.data.artist_id);
       setIsArtist(false);
-      debugger;
     }
   };
 
@@ -35,14 +36,15 @@ const NotificationItem = ({ notification }) => {
     number,
     eventDetails,
     name,
+    selectedEvent,
   } = notification.data;
 
   const handleAccept = async () => {
     try {
       let res = await axios.post(`${API}/bookings/`, {
-        // artist_id,
-        // client_id,
-        // event_id,
+        artist_id: artistID,
+        client_id: clientID,
+        event_id: selectedEvent,
         // bio,
         // contact_info,
       });
@@ -58,7 +60,7 @@ const NotificationItem = ({ notification }) => {
     <>
       {isArtist ? (
         <div className="card" style={{ width: "18rem" }}>
-          <div className="card-body" style={{ backgroundColor: "black" }}>
+          <div className="card-body">
             <h5 className="card-title">{message}</h5>
             <h6 className="card-subtitle mb-2 text-muted">{bio}</h6>
             <p className="card-text">{body}</p>
