@@ -1,44 +1,48 @@
 import React, { useState, useEffect } from "react";
+import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
-import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleEventDisplayState } from "./eventDisplaySlice";
 import { apiURL } from "../../util/apiURL";
+import "../../css/EventDisplay.css"
 
-const EventDisplay = async ({ id, client_id }) => {
-  const isOpen = useSelector((state) => state.eventDisplay);
-  const dispatch = useDispatch();
+const EventDisplay = () => {
+  const [name, setName] = useState("");
+  const [venue, setVenue] = useState("");
+  const [date, setDate] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
   const API = apiURL();
-  const closeModal = () => {
-    dispatch(toggleEventDisplayState());
-  };
-  let res = await axios.get(`${API}/events/${id}/${client_id}`);
-  let { name, venue, date, city, address } = res.data.body.event;
+  const match = useRouteMatch();
+
+  useEffect(() => {
+    const fetchEventInfo = async (id, client_id) => {
+      let res = await axios.get(`${API}/events/${id}/${client_id}`);
+      let { name, venue, date, city, address } = res.data.body.event;
+      debugger;
+      setName(name);
+      setVenue(venue);
+      setDate(date);
+      setCity(city);
+      setAddress(address);
+    };
+    fetchEventInfo(match.params.id, match.params.client_id);
+  }, []);
 
   return (
-    <Modal
-      isOpen={false}
-      onRequestClose={closeModal}
-      isOpen={isOpen}
-      style={{
-        content: {
-          backgroundColor: "#F4D8CD",
-          borderRadius: "13px",
-          left: "25%",
-          right: "25%",
-        },
-      }}
-    >
-      <div>
-        <h2 className={"eventName"}>{name}</h2>
+    <div className="eventDisplay container">
+      <div class="jumbotron text-center eventJumbo">
+        <h1 class="display-4 jumbotronTitle">{name}</h1>
+        <p class="lead pTagHeader">{venue}</p>
+        <hr class="my-4"></hr>
         <div className={"venueDateContainer"}>
-          <h3 id={"date"}>{date}</h3>
-          <h3 id={"venue"}>{venue}</h3>
-          <h3 id={"address"}>{address}</h3>
-          <h3 id={"city"}>{city}</h3>
+          <p id={"date"}>{date}</p>
+          <p id={"address"}>{address}</p>
+          <p id={"city"} >{city}</p>
+        </div>
+        <div>
+          <h1 class="display-4 jumbotronTitle">Lineup</h1>
         </div>
       </div>
-    </Modal>
+    </div>
   );
 };
 

@@ -38,7 +38,7 @@ const EventForm = () => {
       setDate("");
       setAddress("");
       setCity("");
-      dispatch(receiveVenueSearch(null))
+      // dispatch(receiveVenueSearch(null))
       history.push(`/client/${client.id}`);
     } catch (err) {
       console.log(err);

@@ -50,10 +50,12 @@
   height: 100%;
 }
 
-
 .eventThumb {
-  list-style: none;
-  width: fit-content;
+  transition: 1s
+}
+.eventThumb:hover {
+  color: white !important;
+  background-color: var(--jade) !important;
 }
 
 .eventCard {
@@ -64,6 +66,10 @@
   transition: 2s;
 }
 
+.eventUl {
+  overflow: auto;
+  height: auto;
+}
 
 #deleteBttn {
   height: 35px;
@@ -79,8 +85,9 @@
   width: 30px;
 }
 
+
 .editClientProfile {
-  border: 2px solid black !important;
+  border: 2px solid var(--eerieBlk)!important;
   border-radius: 10px;
   background-color: var(--jade) !important;
   box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
@@ -88,6 +95,21 @@
   transition: 1s;
 }
 .editClientProfile:hover {
+  background-color: var(--kobe) !important;
+  color: white !important;
+  cursor: pointer;
+}
+
+.eventButtons {
+  border: 2px solid var(--eerieBlk) !important;
+  border-radius: 10px;
+  background-color: var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
+  color: white !important;
+  transition: 1s;
+}
+
+.eventButtons:hover {
   background-color: var(--kobe) !important;
   color: white !important;
   cursor: pointer;

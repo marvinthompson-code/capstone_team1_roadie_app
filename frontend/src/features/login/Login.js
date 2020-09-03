@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { updateUser } from "../token/userTokenSlice";
 import { login } from "../../util/firebaseFunctions";
 import { toggleLoadingState } from "../Loading/loadingSlice";
+import { toggleErrorState, recieveState } from "../Error/errorSlice"
+import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux";
 import "../../css/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
+  const errorMess = useSelector((state) => state.error)
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
@@ -16,6 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch(recieveState(false))
       let res = await login(email, password);
       dispatch(updateUser(res.user));
       history.push("/");
@@ -23,9 +27,11 @@ const Login = () => {
       dispatch(toggleLoadingState());
     } catch (error) {
       setError(error.message);
-      // errorToaster(error)
+      dispatch(toggleErrorState())
     }
   };
+
+  const errorMessage = () => errorMess ? null : "modal"
 
   // const errorToaster = (error) => {
   //   return (
@@ -114,7 +120,7 @@ const Login = () => {
 
                 <input
                   type="submit"
-                  className="btn btn-primary roadieLogInButton"
+                  className="btn btn-success roadieLogInButton"
                   value="Log In"
                   onClick={handleSubmit}
                   data-dismiss="modal"
