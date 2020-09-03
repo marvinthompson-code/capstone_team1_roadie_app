@@ -75,6 +75,7 @@
 .eventFormSearchButton:hover {
   background-color: var(--kobe);
   color: white !important;
+ 
 }
 
 .venueSearchResultsList {
