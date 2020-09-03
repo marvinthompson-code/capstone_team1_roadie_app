@@ -44,10 +44,11 @@ const ClientPortfolio = () => {
   };
 
   const toPhotoAlbum = () => {
-    history.push(`/media/pictures/${match.params.id}`);
+    history.push(`/media/pictures/client/${match.params.id}`);
+    debugger
   };
   const toVideoAlbum = () => {
-    history.push(`/media/videos/${match.params.id}`);
+    history.push(`/media/videos/client/${match.params.id}`);
   };
 
   useEffect(() => {

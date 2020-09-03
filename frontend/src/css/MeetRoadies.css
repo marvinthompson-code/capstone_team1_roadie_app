@@ -71,6 +71,14 @@
   border-radius: 13px;
 }
 .ashyaDiv,
-.henryDiv {
+.henryDiv,
+.kevinDiv {
   padding: 11px;
+}
+
+#kevinImg {
+  width: 300px;
+  background-color: var(--jade);
+  border: solid var(--jade);
+  border-radius: 13px;
 }

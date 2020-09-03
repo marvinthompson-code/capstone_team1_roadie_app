@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import "../../css/uploadModal.css"
+import "../../css/uploadModal.css";
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState("");
@@ -12,6 +12,7 @@ const UploadPictureModal = () => {
   const API = apiURL();
 
   const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -21,7 +22,6 @@ const UploadPictureModal = () => {
     } else {
       setImageAsFile((imageFile) => image);
     }
-    debugger;
   };
 
   const handleFirebasePictureUpload = () => {
@@ -52,7 +52,6 @@ const UploadPictureModal = () => {
             });
         }
       );
-      debugger;
       setToggleUploadMsg(true);
     } else {
       setToggleUploadMsg(false);
@@ -61,16 +60,28 @@ const UploadPictureModal = () => {
 
   const insertPictureIntoAlbum = async (e) => {
     e.preventDefault();
-    debugger;
-    try {
-      await axios.post(`${API}/media/pictures`, {
-        artist_id: artist.id,
-        caption: caption,
-        url: imageAsUrl,
-      });
-      setCaption("");
-    } catch (err) {
-      console.log(err);
+    if (artist === null) {
+      try {
+        await axios.post(`${API}/media/pictures`, {
+          client_id: client.id,
+          caption: caption,
+          url: imageAsUrl,
+        });
+        setCaption("");
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        await axios.post(`${API}/media/pictures`, {
+          artist_id: artist.id,
+          caption: caption,
+          url: imageAsUrl,
+        });
+        setCaption("");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -112,7 +123,11 @@ const UploadPictureModal = () => {
                   Choose file
                 </label>
               </div>
-              <button type="button" className="btn btn-primary activeButton"onClick={handleFirebasePictureUpload}>
+              <button
+                type="button"
+                className="btn btn-primary activeButton"
+                onClick={handleFirebasePictureUpload}
+              >
                 Upload
               </button>
               {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
@@ -128,8 +143,12 @@ const UploadPictureModal = () => {
                   onChange={(e) => setCaption(e.target.value)}
                 />
               </div>
-             
-              <input type="submit" className="btn btn-primary activeButton" name="Click Here" />
+
+              <input
+                type="submit"
+                className="btn btn-primary activeButton"
+                name="Click Here"
+              />
             </form>
           </div>
           <div className="modal-footer uploadModalBody">
