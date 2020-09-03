@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthContext";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import "../../css/PhotoAlbum.css";
@@ -12,15 +11,13 @@ const ArtistPhotoAlbum = () => {
   const match = useRouteMatch();
 
   const getUser = async (id) => {
-    try{
+    try {
       let res = await axios.get(`${API}/artists/${id}`);
-      setUserInfo(res.data.body.single_artist)
-      debugger
-    }catch(err){
-      console.log(err)
-      
+      setUserInfo(res.data.body.single_artist);
+      debugger;
+    } catch (err) {
+      console.log(err);
     }
-    
   };
   useEffect(() => {
     const fetchUsersPhotoAlbum = async (artist_id) => {
@@ -29,7 +26,7 @@ const ArtistPhotoAlbum = () => {
     };
     getUser(match.params.artist_id);
     fetchUsersPhotoAlbum(match.params.artist_id);
-    debugger
+    debugger;
   }, []);
 
   const imgSize = {
@@ -38,7 +35,7 @@ const ArtistPhotoAlbum = () => {
   };
 
   const getUsersPictures = pictures.map((picture) => {
-    debugger
+    debugger;
     return (
       <li>
         <div className="eachPhoto">

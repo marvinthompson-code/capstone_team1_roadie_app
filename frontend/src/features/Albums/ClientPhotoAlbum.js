@@ -5,33 +5,56 @@ import { apiURL } from "../../util/apiURL";
 
 const ClientPhotoAlbum = () => {
   const [pictures, setPictures] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
   const API = apiURL();
   const match = useRouteMatch();
 
+  const getClient = async (id) => {
+    try {
+      let res = await axios.get(`${API}/clients/${id}`);
+      setUserInfo(res.data.body.single_client);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchUsersPhotoAlbum = async (id) => {
-      let res = await axios.get(`${API}/media/pictures/${id}`);
+    const fetchUsersPhotoAlbum = async (client_id) => {
+      let res = await axios.get(`${API}/media/pictures/client/${client_id}`);
       setPictures(res.data.body.picture);
     };
-    fetchUsersPhotoAlbum(match.params.id);
+    getClient(match.params.client_id);
+    fetchUsersPhotoAlbum(match.params.client_id);
   }, []);
+
+  const imgSize = {
+    height: "auto",
+    width: "200px",
+  };
 
   const getUsersPictures = pictures.map((picture) => {
     return (
-      <div>
-        <li>
-          <img alt={picture.caption} src={picture.url} />
-          <p>{picture.caption}</p>
-        </li>
-      </div>
+      <li>
+        <div className="eachPhoto">
+          <img
+            style={imgSize}
+            alt={picture.caption}
+            src={picture.url}
+            id="singlePhoto"
+          />
+          <p id="imgCaption">{picture.caption}</p>
+        </div>
+      </li>
     );
   });
 
   return (
-    <div>
-      <h1></h1>
-      <div>
-        <ul>{getUsersPictures}</ul>
+    <div className="container-fluid position-absolute userAlbums">
+      <div className="row justify-content-center">
+        <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
+      </div>
+      <div className="jumbotron albumJumbo text-center">
+        <ul className="allPhotos">{getUsersPictures}</ul>
       </div>
     </div>
   );
