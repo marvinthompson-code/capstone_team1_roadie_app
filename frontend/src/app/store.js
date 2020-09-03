@@ -4,6 +4,7 @@ import clientReducer from "../features/token/clientTokenSlice";
 import clientContactModalReducer from "../features/ClientContactForm/clientContactModalSlice"
 import eventModalReducer from "../features/Events/eventModalSlice";
 import loginModalReducer from "../features/login/loginModalSlice"
+import errorReducer from "../features/Error/errorSlice"
 import editClientProfileModalReducer from "../features/ClientProfile/editClientProfileModalSlice";
 import artistReducer from "../features/token/artistTokenSlice";
 import tokenReducer from "../features/token/tokenSlice";
@@ -28,6 +29,7 @@ export default configureStore({
     loading: loadingReducer,
     modal: modalReducer,
     client: clientReducer,
+    error: errorReducer,
     bookMeEvents: bookMeEventsReducer,
     eventModal: eventModalReducer,
     clientContactModal: clientContactModalReducer,
