@@ -15,9 +15,13 @@ const SignUpToggle = () => {
   };
   return (
     <div className="container">
-        <div className="row switchToggler">
-      <Switch onClick={toggler} checkedChildren="Client Sign Up click here" unCheckedChildren="Artist Sign Up click here" />
-        </div>
+      <div className="row switchToggler">
+        <Switch
+          onClick={toggler}
+          checkedChildren="Client Sign Up click here"
+          unCheckedChildren="Artist Sign Up click here"
+        />
+      </div>
       {toggle ? <ArtistSignUpForm /> : <ClientSignUp />}
     </div>
   );

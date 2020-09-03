@@ -4,7 +4,7 @@ import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import { useRouteMatch } from "react-router-dom";
 import { db } from "../../firebase";
-import "../../css/ClientContactForm.css"
+import "../../css/ClientContactForm.css";
 
 const ClientContactForm = () => {
   const [name, setName] = useState("");
@@ -24,6 +24,7 @@ const ClientContactForm = () => {
       .doc(match.params.id)
       .collection("messages")
       .add({
+        artist_id: artist.id,
         name: name,
         message: "An artist messaged you",
         body: body,
@@ -92,7 +93,9 @@ const ClientContactForm = () => {
           <div class="modal-body clientContactBody">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="contactNameInput" id="labelItem">Name</label>
+                <label for="contactNameInput" id="labelItem">
+                  Name
+                </label>
                 <input
                   type="text"
                   className="form-control contactModalInput"
@@ -104,7 +107,9 @@ const ClientContactForm = () => {
                 />
               </div>
               <div className="form-group">
-                <label for="contactBodyInput" id="labelItem">Message</label>
+                <label for="contactBodyInput" id="labelItem">
+                  Message
+                </label>
                 <textarea
                   type="text"
                   className="form-control contactModalInput"
