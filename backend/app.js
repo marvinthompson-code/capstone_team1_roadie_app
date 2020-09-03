@@ -5,23 +5,11 @@ require("dotenv").config();
 const port = process.env.PORT;
 const app = express();
 
-// upload image
-// const multer = require("multer");
 const path = require("path");
 
 app.use(express.static(path.resolve(__dirname, "./public")));
 
-// const storage = multer.diskStorage({
-//   destination: "./public/uploads/",
-//   filename: function (req, file, cb) {
-//     cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
-//   },
-// });
 
-// const upload = multer({
-//   storage: storage,
-//   limits: { fileSize: 1000000 },
-// }).single("imageUpload");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

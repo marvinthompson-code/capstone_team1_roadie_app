@@ -134,22 +134,25 @@ const deleteSinglePicture = async (req, res, next) => {
 
 const getPicturesByArtistId = async (req, res, next) => {
   let { artist_id } = req.params;
-  try {
-    let picture = await db.any("SELECT * FROM pictures WHERE artist_id = $1", [
-      artist_id,
-    ]);
-    res.status(200).json({
-      status: "Success",
-      message: `Retrieved all picture(s)`,
-      body: { picture },
-    });
-  } catch (error) {
-    res.json({
-      status: "Error",
-      message: `Could not get picture(s)`,
-    });
-    next(error);
-  }
+  
+    try {
+      let picture = await db.any(
+        "SELECT * FROM pictures WHERE artist_id = $1",
+        [artist_id]
+      );
+      res.status(200).json({
+        status: "Success",
+        message: `Retrieved all picture(s)`,
+        body: { picture },
+      });
+    } catch (error) {
+      res.json({
+        status: "Error",
+        message: `Could not get picture(s)`,
+      });
+      next(error);
+    }
+
 };
 
 const getPicturesByClientId = async (req, res, next) => {
@@ -171,6 +174,8 @@ const getPicturesByClientId = async (req, res, next) => {
     next(error);
   }
 };
+
+
 const getVideosByArtistId = async (req, res, next) => {
   let { artist_id } = req.params;
   try {
@@ -193,6 +198,7 @@ const getVideosByArtistId = async (req, res, next) => {
 
 const getVideosByClientId = async (req, res, next) => {
   let { client_id } = req.params;
+  console.log(req.params);
   try {
     let video = await db.any("SELECT * FROM videos WHERE client_id = $1", [
       client_id,
@@ -269,5 +275,5 @@ module.exports = {
   getVideosByArtistId,
   getVideosByClientId,
   editCaptionForVideo,
-  editCaptionForPictures
+  editCaptionForPictures,
 };

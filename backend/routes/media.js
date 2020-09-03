@@ -16,8 +16,8 @@ const {
 
 media.get("/pictures", getPictures); //tested
 media.post("/pictures", addNewPicture); //tested
-media.get("/pictures/:artist_id", getPicturesByArtistId); //tested
-media.get("/pictures/:client_id", getPicturesByClientId); //tested
+media.get("/pictures/artist/:artist_id", getPicturesByArtistId); //tested
+media.get("/pictures/client/:client_id", getPicturesByClientId); //tested
 media.delete("/pictures/:id", deleteSinglePicture); //tested
 media.put("/pictures/:id", editCaptionForVideo); //tested
 
