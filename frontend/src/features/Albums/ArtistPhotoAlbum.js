@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthContext";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import "../../css/PhotoAlbum.css";
@@ -10,25 +9,24 @@ const ArtistPhotoAlbum = () => {
   const [userInfo, setUserInfo] = useState({});
   const API = apiURL();
   const match = useRouteMatch();
-  // const { currentUser } = useContext(AuthContext);
 
   const getUser = async (id) => {
-    let res = await axios.get(`${API}/clients/${id}`);
-    if(res.data.body === undefined){
-      res = await axios.get(`${API}/artists/${id}`);
-      setUserInfo(res.data.body.single_artist)
-    }else{
-      setUserInfo(res.data.body.single_client);
+    try {
+      let res = await axios.get(`${API}/artists/${id}`);
+      setUserInfo(res.data.body.single_artist);
+      debugger;
+    } catch (err) {
+      console.log(err);
     }
-    
   };
   useEffect(() => {
-    const fetchUsersPhotoAlbum = async (id) => {
-      let res = await axios.get(`${API}/media/pictures/${id}`);
+    const fetchUsersPhotoAlbum = async (artist_id) => {
+      let res = await axios.get(`${API}/media/pictures/artist/${artist_id}`);
       setPictures(res.data.body.picture);
     };
-    fetchUsersPhotoAlbum(match.params.id);
-    getUser(match.params.id);
+    getUser(match.params.artist_id);
+    fetchUsersPhotoAlbum(match.params.artist_id);
+    debugger;
   }, []);
 
   const imgSize = {
@@ -37,6 +35,7 @@ const ArtistPhotoAlbum = () => {
   };
 
   const getUsersPictures = pictures.map((picture) => {
+    debugger;
     return (
       <li>
         <div className="eachPhoto">
