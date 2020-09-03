@@ -58,7 +58,7 @@ const Login = () => {
 
           <div className="modal-body loginModalBody">
             <div className="loginForm">
-              {error ? <div>{error}</div> : null}
+              {error ? <div style={{ color: "white" }}>{error}</div> : null}
 
               <form onSubmit={handleSubmit}>
                 <div className="form-group">

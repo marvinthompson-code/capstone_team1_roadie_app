@@ -1,0 +1,43 @@
+:root {
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #3a5049;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
+  --indiaGreen: #078809;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5a7272;
+  --hotPink: #ff69b4;
+  --scarlet: #ff2400;
+  --kobe: #881d0b;
+}
+
+.buttonsDiv {
+  background: black;
+}
+
+.acceptBtn {
+  border-radius: 10px;
+  background-color: var(--jade);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  border-style: none;
+}
+
+.acceptBtn:hover {
+}
+
+.declineBtn {
+  background-color: var(--kobe);
+  border-style: none;
+}
+
+.declineBtn:hover {
+}
