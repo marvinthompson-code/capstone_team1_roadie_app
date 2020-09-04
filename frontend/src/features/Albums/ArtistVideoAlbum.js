@@ -23,21 +23,38 @@ const ArtistVideoAlbum = () =>{
         const fetchUsersVideoAlbum = async (artist_id) => {
             let res = await axios.get(`${API}/media/videos/artist/${artist_id}`);
             setVideos(res.data.body.video);
-            debugger
           };
           getUser(match.params.artist_id);
         fetchUsersVideoAlbum(match.params.artist_id);
 
-    },[])
+    },[]);
+    const imgSize = {
+        height: "auto",
+        width: "200px",
+      };
+    const getUsersVideo = videos.map((video) =>{
+        return(
+            <li>
+                <div className="eachPhoto">
+                    <video 
+                    alt={video.caption}
+                    src={video.url}
+                    style={imgSize}
+                    control/>
+                    <p id="imgCaption">{video.caption}</p>
+                </div>
+            </li>
+        )
+    })
 
     return (
         <div className="container-fluid position-absolute userAlbums">
           <div className="row justify-content-center">
             <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
           </div>
-          {/* <div className="jumbotron albumJumbo text-center">
-            <ul className="allPhotos">{getUsersPictures}</ul>
-          </div> */}
+          <div className="jumbotron albumJumbo text-center">
+            <ul className="allPhotos">{getUsersVideo}</ul>
+          </div>
         </div>
       );
     
