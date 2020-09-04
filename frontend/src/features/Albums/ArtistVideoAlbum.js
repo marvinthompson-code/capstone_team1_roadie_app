@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
-import VideoPlayer from './VideoPlayer/VideoPlayer';
 
 const ArtistVideoAlbum = () => {
   const [videos, setVideos] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [selectedVideo, setSelectedVideo] = useState(null);
   // const [caption, setCaption] = useState()
+  const history = useHistory();
   const API = apiURL();
   const match = useRouteMatch();
 
@@ -37,23 +38,29 @@ const ArtistVideoAlbum = () => {
     return (
       <li>
         <div className="eachPhoto">
-          <a value={video.url} data-target="#videoTarget" data-toggle="modal" onClick={(e)=> {
-            setSelectedVideo(e.target.value);
-
-          }}>
+          <a
+            value={video.url}
+            data-target="#videoTarget"
+            data-toggle="modal"
+            onClick={() => {
+              history.push(`/media/videos/artist/${match.params.artist_id}/video/${video.id}`)
+              debugger
+            }}
+          >
             <video
               alt={video.caption}
               src={video.url}
               style={imgSize}
               control
             />
+
             <p id="imgCaption">{video.caption}</p>
           </a>
         </div>
       </li>
     );
   });
-  
+
   return (
     <div className="container-fluid position-absolute userAlbums">
       <div className="row justify-content-center">
@@ -62,7 +69,6 @@ const ArtistVideoAlbum = () => {
       <div className="jumbotron albumJumbo text-center">
         <ul className="allPhotos">{getUsersVideo}</ul>
       </div>
-      <VideoPlayer videoUrl={selectedVideo}/>
     </div>
   );
 };
