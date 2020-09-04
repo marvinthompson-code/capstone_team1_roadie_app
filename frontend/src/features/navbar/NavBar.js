@@ -5,17 +5,12 @@ import { artistLogout } from "../token/artistTokenSlice";
 import notificationBell from "../images/icons/notification.png";
 import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  receiveNotifications,
-  addNotification,
-} from "../Notifications/notificationsSlice";
+import { receiveNotifications } from "../Notifications/notificationsSlice";
 import "../../css/NavBar.css";
-import { logout, signUp } from "../../util/firebaseFunctions";
+import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
-import Login from "../login/Login";
-import DisplaySignUp from "../Display/DisplaySignUp";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -77,12 +72,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            {/* <div class="dropdown"> */}
-            <button
-              class="btn btn-secondary "
-              type="button"
-              id="dropdownMenuButton"
-            >
+            <button class="btn btn-secondary " type="button">
               <img
                 src={notificationBell}
                 alt="notification"
@@ -106,36 +96,15 @@ const NavBar = () => {
               Profile
             </NavLink>
           </li>
-          <li className="nav-item dropdown">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  src={notificationBell}
-                  alt="notification"
-                  className="bell"
-                  onClick={() => history.push("/notifications")}
-                />
-              </button>
-              {/* <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {notifications.map((notification) => {
-                  let { name, message, body } = notification.data;
-                  return (
-                    <div class="dropdown-item" key={notification.id}>
-                      <h4>{message}</h4>
-                      <h3>{name}</h3>
-                      <p>{body}</p>
-                    </div>
-                  );
-                })}
-              </div> */}
-            </div>
+          <li className="nav-item">
+            <button class="btn btn-secondary" type="button">
+              <img
+                src={notificationBell}
+                alt="notification"
+                className="bell"
+                onClick={() => history.push("/notifications")}
+              />
+            </button>
           </li>
         </>
       );

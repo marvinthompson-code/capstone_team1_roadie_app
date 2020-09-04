@@ -27,6 +27,7 @@ const BookMeForm = () => {
       .doc(match.params.id)
       .collection("messages")
       .add({
+        client_id: client.id,
         bio: bio,
         email: emailContact,
         number: numberContact,
@@ -195,7 +196,13 @@ const BookMeForm = () => {
                   required
                 />
               </div>
-              <button type="submit" className="bookMeButton btn-primary" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
+              <button
+                type="submit"
+                className="bookMeButton btn-primary"
+                onClick={handleSubmit}
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 Book
               </button>
             </form>

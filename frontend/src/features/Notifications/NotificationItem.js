@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import "../../css/NotificationItem.css";
+import axios from "axios";
+import { apiURL } from "../../util/apiURL";
 
 const NotificationItem = ({ notification }) => {
+  const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
+  const API = apiURL();
   const [isArtist, setIsArtist] = useState(null);
+  const [clientID, setClientID] = useState("");
+  const [artistID, setArtistID] = useState("");
 
   const toggleArtist = () => {
     if (notification.data.eventDetails) {
+      setClientID(notification.client_id);
+      setArtistID(artist.id);
       setIsArtist(true);
     } else if (notification.data.name) {
+      // setClientID(client.id);
+      // setArtistID(notification.data.artist_id);
       setIsArtist(false);
     }
   };
+
+  useEffect(() => {
+    toggleArtist();
+  }, []);
 
   let {
     message,
@@ -19,11 +36,28 @@ const NotificationItem = ({ notification }) => {
     number,
     eventDetails,
     name,
+    selectedEvent,
   } = notification.data;
+
+  const handleAccept = async () => {
+    try {
+      let res = await axios.post(`${API}/bookings/`, {
+        artist_id: artistID,
+        client_id: clientID,
+        event_id: selectedEvent,
+        // bio,
+        // contact_info,
+      });
+      debugger;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDecline = () => {};
 
   return (
     <>
-      {toggleArtist}
       {isArtist ? (
         <div className="card" style={{ width: "18rem" }}>
           <div className="card-body">
@@ -51,6 +85,22 @@ const NotificationItem = ({ notification }) => {
             <h6 className="card-subtitle mb-2 text-muted">Contact Info:</h6>
             <p className="card-text">{number}</p>
             <p className="card-text">{email}</p>
+          </div>
+          <div className="buttonsDiv">
+            <button
+              type="button"
+              class="btn btn-primary acceptBtn"
+              onClick={handleAccept}
+            >
+              Accept
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary declineBtn"
+              onClick={handleDecline}
+            >
+              Decline
+            </button>
           </div>
         </div>
       ) : (

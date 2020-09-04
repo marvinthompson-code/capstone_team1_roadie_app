@@ -55,7 +55,7 @@ const PublicLandingPage = () => {
                   <h5 className="lead-fluid display-4 ">For Clients</h5>
                   <p className="lead display-5">
                     <span className="badge badge-success">R</span>
-                    Seemless Event creation. Search for venues, set show
+                    Seamless Event creation. Search for venues, set show
                     details, and make your night unforgettable.
                   </p>
                   <p className="lead display-5">
