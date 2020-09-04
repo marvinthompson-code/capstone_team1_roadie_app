@@ -28,6 +28,7 @@ import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum"
 import AboutRoadie from "./features/About/AboutRoadie";
 import WhyRoadie from "./features/About/WhyRoadie";
 import MeetTheRoadies from "./features/About/MeetRoadies";
+import ArtistVideoAlbum from "./features/Albums/ArtistVideoAlbum";
 
 Modal.setAppElement("#root");
 
@@ -69,6 +70,10 @@ function App() {
 
         <ProtectedRoute exact path={"/media/pictures/artist/:artist_id"}>
           <ArtistPhotoAlbum />
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path={"/media/videos/artist/:artist_id"}>
+          <ArtistVideoAlbum />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/media/pictures/client/:client_id"}>
