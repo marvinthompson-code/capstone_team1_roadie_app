@@ -11,7 +11,6 @@ const ArtistVideoAlbum = () =>{
     const match = useRouteMatch();
 
     const getUser = async (id) =>{
-        debugger
         try{
             let res = await axios.get(`${API}/artists/${id}`);
             setUserInfo(res.data.body.single_artist);
@@ -21,8 +20,13 @@ const ArtistVideoAlbum = () =>{
     };
 
     useEffect(() =>{
-        debugger
-        getUser(match.params.artist_id);
+        const fetchUsersVideoAlbum = async (artist_id) => {
+            let res = await axios.get(`${API}/media/videos/artist/${artist_id}`);
+            setVideos(res.data.body.video);
+            debugger
+          };
+          getUser(match.params.artist_id);
+        fetchUsersVideoAlbum(match.params.artist_id);
 
     },[])
 
