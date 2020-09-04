@@ -11,7 +11,15 @@ const ArtistVideoAlbum = () =>{
     const match = useRouteMatch();
 
     const getUser = async (id) =>{
-        let res = await axios.get(`${API}/artist/${id}`)
-    }
+        try{
+            let res = await axios.get(`${API}/artist/${id}`);
+            setUserInfo(res.data.body.single_artist);
+        }catch(err){
+            console.log(err);
+        }
+    };
+
+
     
-}
+};
+export default ArtistVideoAlbum;

@@ -20,16 +20,11 @@ import { useDispatch } from "react-redux";
 import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
-<<<<<<< HEAD
-import EventDisplay from './features/Events/EventDisplay';
-import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum";
-=======
 
 import EventDisplay from './features/Events/EventDisplay'
 import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum"
 
 
->>>>>>> 29fcc2f80e8bc8e6761a170585943992f0085a48
 import AboutRoadie from "./features/About/AboutRoadie";
 import WhyRoadie from "./features/About/WhyRoadie";
 import MeetTheRoadies from "./features/About/MeetRoadies";
