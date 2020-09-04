@@ -16,15 +16,15 @@ const {
 
 media.get("/pictures", getPictures); //tested
 media.post("/pictures", addNewPicture); //tested
-media.get("/pictures/:artist_id", getPicturesByArtistId); //tested
-media.get("/pictures/:client_id", getPicturesByClientId); //tested
+media.get("/pictures/artist/:artist_id", getPicturesByArtistId); //tested
+media.get("/pictures/client/:client_id", getPicturesByClientId); //tested
 media.delete("/pictures/:id", deleteSinglePicture); //tested
 media.put("/pictures/:id", editCaptionForVideo); //tested
 
 media.get("/videos", getVideos); //tested
 media.post("/videos", addNewVideo); //tested
-media.get("/artists/:artist_id/videos", getVideosByArtistId); //tested
-media.get("/clients/:client_id/videos", getVideosByClientId); //tested
+media.get("/videos/artist/:artist_id", getVideosByArtistId); //tested
+media.get("/videos/client/:client_id", getVideosByClientId); //tested
 media.delete("/videos/:id", deleteSingleVideo); //tested
 media.put("/videos/:id", editCaptionForVideo); //tested
 

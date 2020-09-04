@@ -10,8 +10,6 @@ import "../../css/Portfolio.css";
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
   const [name, setName] = useState("");
-  const [video, setVideos] = useState([]);
-  const [caption, setCaption] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,7 +42,6 @@ const ArtistPortfolio = () => {
   };
   const toPhotoAlbum = () => {
     history.push(`/media/pictures/artist/${match.params.id}`);
-    debugger
   };
   const toVideoAlbum = () => {
     history.push(`/media/videos/artist/${match.params.id}`);

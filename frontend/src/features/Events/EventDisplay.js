@@ -17,7 +17,6 @@ const EventDisplay = () => {
     const fetchEventInfo = async (id, client_id) => {
       let res = await axios.get(`${API}/events/${id}/${client_id}`);
       let { name, venue, date, city, address } = res.data.body.event;
-      debugger;
       setName(name);
       setVenue(venue);
       setDate(date);

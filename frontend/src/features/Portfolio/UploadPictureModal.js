@@ -4,6 +4,9 @@ import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import "../../css/uploadModal.css";
+
+
+
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState("");
