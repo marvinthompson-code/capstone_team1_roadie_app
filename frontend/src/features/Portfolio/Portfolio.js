@@ -10,8 +10,6 @@ import "../../css/Portfolio.css";
 const ArtistPortfolio = () => {
   const artist = useSelector((state) => state.artist);
   const [name, setName] = useState("");
-  const [video, setVideos] = useState([]);
-  const [caption, setCaption] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();

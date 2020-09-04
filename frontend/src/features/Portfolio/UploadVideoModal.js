@@ -26,6 +26,7 @@ const UploadVideoModal = () => {
 
   const handleFirebaseVideoUpload = () => {
     if (videoAsFile === "") {
+      debugger
       alert(`Please choose a valid file before uploading`);
     } else if (videoAsFile !== null) {
       const uploadTask = storage
@@ -61,10 +62,12 @@ const UploadVideoModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API}/media/artists/${artist.id}/videos`, {
+      await axios.post(`${API}/media/videos/`, {
+        artist_id: artist.id,
         caption: caption,
         url: videoUrl,
       });
+      debugger
     } catch (err) {
       console.log(err.message);
     }
