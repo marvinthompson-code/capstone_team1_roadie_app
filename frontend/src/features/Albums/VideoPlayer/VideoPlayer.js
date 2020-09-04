@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../../util/apiURL";
+import ReactPlayer from "react-player";
 import axios from "axios";
 
 const VideoPlayer = () => {
@@ -23,8 +24,7 @@ const VideoPlayer = () => {
   return (
     <div>
       <h1>{user.caption}</h1>
-      <video width="320" height="240" controls src={user.url}>
-      </video>
+      <ReactPlayer className="react-player" url={user.url} controls />
     </div>
   );
 };
