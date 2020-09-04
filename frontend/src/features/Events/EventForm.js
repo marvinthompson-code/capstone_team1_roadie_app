@@ -38,7 +38,7 @@ const EventForm = () => {
       setDate("");
       setAddress("");
       setCity("");
-      dispatch(receiveVenueSearch(null))
+      // dispatch(receiveVenueSearch(null))
       history.push(`/client/${client.id}`);
     } catch (err) {
       console.log(err);
@@ -79,7 +79,7 @@ const EventForm = () => {
         formattedAddress,
       } = venue.location;
       let { prefix } = venue.categories[0].icon;
-      let img = prefix + ".png";
+      let img = `${prefix}.png`;
       return (
         <a
           key={venue.id}
@@ -244,7 +244,7 @@ const EventForm = () => {
         </form>
       </div>
 
-      <div className={"SearchResultIndexContainer"}>{VenueSearchIndex()}</div>
+      <div className={"container"}>{VenueSearchIndex()}</div>
     </div>
   );
 };

@@ -44,7 +44,6 @@ const ArtistPortfolio = () => {
   };
   const toPhotoAlbum = () => {
     history.push(`/media/pictures/artist/${match.params.id}`);
-    debugger
   };
   const toVideoAlbum = () => {
     history.push(`/media/videos/artist/${match.params.id}`);

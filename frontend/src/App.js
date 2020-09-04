@@ -20,8 +20,8 @@ import { useDispatch } from "react-redux";
 import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
+import EventDisplay from './features/Events/EventDisplay';
 import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum";
-
 import AboutRoadie from "./features/About/AboutRoadie";
 import WhyRoadie from "./features/About/WhyRoadie";
 import MeetTheRoadies from "./features/About/MeetRoadies";
@@ -76,13 +76,17 @@ function App() {
           <Artist />
         </ProtectedRoute>
 
-        <Route exact path={"/notifications"}>
+        <ProtectedRoute exact path={"/notifications"}>
           <NotificationDisplay />
-        </Route>
+        </ProtectedRoute>
 
         <ProtectedRoute exact path={"/client/:id/createEvent"}>
           <CreateEvent />
         </ProtectedRoute>
+
+        <Route exact path={"/event/:id/client/:client_id"}>
+          <EventDisplay />
+        </Route>
 
         <Route path="/join">
           <PublicLandingPage />

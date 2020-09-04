@@ -1,0 +1,27 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828b;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075d3e;
+    --jade: #00a86b;
+    --indiaGreen: #078809;
+    --electricGreen: #00ff00;
+    --eerieBlk2: #1c1e1e;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5a7272;
+  }
+
+.notificationContainer {
+    background-color: rgba(28, 30, 30, 0.8) !important;
+    border: 2px solid var(--jade);
+    border-radius: 10px;
+    /* box-shadow: 5px 10px 18px var(--eerieBlk2); */
+    color: white;
+    transition: 2s;
+}

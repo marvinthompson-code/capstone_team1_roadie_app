@@ -14,7 +14,6 @@ const ArtistPhotoAlbum = () => {
     try {
       let res = await axios.get(`${API}/artists/${id}`);
       setUserInfo(res.data.body.single_artist);
-      debugger;
     } catch (err) {
       console.log(err);
     }
@@ -26,7 +25,6 @@ const ArtistPhotoAlbum = () => {
     };
     getUser(match.params.artist_id);
     fetchUsersPhotoAlbum(match.params.artist_id);
-    debugger;
   }, []);
 
   const imgSize = {
@@ -35,7 +33,6 @@ const ArtistPhotoAlbum = () => {
   };
 
   const getUsersPictures = pictures.map((picture) => {
-    debugger;
     return (
       <li>
         <div className="eachPhoto">

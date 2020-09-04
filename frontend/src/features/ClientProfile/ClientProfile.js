@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { toggleLoadingState } from "../Loading/loadingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleClientContactModalState } from "../ClientContactForm/clientContactModalSlice";
 import ClientPortfolio from "../Portfolio/ClientPortfolio";
@@ -17,7 +16,7 @@ const ClientProfile = () => {
   const [profilePicUrl, setProfilePicUrl] = useState("");
   const [userEvents, setUserEvents] = useState([]);
   const [toggleEditEvents, setToggleEditEvents] = useState(false);
-  const artist = useSelector((state) => state.artist);
+  const [eventOwnerId, setEventOwnerid ] = useState(null)
   const client = useSelector((state) => state.client);
   const loading = useSelector((state) => state.loading);
   const API = apiURL();
@@ -41,6 +40,7 @@ const ClientProfile = () => {
       setBio(bio);
       setCity(city);
       setContactInfo(contact_info);
+      setEventOwnerid(id)
     };
     fetchUserInfo(match.params.id);
   }, []);
@@ -71,8 +71,8 @@ const ClientProfile = () => {
 
   const userEventsThumbs = userEvents.map((event) => {
     return (
-      <li id={event.id} className={"eventThumb container-fluid row"} key={event.id}>
-        <div class="card eventCard" style={{ width: "18rem" }}>
+      <div id={event.id} className={"eventThumb row"} key={event.id} onClick={(e) => history.push(`/event/${event.id}/client/${eventOwnerId}`)}>
+        <div class="card eventCard col" style={{ width: "18rem" }}>
           <img
             src={logo}
             alt="roadieLogo"
@@ -97,13 +97,15 @@ const ClientProfile = () => {
             </div>
             <div className={"venueDateContainer"}>
               <p class="card-text eventThumbCardText">{event.venue}</p>
-              <p class="card-text eventThumbCardText">{event.date.slice(0, 10)}</p>
+              <p class="card-text eventThumbCardText">
+                {event.date.slice(0, 10)}
+              </p>
               <p class="card-text eventThumbCardText">{event.address}</p>
               <p class="card-text eventThumbCardText">{event.city}</p>
             </div>
           </div>
         </div>
-      </li>
+      </div>
     );
   });
 
@@ -128,23 +130,20 @@ const ClientProfile = () => {
         <div className="eventsButtonsDiv">
           <button
             id={"CreateEventButton"}
+            className="btn btn-primary eventButtons"
             onClick={() =>
               history.push(`/client/${match.params.id}/createEvent`)
             }
           >
             Create Event
           </button>
-          <button id={"CreateEventButton"} onClick={handleToggle}>
+          <button id={"CreateEventButton"} onClick={handleToggle} className="btn btn-primary eventButtons">
             Edit Events
           </button>
         </div>
       );
     }
   };
-
-  //   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  //   Launch demo modal
-  // </button>
 
   return (
     <div className="container-fluid">
@@ -191,13 +190,13 @@ const ClientProfile = () => {
             </div>
           </div>
 
-          <div className={"bookingsDisplayContainer"}>
+          <div className={"bookingsDisplayContainer container text-center"}>
             <div className={"eventTitleDiv"}>
-              <h3 className={"eventsTitle"}>Created Events</h3>
+              <h1 class="display-4">Created Events</h1>
+              {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
             </div>
-            <ul className={"eventUl container-fluid col"}>{userEventsThumbs}</ul>
-
             <div className={"createEventButtonDiv"}>{createEventButton()}</div>
+            <div className={"eventUl container-fluid"}>{userEventsThumbs}</div>
           </div>
         </div>
       </div>
