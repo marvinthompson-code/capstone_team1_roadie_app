@@ -48,7 +48,6 @@ function App() {
         <NavBar />
         <Route exact path="/">
           <Home />
-          {/* <About /> */}
         </Route>
         <DisplaySignUp />
         <Login />
@@ -87,7 +86,8 @@ function App() {
         <ProtectedRoute exact path={"/media/pictures/client/:client_id"}>
           <ClientPhotoAlbum />
         </ProtectedRoute>
-        <ProtectedRoute exact path={"/media/videos/client/videos/:client_id"}>
+
+        <ProtectedRoute exact path={"/media/videos/client/:client_id"}>
           <ClientVideoAlbum />
         </ProtectedRoute>
 

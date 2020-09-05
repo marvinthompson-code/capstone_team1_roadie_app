@@ -24,6 +24,7 @@ const ClientVideoAlbum = () => {
 
   useEffect(() => {
     const fetchUsersVideoAlbum = async (client_id) => {
+      debugger
       let res = await axios.get(`${API}/media/videos/client/${client_id}`);
       setVideos(res.data.body.video);
     };
