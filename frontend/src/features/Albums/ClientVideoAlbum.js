@@ -15,7 +15,7 @@ const ClientVideoAlbum = () => {
   const getUser = async (id) => {
     try {
       let res = await axios.get(`${API}/clients/${id}`);
-      debugger
+    
       setUserInfo(res.data.body.single_client);
     } catch (err) {
       console.log(err);
@@ -24,7 +24,7 @@ const ClientVideoAlbum = () => {
 
   useEffect(() => {
     const fetchUsersVideoAlbum = async (client_id) => {
-      debugger
+    
       let res = await axios.get(`${API}/media/videos/client/${client_id}`);
       setVideos(res.data.body.video);
     };
@@ -47,7 +47,7 @@ const ClientVideoAlbum = () => {
               history.push(
                 `/media/videos/client/${match.params.client_id}/video/${video.id}`
               );
-              debugger;
+            ;
             }}
           >
             <video

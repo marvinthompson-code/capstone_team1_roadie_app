@@ -83,10 +83,13 @@ function App() {
         >
           <VideoPlayer />
         </ProtectedRoute>
-        <ProtectedRoute exact path={"/media/videos/client/:client_id/video/:id"}>
-          <ClientVideoPlayer/>
-        </ProtectedRoute>
 
+        <ProtectedRoute
+          exact
+          path={"/media/videos/client/:client_id/video/:id"}
+        >
+          <ClientVideoPlayer />
+        </ProtectedRoute>
 
         <ProtectedRoute exact path={"/media/pictures/client/:client_id"}>
           <ClientPhotoAlbum />

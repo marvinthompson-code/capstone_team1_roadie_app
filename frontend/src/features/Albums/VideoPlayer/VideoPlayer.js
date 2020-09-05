@@ -10,12 +10,12 @@ const VideoPlayer = () => {
   const API = apiURL();
 
   useEffect(() => {
-    debugger;
+    
     const fetchArtistVideo = async (artist_id, id) => {
       let res = await axios.get(
         `${API}/media/videos/artist/${artist_id}/video/${id}`
       );
-      debugger;
+      
       setUser(res.data.body.singleVideo);
     };
     fetchArtistVideo(match.params.artist_id, match.params.id);

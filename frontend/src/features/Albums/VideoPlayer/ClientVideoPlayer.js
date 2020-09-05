@@ -10,12 +10,12 @@ const ClientVideoPlayer = () => {
   const API = apiURL();
 
   useEffect(() => {
-    debugger;
+    
     const fetchClientVideo = async (client_id, id) => {
       let res = await axios.get(
         `${API}/media/videos/client/${client_id}/video/${id}`
       );
-      debugger;
+      
       setUser(res.data.body.singleVideo);
     };
     fetchClientVideo(match.params.client_id, match.params.id);

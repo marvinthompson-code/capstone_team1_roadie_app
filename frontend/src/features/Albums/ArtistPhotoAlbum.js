@@ -36,12 +36,14 @@ const ArtistPhotoAlbum = () => {
     return (
       <li>
         <div className="eachPhoto">
+          <a data-toggle="modal" data-target="#singleImgModal">
           <img
             style={imgSize}
             alt={picture.caption}
             src={picture.url}
             id="singlePhoto"
           />
+          </a>
           <p id="imgCaption">{picture.caption}</p>
         </div>
       </li>

@@ -43,7 +43,7 @@ const ArtistVideoAlbum = () => {
             data-toggle="modal"
             onClick={() => {
               history.push(`/media/videos/artist/${match.params.artist_id}/video/${video.id}`)
-              debugger
+    
             }}
           >
             <video

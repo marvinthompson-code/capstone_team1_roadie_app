@@ -26,7 +26,6 @@ const UploadVideoModal = () => {
 
   const handleFirebaseVideoUpload = () => {
     if (videoAsFile === "") {
-      debugger;
       alert(`Please choose a valid file before uploading`);
     } else if (videoAsFile !== null) {
       const uploadTask = storage
@@ -79,7 +78,7 @@ const UploadVideoModal = () => {
           caption: caption,
           url: videoUrl,
         });
-        debugger;
+
       } catch (err) {
         console.log(err.message);
       }
