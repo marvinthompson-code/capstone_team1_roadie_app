@@ -30,6 +30,7 @@ import MeetTheRoadies from "./features/About/MeetRoadies";
 import ArtistVideoAlbum from "./features/Albums/ArtistVideoAlbum";
 import VideoPlayer from "./features/Albums/VideoPlayer/VideoPlayer";
 import ClientVideoAlbum from "./features/Albums/ClientVideoAlbum";
+import ClientVideoPlayer from "./features/Albums/VideoPlayer/ClientVideoPlayer";
 
 Modal.setAppElement("#root");
 
@@ -82,6 +83,10 @@ function App() {
         >
           <VideoPlayer />
         </ProtectedRoute>
+        <ProtectedRoute exact path={"/media/videos/client/:client_id/video/:id"}>
+          <ClientVideoPlayer/>
+        </ProtectedRoute>
+
 
         <ProtectedRoute exact path={"/media/pictures/client/:client_id"}>
           <ClientPhotoAlbum />
