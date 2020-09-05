@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
-import '../../css/uploadModal.css'
+import "../../css/uploadModal.css";
 import axios from "axios";
-
 
 const UploadVideoModal = () => {
   const [videoAsFile, setVideoAsFile] = useState("");
@@ -12,6 +11,7 @@ const UploadVideoModal = () => {
   const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const [caption, setCaption] = useState("");
   const artist = useSelector((state) => state.artist);
+  const client = useSelector((state) => state.client);
   const API = apiURL();
 
   const handleVideoAsFile = (e) => {
@@ -26,7 +26,7 @@ const UploadVideoModal = () => {
 
   const handleFirebaseVideoUpload = () => {
     if (videoAsFile === "") {
-      debugger
+      debugger;
       alert(`Please choose a valid file before uploading`);
     } else if (videoAsFile !== null) {
       const uploadTask = storage
@@ -59,17 +59,30 @@ const UploadVideoModal = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const insertVideoIntoAlbum = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post(`${API}/media/videos/`, {
-        artist_id: artist.id,
-        caption: caption,
-        url: videoUrl,
-      });
-      debugger
-    } catch (err) {
-      console.log(err.message);
+    if (artist === null) {
+      try {
+        await axios.post(`${API}/media/videos/`, {
+          client_id: client.id,
+          caption: caption,
+          url: videoUrl,
+        });
+        setCaption("");
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        await axios.post(`${API}/media/videos/`, {
+          artist_id: artist.id,
+          caption: caption,
+          url: videoUrl,
+        });
+        debugger;
+      } catch (err) {
+        console.log(err.message);
+      }
     }
   };
 
@@ -98,7 +111,7 @@ const UploadVideoModal = () => {
             </button>
           </div>
           <div className="modal-body uploadModalBody">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={insertVideoIntoAlbum}>
               <div className="custom-file">
                 <input
                   type="file"
@@ -131,7 +144,11 @@ const UploadVideoModal = () => {
                   required
                 />
               </div>
-              <input type="submit" className="btn btn-primary activeButton" name="Click Here" />
+              <input
+                type="submit"
+                className="btn btn-primary activeButton"
+                name="Click Here"
+              />
             </form>
           </div>
           <div className="modal-footer uploadModalBody">
