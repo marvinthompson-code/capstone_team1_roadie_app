@@ -48,6 +48,7 @@ const ClientPortfolio = () => {
   };
   const toVideoAlbum = () => {
     history.push(`/media/videos/client/${match.params.id}`);
+    debugger
   };
 
   useEffect(() => {

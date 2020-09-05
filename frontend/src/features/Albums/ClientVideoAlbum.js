@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { apiURL } from "../../util/apiUrl";
+import { apiURL } from "../../util/apiURL";
 
 const ClientVideoAlbum = () => {
   const [videos, setVideos] = useState([]);
@@ -15,6 +15,7 @@ const ClientVideoAlbum = () => {
   const getUser = async (id) => {
     try {
       let res = await axios.get(`${API}/clients/${id}`);
+      debugger
       setUserInfo(res.data.body.single_client);
     } catch (err) {
       console.log(err);

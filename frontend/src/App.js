@@ -21,15 +21,15 @@ import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
 
-import EventDisplay from './features/Events/EventDisplay'
-import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum"
-
+import EventDisplay from "./features/Events/EventDisplay";
+import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum";
 
 import AboutRoadie from "./features/About/AboutRoadie";
 import WhyRoadie from "./features/About/WhyRoadie";
 import MeetTheRoadies from "./features/About/MeetRoadies";
 import ArtistVideoAlbum from "./features/Albums/ArtistVideoAlbum";
 import VideoPlayer from "./features/Albums/VideoPlayer/VideoPlayer";
+import ClientVideoAlbum from "./features/Albums/ClientVideoAlbum";
 
 Modal.setAppElement("#root");
 
@@ -77,12 +77,18 @@ function App() {
           <ArtistVideoAlbum />
         </ProtectedRoute>
 
-        <ProtectedRoute exact path={"/media/videos/artist/:artist_id/video/:id"}>
+        <ProtectedRoute
+          exact
+          path={"/media/videos/artist/:artist_id/video/:id"}
+        >
           <VideoPlayer />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/media/pictures/client/:client_id"}>
           <ClientPhotoAlbum />
+        </ProtectedRoute>
+        <ProtectedRoute exact path={"/media/videos/client/videos/:client_id"}>
+          <ClientVideoAlbum />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>
