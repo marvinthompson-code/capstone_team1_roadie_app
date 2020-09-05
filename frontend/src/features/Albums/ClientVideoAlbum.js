@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { apiURL } from "../../util/apiURL";
+import { apiURL } from "../../util/apiUrl";
 
-const ArtistVideoAlbum = () => {
+const ClientVideoAlbum = () => {
   const [videos, setVideos] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   // const [caption, setCaption] = useState()
@@ -14,20 +14,20 @@ const ArtistVideoAlbum = () => {
 
   const getUser = async (id) => {
     try {
-      let res = await axios.get(`${API}/artists/${id}`);
-      setUserInfo(res.data.body.single_artist);
+      let res = await axios.get(`${API}/clients/${id}`);
+      setUserInfo(res.data.body.single_client);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    const fetchUsersVideoAlbum = async (artist_id) => {
-      let res = await axios.get(`${API}/media/videos/artist/${artist_id}`);
+    const fetchUsersVideoAlbum = async (client_id) => {
+      let res = await axios.get(`${API}/media/videos/client/${client_id}`);
       setVideos(res.data.body.video);
     };
-    getUser(match.params.artist_id);
-    fetchUsersVideoAlbum(match.params.artist_id);
+    getUser(match.params.client_id);
+    fetchUsersVideoAlbum(match.params.client_id);
   }, []);
   const imgSize = {
     height: "auto",
@@ -42,8 +42,10 @@ const ArtistVideoAlbum = () => {
             data-target="#videoTarget"
             data-toggle="modal"
             onClick={() => {
-              history.push(`/media/videos/artist/${match.params.artist_id}/video/${video.id}`)
-              debugger
+              history.push(
+                `/media/videos/client/${match.params.client_id}/video/${video.id}`
+              );
+              debugger;
             }}
           >
             <video
@@ -71,4 +73,4 @@ const ArtistVideoAlbum = () => {
     </div>
   );
 };
-export default ArtistVideoAlbum;
+export default ClientVideoAlbum;
