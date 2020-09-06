@@ -99,7 +99,7 @@ const searchForSingleArtist = async (req, res, next) => {
       message: "Searched or artist by name " + name,
       body: {
         searched_artist: await db.any(
-          "SELECT * FROM artists WHERE name LIKE $1",
+          "SELECT * FROM artists WHERE LOWER (name) LIKE $1",
           ["%" + name + "%"]
         ),
       },
