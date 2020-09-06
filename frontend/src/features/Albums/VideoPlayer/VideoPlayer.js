@@ -1,49 +1,31 @@
-import React from "react";
-import ReactPlayer from 'react-player'
+import React, { useState, useEffect } from "react";
+import { useRouteMatch } from "react-router-dom";
+import { apiURL } from "../../../util/apiURL";
+import ReactPlayer from "react-player";
+import axios from "axios";
+import "../../../css/VideoPlayer.css"
 
+const VideoPlayer = () => {
+  const [user, setUser] = useState({});
+  const match = useRouteMatch();
+  const API = apiURL();
 
-const VideoPlayer = ({ videoUrl }) => {
+  useEffect(() => {
+    const fetchArtistVideo = async (artist_id, id) => {
+      let res = await axios.get(
+        `${API}/media/videos/artist/${artist_id}/video/${id}`
+      );
 
-    debugger
+      setUser(res.data.body.singleVideo);
+    };
+    fetchArtistVideo(match.params.artist_id, match.params.id);
+  }, []);
 
   return (
-    <div
-      class="modal fade"
-      id="videoTarget"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-               Hola
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <ReactPlayer url={videoUrl}/>
-          
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+    <div className="container VideoPlayer">
+      <div className="jumbotron">
+        <h1>{user.caption}</h1>
+        <ReactPlayer className="react-player" uri={user.url} controls />
       </div>
     </div>
   );

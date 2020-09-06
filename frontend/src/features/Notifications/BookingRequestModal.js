@@ -8,7 +8,6 @@ const BookingRequestModal = ({ artist_id, client_id, event_id }) => {
   const [bio, setBio] = useState("");
   const [contactInfo, setContactInfo] = useState("");
 
-  //   debugger;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

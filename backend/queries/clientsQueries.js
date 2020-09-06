@@ -91,7 +91,7 @@ const searchForSingleClient = async (req, res, next) => {
   let { name } = req.params;
   try {
     let searched_client = await db.any(
-      "SELECT * FROM clients WHERE name LIKE $1",
+      "SELECT * FROM clients WHERE LOWER (name) LIKE $1",
       ["%" + name + "%"]
     );
     res.status(200).json({
