@@ -76,9 +76,20 @@
 
 .missionContainer {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1% 49% 40% 10%;
+  
 }
-
+.carouselHome{
+  grid-column: 2/ span 1;
+  border-right: 3px solid var(--jade);
+  padding: 10px;
+}
+.RUARoadie{
+  grid-column: 3/ span 1;
+}
+.homeBadge{
+  margin: 10px;
+}
 .roadieLure {
   padding: 20px;
 }
@@ -99,4 +110,7 @@
 
 .homeSignUpBtnDiv {
   padding: 20px;
+}
+.pTagHeader{
+  margin-bottom: 20px;
 }
