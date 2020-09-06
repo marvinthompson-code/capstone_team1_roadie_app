@@ -3,6 +3,7 @@ import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import "../../css/PhotoAlbum.css";
+import IndividualPicture from "./IndividualPicture/IndividualPicture";
 
 const ArtistPhotoAlbum = () => {
   const [pictures, setPictures] = useState([]);
@@ -36,15 +37,16 @@ const ArtistPhotoAlbum = () => {
     return (
       <li>
         <div className="eachPhoto">
-          <a data-toggle="modal" data-target="#singleImgModal">
+          <button type="button" data-toggle="modal" data-target="#singleImgModal">
           <img
             style={imgSize}
             alt={picture.caption}
             src={picture.url}
             id="singlePhoto"
           />
-          </a>
+          </button>
           <p id="imgCaption">{picture.caption}</p>
+          <IndividualPicture/>
         </div>
       </li>
     );

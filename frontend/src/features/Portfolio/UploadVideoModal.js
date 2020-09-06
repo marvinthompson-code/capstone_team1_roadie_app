@@ -48,6 +48,7 @@ const UploadVideoModal = () => {
             .child(videoAsFile.name)
             .getDownloadURL()
             .then((fireBaseUrl) => {
+              debugger
               setVideoUrl(fireBaseUrl);
             });
         }

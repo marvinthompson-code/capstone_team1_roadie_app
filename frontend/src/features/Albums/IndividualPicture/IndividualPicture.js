@@ -9,10 +9,13 @@ const IndividualPicture = () => {
   const API = apiURL();
 
     useEffect(() => {
+        debugger
         const fetchArtistPicture = async (artist_id, id) =>{
-            let res = await axios.get(`${API}/media/pictures/artist/${artist_id}/picture/${id}`)
+            let res = await axios.get(`${API}/media/pictures/artists/${artist_id}/picture/${id}`)
             setUser(res.data.body.picture)
+            debugger
         };
+        fetchArtistPicture(match.params.artist_id, match.params.id)
 
     },[])
 
@@ -21,7 +24,7 @@ const IndividualPicture = () => {
   return (
     <div
       class="modal fade"
-      id="exampleModal"
+      id="singleImgModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -42,7 +45,10 @@ const IndividualPicture = () => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+              <img alt={user.caption} src={user.url} className="img-thumbnail" />
+              <p>Hola</p>
+          </div>
           <div class="modal-footer">
             <button
               type="button"

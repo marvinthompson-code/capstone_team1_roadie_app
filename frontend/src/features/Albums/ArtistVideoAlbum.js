@@ -31,7 +31,7 @@ const ArtistVideoAlbum = () => {
   }, []);
   const imgSize = {
     height: "auto",
-    width: "200px",
+    width: "100px",
   };
   const getUsersVideo = videos.map((video) => {
     return (
