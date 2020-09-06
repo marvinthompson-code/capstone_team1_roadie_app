@@ -17,7 +17,7 @@ const Search = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let routeExtension = name === "" ? "" : `/search/${name}`;
+      let routeExtension = name === "" ? "" : `/search/${name.toLowerCase()}`;
       if (userType === "Artist" && name === "") {
         let res = await axios.get(`${API}/artists`);
         dispatch(receiveSearch(res.data.body.artists));
