@@ -30,9 +30,8 @@ const Home = () => {
         <p className="lead display-5 pTagHeader">
           With Roadie, your next packed gig is only moments away.{" "}
         </p>
-        <div className="missionContainer">
-          <div className="row">
-            <div className="col leftPec">
+        <div className="missionContainer row">
+          <div className="col carouselHome">
               <div
                 id="carouselExampleIndicators"
                 className="carousel slide homeCarousel"
@@ -96,29 +95,27 @@ const Home = () => {
                 </a>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col rightPec">
+            <div className="col RUARoadie">
               <div className="roadieLure">
                 <h5 className="lead display-4">Are you a Roadie?</h5>
                 <p className="lead display-5">
-                  <span className="badge badge-success">R</span>
+                  <span className="badge badge-success homeBadge">R</span>
                   Want to be in full control of your talent?
                 </p>
                 <p className="lead display-5">
-                  <span className="badge badge-success">R</span>
+                  <span className="badge badge-success homeBadge">R</span>
                   Ever light up with excitement about coming opportunities?
                 </p>
                 <p className="lead display-5">
-                  <span className="badge badge-success">R</span>
+                  <span className="badge badge-success homeBadge">R</span>
                   Do you have the grit to take your career to the next level?
                 </p>
                 <p className="lead display-5">
-                  <span className="badge badge-success">R</span>
+                  <span className="badge badge-success homeBadge">R</span>
                   Are you ready to set the stage of your wildest dreams?
                 </p>
                 <p className="lead display-5">
-                <span className="badge badge-success">R</span>
+                <span className="badge badge-success homeBadge">R</span>
                   What will you do for it?
                 </p>
                 <div className="homeSignUpBtnDiv">
@@ -135,7 +132,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
       </div>
     </div>

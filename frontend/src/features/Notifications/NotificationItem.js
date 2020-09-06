@@ -48,7 +48,6 @@ const NotificationItem = ({ notification }) => {
         // bio,
         // contact_info,
       });
-      debugger;
     } catch (err) {
       console.log(err);
     }
