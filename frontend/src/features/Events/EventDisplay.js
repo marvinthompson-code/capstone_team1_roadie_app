@@ -16,12 +16,14 @@ const EventDisplay = () => {
   useEffect(() => {
     const fetchEventInfo = async (id, client_id) => {
       let res = await axios.get(`${API}/events/${id}/${client_id}`);
+      debugger
       let { name, venue, date, city, address } = res.data.body.event;
       setName(name);
       setVenue(venue);
       setDate(date);
       setCity(city);
       setAddress(address);
+
     };
     fetchEventInfo(match.params.id, match.params.client_id);
   }, []);
