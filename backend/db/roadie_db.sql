@@ -74,7 +74,6 @@ CREATE TABLE lineup
     id SERIAL PRIMARY KEY,
     event_id INT REFERENCES events(id) ON DELETE CASCADE,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
-    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
 
 CREATE TABLE bookings
