@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import { recieveClientEvents } from "./bookMeEventsSlice";
 import Portfolio from "../Portfolio/Portfolio";
+import  { receiveClientInfo } from '../client/clientInfoSlice'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import "../../css/ArtistProfile.css";
@@ -41,6 +42,18 @@ const ArtistProfile = () => {
     };
     fetchUserInfo(match.params.id);
   }, []);
+
+  useEffect(() => {
+    const fetchClientInfo = async (id) => {
+      let res = await axios.get(`${API}/clients/${id}`)
+      debugger
+      let { single_client } = res.data.body 
+      dispatch(receiveClientInfo(single_client))
+    }
+    if (client !== null) {
+      fetchClientInfo(client.id)
+    }
+  }, [])
 
   const editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
