@@ -85,7 +85,6 @@ const EventForm = () => {
           key={venue.id}
           type={"button"}
           href="#"
-
           onClick={(e) => {
             setAddress(`${address}${city}${state}${cc}${postalCode}`);
             setVenue(`${name}`);
@@ -106,17 +105,17 @@ const EventForm = () => {
         </a>
       );
     });
+
+
     return (
-      <div className="jumbotron text-center eventFormJumbo">
+      <div className="jumbotron-fluid text-center">
         <ul className={"venueList"}>
           {venues.length === 0 ? (
             <>
-              <h1 className="display-4">Search for a Venue</h1>
               <p className="lead">Venue Search Results will populate below.</p>
             </>
           ) : (
             <>
-              <h1 className="display-4">Select a Venue</h1>
               <p className="lead">
                 Venue details will auto-populate after selection.
               </p>
@@ -140,57 +139,59 @@ const EventForm = () => {
     <div className="jumbotron text-center eventFormJumbo">
       <h4 className="display-4">Create an Event</h4>
       <p className="lead">Search for a venue and add event details below.</p>
-      <div className={"venueForm"}>
-        <form onSubmit={handleVenueSubmit}>
-          <div className="form-group">
-            <label for="exampleInputVenue">Venue</label>
-            <input
-              type="text"
-              className="form-control"
-              value={venue}
-              id="exampleInputVenue"
-              placeholder="Search Venues..."
-              onChange={(e) => setVenue(e.currentTarget.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label for="exampleInputCity">City</label>
-            <input
-              type="text"
-              className="form-control"
-              value={city}
-              id="exampleInputCity"
-              placeholder="City"
-              onChange={(e) => setCity(e.currentTarget.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label for="exampleInputCity">Date</label>
-            <input
-              type="date"
-              className="form-control"
-              value={date}
-              id="exampleInputDate"
-              placeholder="YYYYMMDD"
-              onChange={(e) => setDate(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-secondary eventFormSearchButton"
-          >
-            Search
-          </button>
-        </form>
-      </div>
 
       {/* <div className={"selectedVenueContainer"}> */}
-      <div className="jumbotron text-center eventFormJumbo">
+      <h1 className="display-4">Search for a Venue</h1>
+      <div className="jumbotron text-center eventFormJumbo row">
+        <div className={"venueForm col"}>
+          <form onSubmit={handleVenueSubmit}>
+            <div className="form-group">
+              <label for="exampleInputVenue">Venue</label>
+              <input
+                type="text"
+                className="form-control"
+                value={venue}
+                id="exampleInputVenue"
+                placeholder="Search Venues..."
+                onChange={(e) => setVenue(e.currentTarget.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label for="exampleInputCity">City</label>
+              <input
+                type="text"
+                className="form-control"
+                value={city}
+                id="exampleInputCity"
+                placeholder="City"
+                onChange={(e) => setCity(e.currentTarget.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label for="exampleInputCity">Date</label>
+              <input
+                type="date"
+                className="form-control"
+                value={date}
+                id="exampleInputDate"
+                placeholder="YYYYMMDD"
+                onChange={(e) => setDate(e.target.value)}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-secondary eventFormSearchButton"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <div className={"container col"}>{VenueSearchIndex()}</div>
         <div
-          className="card justify-self: center eventFormCard"
+          className="card justify-self: center eventFormCard col"
           style={{ width: "18rem" }}
         >
           <div className="card-body">
@@ -200,17 +201,11 @@ const EventForm = () => {
                 The venue information will be automatically added to the event
                 details.
               </p>
-              {/* <a href="#" className="card-link">
-                Card link
-                </a>
-                <a href="#" className="card-link">
-                Another link
-              </a> */}
               <div className="col-sm-10">
-                <input
+                <textbox
                   type="text"
                   readonly
-                  className="form-control-plaintext"
+                  className="form-control-plaintext selectedVenueText"
                   id="selectedVenue"
                   value={searchMessage}
                 />
@@ -218,7 +213,6 @@ const EventForm = () => {
             </div>
           </div>
         </div>
-        {/* </div> */}
       </div>
 
       <div className="eventFormDiv">
@@ -243,8 +237,6 @@ const EventForm = () => {
           </button>
         </form>
       </div>
-
-      <div className={"container"}>{VenueSearchIndex()}</div>
     </div>
   );
 };

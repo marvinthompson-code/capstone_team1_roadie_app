@@ -17,6 +17,7 @@ import userTypeReducer from "../features/user/userSlice";
 import uploadModalReducer from "../features/Portfolio/uploadModalSlice";
 import uploadVideoModalReducer from "../features/Portfolio/uploadVideoModalSlice"
 import loadingReducer from '../features/Loading/loadingSlice';
+import clientInfoReducer from '../features/client/clientInfoSlice'
 import notificationsReducer from '../features/Notifications/notificationsSlice'
 import logger from "redux-logger";
 
@@ -29,6 +30,7 @@ export default configureStore({
     loading: loadingReducer,
     modal: modalReducer,
     client: clientReducer,
+    clientInfo: clientInfoReducer,
     error: errorReducer,
     bookMeEvents: bookMeEventsReducer,
     eventModal: eventModalReducer,
