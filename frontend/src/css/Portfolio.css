@@ -44,7 +44,7 @@
   grid-row: 1 / span 1;
   padding: 10px;
   border: 2px solid var(--indiaGreen);
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
 }
 .artistMediaContainer {
@@ -56,19 +56,22 @@
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
   color: white;
+  background-color: rgba(28, 30, 30, 0.92) !important;
+  text-align: center;
 }
 
 .artistAlbumDiv {
   grid-row: 1 / span 1;
   border: 2px solid var(--indiaGreen);
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
   padding: 5px;
+
 }
 .artistVideoDiv {
   grid-row: 2 / span 1;
   border: 2px solid var(--indiaGreen);
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
   padding: 5px;
 }
@@ -78,6 +81,7 @@
   color: var(--jade) !important;
   background-color: var(--richBlk);
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 #uploadArtistButton:hover {
   background-color: var(--jade);
@@ -101,6 +105,7 @@
   box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
+  margin-bottom: 10px;
 }
 
 .uploadPictureArtistButton:hover {
@@ -116,6 +121,7 @@
   box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
+  margin-bottom: 10px;
 }
 .uploadVideoArtistButton:hover {
   background-color: var(--kobe) !important;

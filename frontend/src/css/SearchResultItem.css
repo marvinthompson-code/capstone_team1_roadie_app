@@ -5,45 +5,45 @@
   --PaleSilver: #c9bbaa;
   --eggShell: #f8f2dc;
   --floralWhite: #ffffff;
-  --steel: #55828B;
+  --steel: #55828b;
   --eerieBlk: #101515;
   --richBlk: #060808;
-  --castletonGrn: #075D3E;
-  --jade: #00A86B;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
   --indiaGreen: #078809;
-  --electricGreen: #00FF00;
-  --eerieBlk2: #1C1E1E;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
   --eerieBlk3: #212222;
-  --spaceGrey: #5A7272;
+  --spaceGrey: #5a7272;
 }
 
-.resultItem{
+.resultItem {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
   border: 2px solid var(--castletonGrn);
-  background-color: rgba(6,8,8, 0.8) !important;
+  background-color: rgba(6, 8, 8, 0.92) !important;
   border-radius: 10px;
   color: var(--jade);
   padding: 10px;
 }
-.resultItem:hover{
+.resultItem:hover {
   background-color: var(--jade) !important;
   color: var(--richBlk);
   /* box-shadow: 2px 3px 18px #ffffff; */
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.picDisplay{
-  grid-row: 1/ span 1;
+.picDisplay {
+  grid-row: 1 / span 1;
 }
 
 #profilePic {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  grid-column: 2/ span 1;
+  grid-column: 2 / span 1;
   justify-self: center;
 }
