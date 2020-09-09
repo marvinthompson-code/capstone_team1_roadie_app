@@ -81,7 +81,7 @@ const ClientProfile = () => {
             class="d-inline-block align-top"
             id="roadieLogo"
           />
-          <div class="card-body">
+          <div class="card-body eventListItemBody">
             <div className="eventHeading">
               <h5 class="card-title eventThumbCardText">{event.name}</h5>
               {toggleEditEvents ? (
