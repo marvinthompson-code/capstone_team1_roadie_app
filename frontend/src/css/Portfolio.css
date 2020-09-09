@@ -46,6 +46,7 @@
   border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
+  height: fit-content;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
@@ -81,7 +82,7 @@
   color: var(--jade) !important;
   background-color: var(--richBlk);
   border-radius: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 #uploadArtistButton:hover {
   background-color: var(--jade);
@@ -105,7 +106,7 @@
   box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .uploadPictureArtistButton:hover {
@@ -121,7 +122,7 @@
   box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .uploadVideoArtistButton:hover {
   background-color: var(--kobe) !important;
