@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { clientLogout } from "../token/clientTokenSlice";
 import { artistLogout } from "../token/artistTokenSlice";
@@ -59,9 +59,17 @@ const NavBar = () => {
     }
   };
 
+  useEffect(() => {
+    if (client === null && artist) {
+      loadNotifications(artist)
+    } else if (client && artist === null) {
+      loadNotifications(client)
+    }
+  }, [notifications])
+
   let routeExt = () => {
     if (client === null && artist) {
-      loadNotifications(artist);
+      // loadNotifications(artist);
       return (
         <>
           <li className="nav-item active">
@@ -89,7 +97,7 @@ const NavBar = () => {
         </>
       );
     } else if (client && artist === null) {
-      loadNotifications(client);
+      // loadNotifications(client);
       return (
         <>
           <li className="nav-item active">
