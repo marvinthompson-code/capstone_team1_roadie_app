@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
-import "../../css/EventDisplay.css"
+import "../../css/EventDisplay.css";
+import { PEXELS_API_KEY } from "../../secrets";
 
 const EventDisplay = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ const EventDisplay = () => {
   useEffect(() => {
     const fetchEventInfo = async (id, client_id) => {
       let res = await axios.get(`${API}/events/${id}/${client_id}`);
+      debugger;
       let { name, venue, date, city, address } = res.data.body.event;
       setName(name);
       setVenue(venue);
@@ -35,7 +37,7 @@ const EventDisplay = () => {
         <div className={"venueDateContainer"}>
           <p id={"date"}>{date}</p>
           <p id={"address"}>{address}</p>
-          <p id={"city"} >{city}</p>
+          <p id={"city"}>{city}</p>
         </div>
         <div>
           <h1 class="display-4 jumbotronTitle">Lineup</h1>
