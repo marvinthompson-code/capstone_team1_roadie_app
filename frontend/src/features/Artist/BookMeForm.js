@@ -21,7 +21,6 @@ const BookMeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // make notification request here
     await db
       .collection("bookings")
       .doc(match.params.id)
