@@ -195,10 +195,86 @@ const getVideosByArtistId = async (req, res, next) => {
     next(error);
   }
 };
+const getSingleArtistVideo = async (req, res, next) =>{
+  let {artist_id, id} = req.params;
+  try{
+    let singleVideo = await db.one("SELECT * FROM videos WHERE artist_id = $1 AND id = $2", [
+      artist_id, id
+    ])
+    res.status(200).json({
+      status: "success",
+      message: "got the single video to show",
+      body: {singleVideo},
+    })
+
+  }catch(error){
+    res.json({
+      status: "error",
+      message: "Could not get individual video from artist"
+    })
+  }
+};
+
+const getSingleClientVideo = async (req, res, next) =>{
+  let {client_id, id} = req.params;
+  try{
+    let singleVideo = await db.one("SELECT * FROM videos WHERE client_id = $1 AND id = $2", [
+      client_id, id
+    ])
+    res.status(200).json({
+      status: "success",
+      message: "got the single video to show",
+      body: {singleVideo},
+    })
+
+  }catch(error){
+    res.json({
+      status: "error",
+      message: "Could not get individual video from artist"
+    })
+  }
+};
+const getSingleArtistPicture = async (req, res, next) =>{
+  let {client_id, id} = req.params;
+  try{
+    let singlePicture = await db.one("SELECT * FROM pictures WHERE client_id = $1 AND id = $2", [
+      client_id, id
+    ])
+    res.status(200).json({
+      status: "success",
+      message: "got the single picture to show",
+      body: {singlePicture},
+    })
+
+  }catch(error){
+    res.json({
+      status: "error",
+      message: "Could not get individual picture from artist"
+    })
+  }
+};
+const getSingleClientPicture = async (req, res, next) =>{
+  let {client_id, id} = req.params;
+  try{
+    let singlePicture = await db.one("SELECT * FROM pictures WHERE client_id = $1 AND id = $2", [
+      client_id, id
+    ])
+    res.status(200).json({
+      status: "success",
+      message: "got the single picture to show",
+      body: {singlePicture},
+    })
+
+  }catch(error){
+    res.json({
+      status: "error",
+      message: "Could not get individual picture from client"
+    })
+  }
+};
 
 const getVideosByClientId = async (req, res, next) => {
   let { client_id } = req.params;
-  console.log(req.params);
   try {
     let video = await db.any("SELECT * FROM videos WHERE client_id = $1", [
       client_id,
@@ -276,4 +352,8 @@ module.exports = {
   getVideosByClientId,
   editCaptionForVideo,
   editCaptionForPictures,
+  getSingleArtistVideo,
+  getSingleClientVideo,
+  getSingleArtistPicture,
+  getSingleClientPicture
 };
