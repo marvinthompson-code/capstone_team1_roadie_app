@@ -11,13 +11,14 @@ import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
-import $ from 'jquery'
+import $ from "jquery";
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
   const user = useSelector((state) => state.userToken);
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
+  const notifications = useSelector((state) => state.notifications);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -73,13 +74,14 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button class="btn btn-secondary " type="button">
+            <button class="btn btn-secondary notificationBtn" type="button">
               <img
                 src={notificationBell}
                 alt="notification"
                 className="bell"
                 onClick={() => history.push("/notifications")}
               />
+              <span class="badge">{notifications.length}</span>
             </button>
           </li>
         </>
@@ -98,13 +100,14 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button class="btn btn-secondary" type="button">
+            <button class="btn btn-secondary notificationBtn" type="button">
               <img
                 src={notificationBell}
                 alt="notification"
                 className="bell"
                 onClick={() => history.push("/notifications")}
               />
+              <span class="badge">{notifications.length}</span>
             </button>
           </li>
         </>
@@ -149,7 +152,6 @@ const NavBar = () => {
               href="#"
               exact
               to="*"
-              
             >
               Log In <span className="sr-only">(current)</span>
             </NavLink>
