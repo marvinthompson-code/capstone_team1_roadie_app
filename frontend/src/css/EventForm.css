@@ -85,9 +85,9 @@
 }
 
 .venueSearchResultsList {
-  background-color: rgba(28, 30, 30, 0.92) !important;
+  /* background-color: rgba(28, 30, 30, 0.92) !important;
   box-shadow: 20px 20px 50px var(--eerieBlk);
-  border: 2px solid var(--jade);
+  border: 2px solid var(--jade); */
   border-radius: 10px;
   color: white;
   transition: 2s;
@@ -96,21 +96,19 @@
 
 .venueItem {
   background-color: rgba(28, 30, 30, 0.92) !important;
-  box-shadow: 20px 20px 50px var(--eerieBlk);
-  border: 2px solid var(--jade);
+  border: 2px solid var(--jade) !important;
   width: 100%;
   height: auto;
   border-radius: 10px;
   color: white;
   transition: 2s;
+  margin-bottom: 15px;
 }
 
 .venueItem:hover {
   background-color: var(--jade) !important;
-  border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
-  transition: 2s;
 }
 
 .venueSearchResultsDiv {
