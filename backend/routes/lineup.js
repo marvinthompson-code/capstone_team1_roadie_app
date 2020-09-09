@@ -1,9 +1,14 @@
 const lineup = require("express").Router();
 
-const {getLineupForEvent} = require("../queries/lineupQueries");
+const {
+  getLineupForEvent,
+  addSingleArtistToLineup,
+  getLineupInfo,
+} = require("../queries/lineupQueries");
 
 lineup.get("/:event_id", getLineupForEvent);
-// add artist to lineup
+lineup.post("/", addSingleArtistToLineup);
+lineup.get("/:event_id", getLineupInfo);
 // delete singleArtist from lineup
 // edit lineup
 // delete lineup
