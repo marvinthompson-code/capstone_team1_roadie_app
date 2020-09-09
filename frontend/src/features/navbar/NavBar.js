@@ -73,7 +73,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button class="btn btn-secondary " type="button">
+            <button class="btn btn-secondary" type="button" id="bellButton">
               <img
                 src={notificationBell}
                 alt="notification"

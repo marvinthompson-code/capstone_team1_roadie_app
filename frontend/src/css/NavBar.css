@@ -138,9 +138,18 @@ a:hover {
   height: auto;
   width: 26px;
   align-self: center;
-  /* background-color: white !important; */
   filter: invert(100%);
 }
+.btn-secondary{
+  background: var(--eerieBlk) !important;
+  border: 2px solid var(--jade) !important;
+}
+.btn-secondary:hover{
+  background: var(--kobe) !important;
+  border: 2px solid var(--eerieBlk) !important;
+  transition: .5s;
+}
+
 #dropdownMenuButton {
   background-color: var(--richBlk) !important;
   border: 2px solid var(--jade) !important;
