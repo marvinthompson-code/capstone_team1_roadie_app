@@ -91,8 +91,12 @@ const NotificationItem = ({ notification }) => {
                 artist_id={artistID}
                 client_id={clientID}
                 event_id={selectedEvent}
+                notification_id={notification.id}
               />
-              <DeclineBookingRequestModal />
+              <DeclineBookingRequestModal
+                artist_id={artistID}
+                notification_id={notification.id}
+              />
             </div>
           </div>
         </div>

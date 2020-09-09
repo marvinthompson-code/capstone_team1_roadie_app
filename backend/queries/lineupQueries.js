@@ -46,7 +46,7 @@ const getLineupInfo = async (req, res, next) => {
 };
 
 const addSingleArtistToLineup = async (req, res, next) => {
-  const { event_id, artist_id } = req.params;
+  const { event_id, artist_id } = req.body;
   try {
     const newLineup = await db.one(
       "INSERT INTO lineup (event_id, artist_id) VALUES ($1, $2) RETURNING *",

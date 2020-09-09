@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
+import { db } from "../../firebase";
+import { useDispatch } from "react-redux";
+import { toggleLoadingState } from "../Loading/loadingSlice";
 
-const BookingRequestModal = ({ artist_id, client_id, event_id }) => {
+const BookingRequestModal = ({
+  artist_id,
+  client_id,
+  event_id,
+  notification_id,
+}) => {
   const API = apiURL();
+  const dispatch = useDispatch();
 
   const [bio, setBio] = useState("");
   const [contactInfo, setContactInfo] = useState("");
@@ -18,7 +27,25 @@ const BookingRequestModal = ({ artist_id, client_id, event_id }) => {
         bio: bio,
         contact_info: contactInfo,
       });
-      debugger;
+      let res2 = await axios.post(`${API}/lineup/`, {
+        event_id: event_id,
+        artist_id: artist_id,
+      });
+      await db
+        .collection("bookings")
+        .doc(artist_id)
+        .collection("messages")
+        .doc(notification_id)
+        .delete()
+        .then(() => {
+          console.log("Document successfully deleted!");
+        })
+        .catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      dispatch(toggleLoadingState());
+      dispatch(toggleLoadingState());
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

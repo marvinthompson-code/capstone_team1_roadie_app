@@ -1,8 +1,29 @@
 import React from "react";
-import { apiURL } from "../../util/apiURL";
+import { db } from "../../firebase";
+import { useDispatch } from "react-redux";
+import { toggleLoadingState } from "../Loading/loadingSlice";
 
-const DeclineBookingRequestModal = () => {
-  const API = apiURL();
+const DeclineBookingRequestModal = ({ artist_id, notification_id }) => {
+  const dispatch = useDispatch();
+
+  const handleDecline = async (e) => {
+    e.preventDefault();
+    await db
+      .collection("bookings")
+      .doc(artist_id)
+      .collection("messages")
+      .doc(notification_id)
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+    dispatch(toggleLoadingState());
+    dispatch(toggleLoadingState());
+    window.location.reload();
+  };
 
   return (
     <div
@@ -29,10 +50,11 @@ const DeclineBookingRequestModal = () => {
             </button>
           </div>
           <div className="modal-body declineBookingRequestBody">
-            <form>
+            <form onSubmit={handleDecline}>
               <input
                 type="submit"
-                className="btn btn-primary activeButton"
+                value="Yes"
+                className="btn btn-primary declineBtn"
                 name="Click Here"
               />
             </form>
