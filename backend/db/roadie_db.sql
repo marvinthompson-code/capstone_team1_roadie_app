@@ -1,4 +1,5 @@
- DROP DATABASE IF EXISTS roadie_db;
+
+DROP DATABASE IF EXISTS roadie_db;
 CREATE DATABASE roadie_db;
 \c roadie_db;
 DROP TABLE IF EXISTS users;
@@ -70,10 +71,9 @@ CREATE TABLE events
 
 CREATE TABLE lineup
 (
-    id VARCHAR PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     event_id INT REFERENCES events(id) ON DELETE CASCADE,
-    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
-    client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
+    artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE
 );
 
 CREATE TABLE bookings
