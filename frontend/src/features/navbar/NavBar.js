@@ -38,8 +38,8 @@ const NavBar = () => {
               data: doc.data(),
             });
           });
-          dispatch(receiveNotifications(notificationsArr));
         });
+      dispatch(receiveNotifications(notificationsArr));
     } else if (type === client) {
       await db
         .collection("contactMessages")
@@ -54,8 +54,8 @@ const NavBar = () => {
               data: doc.data(),
             });
           });
-          dispatch(receiveNotifications(notificationsArr));
         });
+      dispatch(receiveNotifications(notificationsArr));
     }
   };
 
@@ -75,7 +75,6 @@ const NavBar = () => {
           </li>
           <li className="nav-item">
             <button class="btn btn-secondary" type="button" id="bellButton">
-
               <img
                 src={notificationBell}
                 alt="notification"

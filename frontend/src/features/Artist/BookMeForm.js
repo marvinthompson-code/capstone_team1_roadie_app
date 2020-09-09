@@ -168,7 +168,7 @@ const BookMeForm = () => {
               </div>
               <div className="form-group">
                 <label for="Bio" id="lableitem">
-                  Tell me about yourself:{" "}
+                  Tell me about yourself:
                 </label>
                 <input
                   type="text"

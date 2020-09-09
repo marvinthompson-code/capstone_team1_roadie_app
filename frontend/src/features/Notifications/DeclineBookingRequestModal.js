@@ -1,11 +1,7 @@
 import React from "react";
 import { db } from "../../firebase";
-import { useDispatch } from "react-redux";
-import { toggleLoadingState } from "../Loading/loadingSlice";
 
 const DeclineBookingRequestModal = ({ artist_id, notification_id }) => {
-  const dispatch = useDispatch();
-
   const handleDecline = async (e) => {
     e.preventDefault();
     await db
@@ -20,8 +16,6 @@ const DeclineBookingRequestModal = ({ artist_id, notification_id }) => {
       .catch(function (error) {
         console.error("Error removing document: ", error);
       });
-    dispatch(toggleLoadingState());
-    dispatch(toggleLoadingState());
     window.location.reload();
   };
 

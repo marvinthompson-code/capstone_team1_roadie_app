@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { db } from "../../firebase";
-import { useDispatch } from "react-redux";
-import { toggleLoadingState } from "../Loading/loadingSlice";
 
 const BookingRequestModal = ({
   artist_id,
@@ -12,7 +10,6 @@ const BookingRequestModal = ({
   notification_id,
 }) => {
   const API = apiURL();
-  const dispatch = useDispatch();
 
   const [bio, setBio] = useState("");
   const [contactInfo, setContactInfo] = useState("");
@@ -43,8 +40,6 @@ const BookingRequestModal = ({
         .catch((error) => {
           console.error("Error removing document: ", error);
         });
-      dispatch(toggleLoadingState());
-      dispatch(toggleLoadingState());
       window.location.reload();
     } catch (error) {
       console.log(error);
