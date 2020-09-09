@@ -38,8 +38,8 @@ const NavBar = () => {
               data: doc.data(),
             });
           });
+          dispatch(receiveNotifications(notificationsArr));
         });
-      dispatch(receiveNotifications(notificationsArr));
     } else if (type === client) {
       await db
         .collection("contactMessages")
@@ -54,18 +54,18 @@ const NavBar = () => {
               data: doc.data(),
             });
           });
+          dispatch(receiveNotifications(notificationsArr));
         });
-      dispatch(receiveNotifications(notificationsArr));
     }
   };
 
   useEffect(() => {
     if (client === null && artist) {
-      loadNotifications(artist)
+      loadNotifications(artist);
     } else if (client && artist === null) {
-      loadNotifications(client)
+      loadNotifications(client);
     }
-  }, [notifications])
+  }, [notifications]);
 
   let routeExt = () => {
     if (client === null && artist) {
