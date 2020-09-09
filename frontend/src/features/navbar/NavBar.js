@@ -81,7 +81,7 @@ const NavBar = () => {
                 className="bell"
                 onClick={() => history.push("/notifications")}
               />
-              {notifications ? (
+              {notifications.length ? (
                 <span class="badge">{notifications.length}</span>
               ) : null}
             </button>
@@ -109,7 +109,7 @@ const NavBar = () => {
                 className="bell"
                 onClick={() => history.push("/notifications")}
               />
-              {notifications ? (
+              {notifications.length ? (
                 <span class="badge">{notifications.length}</span>
               ) : null}
             </button>
