@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { API_CLIENT_ID, API_CLIENT_SECRET } from "./../../secrets";
 import axios from "axios";
+import logo from "../images/FinalRoadieLogoblk.png";
 import "../../css/EventForm.css";
 
 const EventForm = () => {
@@ -86,46 +87,44 @@ const EventForm = () => {
           type={"button"}
           href="#"
           onClick={(e) => {
-            setAddress(`${address}${city}${state}${cc}${postalCode}`);
+            setAddress(formattedAddress[0] + ' ' + formattedAddress[1]);
             setVenue(`${name}`);
             setSearchMessage(name);
           }}
           className={"venueItem list-group-item list-group-item-action"}
         >
           <div className={"venueNameDiv"}>
-            <h2 className={"venueName"}>{name}</h2>
-          </div>
-          <div className={"venueImageDiv"}>
-            <img src={img} alt={"venue"} className={"venueImage"} />
+            <img
+              src={logo}
+              alt="roadieLogo"
+              width="50"
+              height="50"
+              class="d-inline-block align-top"
+              id="roadieLogo"
+            />
+            <p className={"venueName lead"}>{name}</p>
           </div>
           <div className={"venueAddressDiv"}>
-            <h3 className={"venueAddress"}>{formattedAddress[0]}</h3>
-            <h3 className={"venueAddress"}>{formattedAddress[1]}</h3>
+            <p className={"venueAddress"}>{formattedAddress[0]}</p>
+            <p className={"venueAddress"}>{formattedAddress[1]}</p>
           </div>
         </a>
       );
     });
 
-
     return (
       <div className="jumbotron-fluid text-center">
-        <ul className={"venueList"}>
-          {venues.length === 0 ? (
-            <>
-              <p className="lead">Venue Search Results will populate below.</p>
-            </>
-          ) : (
-            <>
-              <p className="lead">
-                Venue details will auto-populate after selection.
-              </p>
-              <hr className="my-4"></hr>
-              <div className="list-group venueSearchResultsList">
-                {venueResults}
-              </div>
-            </>
-          )}
-        </ul>
+        {venues.length === 0 ? (
+          <>
+            <p className="lead">Try searching for a venue!</p>
+          </>
+        ) : (
+          <>
+            <div className="list-group venueSearchResultsList">
+              {venueResults}
+            </div>
+          </>
+        )}
       </div>
     );
   };
@@ -136,14 +135,17 @@ const EventForm = () => {
   }
 
   return (
-    <div className="jumbotron text-center eventFormJumbo">
-      <h4 className="display-4">Create an Event</h4>
-      <p className="lead">Search for a venue and add event details below.</p>
-
-      {/* <div className={"selectedVenueContainer"}> */}
-      <h1 className="display-4">Search for a Venue</h1>
+    <div>
       <div className="jumbotron text-center eventFormJumbo row">
+        <div className="container">
+          <h4 className="display-4">Create an Event</h4>
+          <p className="lead">
+            Search for a venue and add event details below.{" "}
+          </p>
+        </div>
+        <br></br>
         <div className={"venueForm col"}>
+          <h1 className="lead">Search for a Venue</h1>
           <form onSubmit={handleVenueSubmit}>
             <div className="form-group">
               <label for="exampleInputVenue">Venue</label>
@@ -189,53 +191,72 @@ const EventForm = () => {
             </button>
           </form>
         </div>
-        <div className={"container col"}>{VenueSearchIndex()}</div>
+        <div className={"container col venueSearchResultsDiv"}>
+          {VenueSearchIndex()}
+        </div>
         <div
-          className="card justify-self: center eventFormCard col"
+          className="card justify-self: center eventFormCard selectedVenueCard col"
           style={{ width: "18rem" }}
         >
-          <div className="card-body">
+          <div className="card-body selectedVenueCardBody">
+            <img
+              src={logo}
+              alt="roadieLogo"
+              width="50"
+              height="50"
+              class="d-inline-block align-top"
+              id="roadieLogo"
+            />
             <div className="form-group">
               <h5 className="card-title">Selected Venue</h5>
               <p className="card-text">
                 The venue information will be automatically added to the event
                 details.
               </p>
-              <div className="col-sm-10">
-                <textbox
+              <div className="col-sm-10 text-center">
+                <input
                   type="text"
-                  readonly
-                  className="form-control-plaintext selectedVenueText"
+                  readOnly
+                  className="form-control-plaintext selectedVenueText lead"
                   id="selectedVenue"
                   value={searchMessage}
                 />
               </div>
+              <div className="col-sm-10 text-center">
+                <input
+                  type="text"
+                  readOnly
+                  className="form-control-plaintext selectedVenueText"
+                  id="selectedVenue"
+                  value={address}
+                />
+              </div>
+              
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="eventFormDiv">
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label for="exampleInputName">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              value={name}
-              id="exampleInputName"
-              placeholder="Name of Event"
-              onChange={(e) => setName(e.currentTarget.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary eventFormSubmitButton"
-          >
-            Add Event
-          </button>
-        </form>
+        <div className="eventFormDiv container">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label for="exampleInputName">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={name}
+                id="exampleInputName"
+                placeholder="Name of Event"
+                onChange={(e) => setName(e.currentTarget.value)}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary eventFormSubmitButton"
+            >
+              Add Event
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

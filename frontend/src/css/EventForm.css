@@ -45,10 +45,15 @@
 .eventFormCard {
   background-color: rgba(28, 30, 30, 0.92) !important;
   box-shadow: 20px 20px 50px var(--eerieBlk);
+  background-color: var(--eerieBlk3) !important;
   border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
   transition: 2s;
+}
+
+.selectedVenueCardBody {
+  background-color: var(--eerieBlk3) !important;
 }
 
 .eventFormSubmitButton {
@@ -68,14 +73,14 @@
 .eventFormSearchButton {
   border: 2px solid var(--eerieBlk3) !important;
   border-radius: 10px;
-  background-color: var(--jade);
-  box-shadow: 1px 1px 2px var(--eerieBlk);
+  background-color: var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk) !important;
   color: white !important;
   transition: 1s;
 }
 
 .eventFormSearchButton:hover {
-  background-color: var(--kobe);
+  background-color: var(--kobe) !important;
   color: white !important;
 }
 
@@ -86,12 +91,15 @@
   border-radius: 10px;
   color: white;
   transition: 2s;
+  height: 250px;
 }
 
 .venueItem {
   background-color: rgba(28, 30, 30, 0.92) !important;
   box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade);
+  width: 100%;
+  height: auto;
   border-radius: 10px;
   color: white;
   transition: 2s;
@@ -103,4 +111,12 @@
   border-radius: 10px;
   color: white;
   transition: 2s;
+}
+
+.venueSearchResultsDiv {
+  overflow: scroll;
+}
+
+.selectedVenueText {
+  color: white!important;
 }
