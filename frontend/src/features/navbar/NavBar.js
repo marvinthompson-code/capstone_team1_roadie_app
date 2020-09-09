@@ -65,7 +65,7 @@ const NavBar = () => {
     } else if (client && artist === null) {
       loadNotifications(client);
     }
-  }, [notifications]);
+  }, [notifications.length, artist, client]);
 
   let routeExt = () => {
     if (client === null && artist) {
