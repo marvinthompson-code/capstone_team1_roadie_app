@@ -61,11 +61,11 @@ const NavBar = () => {
 
   useEffect(() => {
     if (client === null && artist) {
-      loadNotifications(artist)
+      loadNotifications(artist);
     } else if (client && artist === null) {
-      loadNotifications(client)
+      loadNotifications(client);
     }
-  }, [notifications])
+  }, [notifications.length, artist, client]);
 
   let routeExt = () => {
     if (client === null && artist) {
@@ -83,7 +83,6 @@ const NavBar = () => {
           </li>
           <li className="nav-item">
             <button class="btn btn-secondary" type="button" id="bellButton">
-
               <img
                 src={notificationBell}
                 alt="notification"

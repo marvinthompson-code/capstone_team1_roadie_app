@@ -5,6 +5,8 @@ import axios from "axios";
 import { useRouteMatch } from "react-router-dom";
 import { db } from "../../firebase";
 import "../../css/ClientContactForm.css";
+import logo from "../images/FinalRoadieLogoblk.png";
+import moment from "moment";
 
 const ClientContactForm = () => {
   const [name, setName] = useState("");
@@ -31,7 +33,35 @@ const ClientContactForm = () => {
       });
     // create alert that says "You sent a message"
     // Toastify?
+    triggerToast();
     // close modal
+  };
+
+  const triggerToast = () => {
+    return (
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        style="position: relative; min-height: 200px;"
+      >
+        <div class="toast" style="position: absolute; top: 0; right: 0;">
+          <div class="toast-header">
+            <img src={logo} class="rounded mr-2" alt="..." />
+            <strong class="mr-auto">Roadie</strong>
+            <small>{moment().calendar()}</small>
+            <button
+              type="button"
+              class="ml-2 mb-1 close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">You contacted the artist!</div>
+        </div>
+      </div>
+    );
   };
 
   useEffect(() => {
