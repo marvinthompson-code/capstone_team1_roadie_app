@@ -7,6 +7,7 @@ import guitar from "../images/rhcp.jpg";
 import performer from "../images/performer.jpg";
 import concert from "../images/concertBlue.jpg";
 import headshot from "../images/pexels-murat-esibatir-4355346.jpg";
+import logo from "../images/FinalRoadieLogoblk.png";
 
 const Home = () => {
   const loading = useSelector((state) => state.loading);
@@ -17,9 +18,12 @@ const Home = () => {
   return (
     <div className="home container">
       <div className="jumbotron text-center roadieJumbo">
-        <h1 className="display-4 jumbotronTitle">
+        <div className="roadieJumboHeader">
+        <img id="roadieLogoHeader" src={logo}/>
+        <h1 className="display-4 jumbotronTitleHeader">
           <span id="WhyR">R</span>oadie
         </h1>
+        </div>
         <p className="lead display-5 pTagHeader">
           Search for Musicians to play at your next event, or search for a
           Booking Agent today!{" "}
@@ -161,7 +165,7 @@ const Home = () => {
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
-                  Become a Roadie NOW!{" "}
+                  Sign Up{" "}
                   <span className="sr-only">(current)</span>
                 </NavLink>
               </div>

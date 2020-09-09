@@ -51,6 +51,21 @@
   color: white;
   transition: 2s;
 }
+.roadieJumboHeader {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.jumbotronTitleHeader {
+  justify-self: start;
+  align-self: center;
+  margin: 5px;
+}
+
+#roadieLogoHeader {
+  width: 130px;
+  height: auto;
+  justify-self: end;
+}
 
 .missionJumbo {
   border-radius: 10px;
@@ -76,19 +91,18 @@
 
 .missionContainer {
   display: grid;
-  grid-template-columns: 1% 49% 40% 10%;
-  
+  grid-template-columns: 1% 49% 45% 5%;
 }
-.carouselHome{
-  grid-column: 2/ span 1;
+.carouselHome {
+  grid-column: 2 / span 1;
   border-right: 3px solid var(--jade);
   padding: 10px;
 }
-.RUARoadie{
-  grid-column: 3/ span 1;
+.RUARoadie {
+  grid-column: 3 / span 1;
 }
-.RUARoadieUl > li{
-  list-style-image: url('../features/images/icons/Screenshot\ 2020-09-08\ at\ 8.41.12\ PM.png');
+.RUARoadieUl > li {
+  list-style-image: url("../features/images/icons/Screenshot\ 2020-09-08\ at\ 8.41.12\ PM.png");
 }
 .roadieLure {
   padding: 20px;
@@ -97,10 +111,11 @@
 .roadieHomeSignUp {
   border: 2px solid var(--jade);
   box-shadow: 1px 1px 2px var(--eerieBlk2);
-  color: var(--eerieBlk2) !important;
+  color: var(--white) !important;
   background-color: var(--jade);
   border-radius: 10px;
   transition: 1s;
+  grid-column: 2/ span 1;
 }
 
 .roadieHomeSignUp:hover {
@@ -110,13 +125,15 @@
 
 .homeSignUpBtnDiv {
   padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-.pTagHeader{
+.pTagHeader {
   margin-bottom: 20px;
 }
-.pHomeTag{
+.pHomeTag {
   text-align: left;
 }
-.RUARoadieUl{
+.RUARoadieUl {
   list-style-type: none;
 }
