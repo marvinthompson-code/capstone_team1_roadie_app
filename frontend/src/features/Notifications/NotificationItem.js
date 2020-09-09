@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import "../../css/NotificationItem.css";
-import axios from "axios";
-import { apiURL } from "../../util/apiURL";
+import BookingRequestModal from "./BookingRequestModal";
+import DeclineBookingRequestModal from "./DeclineBookingRequestModal";
 
 const NotificationItem = ({ notification }) => {
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
-  const API = apiURL();
+
   const [isArtist, setIsArtist] = useState(null);
   const [clientID, setClientID] = useState("");
   const [artistID, setArtistID] = useState("");
 
   const toggleArtist = () => {
     if (notification.data.eventDetails) {
-      setClientID(notification.client_id);
+      setClientID(notification.data.client_id);
       setArtistID(artist.id);
       setIsArtist(true);
     } else if (notification.data.name) {
@@ -38,22 +38,6 @@ const NotificationItem = ({ notification }) => {
     name,
     selectedEvent,
   } = notification.data;
-
-  const handleAccept = async () => {
-    try {
-      let res = await axios.post(`${API}/bookings/`, {
-        artist_id: artistID,
-        client_id: clientID,
-        event_id: selectedEvent,
-        // bio,
-        // contact_info,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleDecline = () => {};
 
   return (
     <>
@@ -89,17 +73,31 @@ const NotificationItem = ({ notification }) => {
             <button
               type="button"
               class="btn btn-primary acceptBtn"
-              onClick={handleAccept}
+              data-toggle="modal"
+              data-target="#bookingRequestModalCenter"
             >
               Accept
             </button>
             <button
               type="button"
               class="btn btn-primary declineBtn"
-              onClick={handleDecline}
+              data-toggle="modal"
+              data-target="#declineBookingRequestModalCenter"
             >
               Decline
             </button>
+            <div className="bookingRequestModalDiv container">
+              <BookingRequestModal
+                artist_id={artistID}
+                client_id={clientID}
+                event_id={selectedEvent}
+                notification_id={notification.id}
+              />
+              <DeclineBookingRequestModal
+                artist_id={artistID}
+                notification_id={notification.id}
+              />
+            </div>
           </div>
         </div>
       ) : (
