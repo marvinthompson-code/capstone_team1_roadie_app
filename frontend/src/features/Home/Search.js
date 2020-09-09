@@ -8,8 +8,9 @@ import axios from "axios";
 import "../../css/Search.css";
 
 const Search = () => {
-  const [userType, setUserType] = useState("");
+  const [selectType, setSelectType] = useState("");
   const [name, setName] = useState("");
+  // const [genre, setGenre] = useState("");
   const history = useHistory();
   const API = apiURL();
   const dispatch = useDispatch();
@@ -18,23 +19,37 @@ const Search = () => {
     e.preventDefault();
     try {
       let routeExtension = name === "" ? "" : `/search/${name.toLowerCase()}`;
-      if (userType === "Artist" && name === "") {
-        let res = await axios.get(`${API}/artists`);
-        dispatch(receiveSearch(res.data.body.artists));
+      if (selectType === "Artist" || selectType === "Client") {
+        if (selectType === "Artist" && name === "") {
+          let res = await axios.get(`${API}/artists`);
+          dispatch(receiveSearch(res.data.body.artists));
+        }
+        if (selectType === "Client" && name === "") {
+          let res = await axios.get(`${API}/clients`);
+          dispatch(receiveSearch(res.data.body.clients));
+        }
+        if (selectType === "Artist") {
+          let res = await axios.get(`${API}/artists` + routeExtension);
+          dispatch(receiveSearch(res.data.body.searched_artist));
+        } else if (selectType === "Client") {
+          let res = await axios.get(`${API}/clients` + routeExtension);
+          dispatch(receiveSearch(res.data.body.searched_client));
+        }
+        dispatch(receiveUserType(selectType));
+        history.push("/results");
+      } else {
+        if (selectType === "Genre" && name === "") {
+          // let res = await axios.get(`${API}/artists`);
+          // dispatch(receiveSearch(res.data.body.artists));
+          alert("Please enter a genre!");
+
+        } else if (selectType === "Genre" && name) {
+          let res = await axios.get(`${API}/search/${name.toLowerCase()}`);
+          dispatch(receiveSearch(res.data.body.searched_genre));
+          history.push("/results");
+        };
+        // dispatch(receiveUserType(selectType))
       }
-      if (userType === "Client" && name === "") {
-        let res = await axios.get(`${API}/clients`);
-        dispatch(receiveSearch(res.data.body.clients));
-      }
-      if (userType === "Artist") {
-        let res = await axios.get(`${API}/artists` + routeExtension);
-        dispatch(receiveSearch(res.data.body.searched_artist));
-      } else if (userType === "Client") {
-        let res = await axios.get(`${API}/clients` + routeExtension);
-        dispatch(receiveSearch(res.data.body.searched_client));
-      }
-      dispatch(receiveUserType(userType));
-      history.push("/results");
     } catch (error) {
       console.log(error);
     }
@@ -53,10 +68,11 @@ const Search = () => {
           </div>
 
         <div className="col-sm-2">
-          <select className="custom-select form-control roadieDropdown" onChange={(e) => setUserType(e.target.value)}>
+          <select className="custom-select form-control roadieDropdown" onChange={(e) => setSelectType(e.target.value)}>
           <option selected>Search By...</option>
           <option value="Artist">Artist</option>
           <option value="Client">Client</option>
+          <option value="Genre">Genre</option>
           </select>
         </div>
 
