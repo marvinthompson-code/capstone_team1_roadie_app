@@ -34,6 +34,7 @@
 
 .eventFormJumbo {
   background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade);
   border-radius: 10px;
   /* box-shadow: 5px 10px 18px var(--eerieBlk2); */
@@ -43,6 +44,7 @@
 
 .eventFormCard {
   background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
@@ -79,6 +81,7 @@
 
 .venueSearchResultsList {
   background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
@@ -87,6 +90,7 @@
 
 .venueItem {
   background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
