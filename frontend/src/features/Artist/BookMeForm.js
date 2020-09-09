@@ -72,8 +72,10 @@ const BookMeForm = () => {
   };
 
   useEffect(() => {
-    setEmailContact(client.email);
-    setNumberContact(client.contact_info);
+    if (client !== null) {
+      setEmailContact(client.email);
+      setNumberContact(client.contact_info);
+    }
   }, []);
 
   const bookingEvents = () => {

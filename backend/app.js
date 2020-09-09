@@ -22,17 +22,19 @@ const bookingsRouter = require("./routes/bookings");
 const eventsRouter = require("./routes/events");
 const mediaRouter = require("./routes/media");
 const lineupRouter = require("./routes/lineup");
-
 const skillsRouter = require("./routes/skills");
+const searchRouter = require("./routes/search");
 
 app.use("/users", usersRouter);
 app.use("/artists", artistsRouter);
 app.use("/clients", clientsRouter);
 app.use("/bookings", bookingsRouter);
-app.use("/skills", skillsRouter);
 app.use("/events", eventsRouter);
 app.use("/media", mediaRouter);
 app.use("/lineup", lineupRouter);
+app.use("/skills", skillsRouter);
+app.use("/search", searchRouter);
+
 
 // app.post("/uploadphoto", (req, res) => {
 //   upload(req, res, function (err) {

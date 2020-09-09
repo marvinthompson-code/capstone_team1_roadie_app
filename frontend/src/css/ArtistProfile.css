@@ -83,7 +83,8 @@
 }
 .artistBanner {
   border: 2px solid var(--indiaGreen) !important;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   border-radius: 10px;
   padding: 10px;
   color: white !important;
@@ -91,7 +92,8 @@
 }
 .infoDiv {
   grid-row: 1 / span 1;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
   border: 2px solid var(--indiaGreen) !important;
@@ -122,7 +124,10 @@
 .bookingsDisplayContainer {
   grid-row: 2 / span 1;
   border: 2px solid var(--indiaGreen);
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
+  box-shadow: 20px 20px 50px var(--eerieBlk);
   color: white !important;
   border-radius: 10px;
+  height: 100vh;
+  overflow: scroll;
 }

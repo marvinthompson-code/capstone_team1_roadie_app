@@ -74,7 +74,8 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button class="btn btn-secondary notificationBtn" type="button">
+            <button class="btn btn-secondary" type="button" id="bellButton">
+
               <img
                 src={notificationBell}
                 alt="notification"
@@ -155,7 +156,9 @@ const NavBar = () => {
               id="roadieLoginButton"
               href="#"
               exact
-              to="*"
+              to="/"
+              data-toggle="modal"
+              data-target="#logInModalCenter"
             >
               Log In <span className="sr-only">(current)</span>
             </NavLink>
