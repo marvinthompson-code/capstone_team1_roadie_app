@@ -155,7 +155,9 @@ const NavBar = () => {
               id="roadieLoginButton"
               href="#"
               exact
-              to="*"
+              to="/"
+              data-toggle="modal"
+              data-target="#logInModalCenter"
             >
               Log In <span className="sr-only">(current)</span>
             </NavLink>

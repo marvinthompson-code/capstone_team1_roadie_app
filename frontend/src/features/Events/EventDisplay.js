@@ -12,7 +12,7 @@ const EventDisplay = () => {
   const [date, setDate] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
-  const [backgroundImage, setBackgroundImage] = useState("")
+  const [backgroundImage, setBackgroundImage] = useState("");
   const API = apiURL();
   const match = useRouteMatch();
 
@@ -27,25 +27,31 @@ const EventDisplay = () => {
       setAddress(address);
 
       const fetchImage = async (city) => {
-          let res = await axios.get(`https://api.pexels.com/v1/search?query=${city}`, {
+        let res = await axios.get(
+          `https://api.pexels.com/v1/search?query=${city}`,
+          {
             headers: {
-              'Authorization': PEXELS_API_KEY
-            }
-          });
-          setBackgroundImage(res.data.photos[0].url)
-          debugger
-        }
-        fetchImage(city)
-      
+              Authorization: PEXELS_API_KEY,
+            },
+          }
+        );
+        setBackgroundImage(res.data.photos[0].url);
+      };
+      fetchImage(city);
     };
     fetchEventInfo(match.params.id, match.params.client_id);
   }, []);
 
-
+  useEffect(() => {
+    const fetchLineupInfo = async (id) => {
+      let res = await axios.get(`${API}/lineup/${id}`);
+      debugger
+    };
+    fetchLineupInfo(match.params.id)
+  }, []);
 
   return (
     <div className="eventDisplay container">
-
       <div class="jumbotron text-center eventJumbo">
         <img
           src={logo}
@@ -55,21 +61,23 @@ const EventDisplay = () => {
           class="d-inline-block align-top"
           id="roadieLogo"
         />
-        
+
         <h1 class="display-4 jumbotronTitle">{name}</h1>
         <p class="lead pTagHeader">{venue}</p>
-        <p id={"address"} className="lead">{address}</p>
-        <p id={"date"} className="lead">{date}</p>
-        <p id={"city"} className="lead">{city}</p>
+        <p id={"address"} className="lead">
+          {address}
+        </p>
+        <p id={"date"} className="lead">
+          {date}
+        </p>
+        <p id={"city"} className="lead">
+          {city}
+        </p>
         {/* <hr class="my-4"/> */}
         <div className="container">
           <h1 className={"ddisplay-5"}>Lineup</h1>
         </div>
-
-      
-
       </div>
-
     </div>
   );
 };
