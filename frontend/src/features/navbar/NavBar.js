@@ -11,6 +11,7 @@ import { logout } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
+import $ from 'jquery'
 
 const NavBar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -144,11 +145,11 @@ const NavBar = () => {
           <li className="nav-item active">
             <NavLink
               className="nav-link roadieLogIn"
+              id="roadieLoginButton"
               href="#"
               exact
               to="*"
-              data-toggle="modal"
-              data-target="#logInModalCenter"
+              
             >
               Log In <span className="sr-only">(current)</span>
             </NavLink>
@@ -169,6 +170,12 @@ const NavBar = () => {
       );
     }
   };
+
+  // $(document).ready(function () {
+  //   $('#roadieLoginButton').click(function () {
+  //     $('logInModalCenter').modal('show')
+  //   })
+  // })
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light roadieNav sticky-top">

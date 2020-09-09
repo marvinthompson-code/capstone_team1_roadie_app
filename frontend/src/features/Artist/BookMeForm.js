@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -16,6 +16,7 @@ const BookMeForm = () => {
 
   const API = apiURL();
   const client = useSelector((state) => state.client);
+  const clientInfo = useSelector((state) => state.clientInfo);
   const clientEvents = useSelector((state) => state.bookMeEvents);
   const match = useRouteMatch();
 
@@ -39,6 +40,11 @@ const BookMeForm = () => {
     // Toastify?
     // close modal
   };
+
+  useEffect(() => {
+    setEmailContact(client.email);
+    setNumberContact(client.contact_info);
+  }, []);
 
   const bookingEvents = () => {
     return clientEvents.map((event) => {
@@ -121,7 +127,7 @@ const BookMeForm = () => {
                     className="custom-select form-control roadieDropdown"
                     onChange={(e) => handleSelectedEvent(e.target.value)}
                   >
-                    <option value="" disabled>
+                    <option value="" disabled selected>
                       Select an event
                     </option>
                     {bookingEvents()}
@@ -182,7 +188,7 @@ const BookMeForm = () => {
                   type="email"
                   className="form-control bookMeInput"
                   value={emailContact}
-                  placeholder="Email Contact"
+                  placeholder={emailContact}
                   onChange={(e) => setEmailContact(e.currentTarget.value)}
                   required
                 />
@@ -190,7 +196,7 @@ const BookMeForm = () => {
                   type="tel"
                   className="form-control bookMeInput"
                   value={numberContact}
-                  placeholder="Phone number"
+                  placeholder={numberContact}
                   onChange={(e) => setNumberContact(e.currentTarget.value)}
                   required
                 />
