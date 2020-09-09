@@ -51,7 +51,7 @@
 }
 
 .eventThumb {
-  transition: 1s
+  transition: 1s;
 }
 .eventThumb:hover {
   color: white !important;
@@ -60,7 +60,7 @@
 
 .eventCard {
   box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border: 2px solid var(--jade);
   border-radius: 10px;
   transition: 2s;
@@ -77,7 +77,7 @@
 }
 
 .eventThumbCardText {
-  color: white
+  color: white;
 }
 
 #deleteBttn:hover {
@@ -85,9 +85,8 @@
   width: 30px;
 }
 
-
 .editClientProfile {
-  border: 2px solid var(--eerieBlk)!important;
+  border: 2px solid var(--eerieBlk) !important;
   border-radius: 10px;
   background-color: var(--jade) !important;
   box-shadow: 1px 1px 2px var(--eerieBlk3) !important;

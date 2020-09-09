@@ -24,7 +24,7 @@
 .aboutJumbotron {
   border-radius: 13px;
   background-color: var(--eerieBlk3) !important;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border: 2px solid var(--jade) !important;
   color: white;
   transition: 2s;
@@ -53,14 +53,14 @@
   background-color: var(--richBlk) !important;
   padding: 20px;
 }
-.imageCarouselDiv{
-    padding: 20px;
+.imageCarouselDiv {
+  padding: 20px;
 }
-.aboutContainer{
-    border-bottom: 3px solid var(--jade);
-    margin: 10px 0px;
+.aboutContainer {
+  border-bottom: 3px solid var(--jade);
+  margin: 10px 0px;
 }
-.aboutMeFooter{
-    padding: 20px;
-    border-top: 3px solid var(--jade);
+.aboutMeFooter {
+  padding: 20px;
+  border-top: 3px solid var(--jade);
 }

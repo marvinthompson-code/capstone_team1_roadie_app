@@ -84,7 +84,7 @@
 
 .eventDetailsCard {
   margin: auto;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border: 2px solid var(--jade);
   border-radius: 10px;
   /* box-shadow: 5px 10px 18px var(--eerieBlk2); */

@@ -45,7 +45,7 @@
 }
 
 .roadieJumbo {
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border: 2px solid var(--jade);
   border-radius: 10px;
   color: white;
@@ -55,7 +55,7 @@
 .missionJumbo {
   border-radius: 10px;
   background-color: var(--eerieBlk3) !important;
-  background-color: rgba(28, 30, 30, 0.8) !important;
+  background-color: rgba(28, 30, 30, 0.92) !important;
   border: 2px solid var(--jade) !important;
   color: white;
   border: 2px solid var(--eerieBlk3);
@@ -87,8 +87,8 @@
 .RUARoadie{
   grid-column: 3/ span 1;
 }
-.homeBadge{
-  margin: 10px;
+.RUARoadieUl > li{
+  list-style-image: url('../features/images/icons/Screenshot\ 2020-09-08\ at\ 8.41.12\ PM.png');
 }
 .roadieLure {
   padding: 20px;
@@ -113,4 +113,10 @@
 }
 .pTagHeader{
   margin-bottom: 20px;
+}
+.pHomeTag{
+  text-align: left;
+}
+.RUARoadieUl{
+  list-style-type: none;
 }
