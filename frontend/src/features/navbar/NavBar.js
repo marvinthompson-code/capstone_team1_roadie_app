@@ -183,6 +183,7 @@ const NavBar = () => {
               Sign Up <span className="sr-only">(current)</span>
             </NavLink>
           </li>
+          
         </>
       );
     }
