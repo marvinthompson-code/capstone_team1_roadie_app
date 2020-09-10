@@ -185,12 +185,13 @@ const ClientSignUp = () => {
           <label for="exampleInputEmail1" id="labelItem">
             Bio
           </label>
-          <input
+          <textarea
             type="text"
             className="form-control clientSignUpInput"
             placeholder="Client Bio.."
             value={bio}
             onChange={(e) => setBio(e.currentTarget.value)}
+            row="3"
           />
         </div>
 

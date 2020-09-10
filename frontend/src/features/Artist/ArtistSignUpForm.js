@@ -174,13 +174,14 @@ const ArtistSignUpForm = () => {
             <label for="exampleInputEmail1" id="labelitem">
               Bio
             </label>
-            <input
+            <textarea
               type="text"
               className="form-control artistSignUpInput"
               placeholder="Artist Bio.."
               value={bio}
+              rows="3"
               onChange={(e) => setBio(e.currentTarget.value)}
-            ></input>
+            />
           </div>
 
           <div className="form-group">
