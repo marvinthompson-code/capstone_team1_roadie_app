@@ -6,59 +6,79 @@ import "../../css/uploadModal.css";
 import axios from "axios";
 
 const UploadVideoModal = () => {
-  const [videoAsFile, setVideoAsFile] = useState("");
+  // const [videoAsFile, setVideoAsFile] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
-  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
+  // const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const [caption, setCaption] = useState("");
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const API = apiURL();
 
-  const handleVideoAsFile = (e) => {
-    const video = e.target.files[0];
-    const types = ["video/mp4", "video/ogg", "video/quicktime", "video/mov"];
-    if (types.every((type) => video.type !== type)) {
-      alert(`${video.type} is not supported format`);
-    } else {
-      setVideoAsFile((videoFile) => video);
-    }
-  };
+  // const handleVideoAsFile = (e) => {
+  //   const video = e.target.files[0];
+  //   const types = ["video/mp4", "video/ogg", "video/quicktime", "video/mov"];
+  //   if (types.every((type) => video.type !== type)) {
+  //     alert(`${video.type} is not supported format`);
+  //   } else {
+  //     setVideoAsFile((videoFile) => video);
+  //   }
+  // };
 
-  const handleFirebaseVideoUpload = () => {
-    if (videoAsFile === "") {
-      alert(`Please choose a valid file before uploading`);
-    } else if (videoAsFile !== null) {
-      const uploadTask = storage
-        .ref(`/videos/${videoAsFile.name}`)
-        .put(videoAsFile);
-      uploadTask.on(
-        "state_changed",
-        (snapShot) => {
-          var progress =
-            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          console.log(snapShot);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          storage
-            .ref("videos")
-            .child(videoAsFile.name)
-            .getDownloadURL()
-            .then((fireBaseUrl) => {
-              debugger
-              setVideoUrl(fireBaseUrl);
-            });
-        }
-      );
-      setToggleUploadMsg(true);
-    } else {
-      setToggleUploadMsg(false);
-    }
-  };
-
+  // const handleFirebaseVideoUpload = () => {
+  //   if (videoAsFile === "") {
+  //     alert(`Please choose a valid file before uploading`);
+  //   } else if (videoAsFile !== null) {
+  //     const uploadTask = storage
+  //       .ref(`/videos/${videoAsFile.name}`)
+  //       .put(videoAsFile);
+  //     uploadTask.on(
+  //       "state_changed",
+  //       (snapShot) => {
+  //         var progress =
+  //           (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
+  //         console.log("Upload is " + progress + "% done");
+  //         console.log(snapShot);
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       },
+  //       () => {
+  //         storage
+  //           .ref("videos")
+  //           .child(videoAsFile.name)
+  //           .getDownloadURL()
+  //           .then((fireBaseUrl) => {
+  //             debugger
+  //             setVideoUrl(fireBaseUrl);
+  //           });
+  //       }
+  //     );
+  //     setToggleUploadMsg(true);
+  //   } else {
+    //     setToggleUploadMsg(false);
+    //   }
+    // };
+    {/* <div className="custom-file">
+      <input
+        type="file"
+        required
+        className="custom-file-input uploadModalInput"
+        id="customFile"
+        onChange={handleVideoAsFile}
+      />
+      <label className="custom-file-label" for="customFile">
+        Choose file
+      </label>
+    </div> */}
+    {/* <button
+      type="button"
+      className="btn btn-primary activeButton"
+      onClick={handleFirebaseVideoUpload}
+    >
+      Upload
+    </button> */}
+    {/* {toggleUploadMsg ? <h5>Upload successful!</h5> : null} */}
+    
   const insertVideoIntoAlbum = async (e) => {
     e.preventDefault();
     if (artist === null) {
@@ -85,7 +105,7 @@ const UploadVideoModal = () => {
       }
     }
   };
-
+  
   return (
     <div
       className="modal fade"
@@ -112,26 +132,16 @@ const UploadVideoModal = () => {
           </div>
           <div className="modal-body uploadModalBody">
             <form onSubmit={insertVideoIntoAlbum}>
-              <div className="custom-file">
+            <div className="form-group">
                 <input
-                  type="file"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Video Url Here..."
+                  value={videoUrl}
+                  onChange={(e) => setVideoUrl(e.currentTarget.value)}
                   required
-                  className="custom-file-input uploadModalInput"
-                  id="customFile"
-                  onChange={handleVideoAsFile}
                 />
-                <label className="custom-file-label" for="customFile">
-                  Choose file
-                </label>
               </div>
-              <button
-                type="button"
-                className="btn btn-primary activeButton"
-                onClick={handleFirebaseVideoUpload}
-              >
-                Upload
-              </button>
-              {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
               <div className="form-group">
                 <textarea
                   type="text"
