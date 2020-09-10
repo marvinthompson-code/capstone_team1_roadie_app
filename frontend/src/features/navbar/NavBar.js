@@ -7,10 +7,13 @@ import { recieveToken } from "../token/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { receiveNotifications } from "../Notifications/notificationsSlice";
 import "../../css/NavBar.css";
-import { logout } from "../../util/firebaseFunctions";
+import { logout, login } from "../../util/firebaseFunctions";
 import { AuthContext } from "../../providers/AuthContext";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { db } from "../../firebase";
+import { updateUser } from "../token/userTokenSlice";
+import { toggleLoadingState } from "../Loading/loadingSlice";
+import { toggleErrorState, recieveState } from "../Error/errorSlice";
 import $ from "jquery";
 
 const NavBar = () => {
@@ -135,6 +138,32 @@ const NavBar = () => {
     history.push("/");
   };
 
+  const handleGuestArtistLogIn = async () => {
+    try {
+      dispatch(recieveState(false));
+      let res = await login("victoria@test.com", "123456");
+      dispatch(updateUser(res.user));
+      // dispatch(toggleLoadingState());
+      history.push(`/artist/${currentUser.id}`);
+      // dispatch(toggleLoadingState());
+    } catch (error) {
+      dispatch(toggleErrorState());
+    }
+  };
+
+  const handleGuestClientLogIn = async () => {
+    try {
+      dispatch(recieveState(false));
+      let res = await login("honri3@test.com", "123456");
+      dispatch(updateUser(res.user));
+      dispatch(toggleLoadingState());
+      history.push(`/client/${currentUser.id}`);
+      dispatch(toggleLoadingState());
+    } catch (error) {
+      dispatch(toggleErrorState())
+    }
+  };
+
   const displayButtons = () => {
     if (currentUser) {
       return (
@@ -182,7 +211,40 @@ const NavBar = () => {
               Sign Up <span className="sr-only">(current)</span>
             </NavLink>
           </li>
-          
+          {/* <li className="nav-item active">
+            <NavLink 
+              className="nav-link guestLogIn"
+              href="#"
+              id="guestArtistLogIn"
+              onClick={handleGuestArtistLogIn}
+              to="/"
+            >
+              Guest Artist Log In
+            </NavLink>
+          </li>
+          <li className="nav-item active">
+            <NavLink
+              className="nav-link guestLogIn"
+              href="#"
+              id="guestClientLogIn"
+              onClick={handleGuestClientLogIn}
+              to="/"
+            >
+              Guest Client Log In
+            </NavLink>
+          </li> */}
+          <li className="nav-item active">
+            <NavLink
+              className="nav-link guestLogIn"
+              href="#"
+              exact
+              to="/"
+              data-toggle="modal"
+              data-target="#guestLogInModal"
+            >
+              Guest Log In
+            </NavLink>
+          </li>
         </>
       );
     }
