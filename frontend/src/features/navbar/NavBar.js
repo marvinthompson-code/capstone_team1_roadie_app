@@ -72,7 +72,6 @@ const NavBar = () => {
 
   let routeExt = () => {
     if (client === null && artist) {
-      // loadNotifications(artist);
       return (
         <>
           <li className="nav-item active">
@@ -100,7 +99,6 @@ const NavBar = () => {
         </>
       );
     } else if (client && artist === null) {
-      // loadNotifications(client);
       return (
         <>
           <li className="nav-item active">
@@ -160,7 +158,7 @@ const NavBar = () => {
       history.push(`/client/${currentUser.id}`);
       dispatch(toggleLoadingState());
     } catch (error) {
-      dispatch(toggleErrorState())
+      dispatch(toggleErrorState());
     }
   };
 
