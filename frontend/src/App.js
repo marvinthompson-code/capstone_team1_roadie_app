@@ -20,7 +20,7 @@ import { useDispatch } from "react-redux";
 import Artist from "./features/Profiles/Artist";
 import Client from "./features/Profiles/Client";
 import ArtistPhotoAlbum from "./features/Albums/ArtistPhotoAlbum";
-
+import GuestLogin from "./features/login/GuestLogin";
 import EventDisplay from "./features/Events/EventDisplay";
 import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum";
 
@@ -31,6 +31,7 @@ import ArtistVideoAlbum from "./features/Albums/ArtistVideoAlbum";
 import VideoPlayer from "./features/Albums/VideoPlayer/VideoPlayer";
 import ClientVideoAlbum from "./features/Albums/ClientVideoAlbum";
 import ClientVideoPlayer from "./features/Albums/VideoPlayer/ClientVideoPlayer";
+import GuestLogIn from "./features/login/GuestLogin";
 
 Modal.setAppElement("#root");
 
@@ -52,6 +53,7 @@ function App() {
         </Route>
         <DisplaySignUp />
         <Login />
+        <GuestLogin />
         <Route path="/about">
           <AboutRoadie />
         </Route>

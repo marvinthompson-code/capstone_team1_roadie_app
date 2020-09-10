@@ -170,3 +170,18 @@ a:hover {
   color: white;
   font-size: 12px;
 }
+
+.guestLogIn {
+  border: 2px solid var(--eerieBlk3);
+  border-radius: 10px;
+  background-color: var(--eerieBlk3);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
+  color: var(--jade) !important;
+  transition: 1s;
+  text-align: center;
+}
+
+.guestLogIn:hover {
+  background-color: var(--jade);
+  color: white !important;
+}
