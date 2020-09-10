@@ -7,6 +7,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../../css/clientSignUp.css";
 import { useDispatch } from "react-redux";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -17,7 +19,6 @@ const ClientSignUp = () => {
   const [bio, setBio] = useState("");
   const [contact_info, setContactInfo] = useState("");
   const history = useHistory();
-
 
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -33,6 +34,16 @@ const ClientSignUp = () => {
     } else {
       setImageAsFile((imageFile) => image);
     }
+  };
+
+  const formatPhoneNumber = (phoneNumberString) => {
+    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      var intlCode = match[1] ? "1 " : "";
+      return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
+    }
+    return null;
   };
 
   const handleFirebaseUpload = () => {
@@ -77,7 +88,7 @@ const ClientSignUp = () => {
         bio,
         company,
         city,
-        contact_info,
+        contact_info: formatPhoneNumber(contact_info),
       });
       await axios.post(`${API}/users`, {
         id: res.user.uid,
@@ -99,7 +110,6 @@ const ClientSignUp = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Name
@@ -159,12 +169,17 @@ const ClientSignUp = () => {
           <label for="exampleInputEmail1" id="labelItem">
             Contact Info/Phone Number
           </label>
-          <input
-            type="text"
+          <PhoneInput
             className="form-control clientSignUpInput"
-            placeholder={"Client Contact Information.."}
+            inputProps={{
+              name: "contact_info",
+              required: true,
+              autoFocus: true,
+            }}
+            placeholder="Phone Number"
+            country={"us"}
             value={contact_info}
-            onChange={(e) => setContactInfo(e.currentTarget.value)}
+            onChange={(contact_info) => setContactInfo(contact_info)}
           />
         </div>
 

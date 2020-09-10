@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
 import "../../css/ArtistSignUpForm.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const ArtistSignUpForm = () => {
   const [name, setName] = useState("");
@@ -24,6 +26,16 @@ const ArtistSignUpForm = () => {
 
   const API = apiURL();
   const dispatch = useDispatch();
+
+  const formatPhoneNumber = (phoneNumberString) => {
+    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      var intlCode = match[1] ? "1 " : "";
+      return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
+    }
+    return null;
+  };
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -78,7 +90,7 @@ const ArtistSignUpForm = () => {
         pricing,
         genre,
         city,
-        contact_info,
+        contact_info: formatPhoneNumber(contact_info),
       });
       await axios.post(`${API}/users`, {
         id: res.user.uid,
@@ -160,14 +172,18 @@ const ArtistSignUpForm = () => {
             <label for="exampleInputEmail1" id="labelitem">
               Contact/Phone Number
             </label>
-            <input
-              type="text"
+            <PhoneInput
               className="form-control artistSignUpInput"
-              placeholder="Artist Contact Information.."
+              inputProps={{
+                name: "contact_info",
+                required: true,
+                autoFocus: true,
+              }}
+              placeholder="Phone Number"
+              country={"us"}
               value={contact_info}
-              onChange={(e) => setContactInfo(e.currentTarget.value)}
-              required
-            ></input>
+              onChange={(contact_info) => setContactInfo(contact_info)}
+            />
           </div>
 
           <div className="form-group">
