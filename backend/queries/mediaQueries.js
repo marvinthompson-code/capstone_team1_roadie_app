@@ -33,18 +33,18 @@ const getVideos = async (req, res, next) => {
   }
 };
 const addNewVideo = async (req, res, next) => {
-  let { artist_id, client_id, caption, url } = req.body;
+  let { artist_id, client_id, caption, url, title, source } = req.body;
   try {
     let video;
     if (!client_id) {
       video = await db.one(
-        `INSERT INTO videos (artist_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
-        [artist_id, caption, url]
+        `INSERT INTO videos (artist_id, caption, url, title, source ) VALUES($1, $2, $3, $4, $5) RETURNING *`,
+        [artist_id, caption, url, title, source]
       );
     } else {
       video = await db.one(
-        `INSERT INTO videos (client_id, caption, url ) VALUES($1, $2, $3) RETURNING *`,
-        [client_id, caption, url]
+        `INSERT INTO videos (client_id, caption, url, title, source ) VALUES($1, $2, $3, $4, $5) RETURNING *`,
+        [client_id, caption, url, title, source]
       );
     }
     res.status(200).json({
