@@ -53,6 +53,10 @@ const ClientProfile = () => {
     fetchUserEvents(match.params.id);
   }, [userEvents]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const handleEventDelete = async (id) => {
     try {
       await axios.delete(`${API}/events/${id}`);

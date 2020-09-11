@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "../../css/NotificationContainer.css";
 
@@ -6,6 +6,11 @@ import NotificationItem from "./NotificationItem";
 
 const NotificationDisplay = () => {
   const notifications = useSelector((state) => state.notifications);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const userNotifications = notifications.map((notification) => {
     return (
       <li key={notification.id}>
