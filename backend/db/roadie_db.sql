@@ -2,15 +2,27 @@
 DROP DATABASE IF EXISTS roadie_db;
 CREATE DATABASE roadie_db;
 \c roadie_db;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS clients;
+
+
+DROP TABLE IF EXISTS users
+CASCADE;
+DROP TABLE IF EXISTS clients
+CASCADE;
+DROP TABLE IF EXISTS artists
+CASCADE;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
-DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS skills;
-DROP TABLE IF EXISTS artists;
+DROP TABLE IF EXISTS events;
+
+
+CREATE TABLE users
+(
+    id VARCHAR PRIMARY KEY,
+    type VARCHAR
+);
 
 CREATE TABLE artists
 (
@@ -48,14 +60,10 @@ CREATE TABLE videos
     id SERIAL PRIMARY KEY,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE,
+    title VARCHAR,
+    source VARCHAR,
     caption VARCHAR,
     url VARCHAR
-);
-
-CREATE TABLE users
-(
-    id VARCHAR PRIMARY KEY,
-    type VARCHAR
 );
 
 CREATE TABLE events
