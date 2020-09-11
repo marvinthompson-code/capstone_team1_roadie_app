@@ -113,14 +113,14 @@ const searchForSingleClient = async (req, res, next) => {
 const updateClientInfo = async (req, res, next) => {
   try {
     let { id } = req.params;
-    let { name, profile_pic_url, bio, contact_info } = req.body;
+    let { name, bio, contact_info } = req.body;
     res.status(200).json({
       status: "Success",
       message: "Updated client's info!",
       body: {
         update_artist_info: await db.one(
-          "UPDATE clients SET name = $1, profile_pic_url = $2, bio = $3, contact_info = $4 WHERE id = $5 RETURNING *",
-          [name, profile_pic_url, bio, contact_info, id]
+          "UPDATE clients SET name = $1, bio = $2, contact_info = $3 WHERE id = $4 RETURNING *",
+          [name, bio, contact_info, id]
         ),
       },
     });
@@ -134,6 +134,30 @@ const updateClientInfo = async (req, res, next) => {
   }
 };
 
+const updateClientProfilePic = async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    let { profile_pic_url } = req.body;
+    res.status(200).json({
+      status: "Success",
+      message: "Updated client's profile pic!",
+      body: {
+        updated_client_profile_pic: await db.one(
+          "UPDATE clients SET profile_pic_url = $1 WHERE id = $2 RETURNING *",
+          [profile_pic_url, id]
+        )
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "Error",
+      message: "Failed to update client's profile pic!"
+    });
+    next(error);
+  }
+};
+
 module.exports = {
   getAllClients,
   getSingleClientByID,
@@ -141,4 +165,5 @@ module.exports = {
   deleteSingleClient,
   searchForSingleClient,
   updateClientInfo,
+  updateClientProfilePic
 };

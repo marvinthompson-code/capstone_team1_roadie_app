@@ -1,0 +1,99 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828b;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075d3e;
+    --jade: #00a86b;
+    --indiaGreen: #078809;
+    --electricGreen: #00ff00;
+    --eerieBlk2: #1c1e1e;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5a7272;
+}
+@font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+}
+  
+@font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+}
+
+.editArtistProfilePicHeader {
+    border-bottom-color: var(--eerieBlk3);
+    background-color: var(--jade) !important;
+}
+
+#labelitem {
+    color: var(--jade) !important;
+    text-shadow: 0.5px 0.3px 1px var(--eerieBlk) !important;
+}
+
+.editArtistProfilePicBody {
+    background-color: var(--eerieBlk3) !important;
+}
+
+.editArtistProfilePicFooter {
+    background-color: var(--eerieBlk3) !important;
+    border-top-color: var(--eerieBlk3) !important;
+}
+
+.editArtistProfilePicSubmit {
+    background-color: var(--jade) !important;
+    color: white !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--eerieBlk);
+    border: 2px solid var(--eerieBlk3) !important;
+    transition: 1s;
+    height: 45px;
+}
+
+.editArtistProfilePicSubmit:hover {
+    background-color: var(--kobe) !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.artistUploadButton {
+    background-color: var(--jade) !important;
+    color: white !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--eerieBlk);
+    border: 2px solid var(--eerieBlk3) !important;
+    transition: 1s;
+    height: 45px;
+}
+
+.artistUploadButton:hover {
+    background-color: var(--kobe) !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.editArtistProfilePicCloseBtn {
+    background-color: var(--eerieBlk3) !important;
+    color: var(--jade) !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px var(--eerieBlk);
+    border: 2px solid var(--eerieBlk3) !important;
+    transition: 1s;
+    height: 45px;
+}
+
+.editArtistProfilePicCloseBtn:hover {
+    background-color: var(--jade) !important;
+    color: white !important;
+    cursor: pointer;
+}

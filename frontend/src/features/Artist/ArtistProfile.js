@@ -66,7 +66,7 @@ const ArtistProfile = () => {
         >
           Edit Profile
         </button>
-      );
+      )
     }
   };
 

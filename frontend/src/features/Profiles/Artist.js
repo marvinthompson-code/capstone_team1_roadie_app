@@ -5,6 +5,7 @@ import UploadVideoModal from "../Portfolio/UploadVideoModal";
 import EditArtistProfileForm from "../Artist/EditArtistProfileForm"
 import BookMeForm from "../Artist/BookMeForm";
 import "../../css/Profiles/Artist.css";
+import EditArtistProfilePicForm from "../Artist/EditArtistProfilePicForm";
 
 const Artist = () => {
   return (
@@ -23,6 +24,9 @@ const Artist = () => {
       </div>
       <div className="row">
         <EditArtistProfileForm />
+      </div>
+      <div className="row">
+        <EditArtistProfilePicForm />
       </div>
     </div>
   );

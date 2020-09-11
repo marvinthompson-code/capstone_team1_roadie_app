@@ -7,6 +7,7 @@ const {
   deleteSingleArtist,
   searchForSingleArtist,
   updateArtistInfo,
+  updateArtistProfilePic,
   getAllArtistBookings
 } = require("../queries/artistsQueries");
 
@@ -17,7 +18,8 @@ artists.get("/:id", getSingleArtistByID);
 artists.post("/", addSingleArtist);
 artists.delete("/:id", deleteSingleArtist);
 artists.get("/search/:name", searchForSingleArtist);
-artists.patch("/:id", updateArtistInfo);
+artists.patch("/info/:id", updateArtistInfo);
+artists.patch("/:id", updateArtistProfilePic)
 artists.get("/:id/bookings", getAllArtistBookings)
 
 module.exports = artists;
