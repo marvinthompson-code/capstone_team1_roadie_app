@@ -4,6 +4,7 @@ import UploadPictureModal from "../Portfolio/UploadPictureModal";
 import UploadVideoModal from "../Portfolio/UploadVideoModal";
 import ClientContactForm from "../ClientContactForm/ClientContactForm";
 import EditClientProfileForm from "../ClientProfile/EditClientProfileForm";
+import "../../css/Profiles/Artist.css";
 
 const Client = () => {
   return (
@@ -17,12 +18,9 @@ const Client = () => {
       <div className="row">
         <UploadVideoModal />
       </div>
-      <div className="row">
-        <ClientContactForm />
-      </div>
-      <div className="row">
-        <EditClientProfileForm />
-      </div>
+      <ClientContactForm />
+
+      <EditClientProfileForm />
     </div>
   );
 };

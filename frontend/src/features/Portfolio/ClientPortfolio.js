@@ -10,8 +10,6 @@ import '../../css/Portfolio.css'
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
   const [name, setName] = useState("");
-  const [video, setVideos] = useState([]);
-  const [caption, setCaption] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,7 +25,7 @@ const ClientPortfolio = () => {
     if (client !== null && client.id === match.params.id) {
       return (
         <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
-          +Upload picture
+          Upload Picture
         </button>
       );
     }
@@ -37,7 +35,7 @@ const ClientPortfolio = () => {
     if (client !== null && client.id === match.params.id) {
       return (
         <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
-          +Upload video
+          Add Video
         </button>
       );
     }
@@ -88,7 +86,7 @@ const ClientPortfolio = () => {
             type="button"
             id="uploadArtistButton"
             onClick={toVideoAlbum}
-            value={`${name}'s Photo Videos`}
+            value={`${name}'s Portfolio Videos`}
           />
         </div>
       </div>

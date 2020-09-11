@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 
-const ClientVideoAlbum = () => {
+const ClientVideoPortfolio = () => {
   const [videos, setVideos] = useState([]);
   const [userInfo, setUserInfo] = useState({});
-  // const [caption, setCaption] = useState()
+
   const history = useHistory();
   const API = apiURL();
   const match = useRouteMatch();
@@ -15,7 +15,7 @@ const ClientVideoAlbum = () => {
   const getUser = async (id) => {
     try {
       let res = await axios.get(`${API}/clients/${id}`);
-    
+
       setUserInfo(res.data.body.single_client);
     } catch (err) {
       console.log(err);
@@ -24,7 +24,6 @@ const ClientVideoAlbum = () => {
 
   useEffect(() => {
     const fetchUsersVideoAlbum = async (client_id) => {
-    
       let res = await axios.get(`${API}/media/videos/client/${client_id}`);
       setVideos(res.data.body.video);
     };
@@ -47,7 +46,6 @@ const ClientVideoAlbum = () => {
               history.push(
                 `/media/videos/client/${match.params.client_id}/video/${video.id}`
               );
-            ;
             }}
           >
             <video
@@ -75,4 +73,4 @@ const ClientVideoAlbum = () => {
     </div>
   );
 };
-export default ClientVideoAlbum;
+export default ClientVideoPortfolio;

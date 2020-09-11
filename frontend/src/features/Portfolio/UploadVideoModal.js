@@ -1,84 +1,24 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { storage } from "../../firebase";
 import { apiURL } from "../../util/apiURL";
 import "../../css/uploadModal.css";
 import axios from "axios";
 
 const UploadVideoModal = () => {
-  // const [videoAsFile, setVideoAsFile] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
-  // const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
   const [caption, setCaption] = useState("");
+  const [source, setSource] = useState("");
+  const [title, setTitle] = useState("");
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const API = apiURL();
 
-  // const handleVideoAsFile = (e) => {
-  //   const video = e.target.files[0];
-  //   const types = ["video/mp4", "video/ogg", "video/quicktime", "video/mov"];
-  //   if (types.every((type) => video.type !== type)) {
-  //     alert(`${video.type} is not supported format`);
-  //   } else {
-  //     setVideoAsFile((videoFile) => video);
-  //   }
-  // };
+  let videoSource = ["YouTube", "Facebook", "SoundCloud", "Vimeo", "Twitch"];
 
-  // const handleFirebaseVideoUpload = () => {
-  //   if (videoAsFile === "") {
-  //     alert(`Please choose a valid file before uploading`);
-  //   } else if (videoAsFile !== null) {
-  //     const uploadTask = storage
-  //       .ref(`/videos/${videoAsFile.name}`)
-  //       .put(videoAsFile);
-  //     uploadTask.on(
-  //       "state_changed",
-  //       (snapShot) => {
-  //         var progress =
-  //           (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
-  //         console.log("Upload is " + progress + "% done");
-  //         console.log(snapShot);
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       },
-  //       () => {
-  //         storage
-  //           .ref("videos")
-  //           .child(videoAsFile.name)
-  //           .getDownloadURL()
-  //           .then((fireBaseUrl) => {
-  //             debugger
-  //             setVideoUrl(fireBaseUrl);
-  //           });
-  //       }
-  //     );
-  //     setToggleUploadMsg(true);
-  //   } else {
-    //     setToggleUploadMsg(false);
-    //   }
-    // };
-    {/* <div className="custom-file">
-      <input
-        type="file"
-        required
-        className="custom-file-input uploadModalInput"
-        id="customFile"
-        onChange={handleVideoAsFile}
-      />
-      <label className="custom-file-label" for="customFile">
-        Choose file
-      </label>
-    </div> */}
-    {/* <button
-      type="button"
-      className="btn btn-primary activeButton"
-      onClick={handleFirebaseVideoUpload}
-    >
-      Upload
-    </button> */}
-    {/* {toggleUploadMsg ? <h5>Upload successful!</h5> : null} */}
-    
+  const videoOptions = videoSource.map(video =>{
+    return <option value={video} key={video}>{video}</option>
+  })
+
   const insertVideoIntoAlbum = async (e) => {
     e.preventDefault();
     if (artist === null) {
@@ -87,6 +27,9 @@ const UploadVideoModal = () => {
           client_id: client.id,
           caption: caption,
           url: videoUrl,
+          title: title,
+          source: source
+
         });
         setCaption("");
       } catch (err) {
@@ -98,14 +41,15 @@ const UploadVideoModal = () => {
           artist_id: artist.id,
           caption: caption,
           url: videoUrl,
+          title: title,
+          source: source
         });
-
       } catch (err) {
         console.log(err.message);
       }
     }
   };
-  
+
   return (
     <div
       className="modal fade"
@@ -132,7 +76,23 @@ const UploadVideoModal = () => {
           </div>
           <div className="modal-body uploadModalBody">
             <form onSubmit={insertVideoIntoAlbum}>
-            <div className="form-group">
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Video title..."
+                  value={title}
+                  onChange={(e) => setTitle(e.currentTarget.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <select onChange={(e) => setSource(e.target.value)} value={source} class="custom-select">
+                  <option value={""} disabled>Video Source</option>
+                  {videoOptions}
+                </select>
+              </div>
+              <div className="form-group">
                 <input
                   type="text"
                   className="form-control"

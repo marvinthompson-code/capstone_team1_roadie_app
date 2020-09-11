@@ -112,7 +112,7 @@ const ArtistProfile = () => {
       {/* This page has two divs */}
 
       <div className="row portfolioDiv">
-        <div className={"col-lg-2"}>
+        <div className={"col"}>
           <Portfolio />
         </div>
         <div className="col artistInfo">
