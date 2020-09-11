@@ -236,6 +236,9 @@ const ClientSignUp = () => {
           type="submit"
           className="btn btn-primary clientSignUpButton"
           value="Sign Up"
+          onClick={handleSubmit}
+          data-dismiss="modal"
+          aria-label="Close"
         />
       </form>
     </div>
