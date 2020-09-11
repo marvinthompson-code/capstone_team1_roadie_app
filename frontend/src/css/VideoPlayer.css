@@ -1,0 +1,5 @@
+.VideoPlayer{
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 1fr 3fr 1fr;
+}
