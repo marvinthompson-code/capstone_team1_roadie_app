@@ -40,6 +40,22 @@ const ArtistPortfolio = () => {
       );
     }
   };
+
+  const editProfileBtn = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+        <button 
+          type="button" 
+          className="btn btn-primary editArtistProfilePic" 
+          data-toggle="modal" 
+          data-target="#editArtistProfilePicModalCenter"
+        >
+          Edit Profile Pic
+        </button>
+      )
+    }
+  };
+
   const toPhotoAlbum = () => {
     history.push(`/media/pictures/artist/${match.params.id}`);
   };
@@ -65,6 +81,7 @@ const ArtistPortfolio = () => {
           id="portfolioImg"
           src={profilePic}
         />
+        <div className={"col-sm-2"}>{editProfileBtn()}</div>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">

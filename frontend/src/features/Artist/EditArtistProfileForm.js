@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { storage } from "../../firebase";
 import { toggleLoadingState } from '../Loading/loadingSlice';
 import { useRouteMatch } from "react-router-dom";
 import { useDispatch } from 'react-redux'
@@ -14,64 +13,20 @@ const EditArtistProfileForm = () => {
   const [ toggle, setToggle ] = useState(false)
   const dispatch = useDispatch()
 
-  const [imageAsFile, setImageAsFile] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
-
   const match = useRouteMatch();
   const API = apiURL();
 
-  const handleImageAsFile = (e) => {
-    const image = e.target.files[0];
-    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
-    if (types.every((type) => image.type !== type)) {
-      alert(`${image.type} is not a supported format`);
-    } else {
-      setImageAsFile((imageFile) => image);
-    }
-  };
-
-  const handleFirebaseUpload = () => {
-    if (imageAsFile === "") {
-      alert("Please choose a valid file before uploading");
-    } else if (imageAsFile !== null) {
-      const uploadTask = storage
-        .ref(`/images/${imageAsFile.name}`)
-        .put(imageAsFile);
-      uploadTask.on(
-        "state_changed",
-        (snapShot) => {
-          console.log(snapShot);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          storage
-            .ref("images")
-            .child(imageAsFile.name)
-            .getDownloadURL()
-            .then((fireBaseUrl) => {
-              setImageUrl(fireBaseUrl);
-            });
-        }
-      );
-      setToggleUploadMsg(true);
-    } else {
-      setToggleUploadMsg(false);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.patch(`${API}/artists/${match.params.id}`, {
+    let res = await axios.patch(`${API}/artists/info/${match.params.id}`, {
       name,
-      profile_pic_url: imageUrl,
       bio,
       contact_info,
     });
     dispatch(toggleLoadingState())
     dispatch(toggleLoadingState())
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -129,35 +84,6 @@ const EditArtistProfileForm = () => {
                   onChange={(e) => setName(e.currentTarget.value)}
                 />
               </div>
-
-              <div className="form-group">
-                <label for="exampleFormControlFile1" id="labelitem">
-                  Upload Profile Image
-                </label>
-                <input
-                  type="file"
-                  onChange={handleImageAsFile}
-                  required
-                  className="form-control-file"
-                  id="exampleFormControlFile1"
-                />
-              </div>
-
-              <button
-                type="button"
-                className="artistUploadButton btn-secondary"
-                onClick={() => {
-                  handleFirebaseUpload();
-                }}
-                id="firebaseUpload"
-              >
-                Upload
-              </button>
-              {toggleUploadMsg ? (
-                <h5 id="uploadSuccess" id="labelitem">
-                  Upload successful!
-                </h5>
-              ) : null}
 
               <div className="form-group">
                 <label for="Bio" id="labelitem">

@@ -58,6 +58,21 @@
   cursor: pointer;
 }
 
+.editArtistProfilePic {
+  border: 2px solid black !important;
+  border-radius: 10px;
+  background-color: var(--jade) !important;
+  box-shadow: 1px 1px 2px var(--eerieBlk3) !important;
+  color: white !important;
+  transition: 1s;
+}
+
+.editArtistProfilePic:hover {
+  background-color: var(--kobe) !important;
+  color: white !important;
+  cursor: pointer;
+}
+
 #EditArtistProfileButton {
   border: 2px solid var(--darkSienna);
   border-radius: 10px;
