@@ -5,6 +5,7 @@ import { apiURL } from "../../util/apiURL";
 import "../../css/EventDisplay.css";
 import logo from "../images/FinalRoadieLogoblk.png";
 import { PEXELS_API_KEY } from "../../secrets";
+import LineupItem from "./LineupItem";
 
 const EventDisplay = () => {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ const EventDisplay = () => {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [lineupArr, setLineupArr] = useState([]);
   const API = apiURL();
   const match = useRouteMatch();
 
@@ -45,10 +47,19 @@ const EventDisplay = () => {
   useEffect(() => {
     const fetchLineupInfo = async (id) => {
       let res = await axios.get(`${API}/lineup/${id}`);
-      debugger
+      debugger;
+      setLineupArr(res.data.body.lineup);
     };
-    fetchLineupInfo(match.params.id)
+    fetchLineupInfo(match.params.id);
   }, []);
+
+  const lineupCards = lineupArr.map((artist) => {
+    return (
+      <div className={"col"}>
+        <LineupItem artist={artist} />
+      </div>
+    );
+  });
 
   return (
     <div className="eventDisplay container">
@@ -75,7 +86,10 @@ const EventDisplay = () => {
         </p>
         {/* <hr class="my-4"/> */}
         <div className="container">
-          <h1 className={"ddisplay-5"}>Lineup</h1>
+          <h1 className={"display-4"}>Lineup</h1>
+          <div className={"row"}>
+            {lineupCards}
+          </div>
         </div>
       </div>
     </div>
