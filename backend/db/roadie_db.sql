@@ -1,29 +1,15 @@
-
 DROP DATABASE IF EXISTS roadie_db;
 CREATE DATABASE roadie_db;
 \c roadie_db;
-
-
-DROP TABLE IF EXISTS users
-CASCADE;
-DROP TABLE IF EXISTS clients
-CASCADE;
-DROP TABLE IF EXISTS artists
-CASCADE;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
+DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS skills;
-DROP TABLE IF EXISTS events;
-
-
-CREATE TABLE users
-(
-    id VARCHAR PRIMARY KEY,
-    type VARCHAR
-);
-
+DROP TABLE IF EXISTS artists;
 CREATE TABLE artists
 (
     id VARCHAR PRIMARY KEY,
@@ -35,7 +21,6 @@ CREATE TABLE artists
     city VARCHAR,
     contact_info VARCHAR
 );
-
 CREATE TABLE clients
 (
     id VARCHAR PRIMARY KEY,
@@ -45,7 +30,6 @@ CREATE TABLE clients
     city VARCHAR,
     contact_info VARCHAR
 );
-
 CREATE TABLE pictures
 (
     id SERIAL PRIMARY KEY,
@@ -54,7 +38,6 @@ CREATE TABLE pictures
     caption VARCHAR,
     url VARCHAR
 );
-
 CREATE TABLE videos
 (
     id SERIAL PRIMARY KEY,
@@ -65,7 +48,11 @@ CREATE TABLE videos
     caption VARCHAR,
     url VARCHAR
 );
-
+CREATE TABLE users
+(
+    id VARCHAR PRIMARY KEY,
+    type VARCHAR
+);
 CREATE TABLE events
 (
     id SERIAL PRIMARY KEY,
@@ -76,14 +63,12 @@ CREATE TABLE events
     city VARCHAR,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
-
 CREATE TABLE lineup
 (
     id SERIAL PRIMARY KEY,
     event_id INT REFERENCES events(id) ON DELETE CASCADE,
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE
 );
-
 CREATE TABLE bookings
 (
     id SERIAL PRIMARY KEY,
@@ -93,7 +78,6 @@ CREATE TABLE bookings
     bio VARCHAR,
     contact_info VARCHAR
 );
-
 CREATE TABLE skills
 (
     id SERIAL PRIMARY KEY,
@@ -101,7 +85,6 @@ CREATE TABLE skills
     artist_id VARCHAR REFERENCES artists(id) ON DELETE CASCADE,
     client_id VARCHAR REFERENCES clients(id) ON DELETE CASCADE
 );
-
 INSERT INTO artists
     (id, name, profile_pic_url, bio, pricing, genre, city, contact_info )
 VALUES
