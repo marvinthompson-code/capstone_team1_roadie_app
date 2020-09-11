@@ -24,7 +24,7 @@ const SearchResultItem = ({ result }) => {
       </div>
       <div className="nameDisplay">
         <h1 className="name">{name}</h1>
-        <p>{genre}</p>
+        <p className="searchResultItem">{genre}</p>
       </div>
     </div>
   );

@@ -47,3 +47,7 @@
   grid-column: 2 / span 1;
   justify-self: center;
 }
+
+.searchResultItem{
+  text-transform: uppercase;
+}
