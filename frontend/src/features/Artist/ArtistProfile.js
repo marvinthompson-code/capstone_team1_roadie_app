@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import { recieveClientEvents } from "./bookMeEventsSlice";
 import Portfolio from "../Portfolio/Portfolio";
-import  { receiveClientInfo } from '../client/clientInfoSlice'
+import { receiveClientInfo } from "../client/clientInfoSlice";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import "../../css/ArtistProfile.css";
@@ -45,15 +45,18 @@ const ArtistProfile = () => {
 
   useEffect(() => {
     const fetchClientInfo = async (id) => {
-      let res = await axios.get(`${API}/clients/${id}`)
-      debugger
-      let { single_client } = res.data.body 
-      dispatch(receiveClientInfo(single_client))
-    }
+      let res = await axios.get(`${API}/clients/${id}`);
+      let { single_client } = res.data.body;
+      dispatch(receiveClientInfo(single_client));
+    };
     if (client !== null) {
-      fetchClientInfo(client.id)
+      fetchClientInfo(client.id);
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
@@ -66,7 +69,7 @@ const ArtistProfile = () => {
         >
           Edit Profile
         </button>
-      )
+      );
     }
   };
 
@@ -112,7 +115,7 @@ const ArtistProfile = () => {
       {/* This page has two divs */}
 
       <div className="row portfolioDiv">
-        <div className={"col-lg-2"}>
+        <div className={"col"}>
           <Portfolio />
         </div>
         <div className="col artistInfo">

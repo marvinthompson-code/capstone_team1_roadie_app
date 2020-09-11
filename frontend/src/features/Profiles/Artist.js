@@ -19,8 +19,13 @@ const Artist = () => {
       <div className="row">
         <UploadVideoModal />
       </div>
+<<<<<<< HEAD
       <div>
       <BookMeForm />
+=======
+      <div className="row">
+        <BookMeForm />
+>>>>>>> 5960908255088cc5e7e0b8db74f0a1058caf09c3
       </div>
       <div className="row">
         <EditArtistProfileForm />

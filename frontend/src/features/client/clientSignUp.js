@@ -26,16 +26,6 @@ const ClientSignUp = () => {
   const API = apiURL();
   const dispatch = useDispatch();
 
-  const handleImageAsFile = (e) => {
-    const image = e.target.files[0];
-    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
-    if (types.every((type) => image.type !== type)) {
-      alert(`${image.type} is not a supported format`);
-    } else {
-      setImageAsFile((imageFile) => image);
-    }
-  };
-
   const formatPhoneNumber = (phoneNumberString) => {
     var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
     var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
@@ -44,6 +34,16 @@ const ClientSignUp = () => {
       return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
     }
     return null;
+  };
+
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0];
+    const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
+    if (types.every((type) => image.type !== type)) {
+      alert(`${image.type} is not a supported format`);
+    } else {
+      setImageAsFile((imageFile) => image);
+    }
   };
 
   const handleFirebaseUpload = () => {
@@ -236,6 +236,9 @@ const ClientSignUp = () => {
           type="submit"
           className="btn btn-primary clientSignUpButton"
           value="Sign Up"
+          onClick={handleSubmit}
+          data-dismiss="modal"
+          aria-label="Close"
         />
       </form>
     </div>

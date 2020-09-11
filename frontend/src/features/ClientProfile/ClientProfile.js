@@ -53,6 +53,10 @@ const ClientProfile = () => {
     fetchUserEvents(match.params.id);
   }, [userEvents]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const handleEventDelete = async (id) => {
     try {
       await axios.delete(`${API}/events/${id}`);
@@ -170,7 +174,7 @@ const ClientProfile = () => {
       {/* This page has two divs */}
 
       <div className="row portfolioDiv">
-        <div className={"col-lg-2"}>
+        <div className={"col"}>
           <ClientPortfolio />
         </div>
 

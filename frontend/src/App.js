@@ -27,9 +27,9 @@ import ClientPhotoAlbum from "./features/Albums/ClientPhotoAlbum";
 import AboutRoadie from "./features/About/AboutRoadie";
 import WhyRoadie from "./features/About/WhyRoadie";
 import MeetTheRoadies from "./features/About/MeetRoadies";
-import ArtistVideoAlbum from "./features/Albums/ArtistVideoAlbum";
+import ArtistVideoPortfolio from "./features/Albums/ArtistVideoPortfolio";
 import VideoPlayer from "./features/Albums/VideoPlayer/VideoPlayer";
-import ClientVideoAlbum from "./features/Albums/ClientVideoAlbum";
+import ClientVideoPortfolio from "./features/Albums/ClientVideoPortfolio";
 import ClientVideoPlayer from "./features/Albums/VideoPlayer/ClientVideoPlayer";
 import GuestLogIn from "./features/login/GuestLogin";
 
@@ -76,7 +76,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/media/videos/artist/:artist_id"}>
-          <ArtistVideoAlbum />
+          <ArtistVideoPortfolio />
         </ProtectedRoute>
 
         <ProtectedRoute
@@ -98,7 +98,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/media/videos/client/:client_id"}>
-          <ClientVideoAlbum />
+          <ClientVideoPortfolio />
         </ProtectedRoute>
 
         <ProtectedRoute exact path={"/artist/:id"}>
