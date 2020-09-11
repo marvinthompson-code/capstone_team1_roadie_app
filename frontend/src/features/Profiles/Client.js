@@ -4,11 +4,8 @@ import UploadPictureModal from "../Portfolio/UploadPictureModal";
 import UploadVideoModal from "../Portfolio/UploadVideoModal";
 import ClientContactForm from "../ClientContactForm/ClientContactForm";
 import EditClientProfileForm from "../ClientProfile/EditClientProfileForm";
-<<<<<<< HEAD
 import EditClientProfilePicForm from "../ClientProfile/EditClientProfilePicForm";
-=======
 import "../../css/Profiles/Artist.css";
->>>>>>> 5960908255088cc5e7e0b8db74f0a1058caf09c3
 
 const Client = () => {
   return (
@@ -22,7 +19,6 @@ const Client = () => {
       <div className="row">
         <UploadVideoModal />
       </div>
-<<<<<<< HEAD
       <div className="row">
         <ClientContactForm />
       </div>
@@ -32,11 +28,6 @@ const Client = () => {
       <div className="row">
         <EditClientProfileForm />
       </div>
-=======
-      <ClientContactForm />
-
-      <EditClientProfileForm />
->>>>>>> 5960908255088cc5e7e0b8db74f0a1058caf09c3
     </div>
   );
 };
