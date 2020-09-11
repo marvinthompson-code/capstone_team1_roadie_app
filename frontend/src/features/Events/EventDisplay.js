@@ -44,6 +44,11 @@ const EventDisplay = () => {
     fetchEventInfo(match.params.id, match.params.client_id);
   }, []);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   useEffect(() => {
     const fetchLineupInfo = async (id) => {
       let res = await axios.get(`${API}/lineup/${id}`);

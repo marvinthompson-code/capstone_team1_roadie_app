@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./Search";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -10,10 +10,17 @@ import headshot from "../images/pexels-murat-esibatir-4355346.jpg";
 import logo from "../images/FinalRoadieLogoblk.png";
 
 const Home = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   const loading = useSelector((state) => state.loading);
   if (loading) {
     return <div>Loading...</div>;
   }
+
+ 
 
   return (
     <div className="home container">

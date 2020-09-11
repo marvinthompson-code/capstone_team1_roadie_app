@@ -55,6 +55,11 @@ const ArtistProfile = () => {
     }
   }, [])
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
