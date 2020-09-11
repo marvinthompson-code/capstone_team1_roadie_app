@@ -43,6 +43,21 @@ const ClientPortfolio = () => {
     }
   };
 
+  const editProfileBtn = () => {
+    if (client !== null && client.id === match.params.id) {
+      return (
+        <button 
+          type="button" 
+          className="btn btn-primary editClientProfilePic" 
+          data-toggle="modal" 
+          data-target="#editClientProfilePicModalCenter"
+        >
+          Edit Profile Pic
+        </button>
+      )
+    }
+  };
+
   const toPhotoAlbum = () => {
     history.push(`/media/pictures/client/${match.params.id}`);
   };
@@ -69,6 +84,7 @@ const ClientPortfolio = () => {
           id="portfolioImg"
           src={profilePic}
         />
+        <div className={"col"}>{editProfileBtn()}</div>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">

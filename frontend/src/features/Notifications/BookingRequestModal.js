@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { db } from "../../firebase";
+import "../../css/BookingRequestModal.css";
 
 const BookingRequestModal = ({
   artist_id,
@@ -24,10 +25,14 @@ const BookingRequestModal = ({
         bio: bio,
         contact_info: contactInfo,
       });
+      debugger
+
       let res2 = await axios.post(`${API}/lineup/`, {
         event_id: event_id,
         artist_id: artist_id,
       });
+      debugger
+
       await db
         .collection("bookings")
         .doc(artist_id)
@@ -56,7 +61,7 @@ const BookingRequestModal = ({
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content">
+        <div className="modal-content BookingRequestModal">
           <div className="modal-header bookingRequestModalHeader">
             <h5 className="modal-title" id="exampleModalLongTitle">
               Accept Book Request
@@ -72,20 +77,27 @@ const BookingRequestModal = ({
           </div>
           <div className="modal-body bookingRequestModalBody">
             <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Write a description for this upcoming show"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                style={{ backgroundColor: "black" }}
-              />
-              <input
-                type="text"
-                placeholder="Contact info for client"
-                value={contactInfo}
-                onChange={(e) => setContactInfo(e.target.value)}
-                style={{ backgroundColor: "black" }}
-              />
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control bookMeModalInput"
+                  placeholder="Write a description for this upcoming show"
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  style={{ backgroundColor: "black" }}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Contact info for client"
+                  className="form-control bookMeModalInput"
+                  value={contactInfo}
+                  onChange={(e) => setContactInfo(e.target.value)}
+                  style={{ backgroundColor: "black" }}
+                />
+              </div>
+
               <input
                 type="submit"
                 className="btn btn-primary activeButton"

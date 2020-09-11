@@ -17,7 +17,7 @@ clients.get("/:id", getSingleClientByID);
 clients.post("/", addSingleClient);
 clients.delete("/:id", deleteSingleClient);
 clients.get("/search/:name", searchForSingleClient);
-clients.patch("/:id", updateClientInfo);
+clients.patch("/info/:id", updateClientInfo);
 clients.patch("/:id", updateClientProfilePic);
 
 module.exports = clients;

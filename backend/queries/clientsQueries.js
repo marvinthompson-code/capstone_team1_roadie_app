@@ -138,14 +138,15 @@ const updateClientProfilePic = async (req, res, next) => {
   try {
     let { id } = req.params;
     let { profile_pic_url } = req.body;
+    let updated_client_profile_pic = await db.one(
+      "UPDATE clients SET profile_pic_url = $1 WHERE id = $2 RETURNING *",
+      [profile_pic_url, id]
+    );
     res.status(200).json({
       status: "Success",
       message: "Updated client's profile pic!",
       body: {
-        updated_client_profile_pic: await db.one(
-          "UPDATE clients SET profile_pic_url = $1 WHERE id = $2 RETURNING *",
-          [profile_pic_url, id]
-        )
+        updated_client_profile_pic
       }
     });
   } catch (error) {
