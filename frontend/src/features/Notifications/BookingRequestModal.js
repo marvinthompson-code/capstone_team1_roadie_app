@@ -3,6 +3,8 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { db } from "../../firebase";
 import "../../css/BookingRequestModal.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const BookingRequestModal = ({
   artist_id,
@@ -15,6 +17,16 @@ const BookingRequestModal = ({
   const [bio, setBio] = useState("");
   const [contactInfo, setContactInfo] = useState("");
 
+  const formatPhoneNumber = (phoneNumberString) => {
+    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      var intlCode = match[1] ? "1 " : "";
+      return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
+    }
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,15 +35,15 @@ const BookingRequestModal = ({
         client_id: client_id,
         event_id: event_id,
         bio: bio,
-        contact_info: contactInfo,
+        contact_info: formatPhoneNumber(contactInfo),
       });
-      debugger
+      debugger;
 
       let res2 = await axios.post(`${API}/lineup/`, {
         event_id: event_id,
         artist_id: artist_id,
       });
-      debugger
+      debugger;
 
       await db
         .collection("bookings")
@@ -76,8 +88,11 @@ const BookingRequestModal = ({
             </button>
           </div>
           <div className="modal-body bookingRequestModalBody">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} class="form-horizontal">
               <div className="form-group">
+                <label for="bookMeModalInput" id="labelitem1">
+                  Upcoming show description:
+                </label>
                 <input
                   type="text"
                   className="form-control bookMeModalInput"
@@ -88,13 +103,19 @@ const BookingRequestModal = ({
                 />
               </div>
               <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Contact info for client"
+                <label for="bookMeModalInput" id="labelitem2">
+                  Provide your number for the client:
+                </label>
+                <PhoneInput
                   className="form-control bookMeModalInput"
+                  inputProps={{
+                    name: "contact_info",
+                    required: true,
+                    autoFocus: true,
+                  }}
+                  country={"us"}
                   value={contactInfo}
-                  onChange={(e) => setContactInfo(e.target.value)}
-                  style={{ backgroundColor: "black" }}
+                  onChange={(contact_info) => setContactInfo(contact_info)}
                 />
               </div>
 

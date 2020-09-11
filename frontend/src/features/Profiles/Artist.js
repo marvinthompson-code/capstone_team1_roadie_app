@@ -19,8 +19,8 @@ const Artist = () => {
       <div className="row">
         <UploadVideoModal />
       </div>
-
-      <BookMeForm />
+      <div className="row">
+        <BookMeForm />
       </div>
       <div className="row">
         <EditArtistProfileForm />
