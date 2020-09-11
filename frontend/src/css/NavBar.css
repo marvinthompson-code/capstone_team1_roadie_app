@@ -140,14 +140,14 @@ a:hover {
   align-self: center;
   filter: invert(100%);
 }
-.btn-secondary{
+.btn-secondary {
   background: var(--eerieBlk) !important;
   border: 2px solid var(--jade) !important;
 }
-.btn-secondary:hover{
+.btn-secondary:hover {
   background: var(--kobe) !important;
   border: 2px solid var(--eerieBlk) !important;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 #dropdownMenuButton {
@@ -160,15 +160,6 @@ a:hover {
 }
 #roadieLogo {
   margin-right: 5px;
-}
-
-.notificationBtn .badge {
-  position: absolute;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background: red;
-  color: white;
-  font-size: 12px;
 }
 
 .guestLogIn {
