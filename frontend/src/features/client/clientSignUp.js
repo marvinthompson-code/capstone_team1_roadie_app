@@ -9,6 +9,7 @@ import "../../css/clientSignUp.css";
 import { useDispatch } from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { toggleLoadingState } from "../Loading/loadingSlice";
 
 const ClientSignUp = () => {
   const [name, setName] = useState("");
@@ -95,14 +96,15 @@ const ClientSignUp = () => {
         type: "client",
       });
       dispatch(updateClient(res.user));
-      history.push("/");
+      dispatch(toggleLoadingState());
+      dispatch(toggleLoadingState());
     } catch (error) {
       console.log(error.message);
     }
   };
 
   return (
-    <div className="FormContainer">
+    <div className="form-group">
       <div className="modal-header clientSignUpHeader">
         <h3 className="modal-title" id="exampleModalLongTitle">
           Client Sign Up
@@ -122,7 +124,6 @@ const ClientSignUp = () => {
             onChange={(e) => setName(e.currentTarget.value)}
           />
         </div>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Email
@@ -137,7 +138,6 @@ const ClientSignUp = () => {
             aria-describedby="emailHelp"
           />
         </div>
-
         <div class="form-group">
           <label for="exampleInputPassword1" id="labelItem">
             Password
@@ -151,7 +151,6 @@ const ClientSignUp = () => {
             id="exampleInputPassword1"
           />
         </div>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             City
@@ -164,7 +163,6 @@ const ClientSignUp = () => {
             onChange={(e) => setCity(e.currentTarget.value)}
           />
         </div>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Contact Info/Phone Number
@@ -182,7 +180,6 @@ const ClientSignUp = () => {
             onChange={(contact_info) => setContactInfo(contact_info)}
           />
         </div>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Company
@@ -195,7 +192,6 @@ const ClientSignUp = () => {
             onChange={(e) => setCompany(e.currentTarget.value)}
           />
         </div>
-
         <div className="form-group">
           <label for="exampleInputEmail1" id="labelItem">
             Bio
@@ -209,7 +205,6 @@ const ClientSignUp = () => {
             row="3"
           />
         </div>
-
         <div className="form-group">
           <label for="exampleFormControlFile1" id="labelItem">
             Upload Profile Image
@@ -231,10 +226,9 @@ const ClientSignUp = () => {
           upload
         </button>
         {toggleUploadMsg ? <h5 id="labelItem">Upload successful!</h5> : null}
-
         <input
           type="submit"
-          className="btn btn-primary clientSignUpButton"
+          className="clientSignUpButton btn-primary"
           value="Sign Up"
           onClick={handleSubmit}
           data-dismiss="modal"
