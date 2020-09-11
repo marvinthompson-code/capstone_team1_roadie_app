@@ -14,8 +14,10 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-  
+
   const loading = useSelector((state) => state.loading);
+  const artist = useSelector((state) => state.artist)
+  const client = useSelector((state) => state.client)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -164,6 +166,7 @@ const Home = () => {
                 </li>
               </ul>
               <div className="homeSignUpBtnDiv">
+                { artist === null && client === null ? (
                 <NavLink
                   className="nav-link roadieHomeSignUp"
                   href="#"
@@ -175,6 +178,7 @@ const Home = () => {
                   Sign Up{" "}
                   <span className="sr-only">(current)</span>
                 </NavLink>
+                ) : null}
               </div>
             </div>
           </div>
