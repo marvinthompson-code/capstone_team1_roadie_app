@@ -4,10 +4,9 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 
-const ArtistVideoAlbum = () => {
+const ArtistVideoPortfolio = () => {
   const [videos, setVideos] = useState([]);
   const [userInfo, setUserInfo] = useState({});
-  // const [caption, setCaption] = useState()
   const history = useHistory();
   const API = apiURL();
   const match = useRouteMatch();
@@ -42,8 +41,9 @@ const ArtistVideoAlbum = () => {
             data-target="#videoTarget"
             data-toggle="modal"
             onClick={() => {
-              history.push(`/media/videos/artist/${match.params.artist_id}/video/${video.id}`)
-    
+              history.push(
+                `/media/videos/artist/${match.params.artist_id}/video/${video.id}`
+              );
             }}
           >
             <video
@@ -71,4 +71,4 @@ const ArtistVideoAlbum = () => {
     </div>
   );
 };
-export default ArtistVideoAlbum;
+export default ArtistVideoPortfolio;

@@ -174,7 +174,7 @@ const ClientProfile = () => {
       {/* This page has two divs */}
 
       <div className="row portfolioDiv">
-        <div className={"col-lg-2"}>
+        <div className={"col"}>
           <ClientPortfolio />
         </div>
 
