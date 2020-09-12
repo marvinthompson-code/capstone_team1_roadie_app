@@ -63,7 +63,7 @@ const ClientVideoPortfolio = () => {
   });
 
   return (
-    <div className="container-fluid position-absolute userAlbums">
+    <div className="container position-absolute userAlbums">
       <div className="row justify-content-center">
         <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
       </div>

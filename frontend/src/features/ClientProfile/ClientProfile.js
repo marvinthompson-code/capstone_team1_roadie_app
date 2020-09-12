@@ -163,26 +163,24 @@ const ClientProfile = () => {
 
   return (
     <>
-      <div className="container-fluid">
-        <div
-          className="row artistBanner align-items-center justify-content-center"
-          id="artistBanner"
-        >
-          <div className={"col-sm-2"}>
-            <button
-              className="btn btn-primary"
-              data-toggle="modal"
-              data-target="#contactClientModalCenter"
-              id="BookMeButton"
-              onClick={() => dispatch(toggleClientContactModalState())}
-            >
-              Contact Me!
-            </button>
-          </div>
-          <div className="col-sm-6 text-center artistProfileHeader">
-            <h2 className={"artistProfileName"}>{name}</h2>
-          </div>
-          <div className="col-sm-2">{editButton()}</div>
+    <div className="container">
+      <div
+        className="row artistBanner align-items-center justify-content-center"
+        id="artistBanner"
+      >
+        <div className={"col-sm-2"}>
+          <button
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#contactClientModalCenter"
+            id="BookMeButton"
+            onClick={() => dispatch(toggleClientContactModalState())}
+          >
+            Contact Me!
+          </button>
+        </div>
+        <div className="col-sm-6 text-center artistProfileHeader">
+          <h2 className={"artistProfileName"}>{name}</h2>
         </div>
         {/* This page has two divs */}
 
@@ -210,15 +208,9 @@ const ClientProfile = () => {
             <div className={"bookingsDisplayContainer container text-center"}>
               <div className={"eventTitleDiv"}>
                 <h1 class="display-4">Created Events</h1>
-                {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
               </div>
-              <div className={"createEventButtonDiv"}>
-                {createEventButton()}
-              </div>
-              <div className={"eventUl container-fluid"}>
-                {userEventsThumbs}
-              </div>
-            </div>
+            <div className={"createEventButtonDiv"}>{createEventButton()}</div>
+            <div className={"eventUl container"}>{userEventsThumbs}</div>
           </div>
         </div>
       </div>
