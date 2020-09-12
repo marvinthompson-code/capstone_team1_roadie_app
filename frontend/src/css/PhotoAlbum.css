@@ -11,14 +11,21 @@
   --spaceGrey: #5a7272;
 }
 
-/* .userAlbums {
+.userAlbums{
+  padding: 30px;
+}
+#usersAlbumHeader{
+  border-bottom: 2px solid var(--jade);
+  margin-bottom: 10px;
+}
 
-} */
 .albumJumbo {
+  padding: 20px;
   background-color: rgba(28, 30, 30, 0.92) !important;
   box-shadow: 20px 20px 50px var(--eerieBlk);
   border: 2px solid var(--jade) !important;
   overflow: scroll;
+  height: 75vh;
 }
 .allPhotos {
   display: grid;
