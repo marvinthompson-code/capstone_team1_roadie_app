@@ -81,7 +81,7 @@ const ArtistPortfolio = () => {
           id="portfolioImg"
           src={profilePic}
         />
-        <div className={"col-sm-2"}>{editProfileBtn()}</div>
+        <div className={"col"}>{editProfileBtn()}</div>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">

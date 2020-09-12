@@ -8,7 +8,7 @@ const LineupItem = ({ artist }) => {
   const [profilePicture, setProfilePicture] = useState("");
   const [genre, setGenre] = useState("");
   const API = apiURL();
-  const history = useHistory()
+  const history = useHistory();
 
   const setHistory = (id) => {
     history.push(`/artist/${id}`);
@@ -30,7 +30,10 @@ const LineupItem = ({ artist }) => {
     fetchArtistInfo(artist.artist_id);
   }, []);
   return (
-    <div className="container-fluid resultItem" onClick={() => setHistory(artist.artist_id)}>
+    <div
+      className="container resultItem"
+      onClick={() => setHistory(artist.artist_id)}
+    >
       <div className="picDisplay">
         <img id="profilePic" src={profilePicture} />
       </div>
