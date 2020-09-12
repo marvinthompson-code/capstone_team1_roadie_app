@@ -3,6 +3,12 @@ import { useRouteMatch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
+import SoundCloud from "../images/VideoIcons/iconfinder_SoundCloud_2062090.png";
+import FaceBook from "../images/VideoIcons/inconfinder_square-facebook_317727.png";
+import Twitch from "../images/VideoIcons/iconfinder_twitch_3069707.png";
+import Vimeo from "../images/VideoIcons/iconfinder_Vimeo_381370.png";
+import YouTube from "../images/VideoIcons/icondfinder_youtube_1220360.png";
+import Unknown from "../images/VideoIcons/iconfinder_secret_secure_hack_unknown_files_4852564.png";
 
 const ArtistVideoPortfolio = () => {
   const [videos, setVideos] = useState([]);
@@ -33,6 +39,25 @@ const ArtistVideoPortfolio = () => {
     width: "100px",
   };
   const getUsersVideo = videos.map((video) => {
+    // switch (video.source) {
+    //   case "YouTube":
+    //     <img src={YouTube} />;
+    //     break;
+    //   case "Vimeo":
+    //     <img src={Vimeo} />;
+    //     break;
+    //   case "FaceBook":
+    //     <img src={FaceBook} />;
+    //     break;
+    //   case "SoundCloud":
+    //     <img src={SoundCloud} />;
+    //     break;
+    //   case "Twitch":
+    //     <img src={Twitch} />;
+    //     break;
+    //   default:
+    //     <img src={Unknown} />;
+    // }
     return (
       <li>
         <div className="eachPhoto">
@@ -46,14 +71,9 @@ const ArtistVideoPortfolio = () => {
               );
             }}
           >
-            <video
-              alt={video.caption}
-              src={video.url}
-              style={imgSize}
-              control
-            />
-
             <p id="imgCaption">{video.caption}</p>
+            <p id="vidSource"> from {video.source}</p>
+            {video.source}
           </a>
         </div>
       </li>
@@ -61,11 +81,11 @@ const ArtistVideoPortfolio = () => {
   });
 
   return (
-    <div className="container position-absolute userAlbums">
-      <div className="row justify-content-center">
-        <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
-      </div>
+    <div className="container userAlbums">
       <div className="jumbotron albumJumbo text-center">
+        <h2 id="usersAlbumHeader" className="display-4">
+          {userInfo.name}'s Portfolio
+        </h2>
         <ul className="allPhotos">{getUsersVideo}</ul>
       </div>
     </div>
