@@ -60,7 +60,11 @@ const ArtistProfile = () => {
       let res = await axios.get(`${API}/clients/${id}`);
       let { single_client } = res.data.body;
       debugger
-      dispatch(receiveClientInfo(single_client));
+      dispatch(receiveClientInfo({
+        ...single_client,
+        email: client.email
+      }
+        ));
     };
     if (client !== null) {
       fetchClientInfo(client.id);
