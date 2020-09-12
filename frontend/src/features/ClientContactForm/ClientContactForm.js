@@ -30,10 +30,7 @@ const ClientContactForm = () => {
         message: "An artist messaged you",
         body: body,
       });
-    // create alert that says "You sent a message"
-    // Toastify?
     $("#toastContact").toast("show");
-    // close modal
   };
 
   useEffect(() => {

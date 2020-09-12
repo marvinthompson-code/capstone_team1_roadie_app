@@ -18,7 +18,6 @@ const BookMeForm = () => {
   const API = apiURL();
   const client = useSelector((state) => state.client);
   const clientInfo = useSelector((state) => state.clientInfo);
-  const dispatch = useDispatch();
   const clientEvents = useSelector((state) => state.bookMeEvents);
   const match = useRouteMatch();
 
@@ -38,18 +37,21 @@ const BookMeForm = () => {
         selectedEvent: selectedEvent,
         eventDetails: eventDetails,
       });
-    // create alert that says "You sent a book request"
-    // Toast?
     $("#toastBooking").toast("show");
-    // close modal
   };
 
-  useEffect(() => {
-    if (client !== null) {
-      debugger;
-      setEmailContact(client.email);
-    }
-  }, []);
+  // const fetchClientInfo = async (id) => {
+  //   try {
+  //     let res = await axios.get(`${API}/clients/${id}`);
+  //     debugger
+  //     let { contact_info } = res.data.body.single_client;
+  //     setNumberContact(contact_info);
+  //     setEmailContact(client.email);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  
 
   const bookingEvents = () => {
     return clientEvents.map((event) => {
@@ -189,22 +191,8 @@ const BookMeForm = () => {
                 <label for="Contact_info" id="lableitem">
                   Your Contact Info
                 </label>
-                <input
-                  type="email"
-                  className="form-control bookMeInput"
-                  value={emailContact}
-                  placeholder={emailContact}
-                  onChange={(e) => setEmailContact(e.currentTarget.value)}
-                  required
-                />
-                <input
-                  type="tel"
-                  className="form-control bookMeInput"
-                  value={numberContact}
-                  placeholder={numberContact}
-                  onChange={(e) => setNumberContact(e.currentTarget.value)}
-                  required
-                />
+                {/* <p className="lead">{clientInfo.email}</p> */}
+                <p className="lead">{clientInfo.contact_info}</p>
               </div>
               <button
                 type="submit"

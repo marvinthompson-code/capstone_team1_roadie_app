@@ -37,13 +37,13 @@ const BookingRequestModal = ({
         bio: bio,
         contact_info: formatPhoneNumber(contactInfo),
       });
-      debugger;
+
 
       let res2 = await axios.post(`${API}/lineup/`, {
         event_id: event_id,
         artist_id: artist_id,
       });
-      debugger;
+   
 
       await db
         .collection("bookings")
