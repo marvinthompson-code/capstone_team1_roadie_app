@@ -50,7 +50,6 @@
   display: grid;
   grid-template-rows: 85% 15%;
   height: fit-content;
-  grid-row-gap: 10px;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
@@ -144,4 +143,9 @@
 .uploadPictureArtistButton,
 .uploadVideoArtistButton {
   grid-area: 2/ 2 / span 1;
+}
+.editBtnCol{
+  display: grid;
+  justify-content: center;
+  margin-bottom: 20px;
 }
