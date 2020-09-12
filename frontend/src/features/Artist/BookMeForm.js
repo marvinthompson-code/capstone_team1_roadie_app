@@ -191,7 +191,7 @@ const BookMeForm = () => {
                 <label for="Contact_info" id="lableitem">
                   Your Contact Info
                 </label>
-                {/* <p className="lead">{clientInfo.email}</p> */}
+                <p className="lead">{client.email}</p>
                 <p className="lead">{clientInfo.contact_info}</p>
               </div>
               <button
