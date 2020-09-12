@@ -78,7 +78,7 @@ const ArtistVideoPortfolio = () => {
           >
             <p id="imgCaption">{video.caption}</p>
             {sourceVideo(video.source)}
-            <p id="vidSource"> from {video.source}</p>
+            <p id="vidSource">{video.source}</p>
             {}
           </a>
         </div>

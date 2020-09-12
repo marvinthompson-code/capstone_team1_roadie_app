@@ -49,7 +49,7 @@ const ClientVideoPortfolio = () => {
             }}
           >
             <p id="imgCaption">{video.caption}</p>
-            <p id="vidSource"> from {video.source}</p>
+            <p id="vidSource">{video.source}</p>
           </a>
         </div>
       </li>
