@@ -9,11 +9,11 @@ const IndividualPicture = () => {
   const API = apiURL();
 
     useEffect(() => {
-        debugger
+      
         const fetchArtistPicture = async (artist_id, id) =>{
             let res = await axios.get(`${API}/media/pictures/artists/${artist_id}/picture/${id}`)
             setUser(res.data.body.picture)
-            debugger
+          
         };
         fetchArtistPicture(match.params.artist_id, match.params.id)
 
