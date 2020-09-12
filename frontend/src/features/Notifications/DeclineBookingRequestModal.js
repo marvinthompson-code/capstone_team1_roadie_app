@@ -29,8 +29,8 @@ const DeclineBookingRequestModal = ({ artist_id, notification_id }) => {
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content">
-          <div className="modal-header declineBookingRequestHeader">
+        <div className="modal-content logInModal">
+          <div className="modal-header logInModalHeader">
             <h5 className="modal-title" id="exampleModalLongTitle">
               Are you sure you want to decline?
             </h5>
@@ -43,20 +43,20 @@ const DeclineBookingRequestModal = ({ artist_id, notification_id }) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body declineBookingRequestBody">
+          <div className="modal-body loginModalBody">
             <form onSubmit={handleDecline}>
               <input
                 type="submit"
                 value="Yes"
-                className="btn btn-primary declineBtn"
+                className="btn btn-primary roadieLogInButton"
                 name="Click Here"
               />
             </form>
           </div>
-          <div className="modal-footer declineBookingRequestBody">
+          <div className="modal-footer loginModalBody">
             <button
               type="button"
-              className="btn btn-secondary declineBookingRequestCloseButton"
+              className="btn btn-secondary roadieLogInButton"
               data-dismiss="modal"
             >
               Close
