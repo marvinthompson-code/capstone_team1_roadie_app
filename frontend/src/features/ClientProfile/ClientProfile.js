@@ -71,13 +71,12 @@ const ClientProfile = () => {
     return (
       <div
         id={event.id}
-        className={"eventThumb row"}
+        className={"eventThumb card-body row"}
         key={event.id}
         onClick={(e) =>
           history.push(`/event/${event.id}/client/${eventOwnerId}`)
         }
       >
-        <div class="card eventCard col" style={{ width: "18rem" }}>
           <img
             src={logo}
             alt="roadieLogo"
@@ -86,7 +85,7 @@ const ClientProfile = () => {
             class="d-inline-block align-top"
             id="roadieLogo"
           />
-          <div class="card-body eventListItemBody">
+          <div class="eventListItemBody">
             <div className="eventHeading">
               <h5 class="card-title eventThumbCardText">{event.name}</h5>
               {toggleEditEvents ? (
@@ -109,7 +108,6 @@ const ClientProfile = () => {
               <p class="card-text eventThumbCardText">{event.city}</p>
             </div>
           </div>
-        </div>
       </div>
     );
   });
@@ -194,7 +192,7 @@ const ClientProfile = () => {
                 <p className={"bioContent"}>{bio}</p>
               </div>
             </div>
-            <div className={"bookingsDisplayContainer container text-center"}>
+            <div className={"bookingsDisplayContainer text-center"}>
               <div className={"eventTitleDiv"}>
                 <h1 class="display-4">Created Events</h1>
                 {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
@@ -202,7 +200,7 @@ const ClientProfile = () => {
               <div className={"createEventButtonDiv"}>
                 {createEventButton()}
               </div>
-              <div className={"eventUl container"}>{userEventsThumbs}</div>
+              <div className={"eventUl"}>{userEventsThumbs}</div>
             </div>
           </div>
         </div>

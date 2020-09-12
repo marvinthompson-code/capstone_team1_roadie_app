@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import SoundCloud from "../images/VideoIcons/iconfinder_SoundCloud_2062090.png";
-import FaceBook from "../images/VideoIcons/inconfinder_square-facebook_317727.png";
+import FaceBook from "../images/VideoIcons/iconfinder_square-facebook_317727.png";
 import Twitch from "../images/VideoIcons/iconfinder_twitch_3069707.png";
 import Vimeo from "../images/VideoIcons/iconfinder_Vimeo_381370.png";
-import YouTube from "../images/VideoIcons/icondfinder_youtube_1220360.png";
+import YouTube from "../images/VideoIcons/iconfinder_youtube_1220360.png";
 import Unknown from "../images/VideoIcons/iconfinder_secret_secure_hack_unknown_files_4852564.png";
 
 const ArtistVideoPortfolio = () => {
