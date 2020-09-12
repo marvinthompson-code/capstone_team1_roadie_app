@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { recieveClientEvents } from "./bookMeEventsSlice";
 import Portfolio from "../Portfolio/Portfolio";
-import  { receiveClientInfo } from '../client/clientInfoSlice'
+import { receiveClientInfo } from "../client/clientInfoSlice";
 import { apiURL } from "../../util/apiURL";
+import logo from "../images/FinalRoadieLogoblk.png";
 import axios from "axios";
 import "../../css/ArtistProfile.css";
 
@@ -17,6 +18,8 @@ const ArtistProfile = () => {
   const artist = useSelector((state) => state.artist);
   const client = useSelector((state) => state.client);
   const loading = useSelector((state) => state.loading);
+  const [artistBookings, setArtistBookings] = useState([]);
+  const history = useHistory();
   const [toggleEditBookings, setToggleEditBookings] = useState(false);
 
   const API = apiURL();
@@ -24,9 +27,17 @@ const ArtistProfile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const fetchArtistBookings = async (artist_id) => {
+      let res = await axios.get(`${API}/artists/${artist_id}/bookings`);
+      debugger;
+      setArtistBookings(res.data.body.artistBookings);
+    };
+    fetchArtistBookings(match.params.id);
+  }, []);
+
+  useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/artists/${id}`);
-
       let {
         name,
         profile_pic_url,
@@ -45,20 +56,19 @@ const ArtistProfile = () => {
 
   useEffect(() => {
     const fetchClientInfo = async (id) => {
-      let res = await axios.get(`${API}/clients/${id}`)
-      debugger
-      let { single_client } = res.data.body 
-      dispatch(receiveClientInfo(single_client))
-    }
+      let res = await axios.get(`${API}/clients/${id}`);
+      debugger;
+      let { single_client } = res.data.body;
+      dispatch(receiveClientInfo(single_client));
+    };
     if (client !== null) {
-      fetchClientInfo(client.id)
+      fetchClientInfo(client.id);
     }
-  }, [])
-
+  }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const editButton = () => {
     if (artist !== null && artist.id === match.params.id) {
@@ -101,6 +111,53 @@ const ArtistProfile = () => {
     dispatch(recieveClientEvents(events));
   };
 
+  const artistBookingThumbs = artistBookings.map((booking) => {
+    return (
+      <div
+        id={booking.id}
+        className={"eventThumb row"}
+        key={booking.id}
+        onClick={(e) =>
+          history.push(`/event/${booking.event_id}/client/${booking.client_id}`)
+        }
+      >
+        <div class="card eventCard col" style={{ width: "18rem" }}>
+          <img
+            src={logo}
+            alt="roadieLogo"
+            width="50"
+            height="50"
+            class="d-inline-block align-top"
+            id="roadieLogo"
+          />
+          <div class="card-body eventListItemBody">
+            <div className="eventHeading">
+              <h5 class="card-title eventThumbCardText text-center">{booking.name}</h5>
+              {/* {toggleEditEvents ? (
+                <img
+                  src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
+                  alt="delete"
+                  id="deleteBttn"
+                  onClick={() => {
+                    handleEventDelete(event.id);
+                  }}
+                />
+              ) : null} */}
+            </div>
+            <div className={"venueDateContainer"}>
+              <p class="card-text eventThumbCardText">{booking.venue}</p>
+              <p class="card-text eventThumbCardText">
+                {booking.date.slice(0, 10)}
+              </p>
+              <p class="card-text eventThumbCardText">{booking.address}</p>
+              <p class="card-text eventThumbCardText">{booking.city}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="container-fluid">
       <div
@@ -136,7 +193,8 @@ const ArtistProfile = () => {
             </div>
           </div>
           <div className="bookingsDisplayContainer">
-            <h2>Upcoming shows!</h2>
+            <h2 className={"display-4 text-center"}>Upcoming shows!</h2>
+            <div className={"eventUl container-fluid"}>{artistBookingThumbs}</div>
           </div>
         </div>
       </div>
