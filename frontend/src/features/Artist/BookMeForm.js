@@ -37,10 +37,7 @@ const BookMeForm = () => {
         selectedEvent: selectedEvent,
         eventDetails: eventDetails,
       });
-    // create alert that says "You sent a book request"
-    // Toast?
     $("#toastBooking").toast("show");
-    // close modal
   };
 
   useEffect(() => {
