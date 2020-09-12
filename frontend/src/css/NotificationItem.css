@@ -22,6 +22,7 @@
 
 .card-body {
   background: black;
+
 }
 
 .buttonsDiv {
@@ -30,18 +31,50 @@
 
 .acceptBtn {
   border-radius: 10px;
-  background-color: var(--jade);
   box-shadow: 1px 1px 2px var(--eerieBlk);
   border-style: none;
+  grid-column: 2/ span 1;
+  background-color: var(--jade);
 }
 
 .acceptBtn:hover {
+  background-color: var(--kobe);
 }
 
 .declineBtn {
+  border-radius: 10px;
   background-color: var(--kobe);
+  box-shadow: 1px 1px 2px var(--eerieBlk);
   border-style: none;
+  grid-column: 3/ span 1;
 }
 
 .declineBtn:hover {
+  background-color: var(--eerieBlk);
+  color: var(--jade);
+  border: 1px solid var(--jade);
+}
+
+.notificationCard{
+  border: 2px solid black !important;
+  border-radius: 10px;
+  text-align: center;
+}
+.buttonsDiv{
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-column-gap: 5px;
+}
+
+.notiInfo{
+  text-align: left;
+}
+.cardTextInfo{
+  border: 2px solid var(--jade);
+  padding: 5px;
+  border-radius: 12px;
+}
+.notiContact{
+  padding: 5px;
 }

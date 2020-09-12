@@ -13,16 +13,22 @@ const NotificationDisplay = () => {
 
   const userNotifications = notifications.map((notification) => {
     return (
-      <li key={notification.id}>
+      <li key={notification.id} className="resultItem">
         <NotificationItem notification={notification} />
       </li>
     );
   });
 
   return (
-    <div class="jumbotron-fluid notificationContainer text-center">
-      <h1 class="display-4">Notifications</h1>
-      <ul>{userNotifications}</ul>
+    <div className="container-fluid notificationParent">
+    <div className="jumbotron notificationContainer text-center">
+      <div className="row justify-content-center notificationGrandchild">
+      <h1 className="display-4" id="notificationHeader">Notifications</h1>
+      </div>
+      <div className="row notificationSecondGrandchild">
+      <ul className="notificationsUl">{userNotifications}</ul>
+      </div>
+    </div>
     </div>
   );
 };
