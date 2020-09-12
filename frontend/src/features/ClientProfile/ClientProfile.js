@@ -7,6 +7,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import logo from "../images/FinalRoadieLogoblk.png";
 import "../../css/ClientProfile.css";
+import moment from "moment";
 
 const ClientProfile = () => {
   const [name, setName] = useState("");
@@ -161,6 +162,7 @@ const ClientProfile = () => {
   };
 
   return (
+    <>
     <div className="container">
       <div
         className="row artistBanner align-items-center justify-content-center"
@@ -180,42 +182,73 @@ const ClientProfile = () => {
         <div className="col-sm-6 text-center artistProfileHeader">
           <h2 className={"artistProfileName"}>{name}</h2>
         </div>
-        <div className="col-sm-2">{editButton()}</div>
-      </div>
-      {/* This page has two divs */}
+        {/* This page has two divs */}
 
-      <div className="row portfolioDiv">
-        <div className={"col"}>
-          <ClientPortfolio />
-        </div>
-
-        <div className="col artistInfo">
-          <div className={"infoDiv jumbotron"}>
-            <div className={"cityDiv"}>
-              <label className="labelInfo">City:</label>
-              <h4 className={"city"}>{city}</h4>
-            </div>
-            <div className={"contactInfoDiv"}>
-              <label className="labelInfo">Contact:</label>
-              <h3 className={"contact"}>{contactInfo}</h3>
-            </div>
-            <div className={"bioDiv"}>
-              <label className="labelInfo">About me:</label>
-              <p className={"bioContent"}>{bio}</p>
-            </div>
+        <div className="row portfolioDiv">
+          <div className={"col"}>
+            <ClientPortfolio />
           </div>
 
-          <div className={"bookingsDisplayContainer container text-center"}>
-            <div className={"eventTitleDiv"}>
-              <h1 class="display-4">Created Events</h1>
-              {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
+          <div className="col artistInfo">
+            <div className={"infoDiv jumbotron"}>
+              <div className={"cityDiv"}>
+                <label className="labelInfo">City:</label>
+                <h4 className={"city"}>{city}</h4>
+              </div>
+              <div className={"contactInfoDiv"}>
+                <label className="labelInfo">Contact:</label>
+                <h3 className={"contact"}>{contactInfo}</h3>
+              </div>
+              <div className={"bioDiv"}>
+                <label className="labelInfo">About me:</label>
+                <p className={"bioContent"}>{bio}</p>
+              </div>
             </div>
+
+            <div className={"bookingsDisplayContainer container text-center"}>
+              <div className={"eventTitleDiv"}>
+                <h1 class="display-4">Created Events</h1>
+              </div>
             <div className={"createEventButtonDiv"}>{createEventButton()}</div>
             <div className={"eventUl container"}>{userEventsThumbs}</div>
           </div>
         </div>
       </div>
-    </div>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        style={{ position: "relative", minHeight: "200px" }}
+      >
+        <div
+          class="toast"
+          id="toastContact"
+          style={{ position: "absolute", top: 0, right: 0, width: "300px" }}
+          data-autohide={true}
+          data-delay="5000"
+        >
+          <div class="toast-header">
+            <img
+              src={logo}
+              class="rounded mr-2"
+              alt="..."
+              width="20"
+              height="20"
+            />
+            <strong class="mr-auto">Roadie</strong>
+            <small>{moment().calendar()}</small>
+            <button
+              type="button"
+              class="ml-2 mb-1 close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">You sent a message to the client!</div>
+        </div>
+      </div>
+    </>
   );
 };
 
