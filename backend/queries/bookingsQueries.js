@@ -19,6 +19,7 @@ const getAllBookings = async (req, res, next) => {
   }
 };
 
+
 const getSingleBooking = async (req, res, next) => {
   let { id } = req.params;
   let singleBooking = await db.one("SELECT * FROM bookings WHERE id = $1", [

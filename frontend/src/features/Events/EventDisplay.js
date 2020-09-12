@@ -84,7 +84,8 @@ const EventDisplay = () => {
           {address}
         </p>
         <p id={"date"} className="lead">
-          {date}
+          {date.slice(0, 10)}
+          {/* {booking.date.slice(0, 10)} */}
         </p>
         <p id={"city"} className="lead">
           {city}

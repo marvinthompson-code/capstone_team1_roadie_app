@@ -1,10 +1,11 @@
 const bookings = require("express").Router();
 const {
-    getAllBookings,
-    getSingleBooking,
-    addBooking,
-    updateBookingInfo,
-    deleteBooking
+  getAllBookings,
+  getSingleBooking,
+  addBooking,
+  updateBookingInfo,
+  getAllBookingsSingleArtist,
+  deleteBooking,
 } = require("../queries/bookingsQueries");
 
 bookings.get("/", getAllBookings);
