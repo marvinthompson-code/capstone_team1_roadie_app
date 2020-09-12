@@ -193,7 +193,7 @@ const ArtistProfile = () => {
             </div>
             <div className="bookingsDisplayContainer">
               <h2>Upcoming shows!</h2>
-              <div className={"eventUl container"}>{artistBookingThumbs}</div>
+              <div className={"eventUl"}>{artistBookingThumbs}</div>
             </div>
           </div>
         </div>
