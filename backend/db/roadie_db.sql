@@ -90,6 +90,7 @@ INSERT INTO artists
 VALUES
     ('1', 'Marvin', NULL, 'this is a bio', '$$$', 'METALCORE', 'New York', '8773934448'),
     ('2', 'Kevin', NULL, 'I make F', '$$$', 'METALCORE', 'New York', '8773934448');
+    
 
 INSERT INTO skills
     (name, artist_id)
