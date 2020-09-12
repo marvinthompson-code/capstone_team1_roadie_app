@@ -209,28 +209,6 @@ const NavBar = () => {
               Sign Up <span className="sr-only">(current)</span>
             </NavLink>
           </li>
-          {/* <li className="nav-item active">
-            <NavLink 
-              className="nav-link guestLogIn"
-              href="#"
-              id="guestArtistLogIn"
-              onClick={handleGuestArtistLogIn}
-              to="/"
-            >
-              Guest Artist Log In
-            </NavLink>
-          </li>
-          <li className="nav-item active">
-            <NavLink
-              className="nav-link guestLogIn"
-              href="#"
-              id="guestClientLogIn"
-              onClick={handleGuestClientLogIn}
-              to="/"
-            >
-              Guest Client Log In
-            </NavLink>
-          </li> */}
           <li className="nav-item active">
             <NavLink
               className="nav-link guestLogIn"

@@ -103,7 +103,7 @@ const ArtistProfile = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         <div
           className="row artistBanner align-items-center justify-content-center"
           id="artistBanner"

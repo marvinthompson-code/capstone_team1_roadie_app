@@ -63,7 +63,6 @@ const ClientContactForm = () => {
   useEffect(() => {
     const fetchClientName = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
-      debugger;
       setClientName(res.data.body.single_client.name);
     };
     fetchClientName(match.params.id);

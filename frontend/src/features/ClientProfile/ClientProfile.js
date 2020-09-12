@@ -25,7 +25,6 @@ const ClientProfile = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.EventDisplay);
   const history = useHistory();
-
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
@@ -45,7 +44,6 @@ const ClientProfile = () => {
     };
     fetchUserInfo(match.params.id);
   }, []);
-
   useEffect(() => {
     const fetchUserEvents = async (id) => {
       let res = await axios.get(`${API}/events/${id}`);
@@ -53,11 +51,9 @@ const ClientProfile = () => {
     };
     fetchUserEvents(match.params.id);
   }, [userEvents]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   const handleEventDelete = async (id) => {
     try {
       await axios.delete(`${API}/events/${id}`);
@@ -65,15 +61,12 @@ const ClientProfile = () => {
       console.log(error);
     }
   };
-
   const handleToggle = () => {
     toggleEditEvents ? setToggleEditEvents(false) : setToggleEditEvents(true);
   };
-
   if (loading) {
     return <div>Loading...</div>;
   }
-
   const userEventsThumbs = userEvents.map((event) => {
     return (
       <div
@@ -120,7 +113,6 @@ const ClientProfile = () => {
       </div>
     );
   });
-
   let editButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
@@ -135,7 +127,6 @@ const ClientProfile = () => {
       );
     }
   };
-
   let createEventButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
@@ -160,35 +151,34 @@ const ClientProfile = () => {
       );
     }
   };
-
   return (
     <>
-    <div className="container">
-      <div
-        className="row artistBanner align-items-center justify-content-center"
-        id="artistBanner"
-      >
-        <div className={"col-sm-2"}>
-          <button
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#contactClientModalCenter"
-            id="BookMeButton"
-            onClick={() => dispatch(toggleClientContactModalState())}
-          >
-            Contact Me!
-          </button>
-        </div>
-        <div className="col-sm-6 text-center artistProfileHeader">
-          <h2 className={"artistProfileName"}>{name}</h2>
+      <div className="container">
+        <div
+          className="row artistBanner align-items-center justify-content-center"
+          id="artistBanner"
+        >
+          <div className={"col-sm-2"}>
+            <button
+              className="btn btn-primary"
+              data-toggle="modal"
+              data-target="#contactClientModalCenter"
+              id="BookMeButton"
+              onClick={() => dispatch(toggleClientContactModalState())}
+            >
+              Contact Me!
+            </button>
+          </div>
+          <div className="col-sm-6 text-center artistProfileHeader">
+            <h2 className={"artistProfileName"}>{name}</h2>
+          </div>
+          <div className="col-sm-2">{editButton()}</div>
         </div>
         {/* This page has two divs */}
-
         <div className="row portfolioDiv">
           <div className={"col"}>
             <ClientPortfolio />
           </div>
-
           <div className="col artistInfo">
             <div className={"infoDiv jumbotron"}>
               <div className={"cityDiv"}>
@@ -204,13 +194,16 @@ const ClientProfile = () => {
                 <p className={"bioContent"}>{bio}</p>
               </div>
             </div>
-
             <div className={"bookingsDisplayContainer container text-center"}>
               <div className={"eventTitleDiv"}>
                 <h1 class="display-4">Created Events</h1>
+                {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
               </div>
-            <div className={"createEventButtonDiv"}>{createEventButton()}</div>
-            <div className={"eventUl container"}>{userEventsThumbs}</div>
+              <div className={"createEventButtonDiv"}>
+                {createEventButton()}
+              </div>
+              <div className={"eventUl container"}>{userEventsThumbs}</div>
+            </div>
           </div>
         </div>
       </div>
