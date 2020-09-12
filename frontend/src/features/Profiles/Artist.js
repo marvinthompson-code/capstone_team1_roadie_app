@@ -9,7 +9,7 @@ import EditArtistProfilePicForm from "../Artist/EditArtistProfilePicForm";
 
 const Artist = () => {
   return (
-    <div className="realArtistProfile container-fluid">
+    <div className="realArtistProfile container">
       <div className="row justify-content-md-center">
         <ArtistProfile />
       </div>

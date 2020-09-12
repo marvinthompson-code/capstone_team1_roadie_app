@@ -16,7 +16,7 @@ const ClientProfile = () => {
   const [profilePicUrl, setProfilePicUrl] = useState("");
   const [userEvents, setUserEvents] = useState([]);
   const [toggleEditEvents, setToggleEditEvents] = useState(false);
-  const [eventOwnerId, setEventOwnerid ] = useState(null)
+  const [eventOwnerId, setEventOwnerid] = useState(null);
   const client = useSelector((state) => state.client);
   const loading = useSelector((state) => state.loading);
   const API = apiURL();
@@ -40,7 +40,7 @@ const ClientProfile = () => {
       setBio(bio);
       setCity(city);
       setContactInfo(contact_info);
-      setEventOwnerid(id)
+      setEventOwnerid(id);
     };
     fetchUserInfo(match.params.id);
   }, []);
@@ -54,8 +54,8 @@ const ClientProfile = () => {
   }, [userEvents]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleEventDelete = async (id) => {
     try {
@@ -75,7 +75,14 @@ const ClientProfile = () => {
 
   const userEventsThumbs = userEvents.map((event) => {
     return (
-      <div id={event.id} className={"eventThumb row"} key={event.id} onClick={(e) => history.push(`/event/${event.id}/client/${eventOwnerId}`)}>
+      <div
+        id={event.id}
+        className={"eventThumb row"}
+        key={event.id}
+        onClick={(e) =>
+          history.push(`/event/${event.id}/client/${eventOwnerId}`)
+        }
+      >
         <div class="card eventCard col" style={{ width: "18rem" }}>
           <img
             src={logo}
@@ -141,7 +148,11 @@ const ClientProfile = () => {
           >
             Create Event
           </button>
-          <button id={"CreateEventButton"} onClick={handleToggle} className="btn btn-primary eventButtons">
+          <button
+            id={"CreateEventButton"}
+            onClick={handleToggle}
+            className="btn btn-primary eventButtons"
+          >
             Edit Events
           </button>
         </div>
@@ -150,7 +161,7 @@ const ClientProfile = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div
         className="row artistBanner align-items-center justify-content-center"
         id="artistBanner"
@@ -200,7 +211,7 @@ const ClientProfile = () => {
               {/* <h3 className={"eventsTitle"}>Created Events</h3> */}
             </div>
             <div className={"createEventButtonDiv"}>{createEventButton()}</div>
-            <div className={"eventUl container-fluid"}>{userEventsThumbs}</div>
+            <div className={"eventUl container"}>{userEventsThumbs}</div>
           </div>
         </div>
       </div>

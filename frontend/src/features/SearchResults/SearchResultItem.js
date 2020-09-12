@@ -18,7 +18,7 @@ const SearchResultItem = ({ result }) => {
   };
 
   return (
-    <div className="container-fluid resultItem" onClick={() => setHistory(id)}>
+    <div className="container resultItem" onClick={() => setHistory(id)}>
       <div className="picDisplay">
         <img id="profilePic" src={profile_pic_url} />
       </div>

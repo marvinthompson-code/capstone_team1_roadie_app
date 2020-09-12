@@ -89,7 +89,7 @@
 .portfolioDiv {
   padding: 10px;
   display: grid;
-  grid-template-columns: 26% 2fr;
+  grid-template-columns: 1fr 2fr;
 }
 .artistInfo {
   grid-column: 2 / span 1;

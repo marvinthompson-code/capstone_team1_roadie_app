@@ -8,21 +8,22 @@ const SearchIndex = () => {
   const searchResults = useSelector(searchRes);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const results = searchResults.map((result) => {
     return <SearchResultItem key={result.id} result={result} />;
   });
 
-    return (
-        <div className="container-fluid resultContainer">
-            { !searchResults.length ?
-                <h3 style={{color: "#9a8378"}}>Sorry, no results!</h3> :
-                results  
-            }
-        </div>
-    )
+  return (
+    <div className="container resultContainer">
+      {!searchResults.length ? (
+        <h3 style={{ color: "#9a8378" }}>Sorry, no results!</h3>
+      ) : (
+        results
+      )}
+    </div>
+  );
 };
 
 export default SearchIndex;

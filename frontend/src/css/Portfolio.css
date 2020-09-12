@@ -47,6 +47,10 @@
   background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
   height: fit-content;
+  display: grid;
+  grid-template-rows: 85% 15%;
+  height: fit-content;
+  grid-row-gap: 10px;
 }
 .artistMediaContainer {
   grid-row: 2 / span 1;
@@ -134,10 +138,10 @@
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 10px;
 }
-#uploadArtistButton{
-  grid-area: 1/ 2/ span 1;
+#uploadArtistButton {
+  grid-area: 1/ 2 / span 1;
 }
-.uploadPictureArtistButton, .uploadVideoArtistButton{
-  grid-area: 2/ 2/ span 1;
+.uploadPictureArtistButton,
+.uploadVideoArtistButton {
+  grid-area: 2/ 2 / span 1;
 }
-
