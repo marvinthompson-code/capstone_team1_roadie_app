@@ -5,13 +5,11 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
-import '../../css/Portfolio.css'
+import "../../css/Portfolio.css";
 
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
   const [name, setName] = useState("");
-  const [video, setVideos] = useState([]);
-  const [caption, setCaption] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
@@ -26,8 +24,14 @@ const ClientPortfolio = () => {
   const displayUploadPictureButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
-          +Upload picture
+        <button
+          type="button"
+          className="btn btn-primary uploadPictureArtistButton"
+          data-toggle="modal"
+          data-target="#uploadPictureModalCenter"
+          onClick={handleClick}
+        >
+          Upload Picture
         </button>
       );
     }
@@ -36,8 +40,29 @@ const ClientPortfolio = () => {
   const displayUploadVideoButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
-          +Upload video
+        <button
+          type="button"
+          className="btn btn-primary uploadVideoArtistButton"
+          data-toggle="modal"
+          data-target="#uploadVideoModalCenter"
+          onClick={handleClick}
+        >
+          Add Video
+        </button>
+      );
+    }
+  };
+
+  const editProfileBtn = () => {
+    if (client !== null && client.id === match.params.id) {
+      return (
+        <button
+          type="button"
+          className="btn btn-primary editClientProfilePic"
+          data-toggle="modal"
+          data-target="#editClientProfilePicModalCenter"
+        >
+          Edit Profile Pic
         </button>
       );
     }
@@ -69,6 +94,7 @@ const ClientPortfolio = () => {
           id="portfolioImg"
           src={profilePic}
         />
+        <div className={"col"}>{editProfileBtn()}</div>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
@@ -88,7 +114,7 @@ const ClientPortfolio = () => {
             type="button"
             id="uploadArtistButton"
             onClick={toVideoAlbum}
-            value={`${name}'s Photo Videos`}
+            value={`${name}'s Portfolio Videos`}
           />
         </div>
       </div>

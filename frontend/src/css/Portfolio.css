@@ -32,7 +32,7 @@
 }
 
 #portfolioImg {
-  width: 300px;
+  width: 310px;
   height: auto;
 }
 .artistPortfolioContainer {
@@ -46,6 +46,9 @@
   border: 2px solid var(--indiaGreen);
   background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
+  height: fit-content;
+  display: grid;
+  grid-template-rows: 85% 15%;
   height: fit-content;
 }
 .artistMediaContainer {
@@ -67,7 +70,6 @@
   background-color: rgba(28, 30, 30, 0.92) !important;
   border-radius: 10px;
   padding: 5px;
-
 }
 .artistVideoDiv {
   grid-row: 2 / span 1;
@@ -128,4 +130,22 @@
   background-color: var(--kobe) !important;
   color: white !important;
   border-color: var(--eerieBlk) !important;
+}
+.artistButtonAlbumDiv {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 10px;
+}
+#uploadArtistButton {
+  grid-area: 1/ 2 / span 1;
+}
+.uploadPictureArtistButton,
+.uploadVideoArtistButton {
+  grid-area: 2/ 2 / span 1;
+}
+.editBtnCol{
+  display: grid;
+  justify-content: center;
+  margin-bottom: 20px;
 }

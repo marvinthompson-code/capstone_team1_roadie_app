@@ -5,10 +5,11 @@ import UploadVideoModal from "../Portfolio/UploadVideoModal";
 import EditArtistProfileForm from "../Artist/EditArtistProfileForm";
 import BookMeForm from "../Artist/BookMeForm";
 import "../../css/Profiles/Artist.css";
+import EditArtistProfilePicForm from "../Artist/EditArtistProfilePicForm";
 
 const Artist = () => {
   return (
-    <div className="realArtistProfile container-fluid">
+    <div className="realArtistProfile container">
       <div className="row justify-content-md-center">
         <ArtistProfile />
       </div>
@@ -18,10 +19,15 @@ const Artist = () => {
       <div className="row">
         <UploadVideoModal />
       </div>
-
-      <BookMeForm />
-
-      <EditArtistProfileForm />
+      <div className="row">
+        <BookMeForm />
+      </div>
+      <div className="row">
+        <EditArtistProfileForm />
+      </div>
+      <div className="row">
+        <EditArtistProfilePicForm />
+      </div>
     </div>
   );
 };

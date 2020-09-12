@@ -25,7 +25,7 @@ const ArtistPortfolio = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
         <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
-          +Upload picture
+          Upload Picture
         </button>
       );
     }
@@ -35,11 +35,27 @@ const ArtistPortfolio = () => {
     if (artist !== null && artist.id === match.params.id) {
       return (
         <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
-          +Upload video
+          Add Video
         </button>
       );
     }
   };
+
+  const editProfileBtn = () => {
+    if (artist !== null && artist.id === match.params.id) {
+      return (
+        <button 
+          type="button" 
+          className="btn btn-primary editArtistProfilePic" 
+          data-toggle="modal" 
+          data-target="#editArtistProfilePicModalCenter"
+        >
+          Edit Profile Pic
+        </button>
+      )
+    }
+  };
+
   const toPhotoAlbum = () => {
     history.push(`/media/pictures/artist/${match.params.id}`);
   };
@@ -65,6 +81,7 @@ const ArtistPortfolio = () => {
           id="portfolioImg"
           src={profilePic}
         />
+        <div className={"col editBtnCol"}>{editProfileBtn()}</div>
       </div>
       <div className="artistMediaContainer">
         <div className="artistAlbumDiv">
@@ -83,7 +100,7 @@ const ArtistPortfolio = () => {
         </div>
         <div className="artistVideoDiv">
         <div className="artistHeaderAlbumDiv">
-          <h2>{name}'s Videos</h2>
+          <h2 id="artistNameAlbum">{name}'s Videos</h2>
           </div>
           <div className="artistButtonAlbumDiv">
           {displayUploadVideoButton()}
@@ -91,7 +108,7 @@ const ArtistPortfolio = () => {
             type="button"
             id="uploadArtistButton"
             onClick={toVideoAlbum}
-            value={`${name}'s Photo Videos`}
+            value={`${name}'s Portfolio Videos`}
           />
           </div>
         </div>

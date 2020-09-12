@@ -23,9 +23,9 @@ const VideoPlayer = () => {
 
   return (
     <div className="container VideoPlayer">
-      <div className="jumbotron">
-        <h1>{user.caption}</h1>
-        <ReactPlayer className="react-player" uri={user.url} controls />
+      <div className="jumbotron ClientVideoPlayerJumbo">
+        <h1 className="clientCaptionVid">{user.caption}</h1>
+        <ReactPlayer className="react-player" url={user.url} controls />
       </div>
     </div>
   );
