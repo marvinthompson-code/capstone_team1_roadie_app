@@ -105,6 +105,7 @@
   padding: 10px;
   color: white !important;
   margin-bottom: 10px;
+  margin: 0 10px 0 10px;
 }
 .infoDiv {
   grid-row: 1 / span 1;
@@ -151,4 +152,20 @@
 }
 #upcomingClientTitle{
   border-bottom: 2px solid var(--jade)
+}
+
+.toast {
+  border: 1px solid var(--indiaGreen);
+  margin-right: 20px;
+}
+
+.toast-header {
+  color: white;
+  background-color: var(--jade);
+  border-bottom: 1px var(--jade);
+}
+
+.toast-body {
+  color: white;
+  background-color: var(--richBlk);
 }

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
-import '../../css/Portfolio.css'
+import "../../css/Portfolio.css";
 
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
@@ -24,7 +24,13 @@ const ClientPortfolio = () => {
   const displayUploadPictureButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="btn btn-primary uploadPictureArtistButton" data-toggle="modal" data-target="#uploadPictureModalCenter" onClick={handleClick}>
+        <button
+          type="button"
+          className="btn btn-primary uploadPictureArtistButton"
+          data-toggle="modal"
+          data-target="#uploadPictureModalCenter"
+          onClick={handleClick}
+        >
           Upload Picture
         </button>
       );
@@ -34,7 +40,13 @@ const ClientPortfolio = () => {
   const displayUploadVideoButton = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button type="button" className="btn btn-primary uploadVideoArtistButton" data-toggle="modal" data-target="#uploadVideoModalCenter" onClick={handleClick}>
+        <button
+          type="button"
+          className="btn btn-primary uploadVideoArtistButton"
+          data-toggle="modal"
+          data-target="#uploadVideoModalCenter"
+          onClick={handleClick}
+        >
           Add Video
         </button>
       );
@@ -44,15 +56,15 @@ const ClientPortfolio = () => {
   const editProfileBtn = () => {
     if (client !== null && client.id === match.params.id) {
       return (
-        <button 
-          type="button" 
-          className="btn btn-primary editClientProfilePic" 
-          data-toggle="modal" 
+        <button
+          type="button"
+          className="btn btn-primary editClientProfilePic"
+          data-toggle="modal"
           data-target="#editClientProfilePicModalCenter"
         >
           Edit Profile Pic
         </button>
-      )
+      );
     }
   };
 
@@ -66,7 +78,6 @@ const ClientPortfolio = () => {
   useEffect(() => {
     const fetchClient = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
-      debugger
       let { name, profile_pic_url } = res.data.body.single_client;
       setName(name);
       setProfilePic(profile_pic_url);

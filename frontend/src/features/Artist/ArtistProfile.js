@@ -7,6 +7,8 @@ import { receiveClientInfo } from "../client/clientInfoSlice";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import "../../css/ArtistProfile.css";
+import logo from "../images/FinalRoadieLogoblk.png";
+import moment from "moment";
 
 const ArtistProfile = () => {
   const [name, setName] = useState("");
@@ -100,45 +102,79 @@ const ArtistProfile = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <>
+      <div className="container">
+        <div
+          className="row artistBanner align-items-center justify-content-center"
+          id="artistBanner"
+        >
+          <div className={"col-sm-2"}>{bookMeButton()}</div>
+          <div className="col-sm-6 text-center artistProfileHeader">
+            <h2 className={"artistProfileName"}>{name}</h2>
+          </div>
+          <div className="col-sm-2">{editButton()}</div>
+        </div>
+
+        <div className="row portfolioDiv">
+          <div className={"col"}>
+            <Portfolio />
+          </div>
+          <div className="col artistInfo">
+            <div className={"infoDiv jumbotron"}>
+              <div className={"cityDiv"}>
+                <label className="labelInfo">From:</label>
+                <h4 className={"city"}>{city}</h4>
+              </div>
+              <div className={"contactInfoDiv"}>
+                <label className="labelInfo">Contact:</label>
+                <h4 className={"contact"}>{contactInfo}</h4>
+              </div>
+              <div className={"bioDiv"}>
+                <label className="labelInfo">Bio:</label>
+                <p className={"bioContent"}>{bio}</p>
+              </div>
+            </div>
+            <div className="bookingsDisplayContainer">
+              <h2>Upcoming shows!</h2>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
-        className="row artistBanner align-items-center justify-content-center"
-        id="artistBanner"
+        aria-live="polite"
+        aria-atomic="true"
+        style={{ position: "relative", minHeight: "200px" }}
       >
-        <div className={"col-sm-2"}>{bookMeButton()}</div>
-        <div className="col-sm-6 text-center artistProfileHeader">
-          <h2 className={"artistProfileName"}>{name}</h2>
-        </div>
-        <div className="col-sm-2">{editButton()}</div>
-      </div>
-
-      {/* This page has two divs */}
-
-      <div className="row portfolioDiv">
-        <div className={"col"}>
-          <Portfolio />
-        </div>
-        <div className="col artistInfo">
-          <div className={"infoDiv jumbotron"}>
-            <div className={"cityDiv"}>
-              <label className="labelInfo">From:</label>
-              <h4 className={"city"}>{city}</h4>
-            </div>
-            <div className={"contactInfoDiv"}>
-              <label className="labelInfo">Contact:</label>
-              <h4 className={"contact"}>{contactInfo}</h4>
-            </div>
-            <div className={"bioDiv"}>
-              <label className="labelInfo">Bio:</label>
-              <p className={"bioContent"}>{bio}</p>
-            </div>
+        <div
+          className="toast"
+          id="toastBooking"
+          style={{ position: "absolute", top: 0, right: 0, width: "300px" }}
+          data-autohide={true}
+          data-delay="5000"
+        >
+          <div className="toast-header">
+            <img
+              src={logo}
+              className="rounded mr-2"
+              alt="..."
+              width="20"
+              height="20"
+            />
+            <strong className="mr-auto">Roadie</strong>
+            <small>{moment().calendar()}</small>
+            <button
+              type="button"
+              className="ml-2 mb-1 close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div className="bookingsDisplayContainer">
-            <h2 id="upcomingClientTitle">Upcoming shows!</h2>
-          </div>
+          <div className="toast-body">You sent a booking request!</div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
