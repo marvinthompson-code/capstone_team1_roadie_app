@@ -131,7 +131,7 @@
   border: 2px solid var(--indiaGreen);
   border-radius: 10px;
   height: 100%;
-  padding: 5px;
+  padding: 15px;
 }
 .labelInfo {
   color: white !important;
@@ -144,6 +144,11 @@
   box-shadow: 20px 20px 50px var(--eerieBlk);
   color: white !important;
   border-radius: 10px;
-  height: 100vh;
+  height: 50vh;
   overflow: scroll;
+  padding: 20px;
+  text-align: center;
+}
+#upcomingClientTitle{
+  border-bottom: 2px solid var(--jade)
 }

@@ -134,7 +134,7 @@ const ArtistProfile = () => {
             </div>
           </div>
           <div className="bookingsDisplayContainer">
-            <h2>Upcoming shows!</h2>
+            <h2 id="upcomingClientTitle">Upcoming shows!</h2>
           </div>
         </div>
       </div>
