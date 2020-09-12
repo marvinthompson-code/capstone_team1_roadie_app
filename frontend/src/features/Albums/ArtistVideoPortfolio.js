@@ -25,6 +25,33 @@ const ArtistVideoPortfolio = () => {
       console.log(err);
     }
   };
+  
+  const imgSize = {
+    height: "auto",
+    width: "100px",
+  };
+  const sourceVideo = (el) =>{
+    switch (el) {
+      case "YouTube":
+        return <img src={YouTube} style={imgSize} />
+        break;
+      case "Vimeo":
+        return <img src={Vimeo} style={imgSize} />
+        break;
+      case "FaceBook":
+        return <img src={FaceBook} style={imgSize} />
+        break;
+      case "SoundCloud":
+        return <img src={SoundCloud} style={imgSize}/>
+        break;
+      case "Twitch":
+        return <img src={Twitch} style={imgSize}/>
+        break;
+      default:
+        return <img src={Unknown} style={imgSize}/>
+    }
+  } 
+
 
   useEffect(() => {
     const fetchUsersVideoAlbum = async (artist_id) => {
@@ -34,30 +61,8 @@ const ArtistVideoPortfolio = () => {
     getUser(match.params.artist_id);
     fetchUsersVideoAlbum(match.params.artist_id);
   }, []);
-  const imgSize = {
-    height: "auto",
-    width: "100px",
-  };
   const getUsersVideo = videos.map((video) => {
-    // switch (video.source) {
-    //   case "YouTube":
-    //     <img src={YouTube} />;
-    //     break;
-    //   case "Vimeo":
-    //     <img src={Vimeo} />;
-    //     break;
-    //   case "FaceBook":
-    //     <img src={FaceBook} />;
-    //     break;
-    //   case "SoundCloud":
-    //     <img src={SoundCloud} />;
-    //     break;
-    //   case "Twitch":
-    //     <img src={Twitch} />;
-    //     break;
-    //   default:
-    //     <img src={Unknown} />;
-    // }
+   
     return (
       <li>
         <div className="eachPhoto">
@@ -72,8 +77,9 @@ const ArtistVideoPortfolio = () => {
             }}
           >
             <p id="imgCaption">{video.caption}</p>
+            {sourceVideo(video.source)}
             <p id="vidSource"> from {video.source}</p>
-            {video.source}
+            {}
           </a>
         </div>
       </li>
