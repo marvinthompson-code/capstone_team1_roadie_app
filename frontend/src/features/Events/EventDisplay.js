@@ -7,6 +7,7 @@ import logo from "../images/FinalRoadieLogoblk.png";
 import { PEXELS_API_KEY } from "../../secrets";
 import LineupItem from "./LineupItem";
 
+
 const EventDisplay = () => {
   const [name, setName] = useState("");
   const [venue, setVenue] = useState("");

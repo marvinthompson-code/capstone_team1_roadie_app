@@ -52,7 +52,8 @@
 
 .eventThumb {
   transition: 1s;
-  border-radius: 10px; 
+  border-radius: 10px;
+  grid-column: 2/span 1; 
 }
 
 .eventThumb:hover {
@@ -87,8 +88,7 @@
 
 
 .eventUl {
-  overflow: auto;
-  height: auto;
+ display: grid;
 }
 
 #deleteBttn {
