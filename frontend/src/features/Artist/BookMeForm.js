@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import "../../css/BookMeModal.css";
 import { db } from "../../firebase";
-import logo from "../images/FinalRoadieLogoblk.png";
-import moment from "moment";
+import $ from "jquery";
 
 const BookMeForm = () => {
   const [bio, setBio] = useState("");
@@ -39,36 +38,9 @@ const BookMeForm = () => {
         eventDetails: eventDetails,
       });
     // create alert that says "You sent a book request"
-    // Toastify?
-    triggerToast();
+    // Toast?
+    $("#toastBooking").toast("show");
     // close modal
-  };
-
-  const triggerToast = () => {
-    return (
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        style="position: relative; min-height: 200px;"
-      >
-        <div class="toast" style="position: absolute; top: 0; right: 0;">
-          <div class="toast-header">
-            <img src={logo} class="rounded mr-2" alt="..." />
-            <strong class="mr-auto">Roadie</strong>
-            <small>{moment().calendar()}</small>
-            <button
-              type="button"
-              class="ml-2 mb-1 close"
-              data-dismiss="toast"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="toast-body">You sent a booking request!</div>
-        </div>
-      </div>
-    );
   };
 
   useEffect(() => {

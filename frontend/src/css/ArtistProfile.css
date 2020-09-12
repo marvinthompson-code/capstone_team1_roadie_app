@@ -147,3 +147,19 @@
   height: 100vh;
   overflow: scroll;
 }
+
+.toast {
+  border: 1px solid var(--indiaGreen);
+  margin-right: 20px;
+}
+
+.toast-header {
+  color: white;
+  background-color: var(--jade);
+  border-bottom: 1px var(--jade);
+}
+
+.toast-body {
+  color: white;
+  background-color: var(--richBlk);
+}
