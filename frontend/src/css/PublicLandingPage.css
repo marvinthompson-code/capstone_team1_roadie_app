@@ -30,8 +30,12 @@
 }
 .leftPec {
   border-right: 2px solid var(--jade) !important;
-  /* margin-right: 10px; */
 }
+
+.lead display-5 {
+  align-self: left;
+}
+
 #imgOne {
   padding: 10px;
 }

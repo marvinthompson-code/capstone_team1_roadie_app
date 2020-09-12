@@ -5,8 +5,6 @@ import { apiURL } from "../../util/apiURL";
 import axios from "axios";
 import "../../css/uploadModal.css";
 
-
-
 const UploadPictureModal = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState("");
@@ -114,6 +112,7 @@ const UploadPictureModal = () => {
           </div>
           <div className="modal-body uploadModalBody">
             <form onSubmit={insertPictureIntoAlbum}>
+              <label for="custom-file">Upload a image file:</label>
               <div className="custom-file">
                 <input
                   type="file"
@@ -123,7 +122,7 @@ const UploadPictureModal = () => {
                   onChange={handleImageAsFile}
                 />
                 <label className="custom-file-label" for="customFile">
-                  Choose file
+                  {imageAsFile.name}
                 </label>
               </div>
               <button
@@ -134,6 +133,9 @@ const UploadPictureModal = () => {
                 Upload
               </button>
               {toggleUploadMsg ? <h5>Upload successful!</h5> : null}
+              <br />
+              <br />
+              <label>Enter a caption:</label>
               <div className="form-group">
                 <textarea
                   type="text"
