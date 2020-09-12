@@ -48,14 +48,8 @@ const ClientVideoPortfolio = () => {
               );
             }}
           >
-            <video
-              alt={video.caption}
-              src={video.url}
-              style={imgSize}
-              control
-            />
-
             <p id="imgCaption">{video.caption}</p>
+            <p id="vidSource">{video.source}</p>
           </a>
         </div>
       </li>
@@ -63,11 +57,9 @@ const ClientVideoPortfolio = () => {
   });
 
   return (
-    <div className="container position-absolute userAlbums">
-      <div className="row justify-content-center">
-        <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
-      </div>
+    <div className="container userAlbums">
       <div className="jumbotron albumJumbo text-center">
+        <h2 id="usersAlbumHeader" className="display-4">{userInfo.name}'s Portfolio</h2>
         <ul className="allPhotos">{getUsersVideo}</ul>
       </div>
     </div>

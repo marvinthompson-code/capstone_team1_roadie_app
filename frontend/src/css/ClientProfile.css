@@ -53,13 +53,20 @@
 .eventThumb {
   transition: 1s;
   border-radius: 10px;
-  grid-column: 2/span 1; 
+  border: 2px solid var(--jade);
+  grid-column: 2/ span 1;
+  background-color: var(--eerieBlk) !important;
+  margin-bottom: 15px;
 }
 
 .eventThumb:hover {
   color: white !important;
   background-color: var(--jade) !important;
   cursor: pointer;
+}
+.eventListItemBody{
+  border-radius: 12px;
+  margin: 10px;
 }
 
 .eventCard {
@@ -77,18 +84,13 @@
   background-color: var(--jade) !important;
 }
 
-.eventListItemBody {
-  background-color: var(--eerieBlk) !important;
-  transition: 1s;
-}
 
-.eventListItemBody:hover {
-  background-color: var(--jade) !important;
-}
 
 
 .eventUl {
- display: grid;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 20px
 }
 
 #deleteBttn {

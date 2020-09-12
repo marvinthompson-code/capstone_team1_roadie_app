@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import "../../css/BookMeModal.css";
 import { db } from "../../firebase";
@@ -18,6 +18,7 @@ const BookMeForm = () => {
   const API = apiURL();
   const client = useSelector((state) => state.client);
   const clientInfo = useSelector((state) => state.clientInfo);
+  const dispatch = useDispatch();
   const clientEvents = useSelector((state) => state.bookMeEvents);
   const match = useRouteMatch();
 
@@ -45,8 +46,8 @@ const BookMeForm = () => {
 
   useEffect(() => {
     if (client !== null) {
+      debugger;
       setEmailContact(client.email);
-      setNumberContact(client.contact_info);
     }
   }, []);
 

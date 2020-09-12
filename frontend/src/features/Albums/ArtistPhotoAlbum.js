@@ -57,11 +57,10 @@ const ArtistPhotoAlbum = () => {
   });
 
   return (
-    <div className="container position-absolute userAlbums">
-      <div className="row justify-content-center">
-        <h2 id="usersAlbumHeader">{userInfo.name}'s Album</h2>
-      </div>
+    <div className="container userAlbums">
+
       <div className="jumbotron albumJumbo text-center">
+        <h2 id="usersAlbumHeader" className="display-4">{userInfo.name}'s Album</h2>
         <ul className="allPhotos">{getUsersPictures}</ul>
       </div>
     </div>

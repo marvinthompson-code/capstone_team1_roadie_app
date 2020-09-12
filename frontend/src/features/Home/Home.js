@@ -3,7 +3,7 @@ import Search from "./Search";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../../css/Home.css";
-import guitar from "../images/rhcp.jpg";
+import guitar from "../images/knittingResize.jpg";
 import performer from "../images/performer.jpg";
 import concert from "../images/concertBlue.jpg";
 import headshot from "../images/pexels-murat-esibatir-4355346.jpg";
