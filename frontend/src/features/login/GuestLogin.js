@@ -7,6 +7,7 @@ import { toggleErrorState, recieveState } from "../Error/errorSlice"
 import $ from 'jquery'
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux";
+import "../../css/GuestLogin.css";
 
 
 const GuestLogIn = () => {
@@ -42,18 +43,18 @@ const GuestLogIn = () => {
     return (
         <div class="modal fade" id="guestLogInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Guest Log In</h5>
+                <div class="modal-content guestContent">
+                <div class="modal-header guestHeader">
+                    <h5 class="modal-title guestTitle" id="exampleModalLongTitle">Guest Log In</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body guestBody">
                     <div className="row">
                         <div className="col">
                         <NavLink 
-                            className="nav-link guestLogIn"
+                            className="nav-link guestLogInBtn"
                             href="#"
                             id="guestArtistLogIn"
                             onClick={handleGuestArtistLogIn}
@@ -64,7 +65,7 @@ const GuestLogIn = () => {
                         </div>
                         <div className="col">
                         <NavLink
-                        className="nav-link guestLogIn"
+                        className="nav-link guestLogInBtn"
                         href="#"
                         id="guestClientLogIn"
                         onClick={handleGuestClientLogIn}
@@ -74,9 +75,6 @@ const GuestLogIn = () => {
                         </NavLink>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
                 </div>
             </div>
