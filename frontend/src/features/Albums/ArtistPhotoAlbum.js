@@ -4,6 +4,7 @@ import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import "../../css/PhotoAlbum.css";
 import IndividualPicture from "./IndividualPicture/IndividualPicture";
+import BackButton from "../BackButton/BackButton";
 
 const ArtistPhotoAlbum = () => {
   const [pictures, setPictures] = useState([]);
@@ -58,7 +59,9 @@ const ArtistPhotoAlbum = () => {
 
   return (
     <div className="container userAlbums">
-
+      <div>
+        <BackButton />
+      </div>
       <div className="jumbotron albumJumbo text-center">
         <h2 id="usersAlbumHeader" className="display-4">{userInfo.name}'s Album</h2>
         <ul className="allPhotos">{getUsersPictures}</ul>

@@ -9,6 +9,7 @@ import Twitch from "../images/VideoIcons/iconfinder_twitch_3069707.png";
 import Vimeo from "../images/VideoIcons/iconfinder_Vimeo_381370.png";
 import YouTube from "../images/VideoIcons/iconfinder_youtube_1220360.png";
 import Unknown from "../images/VideoIcons/iconfinder_secret_secure_hack_unknown_files_4852564.png";
+import BackButton from "../BackButton/BackButton";
 
 const ClientVideoPortfolio = () => {
   const [videos, setVideos] = useState([]);
@@ -89,6 +90,9 @@ const ClientVideoPortfolio = () => {
 
   return (
     <div className="container userAlbums">
+      <div>
+        <BackButton />
+      </div>
       <div className="jumbotron albumJumbo text-center">
         <h2 id="usersAlbumHeader" className="display-4">{userInfo.name}'s Portfolio</h2>
         <ul className="allPhotos">{getUsersVideo}</ul>

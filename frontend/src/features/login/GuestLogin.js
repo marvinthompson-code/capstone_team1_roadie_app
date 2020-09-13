@@ -18,7 +18,8 @@ const GuestLogIn = () => {
     const handleGuestArtistLogIn = async () => {
         try {
           dispatch(recieveState(false));
-          let res = await login("victoria@test.com", "123456");
+          let res = await login("Victoria2@test.com", "123456");
+          debugger;
           dispatch(updateUser(res.user));
           history.push("/");
           dispatch(toggleLoadingState());
@@ -31,7 +32,7 @@ const GuestLogIn = () => {
     const handleGuestClientLogIn = async () => {
         try {
           dispatch(recieveState(false));
-          let res = await login("honri3@test.com", "123456");
+          let res = await login("Honri2@test.com", "123456");
           dispatch(updateUser(res.user));
           dispatch(toggleLoadingState());
           history.push("/");
