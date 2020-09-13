@@ -13,19 +13,18 @@ const GuestLogIn = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleGuestArtistLogIn = async () => {
-    try {
-      dispatch(recieveState(false));
-      let res = await login("victoria@test.com", "123456");
-      dispatch(updateUser(res.user));
-      history.push("/");
-      dispatch(toggleLoadingState());
-      dispatch(toggleLoadingState());
-    } catch (error) {
-      dispatch(toggleErrorState());
-    }
-  };
-
+    const handleGuestArtistLogIn = async () => {
+        try {
+          dispatch(recieveState(false));
+          let res = await login("Victoria2@test.com", "123456");
+          dispatch(updateUser(res.user));
+          history.push("/");
+          dispatch(toggleLoadingState());
+          dispatch(toggleLoadingState());
+        } catch (error) {
+          dispatch(toggleErrorState());
+        }
+    };
     
     const handleGuestClientLogIn = async () => {
         try {
