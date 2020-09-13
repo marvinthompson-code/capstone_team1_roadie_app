@@ -19,7 +19,6 @@ const GuestLogIn = () => {
         try {
           dispatch(recieveState(false));
           let res = await login("Victoria2@test.com", "123456");
-          debugger;
           dispatch(updateUser(res.user));
           history.push("/");
           dispatch(toggleLoadingState());
