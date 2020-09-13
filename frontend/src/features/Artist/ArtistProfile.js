@@ -82,7 +82,7 @@ const ArtistProfile = () => {
           type="button"
           className="btn btn-primary editArtistProfile"
           data-toggle="modal"
-          data-target="#editArtistProfileModalCenter"
+          data-target='#editArtist'
         >
           Edit Profile
         </button>

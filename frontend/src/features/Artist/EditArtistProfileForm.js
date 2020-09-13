@@ -30,7 +30,7 @@ const EditArtistProfileForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.patch(`${API}/artists/info/${match.params.id}`, {
+      await axios.patch(`${API}/artists/info/${match.params.id}`, {
       name,
       bio,
       contact_info: formatPhoneNumber(contact_info),
@@ -58,7 +58,7 @@ const EditArtistProfileForm = () => {
   return (
     <div
       className="modal fade"
-      id="editArtistProfileModalCenter"
+      id='editArtist'
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"

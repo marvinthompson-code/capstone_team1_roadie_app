@@ -150,6 +150,7 @@ const UploadPictureModal = () => {
               <input
                 type="submit"
                 className="btn btn-primary activeButton"
+                
                 name="Click Here"
               />
             </form>
