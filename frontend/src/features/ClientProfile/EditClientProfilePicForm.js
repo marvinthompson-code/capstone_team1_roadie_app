@@ -5,7 +5,7 @@ import { useRouteMatch } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import "../../css/EditClientProfilePicForm.css";
+// import "../../css/EditClientProfilePicForm.css";
 
 const EditClientProfilePicForm = () => {
     const [toggle, setToggle] = useState(false);
@@ -81,8 +81,8 @@ const EditClientProfilePicForm = () => {
             aria-hidden="true"
         >
             <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content">
-                    <div className="modal-header editClientProfilePicHeader">
+                <div className="modal-content artistEditProfilePicContent">
+                    <div className="modal-header editArtistProfilePicHeader">
                         <h5 className="modal-title" id="exampleModalLongTitle">
                             Edit Profile Picture
                         </h5>
@@ -96,23 +96,23 @@ const EditClientProfilePicForm = () => {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body editClientProfilePicBody">
-                        <form onSubmit={handleSubmit}>
+                    <div className="modal-body editArtistProfilePicBody">
+                        <form onSubmit={handleSubmit} className="formEditArtistProfilePic">
                             <div className="form-group">
-                                <label for="exampleFormControlFile1" id="labelitem">
+                                <label for="exampleFormControlFile1" id="labelitem" className="fileEditArtistProfilePic">
                                 Upload Profile Image
                                 </label>
                                 <input
                                 type="file"
                                 onChange={handleImageAsFile}
                                 required
-                                className="form-control-file"
+                                className="form-control-file formControlEditArtistProfilePic"
                                 id="exampleFormControlFile1"
                                 />
                             </div>
                             <button
                                 type="button"
-                                className="clientUploadButton btn-secondary"
+                                className="artistUploadProfileButton btn-secondary"
                                 onClick={() => {
                                 handleFirebaseUpload();
                                 }}
@@ -125,15 +125,15 @@ const EditClientProfilePicForm = () => {
                                 Upload successful!
                                 </h5>
                             ) : null}
-                            <button type="submit" className="editClientProfilePicSubmit btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
+                            <button type="submit" className="editArtistProfilePicSubmit btn-info" onClick={handleSubmit} data-dismiss="modal" aria-label="Close">
                                 Update
                             </button>
                         </form>
                     </div>
-                    <div className="modal-footer editClientProfilePicFooter">
+                    <div className="modal-footer editArtistProfilePicFooter">
                         <button 
                             type="button" 
-                            className="editClientProfilePicCloseBtn btn-secondary" 
+                            className="editArtistProfilePicCloseBtn btn-secondary" 
                             data-dismiss="modal"
                         >
                             Close
