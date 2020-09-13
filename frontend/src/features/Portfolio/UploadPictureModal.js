@@ -152,7 +152,11 @@ const UploadPictureModal = () => {
               <input
                 type="submit"
                 className="btn btn-primary activeButton"
+                
                 name="Click Here"
+                onClick={insertPictureIntoAlbum}
+                data-dismiss="modal"
+                aria-label="Close"
               />
             </form>
           </div>

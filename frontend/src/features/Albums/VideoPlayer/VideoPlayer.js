@@ -3,6 +3,7 @@ import { useRouteMatch } from "react-router-dom";
 import { apiURL } from "../../../util/apiURL";
 import ReactPlayer from "react-player";
 import axios from "axios";
+import BackButton from "../../BackButton/BackButton";
 import "../../../css/VideoPlayer.css"
 
 const VideoPlayer = () => {
@@ -23,6 +24,9 @@ const VideoPlayer = () => {
 
   return (
     <div className="container VideoPlayer">
+      <div>
+        <BackButton />
+      </div>
       <div className="jumbotron ClientVideoPlayerJumbo">
         <h1 className="clientCaptionVid">{user.caption}</h1>
         <ReactPlayer className="react-player" url={user.url} controls />

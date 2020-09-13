@@ -1,11 +1,18 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory, useRouteMatch } from "react-router-dom";
+import "../../css/BackButton.css";
 
 const BackButton = () => {
     const history = useHistory();
+    const match = useRouteMatch();
+
+    const handleBackButton = () => {
+        history.goBack();
+        // history.push(`/media/videos/client/${match.params.id}`);
+    };
 
     return (
-        <input onClick={window.history.back()}>Back</input>
+        <button className="backButton" onClick={handleBackButton}>Back</button>
     )
 };
 

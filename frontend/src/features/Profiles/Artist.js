@@ -22,12 +22,10 @@ const Artist = () => {
       <div className="row">
         <BookMeForm />
       </div>
-      <div className="row">
-        <EditArtistProfileForm />
-      </div>
-      <div className="row">
-        <EditArtistProfilePicForm />
-      </div>
+
+      <EditArtistProfileForm />
+
+      <EditArtistProfilePicForm />
     </div>
   );
 };

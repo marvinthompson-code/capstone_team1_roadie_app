@@ -131,6 +131,9 @@ const UploadVideoModal = () => {
                 type="submit"
                 className="btn btn-primary activeButton"
                 name="Click Here"
+                onClick={insertVideoIntoAlbum}
+                data-dismiss="modal"
+                aria-label="Close"
               />
             </form>
           </div>

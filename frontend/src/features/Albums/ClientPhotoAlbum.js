@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
+import BackButton from "../BackButton/BackButton";
 
 const ClientPhotoAlbum = () => {
   const [pictures, setPictures] = useState([]);
@@ -50,6 +51,9 @@ const ClientPhotoAlbum = () => {
 
   return (
     <div className="container userAlbums">
+      <div>
+        <BackButton />
+      </div>
       <div className="jumbotron albumJumbo text-center">
         <h2 id="usersAlbumHeader" className="display-4">{userInfo.name}'s Album</h2>
         <ul className="allPhotos">{getUsersPictures}</ul>
