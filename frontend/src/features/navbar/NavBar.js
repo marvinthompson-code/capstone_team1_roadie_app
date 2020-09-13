@@ -72,6 +72,7 @@ const NavBar = () => {
 
   let routeExt = () => {
     if (client === null && artist) {
+      debugger
       return (
         <>
           <li className="nav-item active">
