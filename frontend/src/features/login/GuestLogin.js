@@ -16,7 +16,7 @@ const GuestLogIn = () => {
   const handleGuestArtistLogIn = async () => {
     try {
       dispatch(recieveState(false));
-      let res = await login("victoria@artist.com", "123456");
+      let res = await login("jeffrey@artist.com", "123456");
       dispatch(updateUser(res.user));
       history.push("/");
       dispatch(toggleLoadingState());
@@ -29,7 +29,7 @@ const GuestLogIn = () => {
   const handleGuestClientLogIn = async () => {
     try {
       dispatch(recieveState(false));
-      let res = await login("Thomas@client.com", "123456");
+      let res = await login("amanda@client.com", "123456");
       dispatch(updateUser(res.user));
       dispatch(toggleLoadingState());
       history.push("/");
