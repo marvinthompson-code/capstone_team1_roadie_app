@@ -71,6 +71,7 @@ const NavBar = () => {
   }, [notifications.length, artist, client]);
 
   let routeExt = () => {
+    debugger;
     if (client === null && artist) {
       debugger
       return (
@@ -135,32 +136,6 @@ const NavBar = () => {
     dispatch(recieveToken(null));
     logout();
     history.push("/");
-  };
-
-  const handleGuestArtistLogIn = async () => {
-    try {
-      dispatch(recieveState(false));
-      let res = await login("victoria@test.com", "123456");
-      dispatch(updateUser(res.user));
-      // dispatch(toggleLoadingState());
-      history.push(`/artist/${currentUser.id}`);
-      // dispatch(toggleLoadingState());
-    } catch (error) {
-      dispatch(toggleErrorState());
-    }
-  };
-
-  const handleGuestClientLogIn = async () => {
-    try {
-      dispatch(recieveState(false));
-      let res = await login("honri3@test.com", "123456");
-      dispatch(updateUser(res.user));
-      dispatch(toggleLoadingState());
-      history.push(`/client/${currentUser.id}`);
-      dispatch(toggleLoadingState());
-    } catch (error) {
-      dispatch(toggleErrorState());
-    }
   };
 
   const displayButtons = () => {
@@ -240,7 +215,7 @@ const NavBar = () => {
           src={logo}
           width="30"
           height="30"
-          class="d-inline-block align-top"
+          className="d-inline-block align-top"
           id="roadieLogo"
         />
         <span id="roadieR">R</span>oadie
