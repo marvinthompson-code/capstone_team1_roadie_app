@@ -21,12 +21,13 @@
   color: var(--jade) !important;
   border-radius: 10px;
   box-shadow: 1px 1px 2px var(--eerieBlk);
-  border: 2px solid var(--eerieBlk3) !important;
+  border: 2px solid var(--jade) !important;
   transition: 1s;
 }
 
 .roadieLogInButton:hover {
   background-color: var(--jade) !important;
+  border: 2px solid var(var(--eerieBlk2)) !important;
   color: white !important;
   cursor: pointer;
 }
@@ -48,12 +49,13 @@
   color: var(--jade) !important;
   border-radius: 10px;
   box-shadow: 1px 1px 2px var(--eerieBlk) !important;
-  border: 2px solid var(--eerieBlk3) !important;
+  border: 2px solid var(--jade) !important;
   transition: 1s;
 }
 
 .logInCloseButton:hover {
   background-color: var(--jade) !important;
+  border: 2px solid var(--eerieBlk3) !important;
   color: white !important;
   cursor: pointer;
 }

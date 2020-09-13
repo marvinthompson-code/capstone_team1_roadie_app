@@ -205,35 +205,35 @@ const ClientSignUp = () => {
             row="3"
           />
         </div>
-        <div className="form-group">
-          <label for="exampleFormControlFile1" id="labelItem">
+        <div className="form-group clientUploadSignUp">
+          <label for="exampleFormControlFile1" id="labelItem" className="labelClientSignUp">
             Upload Profile Image
           </label>
           <input
             type="file"
-            className="form-control-file"
+            className="form-control-file clientFile"
             id="exampleFormControlFile1"
             required
             onChange={handleImageAsFile}
           />
+          <button
+            type="button"
+            className="clientSignSignUploadButton btn-secondary"
+            onClick={handleFirebaseUpload}
+            id="firebaseUpload"
+          >
+            Upload
+          </button>
+          <input
+            type="submit"
+            className="clientSignUpButton btn-primary"
+            value="Sign Up"
+            onClick={handleSubmit}
+            data-dismiss="modal"
+            aria-label="Close"
+          />
         </div>
-        <button
-          type="button"
-          className="clientUploadButton btn-secondary"
-          onClick={handleFirebaseUpload}
-          id="firebaseUpload"
-        >
-          upload
-        </button>
         {toggleUploadMsg ? <h5 id="labelItem">Upload successful!</h5> : null}
-        <input
-          type="submit"
-          className="clientSignUpButton btn-primary"
-          value="Sign Up"
-          onClick={handleSubmit}
-          data-dismiss="modal"
-          aria-label="Close"
-        />
       </form>
     </div>
   );
