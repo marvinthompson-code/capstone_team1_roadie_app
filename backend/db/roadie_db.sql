@@ -94,7 +94,7 @@ INSERT INTO artists
 VALUES
     ('ql6WtbVGsAexmqeBWnJLksB3uSv2', 'Marvin', 'https://bloximages.chicago2.vip.townnews.com/wacotrib.com/content/tncms/assets/v3/editorial/d/7b/d7b29b15-a844-58e6-83bc-cdbe834498b5/5c2a0a5967610.image.jpg', 'this is a bio', '$$$', 'Gospel', 'New York', '1 (718) 234-5678'),
     ('9kHLaS95q4XBMnRKDR73sbj5olk1', 'Kevin', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hart-gettyimages-1062194608mod-1544461779.jpg?crop=1xw:1xh;center,top&resize=480:*', 'I am hilarious! I make this up!', '$$$', 'Comedy', 'New York', '1 (347) 393-4448'),
-    ('EtIGjh6xlARLAajjI3NlzoYIFBv1', 'Victoria', 'https://finearts.uvic.ca/music/calendar/wp-content/uploads/2019/08/B-Ferguson-sq.jpg', 'I love slaying on the flute! This is what I live and breathe for!', '$$$', 'Jazz', 'Washington', '1 (202) 587-4398'),
+    ('eH9ygwiTOAUApNs9JwEATz4Ldzb2', 'Victoria', 'https://finearts.uvic.ca/music/calendar/wp-content/uploads/2019/08/B-Ferguson-sq.jpg', 'I love slaying on the flute! This is what I live and breathe for!', '$$$', 'Jazz', 'Washington', '1 (202) 587-4398'),
     ('1', 'Rihanna', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSx8QVkCNqI0rLKuH3q3C_xxuMHFSFh2kj4hw&usqp=CAU', 'Stay tuned for R9! Remember, we are #blackgirlmagic!', '$$$', 'Pop', 'Saint Michael', '1 (246) 789-1234'),
     ('2', 'Beyoncé', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_Dmxb2tBNG0Dhtisr5nlsuS4LfcAS48LGBw&usqp=CAU', '"Black Is King" is out now!', '$$$', 'R&B', 'Houston', '1 (281) 456-7890'),
     ('3', 'Ari Lennox', 'https://d.newsweek.com/en/full/1418156/who-ari-lennox.jpg?w=1600&h=1600&q=88&f=b479af524f907cbe77773e072ce27409', 'Your favorite shea butter baby!', '$$$', 'R&B', 'Washington', '1 (202) 987-6543'),
@@ -126,7 +126,7 @@ INSERT INTO clients
 VALUES
     ('AlvUvv7b4AeyKtqRUCOyPPfEnAi2', 'Henry', 'https://media.pitchfork.com/photos/5e6e1e81969cde000892958c/16:9/w_3776,h_2124,c_limit/Childish-Gambino.jpg', 'Master of Creations!', 'New York', '1 (718) 258-3962'),
     ('VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', 'Ashya', 'https://i1.wp.com/diandrareviewsitall.com/wp-content/uploads/2020/01/81728762_2866881789999304_8007239054716305408_n.jpg?resize=663%2C663&ssl=1', 'Maker of unordinary things!', 'Brooklyn', '1 (347) 917-0957'),
-    ('Y5Yt0IZIy5MjuSv6BFuLm0QGpRn2', 'Honri', 'https://i2.wp.com/shoppeblack.us/wp-content/uploads/2018/07/14732368_899909576812636_7779257940878229641_n.jpg?resize=640%2C960&ssl=1', 'Proud restaurant owner of Sazon Nunez!', 'Brooklyn', '1 (347) 750-7894'),
+    ('Hg9tTgZPTDW2Pjt5T3gKQtnEZbo1', 'Thomas', 'https://i2.wp.com/shoppeblack.us/wp-content/uploads/2018/07/14732368_899909576812636_7779257940878229641_n.jpg?resize=640%2C960&ssl=1', 'Proud restaurant owner of Sazon Nunez!', 'Brooklyn', '1 (347) 750-7894'),
     ('1', 'Jay-Z', 'https://www.biography.com/.image/t_share/MTU0MTU0MTcyMTU2MDI4MzE1/jay-z-attends-2017-roc-nation-pre-grammy-brunch-at-owlwood-estate-on-february-11-2017-in-los-angeles-california-photo-by-ari-perilsteingetty-images-for-roc-nation-500.jpg', 'Hov Nation! Step into The 40/40 Club with style and grace!', 'Brooklyn', '1 (347) 393-4448'),
     ('2', 'Sugar Hill Restaurant & Supper Club', 'https://www.sugarhillsupperclub.com/image/125454940.png', 'Here is where the old timers get down! If you think you can hang, come on out and party with a bang!', 'Brooklyn', '1 (347) 723-5693'),
     ('3', 'E-40', 'https://lh3.googleusercontent.com/proxy/7EhxXfaeiQFPSnOsGU_wUoCsYTm0ZU74VEE9ws5uGVGbhx9TKefXamW4mXej_wy2sgrQMytjq3pAUGxayDHR_Zf3_3I92vG6nGwl16MW8ITlXOcM2yM6OWoXjtJWbmo3srSktp2ZvZ6N', 'Sick Wid It Records! Stay tuned!', 'Vallejo', '1 (707) 210-3458'),
@@ -148,10 +148,10 @@ VALUES
     ('BLACKLIGHT SLIDE', 'Aviator Sports and Events Center', '2020-08-15', '3159 Flatbush Avenue', 'Brooklyn', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2'),
     ('DRUMLINE', 'Betsy Head Park', '2020-09-10', 'Dumont Avenue', 'Brooklyn', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1'),
     ('HALLOWEEN MAZE', 'Blood Manor', '2020-10-31', '359 Broadway Avenue', 'New York', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2'),
-    ('Grand Reopening', 'Sazon Nunez', '2020-09-15', '96 Wyckoff Ave', 'Brooklyn', 'Y5Yt0IZIy5MjuSv6BFuLm0QGpRn2'),
-    ('Jazz Night', 'Sazon Nunez', '2020-09-19', '96 Wyckoff Ave', 'Brooklyn', 'Y5Yt0IZIy5MjuSv6BFuLm0QGpRn2'),
-    ('Smooth Jazz Night', 'Sazon Nunez', '2020-09-26', '96 Wyckoff Ave', 'Brooklyn', 'Y5Yt0IZIy5MjuSv6BFuLm0QGpRn2'),
-    ('Night Owls Party', 'Sazon Nunez', '2020-10-03', '96 Wyckoff Ave', 'Brooklyn', 'Y5Yt0IZIy5MjuSv6BFuLm0QGpRn2');
+    ('Grand Reopening', 'Sazon Nunez', '2020-09-15', '96 Wyckoff Ave', 'Brooklyn', 'Hg9tTgZPTDW2Pjt5T3gKQtnEZbo1'),
+    ('Jazz Night', 'Sazon Nunez', '2020-09-19', '96 Wyckoff Ave', 'Brooklyn', 'Hg9tTgZPTDW2Pjt5T3gKQtnEZbo1'),
+    ('Smooth Jazz Night', 'Sazon Nunez', '2020-09-26', '96 Wyckoff Ave', 'Brooklyn', 'Hg9tTgZPTDW2Pjt5T3gKQtnEZbo1'),
+    ('Night Owls Party', 'Sazon Nunez', '2020-10-03', '96 Wyckoff Ave', 'Brooklyn', 'Hg9tTgZPTDW2Pjt5T3gKQtnEZbo1');
 
 INSERT INTO bookings
     (id, artist_id, client_id, event_id, bio, contact_info)
@@ -165,7 +165,7 @@ VALUES
     ('7', '1', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'BOO!', '1 (347) 917-0957'),
     ('8', '2', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'I cant wait to scare the little kids.', '1 (718) 258-3962'),
     ('9', '2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Oh, this is going to be epic!', '1 (718) 258-3962'),
-    ('10', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '6', 'This is going to feel like the band days!', '1 (347) 917-0957'),
-    ('11', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Carnegie Hall. At Christmas! Are you kidding me?!', '1 (347) 917-0957'),
-    ('12', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'This will be eerily interesting!', '1 (718) 258-3962');
+    ('10', 'eH9ygwiTOAUApNs9JwEATz4Ldzb2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '6', 'This is going to feel like the band days!', '1 (347) 917-0957'),
+    ('11', 'eH9ygwiTOAUApNs9JwEATz4Ldzb2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Carnegie Hall. At Christmas! Are you kidding me?!', '1 (347) 917-0957'),
+    ('12', 'eH9ygwiTOAUApNs9JwEATz4Ldzb2', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'This will be eerily interesting!', '1 (718) 258-3962');
 
