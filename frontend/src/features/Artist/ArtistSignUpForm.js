@@ -213,22 +213,20 @@ const ArtistSignUpForm = () => {
             ></input>
           </div>
         </div>
-        <div className="form-group">
-          <label for="exampleFormControlFile1" id="labelitem">
+        <div className="form-group artistUploadSignUp">
+          <label for="exampleFormControlFile1" id="labelitem" className="labelArtistSignUp">
             Upload Profile Image
           </label>
           <input
             type="file"
             onChange={handleImageAsFile}
             required
-            className="form-control-file"
+            className="form-control-file artistFile"
             id="exampleFormControlFile1"
           />
-        </div>
-
         <button
           type="button"
-          className="artistUploadButton btn-secondary"
+          className="artistSignUploadButton btn-secondary"
           onClick={() => {
             handleFirebaseUpload();
           }}
@@ -236,11 +234,6 @@ const ArtistSignUpForm = () => {
         >
           Upload
         </button>
-        {toggleUploadMsg ? (
-          <h5 id="uploadSuccess" id="labelitem">
-            Upload successful!
-          </h5>
-        ) : null}
         <input
           type="submit"
           className="artistSignUpButton btn-primary"
@@ -249,6 +242,13 @@ const ArtistSignUpForm = () => {
           data-dismiss="modal"
           aria-label="Close"
         />
+        </div>
+
+        {toggleUploadMsg ? (
+          <h5 id="uploadSuccess" id="labelitem">
+            Upload successful!
+          </h5>
+        ) : null}
       </form>
     </div>
   );

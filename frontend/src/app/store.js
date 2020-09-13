@@ -18,6 +18,7 @@ import uploadModalReducer from "../features/Portfolio/uploadModalSlice";
 import uploadVideoModalReducer from "../features/Portfolio/uploadVideoModalSlice";
 import loadingReducer from "../features/Loading/loadingSlice";
 import clientInfoReducer from '../features/client/clientInfoSlice'
+import artistInfoReducer from '../features/Artist/artistInfoSlice'
 import notificationsReducer from '../features/Notifications/notificationsSlice'
 
 import logger from "redux-logger";
@@ -25,6 +26,7 @@ import logger from "redux-logger";
 export default configureStore({
   reducer: {
     artist: artistReducer,
+    artistInfo: artistInfoReducer,
     token: tokenReducer,
     notifications: notificationsReducer,
     loginModal: loginModalReducer,

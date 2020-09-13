@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { useRouteMatch } from "react-router-dom";
-import "../../css/Portfolio.css";
+import "../../css/ClientPortfolio.css";
 
 const ClientPortfolio = () => {
   const client = useSelector((state) => state.client);
@@ -26,7 +26,7 @@ const ClientPortfolio = () => {
       return (
         <button
           type="button"
-          className="btn btn-primary uploadPictureArtistButton"
+          className="btn btn-primary uploadPictureClientButton"
           data-toggle="modal"
           data-target="#uploadPictureModalCenter"
           onClick={handleClick}
@@ -42,7 +42,7 @@ const ClientPortfolio = () => {
       return (
         <button
           type="button"
-          className="btn btn-primary uploadVideoArtistButton"
+          className="btn btn-primary uploadVideoClientButton"
           data-toggle="modal"
           data-target="#uploadVideoModalCenter"
           onClick={handleClick}
@@ -87,35 +87,43 @@ const ClientPortfolio = () => {
   }, []);
 
   return (
-    <div className="artistPortfolioContainer">
+    <div className="clientPortfolioContainer">
       <div className="portfolioHeader">
         <img
           className="rounded float-left"
           id="portfolioImg"
           src={profilePic}
         />
-        <div className={"col"}>{editProfileBtn()}</div>
+        <div className={"col editBtnCol"}>{editProfileBtn()}</div>
       </div>
-      <div className="artistMediaContainer">
-        <div className="artistAlbumDiv">
-          <h2 id="artistNameAlbum">{name}'s Album</h2>
-          {displayUploadPictureButton()}
-          <input
-            type="button"
-            id="uploadArtistButton"
-            onClick={toPhotoAlbum}
-            value={`${name}'s Photo Album`}
-          />
+      <div className="clientMediaContainer">
+        <div className="clientAlbumDiv">
+          <div className="clientHeaderAlbumDiv">
+            <h2 id="clientNameAlbum">{name}'s Album</h2>
+          </div>
+          <div className="clientButtonAlbumDiv">
+            {displayUploadPictureButton()}
+            <input
+              type="button"
+              id="uploadClientButton"
+              onClick={toPhotoAlbum}
+              value={`${name}'s Photo Album`}
+            />
+          </div>
         </div>
-        <div className="artistVideoDiv">
-          <h2>{name}'s Videos</h2>
-          {displayUploadVideoButton()}
-          <input
-            type="button"
-            id="uploadArtistButton"
-            onClick={toVideoAlbum}
-            value={`${name}'s Portfolio Videos`}
-          />
+        <div className="clientVideoDiv">
+          <div className="clientHeaderAlbumDiv">
+            <h2 id="clientNameAlbum">{name}'s Videos</h2>
+          </div>
+          <div className="clientButtonAlbumDiv">
+            {displayUploadVideoButton()}
+            <input
+              type="button"
+              id="uploadClientButton"
+              onClick={toVideoAlbum}
+              value={`${name}'s Portfolio Videos`}
+            />
+          </div>
         </div>
       </div>
     </div>

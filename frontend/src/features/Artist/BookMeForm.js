@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/apiURL";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import "../../css/BookMeModal.css";
 import { db } from "../../firebase";
@@ -40,12 +40,18 @@ const BookMeForm = () => {
     $("#toastBooking").toast("show");
   };
 
-  useEffect(() => {
-    if (client !== null) {
-      setEmailContact(client.email);
-      setNumberContact(client.contact_info);
-    }
-  }, []);
+  // const fetchClientInfo = async (id) => {
+  //   try {
+  //     let res = await axios.get(`${API}/clients/${id}`);
+  //     debugger
+  //     let { contact_info } = res.data.body.single_client;
+  //     setNumberContact(contact_info);
+  //     setEmailContact(client.email);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  
 
   const bookingEvents = () => {
     return clientEvents.map((event) => {
@@ -185,22 +191,15 @@ const BookMeForm = () => {
                 <label for="Contact_info" id="lableitem">
                   Your Contact Info
                 </label>
-                <input
-                  type="email"
-                  className="form-control bookMeInput"
-                  value={emailContact}
-                  placeholder={emailContact}
-                  onChange={(e) => setEmailContact(e.currentTarget.value)}
-                  required
-                />
-                <input
-                  type="tel"
-                  className="form-control bookMeInput"
-                  value={numberContact}
-                  placeholder={numberContact}
-                  onChange={(e) => setNumberContact(e.currentTarget.value)}
-                  required
-                />
+                { client ?
+                <>
+                 (
+                <p className="lead">{client.email}</p>
+                <p className="lead">{clientInfo.contact_info}</p> 
+                 )
+                 </> :
+                null
+}
               </div>
               <button
                 type="submit"

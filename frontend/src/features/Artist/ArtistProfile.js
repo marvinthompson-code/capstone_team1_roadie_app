@@ -30,7 +30,7 @@ const ArtistProfile = () => {
   useEffect(() => {
     const fetchArtistBookings = async (artist_id) => {
       let res = await axios.get(`${API}/artists/${artist_id}/bookings`);
-      debugger;
+    
       setArtistBookings(res.data.body.artistBookings);
     };
     fetchArtistBookings(match.params.id);
@@ -59,12 +59,17 @@ const ArtistProfile = () => {
     const fetchClientInfo = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
       let { single_client } = res.data.body;
-      dispatch(receiveClientInfo(single_client));
+      debugger
+      dispatch(receiveClientInfo({
+        ...single_client,
+        email: client.email
+      }
+        ));
     };
     if (client !== null) {
       fetchClientInfo(client.id);
     }
-  }, []);
+  }, [client]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -114,7 +119,6 @@ const ArtistProfile = () => {
   const artistBookingThumbs = artistBookings.map((booking) => {
     return (
       <div
-        id={booking.id}
         className={"eventThumb row"}
         key={booking.id}
         onClick={(e) =>

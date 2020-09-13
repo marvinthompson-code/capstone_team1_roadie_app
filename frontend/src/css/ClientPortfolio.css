@@ -1,0 +1,144 @@
+:root {
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828b;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075d3e;
+    --jade: #00a86b;
+    --indiaGreen: #078809;
+    --electricGreen: #00ff00;
+    --eerieBlk2: #1c1e1e;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5a7272;
+  }
+  @font-face {
+    src: url("../fonts/Raleway-Black.ttf");
+    font-family: railwayBlk;
+  }
+  @font-face {
+    src: url("../fonts/Raleway-BoldItalic.ttf");
+    font-family: railwayBldIt;
+  }
+  @font-face {
+    src: url("../fonts/Raleway-Light.ttf");
+    font-family: railwayLight;
+  }
+  #portfolioImg {
+    width: 310px;
+    height: auto;
+  }
+  .clientPortfolioContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 5px;
+  }
+  .portfolioHeader {
+    grid-row: 1 / span 1;
+    padding: 10px;
+    border: 2px solid var(--indiaGreen);
+    background-color: rgba(28, 30, 30, 0.92) !important;
+    border-radius: 10px;
+    height: fit-content;
+    display: grid;
+    grid-template-rows: 85% 15%;
+    height: fit-content;
+    grid-row-gap: 10px;
+  }
+  .clientMediaContainer {
+    grid-row: 2 / span 1;
+    padding: 5px;
+    border: 2px solid var(--indiaGreen);
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+    color: white;
+    background-color: rgba(28, 30, 30, 0.92) !important;
+    text-align: center;
+  }
+  .clientAlbumDiv {
+    grid-row: 1 / span 1;
+    border: 2px solid var(--indiaGreen);
+    background-color: rgba(28, 30, 30, 0.92) !important;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .clientVideoDiv {
+    grid-row: 2 / span 1;
+    border: 2px solid var(--indiaGreen);
+    background-color: rgba(28, 30, 30, 0.92) !important;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  #uploadClientButton {
+    border: 2px solid var(--indiaGreen);
+    box-shadow: 1px 1px 2px #888888;
+    color: var(--jade) !important;
+    background-color: var(--richBlk);
+    border-radius: 10px;
+  }
+  #uploadClientButton:hover {
+    background-color: var(--jade);
+    color: var(--richBlk) !important;
+  }
+  .uploadBtn {
+    border: 2px solid var(--richBlk);
+    border-radius: 10px;
+    background-color: var(--castletonGrn);
+    box-shadow: 1px 1px 2px #888888;
+    color: var(--richBlk);
+  }
+  .uploadBtn:hover {
+    background-color: darkred;
+    color: white !important;
+  }
+  .uploadPictureClientButton {
+    border: 1px solid var(--eerieBlk3) !important;
+    border-radius: 10px;
+    background-color: var(--jade) !important;
+    box-shadow: 1px 1px 2px var(--eerieBlk) !important;
+    color: white !important;
+    transition: 1s;
+  
+  }
+  .uploadPictureClientButton:hover {
+    background-color: var(--kobe) !important;
+    color: white !important;
+    border-color: var(--eerieBlk) !important;
+  }
+  .uploadVideoClientButton {
+    border: 1px solid var(--eerieBlk3) !important;
+    border-radius: 10px;
+    background-color: var(--jade) !important;
+    box-shadow: 1px 1px 2px var(--eerieBlk) !important;
+    color: white !important;
+    transition: 1s;
+  }
+  .uploadVideoClientButton:hover {
+    background-color: var(--kobe) !important;
+    color: white !important;
+    border-color: var(--eerieBlk) !important;
+  }
+  .clientButtonAlbumDiv {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+  }
+  #uploadClientButton {
+    grid-area: 1/ 2 / span 1;
+  }
+  .uploadPictureClientButton,
+  .uploadVideoClientButton {
+    grid-area: 2/ 2 / span 1;
+  }
+  .editBtnCol{
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+  }

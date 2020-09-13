@@ -30,10 +30,14 @@
     src: url("../fonts/Raleway-Light.ttf");
     font-family: railwayLight;
 }
-
+.artistEditProfilePicContent{
+    border: 2px solid var(--jade) !important;
+    border-radius: 13px;
+}
 .editArtistProfilePicHeader {
     border-bottom-color: var(--eerieBlk3);
     background-color: var(--jade) !important;
+    border-radius: 10px 10px 0px 0px;
 }
 
 #labelitem {
@@ -48,27 +52,32 @@
 .editArtistProfilePicFooter {
     background-color: var(--eerieBlk3) !important;
     border-top-color: var(--eerieBlk3) !important;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .editArtistProfilePicSubmit {
-    background-color: var(--jade) !important;
-    color: white !important;
+    margin-right: 45px;
+    grid-area: 2/ 2/ span 1/ span 1;
+    background-color: var(--eerieBlk2) !important;
+    color: var(--jade) !important;
     border-radius: 10px;
     box-shadow: 1px 1px 2px var(--eerieBlk);
-    border: 2px solid var(--eerieBlk3) !important;
+    border: 2px solid var(--jade) !important;
     transition: 1s;
     height: 45px;
 }
 
 .editArtistProfilePicSubmit:hover {
-    background-color: var(--kobe) !important;
-    color: white !important;
+    background-color: var(--jade) !important;
+    color: var(--eerieBlk2) !important;
     cursor: pointer;
 }
 
-.artistUploadButton {
+.artistUploadProfileButton {
+    margin-right: 45px;
+    grid-area: 2/ 1/ span 1/ span 1;
     background-color: var(--jade) !important;
-    color: white !important;
+    color: var(--eerieBlk2) !important;
     border-radius: 10px;
     box-shadow: 1px 1px 2px var(--eerieBlk);
     border: 2px solid var(--eerieBlk3) !important;
@@ -76,9 +85,10 @@
     height: 45px;
 }
 
-.artistUploadButton:hover {
-    background-color: var(--kobe) !important;
-    color: white !important;
+.artistUploadProfileButton:hover {
+    background-color: var(--eerieBlk2) !important;
+    color: var(--jade) !important;
+    border: 2px solid var(--jade) !important;
     cursor: pointer;
 }
 
@@ -97,3 +107,12 @@
     color: white !important;
     cursor: pointer;
 }
+.formEditArtistProfilePic{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.fileEditArtistProfilePic{
+    grid-area: 1/ 1/ span 1/ span 1;
+}
+
