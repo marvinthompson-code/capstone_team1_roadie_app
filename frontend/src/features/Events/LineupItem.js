@@ -18,7 +18,6 @@ const LineupItem = ({ artist }) => {
     const fetchArtistInfo = async (id) => {
       try {
         let res = await axios.get(`${API}/artists/${id}`);
-        debugger;
         let { single_artist } = res.data.body;
         setName(single_artist.name);
         setGenre(single_artist.genre);
