@@ -59,6 +59,7 @@ const ArtistProfile = () => {
     const fetchClientInfo = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
       let { single_client } = res.data.body;
+
       dispatch(receiveClientInfo({
         ...single_client,
         email: client.email
