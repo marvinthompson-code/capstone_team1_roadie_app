@@ -81,7 +81,7 @@ const EditArtistProfilePicForm = () => {
             aria-hidden="true"
         >
             <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content">
+                <div className="modal-content artistEditProfilePicContent">
                     <div className="modal-header editArtistProfilePicHeader">
                         <h5 className="modal-title" id="exampleModalLongTitle">
                             Edit Profile Picture
@@ -97,22 +97,22 @@ const EditArtistProfilePicForm = () => {
                         </button>
                     </div>
                     <div className="modal-body editArtistProfilePicBody">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="formEditArtistProfilePic">
                             <div className="form-group">
-                                <label for="exampleFormControlFile1" id="labelitem">
+                                <label for="exampleFormControlFile1" id="labelitem" className="fileEditArtistProfilePic">
                                 Upload Profile Image
                                 </label>
                                 <input
                                 type="file"
                                 onChange={handleImageAsFile}
                                 required
-                                className="form-control-file"
+                                className="form-control-file formControlEditArtistProfilePic"
                                 id="exampleFormControlFile1"
                                 />
                             </div>
                             <button
                                 type="button"
-                                className="artistUploadButton btn-secondary"
+                                className="artistUploadProfileButton btn-secondary"
                                 onClick={() => {
                                 handleFirebaseUpload();
                                 }}
