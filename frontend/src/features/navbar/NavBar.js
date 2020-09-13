@@ -71,9 +71,7 @@ const NavBar = () => {
   }, [notifications.length, artist, client]);
 
   let routeExt = () => {
-    debugger;
     if (client === null && artist) {
-      debugger
       return (
         <>
           <li className="nav-item active">
