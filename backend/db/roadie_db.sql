@@ -160,5 +160,8 @@ VALUES
     ('6', '2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '6', 'I gets BUSY with the drums baby!', '1 (718) 258-3962'),
     ('7', '1', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'BOO!', '1 (347) 917-0957'),
     ('8', '2', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'I cant wait to scare the little kids.', '1 (718) 258-3962'),
-    ('9', '2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Oh, this is going to be epic!', '1 (718) 258-3962');
+    ('9', '2', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Oh, this is going to be epic!', '1 (718) 258-3962'),
+    ('10', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '6', 'This is going to feel like the band days!', '1 (347) 917-0957'),
+    ('11', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'VJPYkMzc1kMmZ85Sy3tesvSm6Eu1', '4', 'Carnegie Hall. At Christmas! Are you kidding me?!', '1 (347) 917-0957'),
+    ('12', 'EtIGjh6xlARLAajjI3NlzoYIFBv1', 'AlvUvv7b4AeyKtqRUCOyPPfEnAi2', '7', 'This will be eerily interesting!', '1 (718) 258-3962');
 
