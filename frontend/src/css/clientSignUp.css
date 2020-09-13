@@ -62,3 +62,42 @@
   height: 35px;
   border: 2px solid var(--eerieBlk3) !important;
 }
+.clientUploadSignUp{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+}
+.labelClientSignUp{
+  grid-area: 1/ 1/ span 1/ span 1;
+}
+.clientFile{
+  grid-area: 2/ 1/ span 1/ span 3;
+}
+.clientSignSignUploadButton{
+  grid-area: 3/ 1/ span 1/ span 1;
+  background-color: var(--jade) !important;
+  color: var(--eerieBlk2) !important;
+  border-radius: 10px;
+  height: 35px;
+  border: 2px solid var(--eerieBlk2) !important;
+}
+.clientSignSignUploadButton:hover{
+  background-color: var(--eerieBlk2) !important;
+  color: var(--jade) !important;
+  border: 2px solid var(--jade) !important;
+  transition: .5s;
+}
+.clientSignUpButton{
+  grid-area: 3/ 2/ span 1/ span 1;
+  background-color: var(--kobe) !important;
+  color: var(--floralWhite) !important;
+  border-radius: 10px;
+  border: 2px solid var(--eerieBlk2) !important;
+}
+.clientSignUpButton:hover{
+  background-color: var(--jade) !important;
+  border: 2px solid var(--eerieBlk2) !important;
+  color: var(--eerieBlk2) !important;
+  transition: .5s;
+}

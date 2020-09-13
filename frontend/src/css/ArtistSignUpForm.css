@@ -1,12 +1,21 @@
 :root {
-  --darkSienna: #3c1414;
-  --Cinereous: #9a8378;
-  --DesertSand: #dbc2ad;
-  --PaleSilver: #c9bbaa;
-  --eggShell: #f8f2dc;
-  --floralWhite: #fffaf0;
-  --floralGrey: #f4efe5;
-}
+    --darkSienna: #3c1414;
+    --Cinereous: #9a8378;
+    --DesertSand: #dbc2ad;
+    --PaleSilver: #c9bbaa;
+    --eggShell: #f8f2dc;
+    --floralWhite: #ffffff;
+    --steel: #55828b;
+    --eerieBlk: #101515;
+    --richBlk: #060808;
+    --castletonGrn: #075d3e;
+    --jade: #00a86b;
+    --indiaGreen: #078809;
+    --electricGreen: #00ff00;
+    --eerieBlk2: #1c1e1e;
+    --eerieBlk3: #212222;
+    --spaceGrey: #5a7272;
+  }
 
 .artistSignUpInput {
   box-shadow: 1px 1px 2px #888888;
@@ -25,18 +34,44 @@
 }
 
 .artistSignUpButton {
-  background-color: var(--darkSienna) !important;
+  grid-area: 3/ 2/ span 1/ span 1;
+  background-color: var(--kobe) !important;
   color: var(--floralWhite) !important;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
-  border: 2px solid var(--darkSienna) !important;
+  border: 2px solid var(--eerieBlk2) !important;
 }
 
-.artistUploadButton {
-  background-color: var(--floralWhite) !important;
-  color: var(--darkSienna) !important;
+.artistSignUpButton:hover{
+  background-color: var(--jade) !important;
+  border: 2px solid var(--eerieBlk2) !important;
+  color: var(--eerieBlk2) !important;
+  transition: .5s;
+}
+
+.artistSignUploadButton {
+  grid-area: 3/ 1/ span 1/ span 1;
+  background-color: var(--jade) !important;
+  color: var(--eerieBlk2) !important;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px #888888;
   height: 35px;
-  border: 2px solid var(--darkSienna) !important;
+  border: 2px solid var(--eerieBlk2) !important;
+}
+.artistSignUploadButton:hover{
+  background-color: var(--eerieBlk2) !important;
+  color: var(--jade) !important;
+  border: 2px solid var(--jade) !important;
+  transition: .5s;
+}
+
+.artistUploadSignUp{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+}
+.labelArtistSignUp{
+  grid-area: 1/ 1/ span 1/ span 1;
+}
+.artistFile{
+  grid-area: 2/ 1/ span 1/ span 3;
 }
