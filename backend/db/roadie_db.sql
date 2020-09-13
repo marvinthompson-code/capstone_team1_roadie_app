@@ -1,15 +1,19 @@
-DROP DATABASE IF EXISTS roadie_db;
-CREATE DATABASE roadie_db;
-\c roadie_db;
+-- DROP DATABASE IF EXISTS roadie_db;
+-- CREATE DATABASE roadie_db;
+-- \c roadie_db;
+
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS clients CASCADE;
+DROP TABLE IF EXISTS clients
+CASCADE;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS lineup;
-DROP TABLE IF EXISTS events CASCADE;
+DROP TABLE IF EXISTS events
+CASCADE;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS skills;
-DROP TABLE IF EXISTS artists CASCADE;
+DROP TABLE IF EXISTS artists
+CASCADE;
 CREATE TABLE artists
 (
     id VARCHAR PRIMARY KEY,
@@ -107,10 +111,10 @@ VALUES
     ('14', 'Second Nature', 'https://scontent-lga3-2.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/78926358_642134916528000_1115936273765962996_n.jpg?_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_cat=100&_nc_ohc=SdXaf4ANh9YAX_Ow5eQ&oh=6770b380a2a93c64174d3f35a26ffb2f&oe=5F883BFD', 'Dark Days will be out everywhere Jan 17th on all streaming services.', '$$$', 'Metal', 'New York', '1 (718) 345-5991'),
     ('15', 'Divergence', 'https://images.squarespace-cdn.com/content/v1/5b590d2f12b13fee672f75ba/1570558077248-91PD1GWI6GNGRWYTS3QE/ke17ZwdGBToddI8pDm48kPgv0ZItuOPhOZ1JEt0uc617gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdZuMiofIYA1YNg-cpohaGgSn53-I2sbAQSHhq9SgyQCm_c7z1K7QovUjPUprEAi5Q/LRG_DSC06223.JPG', 'Progressive Death Metal band from NYC', '$$$', 'Metal', 'New York', '1 (718) 345-5771'),
     ('16', 'Charleston Swing', 'https://scontent-lga3-2.xx.fbcdn.net/v/t1.0-9/65205181_812850242434869_6110409122585247744_o.jpg?_nc_cat=104&_nc_sid=e3f864&_nc_ohc=Q577-d1xcUUAX-Tpl5q&_nc_oc=AQnahkKOz60UOFd9WAwSgz3BMeVck8HONDK2jMCBaTR9Z4N6fMgnOl5zQxRf_tu9aH4&_nc_ht=scontent-lga3-2.xx&oh=f352fbd51aeedbfc35f5d372613e9455&oe=5F83B3FF', 'Hello we are Charleston Swing. We are just a ragtag group of gentlemen striving to crank out smooth tunes. Follow us on Instagram! @thecharlestonswing Vox - Alex Drums - Mack Guitars - Matt Bass - Jimmy', '$$$', 'Metal', 'New York', '1 (718) 344-4771'),
-    ('17', 'The Hearkening', 'https://f4.bcbits.com/img/0013833698_10.jpg', '"Lightyears Ago" out now!', '$$$', 'Metal', 'New York', '1 (718) 344-4071'), 
+    ('17', 'The Hearkening', 'https://f4.bcbits.com/img/0013833698_10.jpg', '"Lightyears Ago" out now!', '$$$', 'Metal', 'New York', '1 (718) 344-4071'),
     ('18', 'Gorillaz', 'https://happymag.tv/wp-content/uploads/2018/07/gorillaz-large.jpg', 'Season One is streaming worldwide. Follow your nearest Song Machine now!', '$$$', 'Hip hop', 'London', '1 (718) 007-4448'),
     ('19', 'Frank Ocean', 'https://dazedimg-dazedgroup.netdna-ssl.com/1600/azure/dazed-prod/1260/8/1268843.jpg', 'I got two versions. I got twoooo versions. #ISSUE1 #ALBUM3 #JULY2015 #BOYSDONTCRY', '$$$', 'R&B', 'New Orleans', '1 (718) 007-4888');
-    
+
 
 INSERT INTO skills
     (name, artist_id)
