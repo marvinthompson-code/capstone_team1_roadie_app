@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { apiURL } from "../../util/apiURL";
 import { db } from "../../firebase";
 import "../../css/BookingRequestModal.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useSelector } from "react-redux";
 
 const BookingRequestModal = ({
   artist_id,
@@ -13,9 +14,10 @@ const BookingRequestModal = ({
   notification_id,
 }) => {
   const API = apiURL();
-
   const [bio, setBio] = useState("");
-  const [contactInfo, setContactInfo] = useState("");
+  const artistInfo = useSelector((state) => state.artistInfo)
+  const [contactInfo, setContactInfo] = useState(artistInfo.contact_info);
+
 
   const formatPhoneNumber = (phoneNumberString) => {
     var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
@@ -27,6 +29,8 @@ const BookingRequestModal = ({
     return null;
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -37,13 +41,13 @@ const BookingRequestModal = ({
         bio: bio,
         contact_info: formatPhoneNumber(contactInfo),
       });
-      debugger;
+
 
       let res2 = await axios.post(`${API}/lineup/`, {
         event_id: event_id,
         artist_id: artist_id,
       });
-      debugger;
+   
 
       await db
         .collection("bookings")

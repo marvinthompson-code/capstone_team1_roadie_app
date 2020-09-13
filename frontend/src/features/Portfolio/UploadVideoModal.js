@@ -15,9 +15,13 @@ const UploadVideoModal = () => {
 
   let videoSource = ["YouTube", "Facebook", "SoundCloud", "Vimeo", "Twitch"];
 
-  const videoOptions = videoSource.map(video =>{
-    return <option value={video} key={video}>{video}</option>
-  })
+  const videoOptions = videoSource.map((video) => {
+    return (
+      <option value={video} key={video}>
+        {video}
+      </option>
+    );
+  });
 
   const insertVideoIntoAlbum = async (e) => {
     e.preventDefault();
@@ -28,8 +32,7 @@ const UploadVideoModal = () => {
           caption: caption,
           url: videoUrl,
           title: title,
-          source: source
-
+          source: source,
         });
         setCaption("");
       } catch (err) {
@@ -42,7 +45,7 @@ const UploadVideoModal = () => {
           caption: caption,
           url: videoUrl,
           title: title,
-          source: source
+          source: source,
         });
       } catch (err) {
         console.log(err.message);
@@ -76,6 +79,7 @@ const UploadVideoModal = () => {
           </div>
           <div className="modal-body uploadModalBody">
             <form onSubmit={insertVideoIntoAlbum}>
+              <label>Title:</label>
               <div className="form-group">
                 <input
                   type="text"
@@ -86,12 +90,20 @@ const UploadVideoModal = () => {
                   required
                 />
               </div>
+              <label>Choose an option:</label>
               <div className="form-group">
-                <select onChange={(e) => setSource(e.target.value)} value={source} class="custom-select">
-                  <option value={""} disabled>Video Source</option>
+                <select
+                  onChange={(e) => setSource(e.target.value)}
+                  value={source}
+                  class="custom-select"
+                >
+                  <option value={""} disabled>
+                    Video Source
+                  </option>
                   {videoOptions}
                 </select>
               </div>
+              <label>Video URL:</label>
               <div className="form-group">
                 <input
                   type="text"
@@ -102,6 +114,7 @@ const UploadVideoModal = () => {
                   required
                 />
               </div>
+              <label>Enter a caption:</label>
               <div className="form-group">
                 <textarea
                   type="text"

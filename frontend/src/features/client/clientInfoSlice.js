@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const clientInfoSlice = createSlice({
     name: "clientInfo",
-    initialState: null, 
+    initialState: {}, 
     reducers: {
         receiveClientInfo: (state, action) => action.payload
     }

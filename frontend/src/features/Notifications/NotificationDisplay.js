@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { receiveArtistInfo } from '../Artist/artistInfoSlice'
 import "../../css/NotificationContainer.css";
+import { apiURL } from "../../util/apiURL";
+import axios from 'axios'
 
 import NotificationItem from "./NotificationItem";
 
 const NotificationDisplay = () => {
   const notifications = useSelector((state) => state.notifications);
+
+  const API = apiURL()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     window.scrollTo(0, 0);
