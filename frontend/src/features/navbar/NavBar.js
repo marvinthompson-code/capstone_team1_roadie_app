@@ -14,7 +14,6 @@ import { db } from "../../firebase";
 import { updateUser } from "../token/userTokenSlice";
 import { toggleLoadingState } from "../Loading/loadingSlice";
 import { toggleErrorState, recieveState } from "../Error/errorSlice";
-import BackButton from "../BackButton/BackButton";
 import $ from "jquery";
 
 const NavBar = () => {
@@ -245,7 +244,6 @@ const NavBar = () => {
         />
         <span id="roadieR">R</span>oadie
       </NavLink>
-      <BackButton />
       <button
         className="navbar-toggler navBarBox"
         type="button"

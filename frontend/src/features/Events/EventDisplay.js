@@ -53,7 +53,6 @@ const EventDisplay = () => {
   useEffect(() => {
     const fetchLineupInfo = async (id) => {
       let res = await axios.get(`${API}/lineup/${id}`);
-      debugger;
       setLineupArr(res.data.body.lineup);
     };
     fetchLineupInfo(match.params.id);
