@@ -42,37 +42,33 @@ const NotificationItem = ({ notification }) => {
   return (
     <>
       {isArtist ? (
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card notificationCard" style={{ width: "18rem" }}>
           <div className="card-body">
             <h5 className="card-title">{message}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{bio}</h6>
             <p className="card-text">{body}</p>
-            <ul>
-              <h5>Event details:</h5>
-              <li>
-                <p className="card-text">Name: {eventDetails?.name}</p>
-              </li>
-              <li>
-                <p className="card-text">Venue: {eventDetails?.venue}</p>
-              </li>
-              <li>
-                <p className="card-text">Address: {eventDetails?.address}</p>
-              </li>
-              <li>
-                <p className="card-text"> City: {eventDetails?.city}</p>
-              </li>
-              <li>
-                <p className="card-text">Date: {eventDetails?.date}</p>
-              </li>
-            </ul>
+            <h6 className="card-subtitle mb-2 text-muted">{bio}</h6>
+            <h5>Event details:</h5>
+            <div className="cardTextInfo">
+            <p className="card-text notiInfo"> <label for="notificationName" id="lableitem">Name:</label> {eventDetails?.name}</p>
+
+            <p className="card-text notiInfo"><label for="notificationVenue" id="lableitem">Vanue:</label>{eventDetails?.venue}</p>
+
+            <p className="card-text notiInfo"><label for="notificationAddress" id="lableitem">Address:</label>{eventDetails?.address}</p>
+
+            <p className="card-text notiInfo"><label for="notificationCity" id="lableitem">City:</label>{eventDetails?.city}</p>
+
+            <p className="card-text notiInfo"><label for="notificationDate" id="lableitem">Date:</label> {eventDetails?.date}</p>
+            </div>
+            <div className="notiContact">
             <h6 className="card-subtitle mb-2 text-muted">Contact Info:</h6>
             <p className="card-text">{number}</p>
             <p className="card-text">{email}</p>
+            </div>
           </div>
           <div className="buttonsDiv">
             <button
               type="button"
-              class="btn btn-primary acceptBtn"
+              className="btn btn-primary acceptBtn"
               data-toggle="modal"
               data-target="#bookingRequestModalCenter"
             >
@@ -80,13 +76,13 @@ const NotificationItem = ({ notification }) => {
             </button>
             <button
               type="button"
-              class="btn btn-primary declineBtn"
+              className="btn btn-primary declineBtn"
               data-toggle="modal"
               data-target="#declineBookingRequestModalCenter"
             >
               Decline
             </button>
-            <div className="bookingRequestModalDiv container">
+
               <BookingRequestModal
                 artist_id={artistID}
                 client_id={clientID}
@@ -97,7 +93,7 @@ const NotificationItem = ({ notification }) => {
                 artist_id={artistID}
                 notification_id={notification.id}
               />
-            </div>
+      
           </div>
         </div>
       ) : (

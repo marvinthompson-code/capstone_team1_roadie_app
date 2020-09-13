@@ -1,83 +1,44 @@
 :root {
-    --darkSienna: #3c1414;
-    --Cinereous: #9a8378;
-    --DesertSand: #dbc2ad;
-    --PaleSilver: #c9bbaa;
-    --eggShell: #f8f2dc;
-    --floralWhite: #ffffff;
-    --steel: #55828b;
-    --eerieBlk: #101515;
-    --richBlk: #060808;
-    --castletonGrn: #075d3e;
-    --jade: #00a86b;
-    --indiaGreen: #078809;
-    --electricGreen: #00ff00;
-    --eerieBlk2: #1c1e1e;
-    --eerieBlk3: #212222;
-    --spaceGrey: #5a7272;
-  }
-  .roadieLogInButton {
-    background-color: var(--eerieBlk3) !important;
+  --darkSienna: #3c1414;
+  --Cinereous: #9a8378;
+  --DesertSand: #dbc2ad;
+  --PaleSilver: #c9bbaa;
+  --eggShell: #f8f2dc;
+  --floralWhite: #ffffff;
+  --steel: #55828b;
+  --eerieBlk: #101515;
+  --richBlk: #060808;
+  --castletonGrn: #075d3e;
+  --jade: #00a86b;
+  --indiaGreen: #078809;
+  --electricGreen: #00ff00;
+  --eerieBlk2: #1c1e1e;
+  --eerieBlk3: #212222;
+  --spaceGrey: #5a7272;
+}
+
+.guestHeader {
+  background-color: var(--jade) !important;
+  border-radius: 11px 11px 0px 0px;
+  border-bottom: 1px solid var(--jade) !important;
+}
+.guestBody{
+    background-color: var(--eerieBlk2) !important;
+    border-radius: 0px 0px 11px 11px;
+}
+.guestLogInBtn{
+    border: 2px solid var(--jade) !important;
+    border-radius: 13px;
     color: var(--jade) !important;
-    border-radius: 10px;
-    box-shadow: 1px 1px 2px var(--eerieBlk);
-    border: 2px solid var(--eerieBlk3) !important;
-    transition: 1s;
-  }
-  
-  .roadieLogInButton:hover {
+    text-align: center;
+}
+.guestLogInBtn:hover{
+    color: var(--eerieBlk2) !important;
     background-color: var(--jade) !important;
-    color: white !important;
-    cursor: pointer;
-  }
-  
-  .logInModalHeader {
-    background-color: var(--jade);
-    border-bottom-color: var(--eerieBlk);
-    color: white !important;
-    text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
-  }
-  
-  #labelItem {
-    color: var(--jade);
-    text-shadow: 0.5px 0.3px 1px var(--eerieBlk);
-  }
-  
-  .logInCloseButton {
-    background-color: var(--eerieBlk3) !important;
-    color: var(--jade) !important;
-    border-radius: 10px;
-    box-shadow: 1px 1px 2px var(--eerieBlk) !important;
-    border: 2px solid var(--eerieBlk3) !important;
-    transition: 1s;
-  }
-  
-  .logInCloseButton:hover {
-    background-color: var(--jade) !important;
-    color: white !important;
-    cursor: pointer;
-  }
-  
-  .loginModalBody {
-    background-color: var(--eerieBlk3) !important;
-    border-top-color: var(--eerieBlk3) !important;
-  }
-  
-  #exampleInputEmail1 {
-    box-shadow: 1px 1px 2px var(--eerieBlk);
-    background-color: white;
-    border-color: var(--eerieBlk);
-    outline: none;
-  }
-  
-  #exampleInputPassword1 {
-    box-shadow: 1px 1px 2px var(--eerieBlk);
-    background-color: var(--floralWhite);
-    border-color: var(--darkSienna);
-    outline: none;
-  }
-  
-  .logInModal {
-    border-radius: 10px !important;
-  }
-  
+    transition: .5s !important;
+}
+.guestContent{
+    border-radius: 13px;
+    border: 2px solid var(--jade) !important;
+}
+

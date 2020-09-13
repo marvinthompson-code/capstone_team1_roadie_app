@@ -20,7 +20,6 @@ export const updateUser = (user) => async (dispatch) => {
   const fetchArtistInfo = async (id) => {
     let res = await axios.get(`${API}/artists/${id}`)
     let { single_artist } = res.data.body
-    debugger
     dispatch(receiveArtistInfo(single_artist))
 }
   try {

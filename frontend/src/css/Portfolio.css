@@ -20,17 +20,14 @@
   src: url("../fonts/Raleway-Black.ttf");
   font-family: railwayBlk;
 }
-
 @font-face {
   src: url("../fonts/Raleway-BoldItalic.ttf");
   font-family: railwayBldIt;
 }
-
 @font-face {
   src: url("../fonts/Raleway-Light.ttf");
   font-family: railwayLight;
 }
-
 #portfolioImg {
   width: 310px;
   height: auto;
@@ -64,7 +61,6 @@
   background-color: rgba(28, 30, 30, 0.92) !important;
   text-align: center;
 }
-
 .artistAlbumDiv {
   grid-row: 1 / span 1;
   border: 2px solid var(--indiaGreen);
@@ -111,13 +107,11 @@
   transition: 1s;
   /* margin-bottom: 10px; */
 }
-
 .uploadPictureArtistButton:hover {
   background-color: var(--kobe) !important;
   color: white !important;
   border-color: var(--eerieBlk) !important;
 }
-
 .uploadVideoArtistButton {
   border: 1px solid var(--eerieBlk3) !important;
   border-radius: 10px;
