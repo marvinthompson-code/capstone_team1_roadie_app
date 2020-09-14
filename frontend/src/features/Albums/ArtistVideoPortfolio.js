@@ -39,7 +39,7 @@ const ArtistVideoPortfolio = () => {
       case "Vimeo":
         return <img src={Vimeo} style={imgSize} />
         break;
-      case "FaceBook":
+      case "Facebook":
         return <img src={FaceBook} style={imgSize} />
         break;
       case "SoundCloud":
