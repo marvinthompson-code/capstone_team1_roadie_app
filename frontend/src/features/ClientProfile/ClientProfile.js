@@ -25,6 +25,7 @@ const ClientProfile = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.EventDisplay);
   const history = useHistory();
+
   useEffect(() => {
     const fetchUserInfo = async (id) => {
       let res = await axios.get(`${API}/clients/${id}`);
@@ -44,6 +45,7 @@ const ClientProfile = () => {
     };
     fetchUserInfo(match.params.id);
   }, []);
+
   useEffect(() => {
     const fetchUserEvents = async (id) => {
       let res = await axios.get(`${API}/events/${id}`);
@@ -51,9 +53,11 @@ const ClientProfile = () => {
     };
     fetchUserEvents(match.params.id);
   }, [userEvents]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const handleEventDelete = async (id) => {
     try {
       await axios.delete(`${API}/events/${id}`);
@@ -61,12 +65,14 @@ const ClientProfile = () => {
       console.log(error);
     }
   };
+
   const handleToggle = () => {
     toggleEditEvents ? setToggleEditEvents(false) : setToggleEditEvents(true);
   };
   if (loading) {
     return <div>Loading...</div>;
   }
+
   const userEventsThumbs = userEvents.map((event) => {
     return (
       <div
@@ -77,37 +83,37 @@ const ClientProfile = () => {
           history.push(`/event/${event.id}/client/${eventOwnerId}`)
         }
       >
-          <img
-            src={logo}
-            alt="roadieLogo"
-            width="50"
-            height="50"
-            class="d-inline-block align-top"
-            id="roadieLogo"
-          />
-          <div class="eventListItemBody">
-            <div className="eventHeading">
-              <h5 class="card-title eventThumbCardText">{event.name}</h5>
-              {toggleEditEvents ? (
-                <img
-                  src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
-                  alt="delete"
-                  id="deleteBttn"
-                  onClick={() => {
-                    handleEventDelete(event.id);
-                  }}
-                />
-              ) : null}
-            </div>
-            <div className={"venueDateContainer"}>
-              <p class="card-text eventThumbCardText">{event.venue}</p>
-              <p class="card-text eventThumbCardText">
-                {event.date.slice(0, 10)}
-              </p>
-              <p class="card-text eventThumbCardText">{event.address}</p>
-              <p class="card-text eventThumbCardText">{event.city}</p>
-            </div>
+        <img
+          src={logo}
+          alt="roadieLogo"
+          width="50"
+          height="50"
+          class="d-inline-block align-top"
+          id="roadieLogo"
+        />
+        <div class="eventListItemBody">
+          <div className="eventHeading">
+            <h5 class="card-title eventThumbCardText">{event.name}</h5>
+            {toggleEditEvents ? (
+              <img
+                src="https://img.icons8.com/fluent/48/000000/delete-sign.png"
+                alt="delete"
+                id="deleteBttn"
+                onClick={() => {
+                  handleEventDelete(event.id);
+                }}
+              />
+            ) : null}
           </div>
+          <div className={"venueDateContainer"}>
+            <p class="card-text eventThumbCardText">{event.venue}</p>
+            <p class="card-text eventThumbCardText">
+              {event.date.slice(0, 10)}
+            </p>
+            <p class="card-text eventThumbCardText">{event.address}</p>
+            <p class="card-text eventThumbCardText">{event.city}</p>
+          </div>
+        </div>
       </div>
     );
   });

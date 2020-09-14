@@ -71,6 +71,8 @@ const GuestLogIn = () => {
                   id="guestArtistLogIn"
                   onClick={handleGuestArtistLogIn}
                   to="/"
+                  data-dismiss="modal"
+                  aria-label="Close"
                 >
                   Guest Artist Log In
                 </NavLink>
@@ -82,6 +84,8 @@ const GuestLogIn = () => {
                   id="guestClientLogIn"
                   onClick={handleGuestClientLogIn}
                   to="/"
+                  data-dismiss="modal"
+                  aria-label="Close"
                 >
                   Guest Client Log In
                 </NavLink>
