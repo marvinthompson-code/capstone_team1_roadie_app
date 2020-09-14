@@ -38,6 +38,7 @@ Modal.setAppElement("#root");
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo(0, 0);
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       dispatch(updateUser(user));
     });
@@ -123,6 +124,7 @@ function App() {
       </AuthProvider>
     </div>
   );
+
 }
 
 export default App;
