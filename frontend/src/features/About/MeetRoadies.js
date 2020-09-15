@@ -26,8 +26,25 @@ const MeetTheRoadies = () => {
           {/* Marvin */}
           <div className="container roadieMembers">
             <div className="row">
-              <div className="col leftMembers">
-                <h3>Marvin Thompson</h3>
+              <div className="col leftMembers creatorDiv">
+                <h3 className="creatorName">Marvin Thompson</h3>
+                <ul className="list-group creatorList">
+                  <li className="list-group-item oneList">
+                    <a href="https://github.com/marvinthompson-code">
+                      <i class="devicon devicon-github-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item twoList">
+                    <a href="https://www.linkedin.com/in/marvinjthompson/">
+                      <i class="devicon devicon-linkedin-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item threeList">
+                    <a className="emailList" href="mailto:marvinthompson@pursuit.org">
+                      marvinthompson@pursuit.org
+                    </a>
+                  </li>
+                </ul>
               </div>
               <div className="col membersImg">
                 <img
@@ -50,8 +67,25 @@ const MeetTheRoadies = () => {
                   id="ashImg"
                 />
               </div>
-              <div className="col">
-                <h3>Ashya Manning</h3>
+              <div className="col creatorDiv">
+                <h3 className="creatorName">Ashya Manning</h3>
+                <ul className="list-group creatorList">
+                  <li className="list-group-item oneList">
+                    <a href="https://github.com/ashyamanning">
+                      <i class="devicon devicon-github-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item twoList">
+                    <a href="https://www.linkedin.com/in/ashyalmanning/">
+                      <i class="devicon devicon-linkedin-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item threeList">
+                    <a className="emailList" href="mailto:ashyamanning@pursuit.org">
+                      ashyamanning@pursuit.org
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -59,8 +93,25 @@ const MeetTheRoadies = () => {
           {/* Henry */}
           <div className="container roadieMembers">
             <div className="row">
-              <div className="col leftMembers henryDiv">
-                <h3>Henry Nuñez</h3>
+              <div className="col leftMembers henryDiv creatorDiv">
+                <h3 className="creatorName">Henry Nuñez</h3>
+                <ul className="list-group creatorList">
+                  <li className="list-group-item oneList">
+                    <a href="https://github.com/Henrynunez112">
+                    <i class="devicon devicon-github-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item twoList">
+                    <a href="https://www.linkedin.com/in/henrysaulnunez/">
+                    <i class="devicon devicon-linkedin-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item threeList">
+                    <a className="emailList" href="mailto:henrynunez@pursuit.org">
+                      henrynunez@pursuit.org
+                    </a>
+                  </li>
+                </ul>
               </div>
               <div className="col">
                 <img
@@ -83,8 +134,25 @@ const MeetTheRoadies = () => {
                   id="kevinImg"
                 />
               </div>
-              <div className="col">
-                <h3>Kevin Wong</h3>
+              <div className="col creatorDiv">
+                <h3 className="creatorName">Kevin Wong</h3>
+                <ul className="list-group creatorList">
+                  <li className="list-group-item oneList">
+                    <a href="https://github.com/kwong0419">
+                      <i class="devicon devicon-github-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item twoList">
+                    <a href="https://www.linkedin.com/in/kevinjwong0">
+                      <i class="devicon devicon-linkedin-plain"></i>
+                    </a>
+                  </li>
+                  <li className="list-group-item threeList">
+                    <a className="emailList" href="mailto:kevinwong@pursuit.org">
+                      kevinwong@pursuit.org
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
