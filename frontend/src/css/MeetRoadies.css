@@ -83,3 +83,45 @@
   border: solid var(--jade);
   border-radius: 13px;
 }
+
+.creatorDiv{
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+.creatorName{
+  grid-row: 1/ span 1;
+}
+.creatorList{
+  grid-row: 2/ span 1;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  grid-row-gap: 10px;
+}
+
+.oneList{
+  grid-area: 2/ 2/ span 1 / span 1;
+  background-color: var(--eerieBlk2) !important;
+  border: 2px solid var(--jade) !important;
+  border-radius: 13px !important;
+}
+.twoList{
+  grid-area: 3/ 2/ span 1/ span 1;
+  background-color: var(--eerieBlk2) !important;
+  border: 2px solid var(--jade) !important;
+  border-radius: 13px !important;
+}
+.threeList{
+  grid-area: 4/ 2/ span 1/ span 1;
+  background-color: var(--eerieBlk2) !important;
+  border: 2px solid var(--jade) !important;
+  border-radius: 13px !important;
+  color: white !important;
+}
+.devicon{
+ font-size: 50px;
+ color: white !important;
+}
+.emailList{
+  color: white;
+}
