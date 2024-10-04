@@ -1,5 +1,8 @@
 # Roadie
 
+Check out my presentation on my role as a tech lead:
+[Roadie Tech Lead Slide Deck])(https://docs.google.com/presentation/d/1onF4QjRlBQe5oRgEzbqqA8cqITHY9UGB6gJC98ArZYs/edit?usp=sharing)
+
 ### Live @ [roadie-app.netlify.app](https://roadie-app.netlify.app/)
 
 **Roadie** is a web app that allows two different type of users to connect, an artist or a client, allowing them to directly communicate and contact one another to plan events and book gigs together. The purpose of this app is the remove the need of having a middle-man between the two types of users, which often negatively effects the industry when upcoming artists are trying to get their name out there.
