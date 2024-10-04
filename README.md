@@ -3,14 +3,28 @@
 Check out my presentation on my role as a tech lead:
 [Roadie Tech Lead Slide Deck])(https://docs.google.com/presentation/d/1onF4QjRlBQe5oRgEzbqqA8cqITHY9UGB6gJC98ArZYs/edit?usp=sharing)
 
+Check out the entire technical showcase here: 
+[6.4 Technical Showcase](https://www.youtube.com/watch?v=fJBdcmVWWoY)
+
 ### Live @ [roadie-app.netlify.app](https://roadie-app.netlify.app/)
 
 **Roadie** is a web app that allows two different type of users to connect, an artist or a client, allowing them to directly communicate and contact one another to plan events and book gigs together. The purpose of this app is the remove the need of having a middle-man between the two types of users, which often negatively effects the industry when upcoming artists are trying to get their name out there.
 
 Built with React, Redux, Bootstrap, FireBase, Google Cloud Storage, Express, and PostgreSQL,
 
-![Roadie](./docs/images/screen1.png)
-![Roadie](./docs/images/screen2.png)
+## Search Functionality
+![Roadie1](https://github.com/user-attachments/assets/70326c91-d0ac-4fba-83b1-4d6a04a70370)
+
+## Artist Profiles
+![Roadie2](https://github.com/user-attachments/assets/082cb0a9-c87e-4188-94db-b47a960cfdf4)
+
+## Client Profiles
+![Roadie3](https://github.com/user-attachments/assets/d25711fc-7f9b-4202-b252-57588343d5f1)
+
+##
+Book Me! Form
+![Roadie4](https://github.com/user-attachments/assets/1e2fdf62-0989-4d67-a10e-48afb02046c6)
+
 
 ## Features
 
